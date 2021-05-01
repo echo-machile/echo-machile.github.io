@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="搭建个人博客, Chenluo">
+    <meta name="keywords" content="初识owasp, Chenluo">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>搭建个人博客 | Chenluo</title>
+    <title>初识owasp | Chenluo</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -311,12 +311,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/13.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/5.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">搭建个人博客</h1>
+                    <h1 class="description center-align post-title">初识owasp</h1>
                 </div>
             </div>
         </div>
@@ -432,8 +432,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/blog/">
-                                <span class="chip bg-color">blog</span>
+                            <a href="/tags/web/">
+                                <span class="chip bg-color">web</span>
                             </a>
                         
                     </div>
@@ -448,7 +448,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-04-30
+                    2021-05-01
                 </div>
                 
 
@@ -457,7 +457,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    309
+                    2.1k
                 </div>
                 
 
@@ -474,163 +474,105 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <ol>
-<li>安装node.js</li>
-</ol>
-<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gq1jxa9e6fj30h80ccdgu.jpg" alt="image-20210430101612677"></p>
-<ol start="2">
-<li>检验是否安装成功</li>
-</ol>
-<pre class=" language-shell"><code class="language-shell">node -v
+                <h2 id="WEB任务"><a href="#WEB任务" class="headerlink" title="WEB任务:"></a>WEB任务:</h2><h4 id="1-目前owasp的十大web安全漏洞是哪些？这些漏洞排名是按照漏洞的严重程度排序的还是按照漏洞的常见程度排序的？（2分"><a href="#1-目前owasp的十大web安全漏洞是哪些？这些漏洞排名是按照漏洞的严重程度排序的还是按照漏洞的常见程度排序的？（2分" class="headerlink" title="1.目前owasp的十大web安全漏洞是哪些？这些漏洞排名是按照漏洞的严重程度排序的还是按照漏洞的常见程度排序的？（2分)"></a>1.目前owasp的十大web安全漏洞是哪些？这些漏洞排名是按照漏洞的严重程度排序的还是按照漏洞的常见程度排序的？（2分)</h4><ul>
+<li>injection(Sql,Command)</li>
+<li>Broken Authentication  </li>
+<li>Sensitive Data Exposure  </li>
+<li>Xml External Entities(XXE)</li>
+<li>Broken Access Control  </li>
+<li>Security Misconfiguration  </li>
+<li>Cross-Site Scripting (xss)</li>
+<li>Insecure Deserialization  </li>
+<li>Using Components with Known Vulnerabilities  </li>
+<li>Insufficient Logging and Monitoring  </li>
+<li><em>排序方式</em>*:<br>   漏洞的常见程度</li>
+</ul>
+<h4 id="2-请翻译一下credential-stuffing（1分）"><a href="#2-请翻译一下credential-stuffing（1分）" class="headerlink" title="2.请翻译一下credential stuffing（1分）"></a>2.请翻译一下credential stuffing（1分）</h4><p>证书填充，恶意软件劫持路由器，将其转变为SOCKS代理，然后开展”Credential stuffing(证书填充攻击)”，由于证书填充攻击会不断去验证被盗密码的有效性，因此攻击双方在自动化程度上与暴力破解攻击很类似<br>credential stuffing 撞库攻击</p>
+<h4 id="3-为什么说不充分的日志记录-insufficient-logging-也算owasp十大漏洞的一种？他的危害性如何（2分）"><a href="#3-为什么说不充分的日志记录-insufficient-logging-也算owasp十大漏洞的一种？他的危害性如何（2分）" class="headerlink" title="3.为什么说不充分的日志记录(insufficient logging)也算owasp十大漏洞的一种？他的危害性如何（2分）"></a>3.为什么说不充分的日志记录(insufficient logging)也算owasp十大漏洞的一种？他的危害性如何（2分）</h4><p>没有执行日志记录和监控的服务器，无法充分记录遭受的攻击，他们无法识别这是恶意还是善意的，就会导致严重的攻击后果。同时，在渗透测试的时候也要注意进行的时候，查看日志是否会记录，以便客户随时监视自己的应用程序</p>
+<h4 id="4-请翻阅一下owasp-testing-guide，以及owasp-testing-guide-check-list，视频说怎么结合这两个文档来学习渗透测试？-结合你平时渗透过程中的经验，谈谈你的感想。（3分）"><a href="#4-请翻阅一下owasp-testing-guide，以及owasp-testing-guide-check-list，视频说怎么结合这两个文档来学习渗透测试？-结合你平时渗透过程中的经验，谈谈你的感想。（3分）" class="headerlink" title="4.请翻阅一下owasp testing guide，以及owasp testing guide check-list，视频说怎么结合这两个文档来学习渗透测试？ 结合你平时渗透过程中的经验，谈谈你的感想。（3分）"></a>4.请翻阅一下owasp testing guide，以及owasp testing guide check-list，视频说怎么结合这两个文档来学习渗透测试？ 结合你平时渗透过程中的经验，谈谈你的感想。（3分）</h4><p>owasp testing guide             测试指南<br>owasp testing guide check-list  测试清单</p>
+<p>根据清单上的类别，在测试指南中寻找测试方法。</p>
+<p>渗透测试要进行的没有纰漏，可以按照清单的内容进行，并且同时可以在测试指南中查找测试方式</p>
+<h4 id="5-you-are-only-as-good-as-you-notes-you-are-only-as-good-as-things-you-can-refer-to-结合这两句话谈谈你的感想。（2分）"><a href="#5-you-are-only-as-good-as-you-notes-you-are-only-as-good-as-things-you-can-refer-to-结合这两句话谈谈你的感想。（2分）" class="headerlink" title="5.you are only as good as you notes .you are only as good as things you can refer to 结合这两句话谈谈你的感想。（2分）"></a>5.you are only as good as you notes .you are only as good as things you can refer to 结合这两句话谈谈你的感想。（2分）</h4><p>翻译：</p>
+<p>你的笔记有多好，你就有多优秀</p>
+<p>你参考的东西有多好，你就有多优秀</p>
+<p>强调了两点:</p>
+<ul>
+<li>做笔记的重要性</li>
+<li>参考资料的重要性</li>
+</ul>
+<p>学的快忘的更快，但是在我们学习的时候及时做出笔记，及时忘的很快，我们也可以用很少的时间，重温学过的知识，笔记做的越好，那么说明你掌握的知识就越透彻，那么你就越优秀。</p>
+<p>你参考的东西是你知识的来源，你参考的多少，你就能学到多少，参考的资料有多深，你就能学到多深，那么努力去扩大自己参考资料范围吧，那是你能学到的极限！</p>
+<h4 id="1-http报文的结构是什么？（1分）"><a href="#1-http报文的结构是什么？（1分）" class="headerlink" title="1.http报文的结构是什么？（1分）"></a>1.http报文的结构是什么？（1分）</h4><p><img src="https://images0.cnblogs.com/blog2015/776887/201507/241034588189239.png"><br><strong>起始行</strong>:</p>
+<pre><code>在请求报文中用来说明说明做什么，在响应报文用来说明出现了什么情况
+</code></pre>
+<p><strong>首部</strong></p>
+<pre><code>每个首部字段包含一个名字和一个值，为了便于解析，两者之间用冒号隔开，首部以空行结束
+</code></pre>
+<p><strong>主体字段:</strong></p>
+<pre><code>空行之后就是豹报文主体，其中包含了所有类型的数据，请求主题中包含了发送给服务器的数据，主体可以包含任意二进制数据。
+</code></pre>
+<h4 id="2-什么是crlf？在http报文的哪个位置。（1分）"><a href="#2-什么是crlf？在http报文的哪个位置。（1分）" class="headerlink" title="2.什么是crlf？在http报文的哪个位置。（1分）"></a>2.什么是crlf？在http报文的哪个位置。（1分）</h4><pre><code>换行，首部和主体字段之间
+</code></pre>
+<h4 id="3-解释下这几个头的含义（5分）："><a href="#3-解释下这几个头的含义（5分）：" class="headerlink" title="3.解释下这几个头的含义（5分）："></a>3.解释下这几个头的含义（5分）：</h4><p><img src="https://uploader.shimo.im/f/g5F6pOxn3T93mirM.png"></p>
+<p><strong>HOST</strong>:指示处理请求的目标主机<br><strong>Accept</strong>: 指示接受哪些mime类型(由客户端(json和xml的输出)指定输出的实例)</p>
+<pre><code>MIME 类型是一种文本标记，表示一种主要的对象类型和一个特定的子类型，中间由一条斜杠来分隔。
 
-npm -v
-</code></pre>
-<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gq1k2x2w9zj307c021mx5.jpg" alt="image-20210430102137966"></p>
-<ol start="3">
-<li>更换淘宝镜像源</li>
-</ol>
-<pre class=" language-shell"><code class="language-shell">npm install -g cnpm --registry=https://registry.npm.taobao.org
-</code></pre>
-<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gq1k3xrqp1j30fl0393yz.jpg" alt="image-20210430102236390"></p>
-<ol start="4">
-<li>检查是否更换成功</li>
-</ol>
-<pre class=" language-shell"><code class="language-shell">cnpm -v
-</code></pre>
-<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gq1k5301jcj30fp03qt93.jpg" alt="image-20210430102342035"></p>
-<ol start="5">
-<li>安装hexo框架</li>
-</ol>
-<pre class=" language-shell"><code class="language-shell">cnpm install -g hexo-cli
-</code></pre>
-<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gq1k5z6zyyj30fm091wg2.jpg" alt="image-20210430102434333"></p>
-<ol start="6">
-<li>检查是否安装成功</li>
-</ol>
-<pre class=" language-shell"><code class="language-shell">hexo -v
-</code></pre>
-<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gq1k6staooj309i07dgm0.jpg" alt="image-20210430102521607"></p>
-<ol start="7">
-<li>建立一个空的文件夹</li>
-</ol>
-<pre class=" language-shell"><code class="language-shell">mkdir blog 
-</code></pre>
-<ol start="8">
-<li>进入blog</li>
-</ol>
-<pre class=" language-shell"><code class="language-shell">cd blog/
-</code></pre>
-<ol start="9">
-<li>初始化hexo,搭建博客</li>
-</ol>
-<pre class=" language-shell"><code class="language-shell">sudo hexo init
-</code></pre>
-<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gq1kfzj4ekj30ix09tq3r.jpg" alt="image-20210430103411000"></p>
-<ol start="10">
-<li>启动博客</li>
-</ol>
-<pre class=" language-shell"><code class="language-shell">hexo s
-</code></pre>
-<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gq1kh4tq47j30f102mwer.jpg" alt="image-20210430103517852"></p>
-<p>发现在本地的localhost:4000端口启动</p>
-<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gq1kkw42jdj30uy0goqba.jpg" alt="image-20210430103853158"></p>
-<ol start="11">
-<li>新建第一篇博客文章</li>
-</ol>
-<pre class=" language-shell"><code class="language-shell">hexo new "我的第一篇博客文章"
-</code></pre>
-<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gq1kk8ar4fj30f8021aab.jpg" alt="image-20210430103815888"></p>
-<ol start="12">
-<li>根据路径查看是否存在</li>
-</ol>
-<pre class=" language-shell"><code class="language-shell"> /Users/liuguangquan/blog/source/_posts/
-</code></pre>
-<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gq1kmosngwj30be01c3yl.jpg" alt="image-20210430104038263"></p>
-<ol start="13">
-<li>利用vim打开添加内容</li>
-</ol>
-<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gq1kqf5boij30fu0abgm1.jpg" alt="image-20210430104412905"></p>
-<ol start="14">
-<li>清理，生成</li>
-</ol>
-<pre class=" language-shell"><code class="language-shell">hexo clean
+• HTML 格式的文本文档由 text/html 类型来标记。
 
-hexo g
-</code></pre>
-<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gq1kt1yfcsj30bg0653z9.jpg" alt="image-20210430104644951"></p>
-<ol start="15">
-<li>把博客推送到github上</li>
-</ol>
-<p>登陆账号，新建仓库</p>
-<p>注意：仓库名必须与用户名一致</p>
-<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gq1kzdzmlkj30i203tmxh.jpg" alt="image-20210430105250251"></p>
-<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gq1l58rvlqj30wv0k9tci.jpg" alt="image-20210430105827053"></p>
-<ol start="16">
-<li>安装git插件</li>
-</ol>
-<pre class=" language-shell"><code class="language-shell">cnpm install --save hexo-deployer-git
-</code></pre>
-<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gq1l1im164j30fn031jrq.jpg" alt="image-20210430105452842"></p>
-<ol start="17">
-<li>设置_config.yml</li>
-</ol>
-<ul>
-<li>进入底部有个deploy</li>
-</ul>
-<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gq1l3grfzwj30a901lwei.jpg" alt="image-20210430105645142"></p>
-<ul>
-<li>修改type</li>
-</ul>
-<pre class=" language-shell"><code class="language-shell">type: git
-</code></pre>
-<ul>
-<li>添加repo</li>
-</ul>
-<pre class=" language-shell"><code class="language-shell">repo: https://github.com/echo-machile/echo-machile.github.io.git
-</code></pre>
-<ul>
-<li>添加branch</li>
-</ul>
-<pre class=" language-shell"><code class="language-shell">branch: master
-</code></pre>
-<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gq1l824odij30e403saaa.jpg" alt="image-20210430110110262"></p>
-<ol start="18">
-<li>将博客部署到远端</li>
-</ol>
-<pre class=" language-shell"><code class="language-shell">hexo d
-</code></pre>
-<ol start="19">
-<li>访问博客</li>
-</ol>
-<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gq1mfbju69j30xo0jvwpj.jpg" alt="image-20210430114241934"></p>
-<ol start="20">
-<li>修改博客样式</li>
-</ol>
-<pre class=" language-shell"><code class="language-shell">git clone https://github.com/litten/hexo-theme-yilia.git themes/yilia
-</code></pre>
-<ul>
-<li>编辑_config.yml文件</li>
-</ul>
-<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gq1mqdvq1cj30f10473yu.jpg" alt="image-20210430115317612"></p>
-<ul>
-<li><p>找到theme修改为yilia，保存退出</p>
-</li>
-<li><p>清理，生成，开启</p>
-</li>
-</ul>
-<pre class=" language-shell"><code class="language-shell">hexo clean
+•普通的 ASCII 文本文档由 text/plain 类型来标记。
 
-hexo g
+• JPEG 格式的图片为 image/jpeg 类型。
 
-hexo s
+• GIF 格式的图片为 image/gif 类型。
+
+• Apple 的 QuickTime 电影为 video/quicktime 类型。
+
+•微软的 PowerPoint 演示文件为 application/vnd.ms-powerpoint 类型。   
 </code></pre>
-<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gq1mszjhu4j30xr0g1gmz.jpg" alt="image-20210430115548362"></p>
-<ol start="21">
-<li>推送到远端</li>
-</ol>
-<pre class=" language-shell"><code class="language-shell">hexo d
+<p><strong>Cookie</strong>:标志用户信息的少量数据，用于服务器识别用户，储存在用户机器上<br><strong>refer</strong>:表示请求的来源，可以进行基本的身份验证<br><strong>Authorization</strong>:Authorization header的典型数据为”Authorization: Basic jdhaHY0=”，其中Basic表示基础认证， jdhaHY0=是base64编码的”user:passwd”字符串</p>
+<pre><code>一次典型的访问场景是：
+浏览器发送http请求（没有Authorization header）
+服务器端返回401页面
+浏览器弹出认证对话框
+用户输入帐号密码，并点确认
+浏览器再次发出http请求（带着Authorization header）
+服务器端认证通过，并返回页面
+浏览器显示页面
 </code></pre>
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/jspnetcn/article/details/104111651?utm_medium=distribute.pc_relevant.none-task-blog-2~default~BlogCommendFromBaidu~default-5.baidujs">matery主题优化链接</a></p>
+<h4 id="4-cookie具有哪些特点，不同的域名和子域名对cookie有怎样的权限？Cookie的Secure和-HTTPOnly这两个flag分别有什么作用？请结合xss攻击来进行说明（3分）"><a href="#4-cookie具有哪些特点，不同的域名和子域名对cookie有怎样的权限？Cookie的Secure和-HTTPOnly这两个flag分别有什么作用？请结合xss攻击来进行说明（3分）" class="headerlink" title="4.cookie具有哪些特点，不同的域名和子域名对cookie有怎样的权限？Cookie的Secure和 HTTPOnly这两个flag分别有什么作用？请结合xss攻击来进行说明（3分）"></a>4.cookie具有哪些特点，不同的域名和子域名对cookie有怎样的权限？Cookie的Secure和 HTTPOnly这两个flag分别有什么作用？请结合xss攻击来进行说明（3分）</h4><p>cookie:存储一些少量数据信息，在本地保留一段固定时间，随着每个请求发送<br>每个cookie的作用域有实际与他匹配的域，他会被发送到任何具有安全隐患的子域中 </p>
+<p>子域名可以在父域名以及他的子域名设置cookie，但无法在同级域名之间设置cookie</p>
+<p>设置security:那么coookie仅仅在https页面之间传输<br>httponly;确保仅通过网络请求发送cookie， 不允许从javascript中读取cookie</p>
+<h4 id="5-简述本视频提到的xss绕过web防火墙的方案（5分）"><a href="#5-简述本视频提到的xss绕过web防火墙的方案（5分）" class="headerlink" title="5.简述本视频提到的xss绕过web防火墙的方案（5分）"></a>5.简述本视频提到的xss绕过web防火墙的方案（5分）</h4><p>脚本表现本身会被浏览器自动关闭，，页面中可能会出现一些错误的语法，但是如果自动关闭，如果我们拥有了页面的脚本，我们可以将htmml添加到页面中<br>缺少右尖括号，由下一个标签自动关闭，这将结束很多属性，这在大多数情况很有效</p>
+<h4 id="6-内容嗅探是什么？主要有哪些类型？请分别举例，主要用途是什么？在什么情况下可以利用这些漏洞？。为什么facebook等网站需要使用不同的域名来存储图片？（5分）"><a href="#6-内容嗅探是什么？主要有哪些类型？请分别举例，主要用途是什么？在什么情况下可以利用这些漏洞？。为什么facebook等网站需要使用不同的域名来存储图片？（5分）" class="headerlink" title="6.内容嗅探是什么？主要有哪些类型？请分别举例，主要用途是什么？在什么情况下可以利用这些漏洞？。为什么facebook等网站需要使用不同的域名来存储图片？（5分）"></a>6.内容嗅探是什么？主要有哪些类型？请分别举例，主要用途是什么？在什么情况下可以利用这些漏洞？。为什么facebook等网站需要使用不同的域名来存储图片？（5分）</h4><p>内容嗅探：</p>
+<pre><code>在不发送内容的情况下将数据发送到浏览器的地方
+</code></pre>
+<p>嗅探类型：</p>
+<pre><code>mime类型:
+    更改mime类型包含一些html，获得跨站点脚本
+编码嗅探:
+    网页上有个众不同的类型内容，如果一个网页看到一个字符发现他没有意义，那么就会尝试去编码他，通过控制浏览器编码，更改解析，并且绕过过滤器
+</code></pre>
+<p>上传图片时如果包含足以引发攻击者嗅探的html可以上传包含很多的HTML的图片，之后执行 操作</p>
+<h4 id="7-同源策略是什么？限制是什么？浏览器在遇到哪两种情况的时候会用到同源策略？如何放松SOP限制？放松SOP限制会对浏览器插件安全造成怎样的破坏？"><a href="#7-同源策略是什么？限制是什么？浏览器在遇到哪两种情况的时候会用到同源策略？如何放松SOP限制？放松SOP限制会对浏览器插件安全造成怎样的破坏？" class="headerlink" title="7.同源策略是什么？限制是什么？浏览器在遇到哪两种情况的时候会用到同源策略？如何放松SOP限制？放松SOP限制会对浏览器插件安全造成怎样的破坏？"></a>7.同源策略是什么？限制是什么？浏览器在遇到哪两种情况的时候会用到同源策略？如何放松SOP限制？放松SOP限制会对浏览器插件安全造成怎样的破坏？</h4><p>所谓同源是指，域名，协议，端口相同。</p>
+<p>当一个浏览器的两个tab页中分别打开来 百度和谷歌的页面当浏览器的百度tab页执行一个脚本的时候会检查这个脚本是属于哪个页面的，即检查是否同源，只有和百度同源的脚本才会被执行。<br>如果非同源，那么在请求数据时，浏览器会在控制台中报一个异常，提示拒绝访问。</p>
+<p>限制:</p>
+<ul>
+<li>cookie不能读取 </li>
+<li>dom无法获得</li>
+<li>ajax请求不能发送</li>
+</ul>
+<p>放宽sop限制:</p>
+<pre><code>更改document.domain,是我们能够决定更改哪个子域
+</code></pre>
+<p>破坏沙箱，容易收到跨站脚本攻击</p>
+<h4 id="8-csrf是什么？如何设计规避csrf？视频中提到的错误的csrf配置方法是什么？"><a href="#8-csrf是什么？如何设计规避csrf？视频中提到的错误的csrf配置方法是什么？" class="headerlink" title="8.csrf是什么？如何设计规避csrf？视频中提到的错误的csrf配置方法是什么？"></a>8.csrf是什么？如何设计规避csrf？视频中提到的错误的csrf配置方法是什么？</h4><p>crsf:跨站请求伪造</p>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gq33s622b9j313h04otf9.jpg"></p>
+<p>规避方法：<br>让服务器知道请求的源头是在页面上还是在其他地方,sea surf</p>
+<pre><code>即生成随机的token，将其绑定到用户的会话，然后将其嵌入到发送的每一个表单，
+</code></pre>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gq341l0tmbj312x04o0xs.jpg"></p>
+<p>错误配置:<br>    放弃使用c surf token</p>
+<h4 id="附加题：5、6两点主要利用的是由于服务端和客户端对同一信息的处理方式不同造成的漏洞，你还能举出相似的例子么？（1分）"><a href="#附加题：5、6两点主要利用的是由于服务端和客户端对同一信息的处理方式不同造成的漏洞，你还能举出相似的例子么？（1分）" class="headerlink" title="附加题：5、6两点主要利用的是由于服务端和客户端对同一信息的处理方式不同造成的漏洞，你还能举出相似的例子么？（1分）"></a>附加题：5、6两点主要利用的是由于服务端和客户端对同一信息的处理方式不同造成的漏洞，你还能举出相似的例子么？（1分）</h4><p>ssrf</p>
 
                 
             </div>
@@ -657,7 +599,7 @@ hexo s
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://echo-machile.github.io/2021/04/30/23941.html">http://echo-machile.github.io/2021/04/30/23941.html</a>
+                    <a href="http://echo-machile.github.io/2021/05/01/1.html">http://echo-machile.github.io/2021/05/01/1.html</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -695,8 +637,8 @@ hexo s
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/blog/">
-                                    <span class="chip bg-color">blog</span>
+                                <a href="/tags/web/">
+                                    <span class="chip bg-color">web</span>
                                 </a>
                             
                         </div>
@@ -868,9 +810,10 @@ hexo s
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/2021/05/01/1.html">
                     <div class="card-image">
@@ -888,9 +831,9 @@ hexo s
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-05-01
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-05-01
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-user fa-fw"></i>
@@ -899,6 +842,7 @@ hexo s
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -917,13 +861,13 @@ hexo s
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2021/04/30/63785.html">
+                <a href="/2021/04/30/23941.html">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="我的第一篇博客">
+                        <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="搭建个人博客">
                         
-                        <span class="card-title">我的第一篇博客</span>
+                        <span class="card-title">搭建个人博客</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -943,6 +887,14 @@ hexo s
                             
                         </span>
                     </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/blog/">
+                        <span class="chip bg-color">blog</span>
+                    </a>
+                    
                 </div>
                 
             </div>
