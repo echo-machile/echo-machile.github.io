@@ -29,8 +29,8 @@
 
     <script src="/libs/jquery/jquery.min.js"></script>
 
-<meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="Chenluo" type="application/atom+xml">
-<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+<meta name="generator" content="Hexo 5.4.0"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"><link rel="alternate" href="/atom.xml" title="Chenluo" type="application/atom+xml">
+</head>
 
 
 
@@ -457,7 +457,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    5k
+                    5.4k
                 </div>
                 
 
@@ -474,7 +474,16 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="SSTI-服务端模版注入漏洞"><a href="#SSTI-服务端模版注入漏洞" class="headerlink" title="SSTI-服务端模版注入漏洞"></a>SSTI-服务端模版注入漏洞</h1><p>小学的时候拿别人的好词好句，套在我们自己的作文里，此时我们的作文就相当于模板，而别人的好词好句就相当于传递进模板的内容。</p>
+                <h1 id="SSTI-服务端模版注入漏洞"><a href="#SSTI-服务端模版注入漏洞" class="headerlink" title="SSTI-服务端模版注入漏洞"></a>SSTI-服务端模版注入漏洞</h1><p>SSTI就是服务器端模板注入(Server-Side Template Injection)，也给出了一个注入的概念。</p>
+<pre><code>
+</code></pre>
+<p>常见的注入有：SQL 注入，XSS 注入，XPATH 注入，XML 注入，代码注入，命令注入等等。sql注入已经出世很多年了，对于sql注入的概念和原理很多人应该是相当清楚了，SSTI也是注入类的漏洞，其成因其实是可以类比于sql注入的。</p>
+<p>sql注入是从用户获得一个输入，然后又后端脚本语言进行数据库查询，所以可以利用输入来拼接我们想要的sql语句，当然现在的sql注入防范做得已经很好了，然而随之而来的是更多的漏洞。</p>
+<p>SSTI也是获取了一个输入，然后再后端的渲染处理上进行了语句的拼接，然后执行。当然还是和sql注入有所不同的，SSTI利用的是现在的网站模板引擎(下面会提到)，主要针对python、php、java的一些网站处理框架，比如Python的jinja2 mako tornado django，php的smarty twig，java的jade velocity。当这些框架对运用渲染函数生成html的时候会出现SSTI的问题。</p>
+<p>现在网上提起的比较多的是Python的网站。<br>————————————————<br>版权声明：本文为CSDN博主「大千SS」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。<br>原文链接：<a target="_blank" rel="noopener" href="https://blog.csdn.net/zz_Caleb/article/details/96480967">https://blog.csdn.net/zz_Caleb/article/details/96480967</a></p>
+<pre><code>
+</code></pre>
+<p>小学的时候拿别人的好词好句，套在我们自己的作文里，此时我们的作文就相当于模板，而别人的好词好句就相当于传递进模板的内容。</p>
 <h4 id="原理："><a href="#原理：" class="headerlink" title="原理："></a>原理：</h4><pre class=" language-shell"><code class="language-shell"># 服务端接受用户的输入，将其作为web应用模版的一部分
 # 在进行目标编译渲染的过程中，执行了用户的恶意输入，因而导致了敏感信息泄露，代码执行，Getshell等问题。
 
@@ -778,6 +787,7 @@ class=__class__&amp;mro=__mro__&amp;subclasses=__subclasses__
 <p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gq0s4w27y4j30qw03ut9b.jpg" alt="image-20210428160708406"></p>
 <p>所以想到需要获取cookie_secret来得到filehash</p>
 <p>那么，怎么获取cookie</p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/hello-/articles/10314968.html">setting</a></p>
 <p><a target="_blank" rel="noopener" href="https://www.tornadoweb.org/en/latest/web.html#tornado.web.RequestHandler.get_secure_cookie">cookie_secret</a></p>
 <p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gq0s4xoahbj30l20d940u.jpg" alt="image-20210428160917455"></p>
 <p>查询tornado cookie</p>
