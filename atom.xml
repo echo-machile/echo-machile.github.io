@@ -134,4 +134,28 @@
     
   </entry>
   
+  <entry>
+    <title>sql注入漏洞解析</title>
+    <link href="http://echo-machile.github.io/2021/04/18/5.html"/>
+    <id>http://echo-machile.github.io/2021/04/18/5.html</id>
+    <published>2021-04-18T04:32:50.763Z</published>
+    <updated>2021-05-03T16:35:50.488Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;SQL-lab&quot;&gt;&lt;a href=&quot;#SQL-lab&quot; class=&quot;headerlink&quot; title=&quot;SQL-lab&quot;&gt;&lt;/a&gt;SQL-lab&lt;/h1&gt;&lt;p&gt;sql注入全部解析&lt;/p&gt;
+&lt;h2 id=&quot;1-单引号字符型注入&quot;&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    
+    <category term="web" scheme="http://echo-machile.github.io/tags/web/"/>
+    
+  </entry>
+  
 </feed>
