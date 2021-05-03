@@ -448,7 +448,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-05-02
+                    2021-05-03
                 </div>
                 
 
@@ -457,7 +457,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    851
+                    1.7k
                 </div>
                 
 
@@ -655,7 +655,145 @@ html编码
 </code></pre>
 <p>先利用text标签让他显示出来，再点击执行js代码</p>
 <p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gq3xx57ojqj30mn09a0wn.jpg" alt="image-20210502115136024"></p>
-<p>外完待续。。。</p>
+<h4 id="第11关"><a href="#第11关" class="headerlink" title="第11关"></a>第11关</h4><ol>
+<li>看一下源代码</li>
+</ol>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gq4xu0jbwaj30mq08bq4h.jpg" alt="image-20210503083406640"></p>
+<ol start="2">
+<li>同样是一些隐藏的标签，直接试一下，从t_ref能不能执行注入</li>
+</ol>
+<p>没啥用，还是在t_sort执行吧</p>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gq4xzkipkbj30m1031mxi.jpg" alt="image-20210503083929798"></p>
+<p>还是没用</p>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gq4y0b8w95j30ws06pdhn.jpg" alt="image-20210503084012148"></p>
+<p><strong>标签没有被做过任何处理</strong>，但还是没有执行成功，所以，注入点不在这里。。。。</p>
+<p>试了几个其他的都没啥用。。。</p>
+<ol start="3">
+<li>最后看一下源代码</li>
+</ol>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gq4y3n6wvtj30lb09w3zx.jpg" alt="image-20210503084324493"></p>
+<p>原来这里获取3个值，t_sort试了不行，那么就只有gttp_referer,这里只做了一个过滤,所以利用bp抓报吧</p>
+<p>不让用尖括号，就用属性值！</p>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gq4yeqt5kcj30wm07fmyl.jpg" alt="image-20210503085404180"></p>
+<p>注意:</p>
+<p>Referer字段必须与上面的字段接着。。。</p>
+<pre class=" language-http"><code class="language-http">GET /xss/level11.php HTTP/1.1
+<span class="token header-name keyword">Host:</span> 192.168.220.12
+<span class="token header-name keyword">User-Agent:</span> Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:88.0) Gecko/20100101 Firefox/88.0
+<span class="token header-name keyword">Accept:</span> text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8
+<span class="token header-name keyword">Accept-Language:</span> zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2
+<span class="token header-name keyword">Accept-Encoding:</span> gzip, deflate
+<span class="token header-name keyword">Connection:</span> close
+<span class="token header-name keyword">Cookie:</span> PHPSESSID=5r7fmn7mb96g512gv1p4jn20b2
+<span class="token header-name keyword">Upgrade-Insecure-Requests:</span> 1
+<span class="token header-name keyword">Pragma:</span> no-cache
+<span class="token header-name keyword">Cache-Control:</span> no-cache
+<span class="token header-name keyword">Content-Length:</span> 0
+<span class="token header-name keyword">Referer:</span>  2" onclick="alert(1)" type="text"
+</code></pre>
+<ol start="4">
+<li>构造payload</li>
+</ol>
+<pre class=" language-js"><code class="language-js">Referer<span class="token punctuation">:</span> <span class="token number">1</span><span class="token string">" onclick="</span><span class="token function">alert</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token string">" type= "</span>text"
+</code></pre>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gq519qijuqj30kz0b2js9.jpg" alt="image-20210503103303703"></p>
+<p>OKK!!</p>
+<h4 id="第12关"><a href="#第12关" class="headerlink" title="第12关"></a>第12关</h4><ol>
+<li>查看源代码，那么估计处这次的注入点应该是User-Agent</li>
+</ol>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gq51n1abv3j30zf09ggnu.jpg" alt="image-20210503104549806"></p>
+<p>那么类似于上一关试一试</p>
+<ol start="2">
+<li>构造payload</li>
+</ol>
+<pre class=" language-js"><code class="language-js"><span class="token number">1</span><span class="token string">" onclick="</span><span class="token function">alert</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token string">" type="</span>text"
+</code></pre>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gq51qchvx5j30xy07r75w.jpg" alt="image-20210503104901873"></p>
+<ol start="3">
+<li>点击一下完成xss</li>
+</ol>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gq51pryhx6j30os0artas.jpg" alt="image-20210503104828286"></p>
+<h4 id="第14关"><a href="#第14关" class="headerlink" title="第14关"></a>第14关</h4><ol>
+<li>查看源代码</li>
+</ol>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gq51r7yj0mj30r607r0ul.jpg" alt="image-20210503104950911"></p>
+<p>这里人家都说了是他，那么，就不尝试其他的了</p>
+<ol start="2">
+<li>抓包，改cookie</li>
+</ol>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gq51uz9051j30w009276h.jpg" alt="image-20210503105328405"></p>
+<p><strong>注意遵循原cookie的格式</strong></p>
+<p>这里改变了属性，只要鼠标移上去就会触发</p>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gq51w4qobwj30jn09o3zt.jpg" alt="image-20210503105435511"></p>
+<h4 id="第14关-1"><a href="#第14关-1" class="headerlink" title="第14关"></a>第14关</h4><p>不知道干啥</p>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gq5208ciabj30q2071q3p.jpg" alt="image-20210503105831766"></p>
+<p>源代码，也是啥也没给</p>
+<p>估计是啥也不让做，先过了</p>
+<h4 id="第15关"><a href="#第15关" class="headerlink" title="第15关"></a>第15关</h4><ol>
+<li>查看源代码</li>
+</ol>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gq522hfktlj30uu0adwgo.jpg" alt="image-20210503110041349"></p>
+<p>这个东西可以看一下这个教程</p>
+<p><a target="_blank" rel="noopener" href="https://www.runoob.com/angularjs/angularjs-directives.html">菜鸟教程</a></p>
+<ol start="2">
+<li>由于找不到注入点，试一下看看源代码</li>
+</ol>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gq52bf1i8ej30nk05wmxs.jpg" alt="image-20210503110916437"></p>
+<p>这里找到了注入点</p>
+<p>ng-include 指令用于包含外部的 HTML 文件。而且只能包含同一级目录的。</p>
+<p>在15关我们可以包含第一关的页面(xss简单) 同时还注意到他对注入的字符串进行了html实体编码</p>
+<pre class=" language-js"><code class="language-js"><span class="token operator">?</span>src<span class="token operator">=</span><span class="token string">'level1.php'</span>
+</code></pre>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gq52k5bf6ij30p60kcwle.jpg" alt="image-20210503111738101"></p>
+<p>由于实体编码，就采用事件注入吧</p>
+<p>构造payload</p>
+<pre class=" language-js"><code class="language-js"><span class="token operator">?</span>src<span class="token operator">=</span><span class="token string">'levael1.php?name=&lt;input onclick=alert(2)>'</span>
+</code></pre>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gq533kktizj30wt0fb7a8.jpg" alt="image-20210503113619450"></p>
+<p>OKK</p>
+<h4 id="第16关"><a href="#第16关" class="headerlink" title="第16关"></a>第16关</h4><ol>
+<li>试探一下</li>
+</ol>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gq5368ehv6j30r40hfgta.jpg" alt="image-20210503113851633"></p>
+<p>发现script没了</p>
+<ol start="2">
+<li>可能不简单，看一下源代码</li>
+</ol>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gq538ccmbnj30ns08dgmk.jpg" alt="image-20210503114053975"></p>
+<p>过滤了空格，/，script</p>
+<p>尝试其他的标签</p>
+<pre class=" language-js"><code class="language-js"><span class="token operator">?</span>keyword<span class="token operator">=</span><span class="token operator">&lt;</span>input<span class="token operator">%</span>0Aonclick<span class="token operator">=</span><span class="token function">alert</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token operator">></span>
+</code></pre>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gq53xhbbxrj30ke0bcq67.jpg" alt="image-20210503120502298"></p>
+<h4 id="第17关"><a href="#第17关" class="headerlink" title="第17关"></a>第17关</h4><p>查看源代码</p>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gq544yiouvj311t097q4s.jpg" alt="image-20210503121216312"></p>
+<p>这个标签的解释:</p>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gq540dqs3lj30ms0cqt9f.jpg" alt="image-20210503120752248"></p>
+<p>根据地址栏发现注入点，但是不清楚怎么处理，看一下源代码</p>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gq548l80cqj30nl047jrq.jpg" alt="image-20210503121544119"></p>
+<p>直接利用事件注入就可以</p>
+<pre class=" language-js"><code class="language-js"> onmouseover<span class="token operator">=</span>javascript<span class="token operator">=</span>javascript<span class="token punctuation">:</span><span class="token function">alert</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
+</code></pre>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gq54ka3edqj30rp0cujsp.jpg" alt="image-20210503122659416"></p>
+<p>火狐看不到图，我换成了google</p>
+<h4 id="第18关"><a href="#第18关" class="headerlink" title="第18关"></a>第18关</h4><p>和17题类似，看一下源代码做了什么处理</p>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gq56012uc7j30qo08ldgq.jpg" alt="image-20210503131643512"></p>
+<p>好像是没啥变化？？</p>
+<p>使用17题的payload</p>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gq564l2qrkj30o508pab1.jpg" alt="image-20210503132105811"></p>
+<p>过了</p>
+<h4 id="第19关"><a href="#第19关" class="headerlink" title="第19关"></a>第19关</h4><p>试一下18关的代码</p>
+<p>没用。。。。</p>
+<p>看下源代码</p>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gq56hniqckj30p804s0t0.jpg" alt="image-20210503133340170"></p>
+<p>和之前不一样，这里需要闭合这个双引号，不然就以为只是一个属性，之前是不需要闭合的</p>
+<p>由于经过了htmlspecialchars处理，双引号也在被处理的范围//</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/borrrrring/article/details/113573271?utm_medium=distribute.pc_relevant.none-task-blog-baidujs_title-0&spm=1001.2101.3001.4242">参考</a></p>
+<pre><code>Flash产生的xss问题主要有两种方式：
+ 1.加载第三方资源
+ 2.与javascript通信引发XSS。
+</code></pre>
+<p>由于各种浏览器，都看不到注入的结果是啥，先暂停一下，之后再弄。。</p>
 
                 
             </div>
@@ -682,7 +820,7 @@ html编码
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://echo-machile.github.io/2021/05/02/1.html">http://echo-machile.github.io/2021/05/02/1.html</a>
+                    <a href="http://echo-machile.github.io/2021/05/03/1.html">http://echo-machile.github.io/2021/05/03/1.html</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -898,7 +1036,7 @@ html编码
                 <i class="far fa-dot-circle"></i>&nbsp;本篇
             </div>
             <div class="card">
-                <a href="/2021/05/02/1.html">
+                <a href="/2021/05/03/1.html">
                     <div class="card-image">
                         
                         
@@ -915,7 +1053,7 @@ html编码
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-05-02
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-05-03
                             </span>
                         <span class="publish-author">
                             
