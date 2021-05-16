@@ -6,7 +6,7 @@
   <link href="http://echo-machile.github.io/atom.xml" rel="self"/>
   
   <link href="http://echo-machile.github.io/"/>
-  <updated>2021-05-09T00:42:07.001Z</updated>
+  <updated>2021-05-16T09:52:11.112Z</updated>
   <id>http://echo-machile.github.io/</id>
   
   <author>
@@ -15,6 +15,52 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>sqlmap工具使用</title>
+    <link href="http://echo-machile.github.io/2021/05/16/23780.html"/>
+    <id>http://echo-machile.github.io/2021/05/16/23780.html</id>
+    <published>2021-05-16T03:36:01.000Z</published>
+    <updated>2021-05-16T09:52:11.112Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;SQL-map&quot;&gt;&lt;a href=&quot;#SQL-map&quot; class=&quot;headerlink&quot; title=&quot;SQL-map&quot;&gt;&lt;/a&gt;SQL-map&lt;/h1&gt;&lt;h2 id=&quot;1-介绍&quot;&gt;&lt;a href=&quot;#1-介绍&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    
+    <category term="web" scheme="http://echo-machile.github.io/tags/web/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>反序列化漏洞</title>
+    <link href="http://echo-machile.github.io/2021/05/16/78.html"/>
+    <id>http://echo-machile.github.io/2021/05/16/78.html</id>
+    <published>2021-05-15T21:50:00.000Z</published>
+    <updated>2021-05-16T09:51:11.821Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;反序列化漏洞&quot;&gt;&lt;a href=&quot;#反序列化漏洞&quot; class=&quot;headerlink&quot; title=&quot;反序列化漏洞&quot;&gt;&lt;/a&gt;反序列化漏洞&lt;/h1&gt;&lt;h2 id=&quot;结构图&quot;&gt;&lt;a href=&quot;#结构图&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    
+    <category term="web" scheme="http://echo-machile.github.io/tags/web/"/>
+    
+  </entry>
   
   <entry>
     <title>xml学习</title>
@@ -185,15 +231,15 @@
     <link href="http://echo-machile.github.io/2021/04/18/5.html"/>
     <id>http://echo-machile.github.io/2021/04/18/5.html</id>
     <published>2021-04-18T04:32:50.763Z</published>
-    <updated>2021-05-03T23:55:24.596Z</updated>
+    <updated>2021-05-16T03:50:04.262Z</updated>
     
     
       
       
         
         
-    <summary type="html">&lt;p&gt;注意:由于某些原因，代码高亮有些混合，去github查看原版&lt;/p&gt;
-&lt;h1 id=&quot;SQL-lab&quot;&gt;&lt;a href=&quot;#SQL-lab&quot; class=&quot;headerlink&quot;</summary>
+    <summary type="html">&lt;h1 id=&quot;SQL-lab&quot;&gt;&lt;a href=&quot;#SQL-lab&quot; class=&quot;headerlink&quot; title=&quot;SQL-lab&quot;&gt;&lt;/a&gt;SQL-lab&lt;/h1&gt;&lt;p&gt;sql注入全部解析&lt;/p&gt;
+&lt;h2 id=&quot;1-单引号字符型注入&quot;&gt;&lt;a</summary>
         
       
     

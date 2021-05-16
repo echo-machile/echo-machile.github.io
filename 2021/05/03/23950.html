@@ -530,9 +530,9 @@
 <p>在容器技术出现之前，我们都是使用虚拟机</p>
 <p>虚拟机运行：在windows或者mac中安装一个虚拟机软件vmware，可以虚拟一台或多台电脑！占用内存太大！笨重！</p>
 <p>虚拟机也是属于虚拟化技术，Docker容器技术，也是一种虚拟化技术！</p>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">vm . linux centos(原生镜像)，隔离，就需要开启多个虚拟机 ！几个G     启动需要几分钟 
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">vm <span class="token builtin class-name">.</span> linux centos<span class="token punctuation">(</span>原生镜像<span class="token punctuation">)</span>，隔离，就需要开启多个虚拟机 ！几个G     启动需要几分钟 
 
-Docker，隔离，镜像(最核心的环境 4m，jdk，mysql )十分的小巧，运行镜像就可以了！小巧！几M     KB    秒级启动<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+Docker，隔离，镜像<span class="token punctuation">(</span>最核心的环境 4m，jdk，mysql <span class="token punctuation">)</span>十分的小巧，运行镜像就可以了！小巧！几M     KB    秒级启动<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 
 
 
@@ -602,9 +602,9 @@ Docker，隔离，镜像(最核心的环境 4m，jdk，mysql )十分的小巧，
 <blockquote>
 <p>环境查看 </p>
 </blockquote>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"># 系统内核是3.10以上的
-[root@localhost ~]# uname -r
-4.18.0-240.el8.x86_64<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token comment"># 系统内核是3.10以上的</span>
+<span class="token punctuation">[</span>root@localhost ~<span class="token punctuation">]</span><span class="token comment"># uname -r</span>
+<span class="token number">4.18</span>.0-240.el8.x86_64<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token punctuation">[</span>root@localhost ~<span class="token punctuation">]</span><span class="token comment"># uname -r</span>
 <span class="token number">4.18</span>.0-240.el8.x86_64
