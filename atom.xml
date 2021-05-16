@@ -6,7 +6,7 @@
   <link href="http://echo-machile.github.io/atom.xml" rel="self"/>
   
   <link href="http://echo-machile.github.io/"/>
-  <updated>2021-05-16T09:51:11.821Z</updated>
+  <updated>2021-05-16T12:26:04.395Z</updated>
   <id>http://echo-machile.github.io/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>sqlmap工具使用</title>
+    <link href="http://echo-machile.github.io/2021/05/16/23780.html"/>
+    <id>http://echo-machile.github.io/2021/05/16/23780.html</id>
+    <published>2021-05-16T03:36:01.000Z</published>
+    <updated>2021-05-16T12:26:04.395Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;SQL-map&quot;&gt;&lt;a href=&quot;#SQL-map&quot; class=&quot;headerlink&quot; title=&quot;SQL-map&quot;&gt;&lt;/a&gt;SQL-map&lt;/h1&gt;&lt;h2 id=&quot;1-介绍&quot;&gt;&lt;a href=&quot;#1-介绍&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    
+    <category term="web" scheme="http://echo-machile.github.io/tags/web/"/>
+    
+  </entry>
   
   <entry>
     <title>反序列化漏洞</title>
