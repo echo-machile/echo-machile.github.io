@@ -457,7 +457,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    330
+                    309
                 </div>
                 
 
@@ -486,13 +486,13 @@
 </ol>
 <pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">node -v
 
-npm -v<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<span class="token function">npm</span> -v<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 
 <p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gq1k2x2w9zj307c021mx5.jpg" alt="image-20210430102137966"></p>
 <ol start="3">
 <li>更换淘宝镜像源</li>
 </ol>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">npm install -g cnpm --registry&#x3D;https:&#x2F;&#x2F;registry.npm.taobao.org<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token function">npm</span> <span class="token function">install</span> -g cnpm --registry<span class="token operator">=</span>https://registry.npm.taobao.org<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gq1k3xrqp1j30fl0393yz.jpg" alt="image-20210430102236390"></p>
 <ol start="4">
@@ -504,7 +504,7 @@ npm -v<span aria-hidden="true" class="line-numbers-rows"><span></span><span></sp
 <ol start="5">
 <li>安装hexo框架</li>
 </ol>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">cnpm install -g hexo-cli<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">cnpm <span class="token function">install</span> -g hexo-cli<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gq1k5z6zyyj30fm091wg2.jpg" alt="image-20210430102434333"></p>
 <ol start="6">
@@ -516,17 +516,17 @@ npm -v<span aria-hidden="true" class="line-numbers-rows"><span></span><span></sp
 <ol start="7">
 <li>建立一个空的文件夹</li>
 </ol>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">mkdir blog <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token function">mkdir</span> blog <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <ol start="8">
 <li>进入blog</li>
 </ol>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">cd blog&#x2F;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token builtin class-name">cd</span> blog/<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <ol start="9">
 <li>初始化hexo,搭建博客</li>
 </ol>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">sudo hexo init<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token function">sudo</span> hexo init<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gq1kfzj4ekj30ix09tq3r.jpg" alt="image-20210430103411000"></p>
 <ol start="10">
@@ -540,7 +540,7 @@ npm -v<span aria-hidden="true" class="line-numbers-rows"><span></span><span></sp
 <ol start="11">
 <li>新建第一篇博客文章</li>
 </ol>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">hexo new &quot;我的第一篇博客文章&quot;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">hexo new <span class="token string">"我的第一篇博客文章"</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 
 
@@ -548,7 +548,7 @@ npm -v<span aria-hidden="true" class="line-numbers-rows"><span></span><span></sp
 <ol start="12">
 <li>根据路径查看是否存在</li>
 </ol>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">&#x2F;Users&#x2F;liuguangquan&#x2F;blog&#x2F;source&#x2F;_posts&#x2F;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">/Users/liuguangquan/blog/source/_posts/<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gq1kmosngwj30be01c3yl.jpg" alt="image-20210430104038263"></p>
 <ol start="13">
@@ -573,7 +573,7 @@ hexo g<span aria-hidden="true" class="line-numbers-rows"><span></span><span></sp
 <ol start="16">
 <li>安装git插件</li>
 </ol>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">cnpm install --save hexo-deployer-git<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">cnpm <span class="token function">install</span> --save hexo-deployer-git<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gq1l1im164j30fn031jrq.jpg" alt="image-20210430105452842"></p>
 <ol start="17">
@@ -586,12 +586,12 @@ hexo g<span aria-hidden="true" class="line-numbers-rows"><span></span><span></sp
 <ul>
 <li>修改type</li>
 </ul>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">type: git<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">type: <span class="token function">git</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <ul>
 <li>添加repo</li>
 </ul>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">repo: https:&#x2F;&#x2F;github.com&#x2F;echo-machile&#x2F;echo-machile.github.io.git<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">repo: https://github.com/echo-machile/echo-machile.github.io.git<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <ul>
 <li>添加branch</li>
@@ -613,7 +613,7 @@ hexo g<span aria-hidden="true" class="line-numbers-rows"><span></span><span></sp
 <ol start="20">
 <li>修改博客样式</li>
 </ol>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">git clone https:&#x2F;&#x2F;github.com&#x2F;litten&#x2F;hexo-theme-yilia.git themes&#x2F;yilia<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token function">git</span> clone https://github.com/litten/hexo-theme-yilia.git themes/yilia<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <ul>
 <li>编辑_config.yml文件</li>
