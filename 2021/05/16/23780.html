@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="xml学习, Chenluo">
+    <meta name="keywords" content="sqlmap工具使用, Chenluo">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>xml学习 | Chenluo</title>
+    <title>sqlmap工具使用 | Chenluo</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -316,7 +316,7 @@
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">xml学习</h1>
+                    <h1 class="description center-align post-title">sqlmap工具使用</h1>
                 </div>
             </div>
         </div>
@@ -448,7 +448,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-05-09
+                    2021-05-16
                 </div>
                 
 
@@ -457,7 +457,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.2k
+                    903
                 </div>
                 
 
@@ -477,134 +477,97 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="XML解析"><a href="#XML解析" class="headerlink" title="XML解析"></a>XML解析</h1><h2 id="1-应该掌握的知识"><a href="#1-应该掌握的知识" class="headerlink" title="1. 应该掌握的知识:"></a>1. 应该掌握的知识:</h2><ol>
-<li>html</li>
-<li>javascript</li>
+                <h1 id="SQL-map"><a href="#SQL-map" class="headerlink" title="SQL-map"></a>SQL-map</h1><h2 id="1-介绍"><a href="#1-介绍" class="headerlink" title="1. 介绍:"></a>1. 介绍:</h2><p>sqlmap是一个开源的渗透测试工具，他可以自动化检测和利用sql注入缺陷，以及接管数据库服务器的过程，他有一个强大的检测引擎，许多适合与终极渗透测试的小众特性和广泛的开关冲数据库指纹，数据库获取数据道访问底层的文件系统和通过带外连接在操作系统上执行命令</p>
+<h2 id="2-sqlmap获取目标"><a href="#2-sqlmap获取目标" class="headerlink" title="2. sqlmap获取目标"></a>2. sqlmap获取目标</h2><h3 id="1-sqlmap直连数据库"><a href="#1-sqlmap直连数据库" class="headerlink" title="1. sqlmap直连数据库"></a>1. sqlmap直连数据库</h3><pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">sqlmap <span class="token operator">-</span>d <span class="token string">"mysql://root:123456@192.168.1.100:3306/test"</span> <span class="token operator">-</span>f <span class="token comment">--banner</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h3 id="2-sqlmap进行url探测"><a href="#2-sqlmap进行url探测" class="headerlink" title="2. sqlmap进行url探测"></a>2. sqlmap进行url探测</h3><p>参数 -u 或者–url</p>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">sqlmap <span class="token operator">-</span>u <span class="token string">"http://192.168.1.100/sqli/less-1index.php?id=1"</span> <span class="token comment">--banner</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h3 id="3-sqlmap文件读取目标"><a href="#3-sqlmap文件读取目标" class="headerlink" title="3. sqlmap文件读取目标"></a>3. sqlmap文件读取目标</h3><pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token operator">*</span> sqlmap支持从不同的类型的文件中读取目标进行<span class="token keyword">sql</span>注入探测<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<ol>
+<li>-l 从burpsuite proxy中读取HTTP请求文件</li>
 </ol>
-<h2 id="2-简介"><a href="#2-简介" class="headerlink" title="2. 简介:"></a>2. 简介:</h2><h3 id="2-1-什么是xml"><a href="#2-1-什么是xml" class="headerlink" title="2.1 什么是xml:"></a>2.1 什么是xml:</h3><ul>
-<li><p>XML 指可扩展标记语言（e<strong>X</strong>tensible <strong>M</strong>arkup <strong>L</strong>anguage）。</p>
-</li>
-<li><p>XML 被设计用来<strong>传输和存储数据。</strong></p>
-</li>
-<li><p>XML 的设计宗旨是<strong>传输数据</strong>，而不是显示数据。</p>
-</li>
-<li><p>XML 标签没有被预定义。您需要<strong>自行定义标签</strong>。</p>
-</li>
-<li><p>XML 被设计为具有自我描述性。</p>
-</li>
-<li><p>XML 是 W3C 的推荐标准。</p>
-</li>
-</ul>
-<h3 id="2-2-xml和html的差异"><a href="#2-2-xml和html的差异" class="headerlink" title="2.2 xml和html的差异:"></a>2.2 xml和html的差异:</h3><ul>
-<li>HTML 旨在显示信息，而 XML 旨在传输信息。</li>
-</ul>
-<h3 id="2-3-XML-不会做任何事情"><a href="#2-3-XML-不会做任何事情" class="headerlink" title="2.3 XML 不会做任何事情"></a>2.3 XML 不会做任何事情</h3><p>XML 不会做任何事情。XML 被设计用来结构化、存储以及传输信息。</p>
-<pre class="line-numbers language-xml" data-language="xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>note</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>to</span><span class="token punctuation">></span></span>Tove<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>to</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>from</span><span class="token punctuation">></span></span>Jani<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>from</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>heading</span><span class="token punctuation">></span></span>Reminder<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>heading</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>body</span><span class="token punctuation">></span></span>Don't forget me this weekend!<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>note</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gqk0up529lj30m00c60x8.jpg" alt="image-20210516094201258"></p>
+<p>保存文件，复制文件，将其放进sqlmap目录下 </p>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">sqlmap <span class="token operator">-</span>l 文件名路径<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<p>具有自我描述性(自定义标签)。它包含了发送者和接受者的信息，同时拥有标题以及消息主体。</p>
-<p>但是，这个 XML 文档仍然没有做任何事情。它仅仅是包装在 XML 标签中的纯粹的信息。我们需要编写软件或者程序，才能传送、接收和显示出这个文档。</p>
-<h2 id="3-XML的用途"><a href="#3-XML的用途" class="headerlink" title="3. XML的用途"></a>3. XML的用途</h2><h3 id="3-1-xml把数据从html中分离"><a href="#3-1-xml把数据从html中分离" class="headerlink" title="3.1 xml把数据从html中分离"></a>3.1 xml把数据从html中分离</h3><p>数据存储在xml文件中，通过js代码读取该xml的文件，更新网页数据</p>
-<h3 id="3-2-xml简化数据共享"><a href="#3-2-xml简化数据共享" class="headerlink" title="3.2 xml简化数据共享"></a>3.2 xml简化数据共享</h3><p>xml的数据以文本的格式存储，独立于软件和硬件，可以有效的避免计算机系统和数据不兼容问题</p>
-<h3 id="3-3-xml简化数据传输"><a href="#3-3-xml简化数据传输" class="headerlink" title="3.3 xml简化数据传输"></a>3.3 xml简化数据传输</h3><p>由于互联网上不同的系统，数据不兼容，交换数据同样不兼容问题，xml读取数据以纯文本的形式，避免了不兼容的问题</p>
-<p>。。。。之后看<a target="_blank" rel="noopener" href="https://www.runoob.com/xml/xml-usage.html">菜鸟教程</a></p>
-<h2 id="XML的树结构"><a href="#XML的树结构" class="headerlink" title="XML的树结构"></a>XML的树结构</h2><pre class="line-numbers language-xml" data-language="xml"><code class="language-xml"><span class="token prolog">&lt;?xml version="1.0" encoding="UTF-8"?></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>note</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>to</span><span class="token punctuation">></span></span>Tove<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>to</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>from</span><span class="token punctuation">></span></span>Jani<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>from</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>heading</span><span class="token punctuation">></span></span>Reminder<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>heading</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>body</span><span class="token punctuation">></span></span>Don't forget me this weekend!<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>note</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h3 id="要点"><a href="#要点" class="headerlink" title="要点:"></a>要点:</h3><h4 id="1-xml代码的第一行必须是对xml的声明"><a href="#1-xml代码的第一行必须是对xml的声明" class="headerlink" title="1. xml代码的第一行必须是对xml的声明"></a>1. xml代码的第一行必须是对xml的声明</h4><h4 id="2-之后的第一个标签就是树的根，称为根元素"><a href="#2-之后的第一个标签就是树的根，称为根元素" class="headerlink" title="2. 之后的第一个标签就是树的根，称为根元素"></a>2. 之后的第一个标签就是树的根，称为根元素</h4><pre class="line-numbers language-xml" data-language="xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>note</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<h4 id="3-接下来就是子元素"><a href="#3-接下来就是子元素" class="headerlink" title="3. 接下来就是子元素"></a>3. 接下来就是子元素</h4><pre class="line-numbers language-xml" data-language="xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>to</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>to</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>from</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>from</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>heading</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>heading</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>body</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h4 id="4-菜鸟教程"><a href="#4-菜鸟教程" class="headerlink" title="4. 菜鸟教程"></a>4. <a target="_blank" rel="noopener" href="https://www.runoob.com/xml/xml-tree.html">菜鸟教程</a></h4><h2 id="XML语法"><a href="#XML语法" class="headerlink" title="XML语法"></a>XML语法</h2><h3 id="1-首先进行声明"><a href="#1-首先进行声明" class="headerlink" title="1. 首先进行声明"></a>1. 首先进行声明</h3><pre class="line-numbers language-xml" data-language="xml"><code class="language-xml"><span class="token prolog">&lt;?xml version="1.0" encoding="utf-8"?></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<h3 id="2-xml文档必须有根元素"><a href="#2-xml文档必须有根元素" class="headerlink" title="2. xml文档必须有根元素"></a>2. xml文档必须有根元素</h3><h3 id="3-所有的xml元素必须严格关闭"><a href="#3-所有的xml元素必须严格关闭" class="headerlink" title="3. 所有的xml元素必须严格关闭"></a>3. 所有的xml元素必须严格关闭</h3><h3 id="4-xml标签对大小写敏感"><a href="#4-xml标签对大小写敏感" class="headerlink" title="4. xml标签对大小写敏感"></a>4. xml标签对大小写敏感</h3><h3 id="5-xml的属性值必须加引号"><a href="#5-xml的属性值必须加引号" class="headerlink" title="5. xml的属性值必须加引号"></a>5. xml的属性值必须加引号</h3><h3 id="6-xml的实体引用-类似于html的实体编码"><a href="#6-xml的实体引用-类似于html的实体编码" class="headerlink" title="6. xml的实体引用(类似于html的实体编码)"></a>6. xml的实体引用(类似于html的实体编码)</h3><p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gqb66kmld1j30bk05raaa.jpg" alt="image-20210508175624094"></p>
+<ol>
+<li>-x 从sitemap.xml站点地图文件中读取目标探测</li>
+<li>-m 从多行文本格式文件读取多个目标，对多个目标进行探测</li>
+</ol>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gqk1313qkxj30sz09mac5.jpg" alt="image-20210516095004761"></p>
+<ol>
+<li>-r 从文本文件中读取HTTP请求作为sql注入的目标—————-检测是否具有http消息头当中的注入 </li>
+</ol>
 <ul>
-<li>这些字符都应该被前面的编码代替</li>
+<li>打开bp，拦截消息并复制 </li>
+<li>将复制的信息放进sqlmap目录里的一个文本中</li>
 </ul>
-<h3 id="7-注释方法"><a href="#7-注释方法" class="headerlink" title="7. 注释方法"></a>7. 注释方法</h3><pre class="line-numbers language-xml" data-language="xml"><code class="language-xml"><span class="token comment">&lt;!-- --></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">sqlmap -r target.txt<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<h3 id="8-Xml会保留空格"><a href="#8-Xml会保留空格" class="headerlink" title="8. Xml会保留空格"></a>8. Xml会保留空格</h3><ul>
-<li>html会对空格进行缩减</li>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gqk16mygmzj311x0ev7j0.jpg" alt="image-20210516095332224"></p>
+<ol>
+<li>-c 从配置文件sqlmap.conf中读取探测目标</li>
+</ol>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gqk1g64cjlj311o0j2nbx.jpg" alt="image-20210516100242499"></p>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">sqlmap <span class="token operator">-</span>c sqlmap<span class="token punctuation">.</span>conf<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gqk1hvkbhkj30td0bp7ec.jpg" alt="image-20210516100420835"></p>
+<h3 id="SqlmapGoogle批量扫注入"><a href="#SqlmapGoogle批量扫注入" class="headerlink" title="SqlmapGoogle批量扫注入"></a>SqlmapGoogle批量扫注入</h3><pre class="line-numbers language-b" data-language="b"><code class="language-b">sqlmap 通过-g自动利用google获取指定的GoogleHack目标，然后利用交互向导模式进行sql注入探测
+
+sqlmap -g &quot;inurl:.php?id&#x3D;1&quot;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="SQLmap设置请求参数"><a href="#SQLmap设置请求参数" class="headerlink" title="SQLmap设置请求参数"></a>SQLmap设置请求参数</h2><h3 id="1-sqlmap设置http方法"><a href="#1-sqlmap设置http方法" class="headerlink" title="1. sqlmap设置http方法"></a>1. sqlmap设置http方法</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">
+SQlmap会自动在探测过程中使用合适的HTTP请求方式但在某些具体的情况下，需要强制的使用具体的http的请求方法。例如PUT请求方法，使用--method<span class="token operator">=</span>PUT<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<h3 id="2-sqlmap设置post提交参数"><a href="#2-sqlmap设置post提交参数" class="headerlink" title="2. sqlmap设置post提交参数"></a>2. sqlmap设置post提交参数</h3><pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">默认情况下用于执行的HTTp请求的HTTp方法是get方法，但是可以通过在post请求中发送的数据隐式地将其修改为post
+
+sqlmap <span class="token operator">-</span>u <span class="token string">"http://www.target.com/vuln.php"</span> <span class="token comment">--data="id=1" -f --banner(网站的指纹信息) --dbs(获取对应的数据库) --users(获取对应的用户)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gqk2t5e6gyj30x30bdk5n.jpg" alt="image-20210516104944386"></p>
+<ol>
+<li><p>先使用bp对页面进行抓包，之后再进行</p>
+</li>
+<li><p>复制表单数据，提交至data内容中</p>
+</li>
+</ol>
+<h3 id="3-sqlmap设置参数分割符"><a href="#3-sqlmap设置参数分割符" class="headerlink" title="3. sqlmap设置参数分割符"></a>3. sqlmap设置参数分割符</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">* 在某些情况下，sqlmap需要覆盖默认参数分割符<span class="token punctuation">(</span>例如<span class="token operator">&amp;</span> <span class="token keyword">in</span> GET和POST数据，才能正确地分割和单独处理每个参数<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gqk369bhi7j313c022dhi.jpg" alt="image-20210516110220668"></p>
+<pre class="line-numbers language-none"><code class="language-none">--param-del&#x3D;&quot;;&quot;      设置;为分割符<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h3 id="4-sqlmap设置cookie头"><a href="#4-sqlmap设置cookie头" class="headerlink" title="4. sqlmap设置cookie头"></a>4. sqlmap设置cookie头</h3><pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">sqlmap 中设置cookie的参数：
+
+<span class="token comment">--cookie --COOKIE-del --load-cookies --drop-set-cookie</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p>使用场景：</p>
+<ul>
+<li>web应用程序具有基于cookie的验证过程</li>
+<li>想利用cookie值上的sql注入漏洞</li>
 </ul>
-<h3 id="9-XML以LF存储换行"><a href="#9-XML以LF存储换行" class="headerlink" title="9. XML以LF存储换行"></a>9. XML以LF存储换行</h3><ul>
-<li>XML 以 LF 存储换行。</li>
-</ul>
-<h2 id="XML的元素-注意不是属性"><a href="#XML的元素-注意不是属性" class="headerlink" title="XML的元素(注意不是属性)"></a>XML的元素(注意不是属性)</h2><p>根标签下的字标签，包含文本属性</p>
-<h3 id="1-命名规则："><a href="#1-命名规则：" class="headerlink" title="1. 命名规则："></a>1. 命名规则：</h3><p><strong>以字母开头，不包含空格</strong></p>
-<p>最佳命名习惯： <a target="_blank" rel="noopener" href="https://www.runoob.com/xml/xml-elements.html">菜鸟教程</a></p>
-<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gqb6fl3nfvj30lv01adg0.jpg" alt="image-20210508180504152"></p>
-<h3 id="2-xml的元素是可以扩展的"><a href="#2-xml的元素是可以扩展的" class="headerlink" title="2. xml的元素是可以扩展的"></a>2. xml的元素是可以扩展的</h3><p><strong>XML 的优势之一，就是可以在不中断应用程序的情况下进行扩展。</strong></p>
-<p>随时添加标签。。</p>
-<h2 id="xml的属性"><a href="#xml的属性" class="headerlink" title="xml的属性"></a>xml的属性</h2><p>xml的属性提供有关元素的额外的信息</p>
-<h3 id="1-xml属性必须加引号"><a href="#1-xml属性必须加引号" class="headerlink" title="1. xml属性必须加引号"></a>1. xml属性必须加引号</h3><h3 id="2-xml中尽量少使用一些属性，有些属性可以被元素代替，那么推荐使用元素"><a href="#2-xml中尽量少使用一些属性，有些属性可以被元素代替，那么推荐使用元素" class="headerlink" title="2. xml中尽量少使用一些属性，有些属性可以被元素代替，那么推荐使用元素"></a>2. xml中尽量少使用一些属性，有些属性可以被元素代替，那么推荐使用元素</h3><p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gqbu1y3mrfj30n504xwey.jpg" alt="image-20210509074220000"></p>
-<h3 id="3-有关属性的一些问题"><a href="#3-有关属性的一些问题" class="headerlink" title="3. 有关属性的一些问题:"></a>3. 有关属性的一些问题:</h3><ul>
-<li>属性不能包含多个值（元素可以）</li>
-<li>属性不能包含树结构（元素可以）</li>
-<li>属性不容易扩展（为未来的变化）</li>
-</ul>
-<h3 id="4-针对元数据的xml属性"><a href="#4-针对元数据的xml属性" class="headerlink" title="4. 针对元数据的xml属性"></a>4. 针对元数据的xml属性</h3><p>相同的元素可以用id属性值来标识，id只是标识作用</p>
-<pre class="line-numbers language-xml" data-language="xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>messages</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>note</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>501<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>to</span><span class="token punctuation">></span></span>Tove<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>to</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>from</span><span class="token punctuation">></span></span>Jani<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>from</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>heading</span><span class="token punctuation">></span></span>Reminder<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>heading</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>body</span><span class="token punctuation">></span></span>Don't forget me this weekend!<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>note</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>note</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>502<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>to</span><span class="token punctuation">></span></span>Jani<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>to</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>from</span><span class="token punctuation">></span></span>Tove<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>from</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>heading</span><span class="token punctuation">></span></span>Re: Reminder<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>heading</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>body</span><span class="token punctuation">></span></span>I will not<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>note</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>messages</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>Sqlmap使用cookie的过程</p>
+<ol>
+<li>登录或者浏览页面</li>
+<li>打开审计工具或者代理截断，复制cookie</li>
+<li>在sqlmap中使用 –cookie粘贴Cookie</li>
+</ol>
+<p> <img src="https://tva1.sinaimg.cn/large/008i3skNly1gqk3vjqixqj312h08bwhq.jpg" alt="image-20210516112641120"></p>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gqk3y46c60j31330awn7u.jpg" alt="image-20210516112907590"></p>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token operator">*</span> 在通信过程中，web应用程序使用<span class="token keyword">set</span><span class="token operator">-</span>cookie进行响应，sqlmap将在所有的进一步的HTTP的请求中自动使用其值作为cookie的头
 
-<h2 id="XML验证-DTD"><a href="#XML验证-DTD" class="headerlink" title="XML验证(DTD)"></a>XML验证(DTD)</h2><h3 id="1-DTD的作用是定义xml文档结构"><a href="#1-DTD的作用是定义xml文档结构" class="headerlink" title="1. DTD的作用是定义xml文档结构"></a>1. DTD的作用是定义xml文档结构</h3><ul>
-<li>在xml文件中应该声明对外部dtd文件的引用</li>
-</ul>
-<pre class="line-numbers language-xml" data-language="xml"><code class="language-xml"><span class="token prolog">&lt;?xml version="1.0" encoding="ISO-8859-1"?></span>
-<span class="token doctype"><span class="token punctuation">&lt;!</span><span class="token doctype-tag">DOCTYPE</span> <span class="token name">note</span> <span class="token name">SYSTEM</span> <span class="token string">"Note.dtd"</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>note</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>to</span><span class="token punctuation">></span></span>Tove<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>to</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>from</span><span class="token punctuation">></span></span>Jani<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>from</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>heading</span><span class="token punctuation">></span></span>Reminder<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>heading</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>body</span><span class="token punctuation">></span></span>Don't forget me this weekend!<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>note</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token operator">*</span> sqlmap还将为<span class="token keyword">SQL</span>注入自动测试这些值，这可以通过提供<span class="token comment">--drop-set-cookie-sqlmap将忽略任何即将到来的Set-Cookie头来避免 </span>
 
-<h3 id="2-DTD大体结构"><a href="#2-DTD大体结构" class="headerlink" title="2. DTD大体结构"></a>2. DTD大体结构</h3><pre class="line-numbers language-dtd" data-language="dtd"><code class="language-dtd">&lt;!DOCTYPE note
-[
-&lt;!ELEMENT note (to,from,heading,body)&gt;
-&lt;!ELEMENT to (#PCDATA)&gt;
-&lt;!ELEMENT from (#PCDATA)&gt;
-&lt;!ELEMENT heading (#PCDATA)&gt;
-&lt;!ELEMENT body (#PCDATA)&gt;
-]&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token operator">*</span> 反之，如果提供了一个带有选项的HTTP Cookie报头<span class="token comment">--cookie和目标url在任何时候发送一个HTTPset-cookie，sqlmap将询问使用哪组cookie </span>
 
-<h2 id="XML-javascript"><a href="#XML-javascript" class="headerlink" title="XML javascript"></a>XML javascript</h2><h3 id="1-XMLHttpRequest对象"><a href="#1-XMLHttpRequest对象" class="headerlink" title="1. XMLHttpRequest对象"></a>1. XMLHttpRequest对象</h3><p><strong>xmlhttprequest对象用于在后台与服务器之间交换数据</strong></p>
-<h4 id="作用"><a href="#作用" class="headerlink" title="作用:"></a>作用:</h4><ul>
-<li>在不重新加载页面的情况下更新网页</li>
-<li>在页面已加载后从服务器请求数据</li>
-<li>在页面已加载后从服务器接收数据</li>
-<li>在后台向服务器发送数据</li>
-</ul>
-<h4 id="语法"><a href="#语法" class="headerlink" title="语法:"></a>语法:</h4><pre class="line-numbers language-xml" data-language="xml"><code class="language-xml">xmlhttp=new XMLHttpRequest(); <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<span class="token operator">*</span> <span class="token keyword">load</span><span class="token operator">-</span>cookie，可以用来提供包含Netscape<span class="token operator">/</span>wget格式的cookie特殊文件
 
+注意：
+	如果需要对http cookie值进行<span class="token keyword">SQl</span>注入探测，需要设置<span class="token comment">--level2（3）以上</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-
-<h2 id="XML-Parser-解析器"><a href="#XML-Parser-解析器" class="headerlink" title="XML Parser(解析器)"></a>XML Parser(解析器)</h2><p>XML 解析器把 XML 文档转换为 XML DOM 对象 - 可通过 JavaScript 操作的对象。</p>
-<p><a target="_blank" rel="noopener" href="https://www.runoob.com/xml/xml-parser.html">菜鸟教程</a></p>
-<h2 id="Xml-DoM"><a href="#Xml-DoM" class="headerlink" title="Xml DoM"></a>Xml DoM</h2><p>DOM（Document Object Model 文档对象模型）定义了访问和操作文档(xml)的标准方法。</p>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gqk4gz44fqj313y087n4y.jpg" alt="image-20210516114716338"></p>
 
                 
             </div>
@@ -631,7 +594,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://echo-machile.github.io/2021/05/09/23955.html">http://echo-machile.github.io/2021/05/09/23955.html</a>
+                    <a href="http://echo-machile.github.io/2021/05/16/23780.html">http://echo-machile.github.io/2021/05/16/23780.html</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -842,17 +805,18 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2021/05/16/78.html">
+                <a href="/2021/05/16/23780.html">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="反序列化漏洞">
+                        <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="sqlmap工具使用">
                         
-                        <span class="card-title">反序列化漏洞</span>
+                        <span class="card-title">sqlmap工具使用</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -862,9 +826,9 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-05-16
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-05-16
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-user fa-fw"></i>
@@ -873,6 +837,7 @@
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -891,13 +856,13 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2021/05/07/23942.html">
+                <a href="/2021/05/16/78.html">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="BUUCTF做题笔记">
+                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="反序列化漏洞">
                         
-                        <span class="card-title">BUUCTF做题笔记</span>
+                        <span class="card-title">反序列化漏洞</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -908,7 +873,7 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-05-07
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-05-16
                             </span>
                         <span class="publish-author">
                             
