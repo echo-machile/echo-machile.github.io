@@ -678,16 +678,16 @@ sqlmap<span class="token operator">/</span><span class="token number">1.0</span>
 <p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gqlkvwfr32j30jg0elgrd.jpg" alt="image-20210517180046671"></p>
 <pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">sqlmap <span class="token operator">-</span>r proxy<span class="token punctuation">.</span>txt  <span class="token comment">--scope="192.168.100.100"  --banner</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<h2 id="SQLmap设置请求参数-五"><a href="#SQLmap设置请求参数-五" class="headerlink" title="SQLmap设置请求参数(五)"></a>SQLmap设置请求参数(五)</h2><h3 id="1-SQlmap何止忽略401"><a href="#1-SQlmap何止忽略401" class="headerlink" title="1.  SQlmap何止忽略401"></a>1.  SQlmap何止忽略401</h3><p>–ignore-401 设置忽略未验证错误</p>
+<h2 id="SQLmap设置请求参数-五"><a href="#SQLmap设置请求参数-五" class="headerlink" title="SQLmap设置请求参数(五)"></a>SQLmap设置请求参数(五)</h2><h3 id="1-Sqlmap何止忽略401"><a href="#1-Sqlmap何止忽略401" class="headerlink" title="1.  Sqlmap何止忽略401"></a>1.  Sqlmap何止忽略401</h3><p>–ignore-401 设置忽略未验证错误</p>
 <p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gqll74th87j310w0atjxa.jpg" alt="image-20210517181134057"></p>
 <h3 id="2-Sqlmap设置HTTP协议的私钥"><a href="#2-Sqlmap设置HTTP协议的私钥" class="headerlink" title="2. Sqlmap设置HTTP协议的私钥"></a>2. Sqlmap设置HTTP协议的私钥</h3><p>当web服务器需要适当的客户端证书和用于验证的私钥时，应该使用此项。提供的值应该是一个PEM格式的key_file，其中包含证书和私钥</p>
 <pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token comment">--auth-file 文件名</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<h3 id="3-sqlmap设置安全模式"><a href="#3-sqlmap设置安全模式" class="headerlink" title="3.sqlmap设置安全模式"></a>3.sqlmap设置安全模式</h3><p>避免多次请求后销毁会话</p>
+<h3 id="3-Sqlmap设置安全模式"><a href="#3-Sqlmap设置安全模式" class="headerlink" title="3.Sqlmap设置安全模式"></a>3.Sqlmap设置安全模式</h3><p>避免多次请求后销毁会话</p>
 <p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gqlldlufhrj313704cdih.jpg" alt="image-20210517181747674"></p>
 <p>–safe-url，–safe-post，–safe-rep，–safe-freq</p>
 <p>通过这种方式，sqlmap将访问每个预定咦变量的请求而不对某个安全URL 执行任何类型的注入</p>
-<h3 id="SQlmap设置url编码"><a href="#SQlmap设置url编码" class="headerlink" title="SQlmap设置url编码"></a>SQlmap设置url编码</h3><p>根据参数的设置(例如get)，默认情况下他的值可以是url编码。在某些情况下，后端的web服务不不遵循RFC标准需要以原始的非编码形式发送值。在这种情况下使用<code>--skip-urlencode</code></p>
+<h3 id="4-Sqlmap设置url编码"><a href="#4-Sqlmap设置url编码" class="headerlink" title="4. Sqlmap设置url编码"></a>4. Sqlmap设置url编码</h3><p>根据参数的设置(例如get)，默认情况下他的值可以是url编码。在某些情况下，后端的web服务不不遵循RFC标准需要以原始的非编码形式发送值。在这种情况下使用<code>--skip-urlencode</code></p>
 <p>–skip-urlencode 不进行url加密</p>
 
                 
