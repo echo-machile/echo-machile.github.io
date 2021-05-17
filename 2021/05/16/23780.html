@@ -457,7 +457,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    903
+                    1.2k
                 </div>
                 
 
@@ -520,7 +520,7 @@
 
 sqlmap -g &quot;inurl:.php?id&#x3D;1&quot;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 
-<h2 id="SQLmap设置请求参数"><a href="#SQLmap设置请求参数" class="headerlink" title="SQLmap设置请求参数"></a>SQLmap设置请求参数</h2><h3 id="1-sqlmap设置http方法"><a href="#1-sqlmap设置http方法" class="headerlink" title="1. sqlmap设置http方法"></a>1. sqlmap设置http方法</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">
+<h2 id="SQLmap设置请求参数-一"><a href="#SQLmap设置请求参数-一" class="headerlink" title="SQLmap设置请求参数(一)"></a>SQLmap设置请求参数(一)</h2><h3 id="1-sqlmap设置http方法"><a href="#1-sqlmap设置http方法" class="headerlink" title="1. sqlmap设置http方法"></a>1. sqlmap设置http方法</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">
 SQlmap会自动在探测过程中使用合适的HTTP请求方式但在某些具体的情况下，需要强制的使用具体的http的请求方法。例如PUT请求方法，使用--method<span class="token operator">=</span>PUT<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
 <h3 id="2-sqlmap设置post提交参数"><a href="#2-sqlmap设置post提交参数" class="headerlink" title="2. sqlmap设置post提交参数"></a>2. sqlmap设置post提交参数</h3><pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">默认情况下用于执行的HTTp请求的HTTp方法是get方法，但是可以通过在post请求中发送的数据隐式地将其修改为post
@@ -568,6 +568,42 @@ sqlmap <span class="token operator">-</span>u <span class="token string">"http:/
 	如果需要对http cookie值进行<span class="token keyword">SQl</span>注入探测，需要设置<span class="token comment">--level2（3）以上</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gqk4gz44fqj313y087n4y.jpg" alt="image-20210516114716338"></p>
+<h2 id="SQLmap设置请求参数-二"><a href="#SQLmap设置请求参数-二" class="headerlink" title="SQLmap设置请求参数(二)"></a>SQLmap设置请求参数(二)</h2><h3 id="1-sqlmap设置user-Agent"><a href="#1-sqlmap设置user-Agent" class="headerlink" title="1. sqlmap设置user-Agent"></a>1. sqlmap设置user-Agent</h3><pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token operator">*</span> 默认情况下，sqlmap使用一下用户代理头值执行HTTP请求
+
+sqlmap<span class="token operator">/</span><span class="token number">1.0</span><span class="token operator">-</span>dev<span class="token operator">-</span>xxxxxxx<span class="token punctuation">(</span>http:<span class="token comment">//sqlmap.org)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p>但是可以通过  –user-agent来伪造</p>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token operator">*</span> 此外，通过<span class="token comment">--random-agent，sqlmap将从./txt/user-agent随机选择一个用于会话的所有http请求</span>
+
+<span class="token operator">*</span> 一些站点会检测<span class="token keyword">user</span><span class="token operator">-</span>agent值如果不是一个合法的请求，就会中断连接。同时sqlmap也会报错 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gqlgls2u1ij30zc02f0ue.jpg" alt="image-20210517153234888"></p>
+<h4 id="使用"><a href="#使用" class="headerlink" title="使用:"></a>使用:</h4><ol>
+<li><code>sqlmap --hh</code> 查看详细信息</li>
+</ol>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gqlgn7y6bkj30tv07l47z.jpg" alt="image-20210517153400307"></p>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">sqlmap <span class="token operator">-</span>u <span class="token string">"http://127.0.0.1/sql/less-1/?id=1"</span> <span class="token comment">--banner</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>可以利用wireshark抓包看一下</p>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gqlgt4giioj310s0itwtk.jpg" alt="image-20210517153939613"></p>
+<p>此时的user-agent</p>
+<ol start="2">
+<li>打开burp抓去合法的user-agent，复制。</li>
+</ol>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gqlgv693x6j30vi0crjuz.jpg" alt="image-20210517154138425"></p>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">sqlmap <span class="token operator">-</span>u <span class="token string">"http://127.0.0.1/sql/less-1/?id=1"</span> <span class="token comment">--user-agent="Mozilla/5.0 (Xll; linux i686; rv:52.0) Gecko/20100101 Firefox/52.0" --banner</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>重新抓包查看user-agent</p>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gqlgygntx7j310u0im7ho.jpg" alt="image-20210517154448203"></p>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">sqlmap <span class="token operator">-</span>u <span class="token string">"http://127.0.0.1/sql/less-1/?id=1"</span> <span class="token comment">--random-agent --banner</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gqlh0kwl98j30y30cvn9b.jpg" alt="image-20210517154650186"></p>
+<p>查看user-agent.txt文件</p>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gqlh1r9vhyj30ux05bjy6.jpg" alt="image-20210517154758809"></p>
+<h4 id="注意-针对user-Agent的值探测sql注入-，需要设置–level-的值为3"><a href="#注意-针对user-Agent的值探测sql注入-，需要设置–level-的值为3" class="headerlink" title="注意:针对user-Agent的值探测sql注入 ，需要设置–level 的值为3"></a>注意:针对user-Agent的值探测sql注入 ，需要设置–level 的值为3</h4><p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gqlh6qzp6wj30qa09iaft.jpg" alt="image-20210517155246771"></p>
+<p>抓包，将内容复制到一个文件中,在注入点后边加一个* (提示探测点即使没有level 3 也会检测)</p>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">sqlmap <span class="token operator">-</span>r target<span class="token punctuation">.</span>txt <span class="token comment">--level 3</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 
                 
             </div>
