@@ -457,7 +457,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.2k
+                    2.2k
                 </div>
                 
 
@@ -604,6 +604,91 @@ sqlmap<span class="token operator">/</span><span class="token number">1.0</span>
 <p>抓包，将内容复制到一个文件中,在注入点后边加一个* (提示探测点即使没有level 3 也会检测)</p>
 <pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">sqlmap <span class="token operator">-</span>r target<span class="token punctuation">.</span>txt <span class="token comment">--level 3</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
+<h3 id="2-Sqlmap设置host头"><a href="#2-Sqlmap设置host头" class="headerlink" title="2. Sqlmap设置host头"></a>2. Sqlmap设置host头</h3><ol>
+<li>可以手动设置host，默认情况下，从提供的目标url解析host主机头</li>
+</ol>
+<h4 id="注意-如果–level的值为5将对http主机头进行host检测"><a href="#注意-如果–level的值为5将对http主机头进行host检测" class="headerlink" title="注意:如果–level的值为5将对http主机头进行host检测"></a>注意:如果–level的值为5将对http主机头进行host检测</h4><p> <img src="https://tva1.sinaimg.cn/large/008i3skNly1gqlidnoz9qj313g0a9thb.jpg" alt="image-20210517163400303"></p>
+<p>表明探测所有内容</p>
+<h3 id="3-Sqlmap设置Referer头部"><a href="#3-Sqlmap设置Referer头部" class="headerlink" title="3. Sqlmap设置Referer头部"></a>3. Sqlmap设置Referer头部</h3><p>默认情况下，如果没有显示的设置，HTTP请求不会发送HTTP的引用头。</p>
+<h4 id="注意-如果–level设置的为3或以上将针对HTTP引用头，进行sql注入测试"><a href="#注意-如果–level设置的为3或以上将针对HTTP引用头，进行sql注入测试" class="headerlink" title="注意: 如果–level设置的为3或以上将针对HTTP引用头，进行sql注入测试"></a>注意: 如果–level设置的为3或以上将针对HTTP引用头，进行sql注入测试</h4><h4 id=""><a href="#" class="headerlink" title=""></a><img src="https://tva1.sinaimg.cn/large/008i3skNly1gqlijdnhkvj30sm0ba0y3.jpg" alt="image-20210517163931913"></h4><p>同理，拷贝内容到文件中，</p>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gqlikdh617j30h207v0ur.jpg" alt="image-20210517164030327"> </p>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">sqlmap  <span class="token operator">-</span>r target<span class="token punctuation">.</span>txt <span class="token comment">--level 5</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h3 id="4-Sqlmap设置额外的HTTP头"><a href="#4-Sqlmap设置额外的HTTP头" class="headerlink" title="4. Sqlmap设置额外的HTTP头"></a>4. Sqlmap设置额外的HTTP头</h3><p>通过设置–header，可以提供额外的HTTP的标头。<strong>每个标头必须使用换行符进行分割</strong>，从配置文件中提供他们容易的多，可以产查看sqlmap.conf</p>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gqlip9pwt8j311i01qgmf.jpg" alt="image-20210517164511724"></p>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gqliq6b7w3j30vp0ccjxp.jpg" alt="image-20210517164604335"></p>
+<p>使用例子：</p>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gqliwiz5kpj30rb01y75y.jpg" alt="image-20210517165211365"></p>
+<p>-H 或者–header设定一个请求参数，–headers设定多个请求参数</p>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">sqlmap <span class="token operator">-</span>u <span class="token string">"http://127.0.0.1/sqli/Less-1/?id=1"</span> <span class="token comment">--headers="User-Agent:HAHA\nCookie:123456" --banner</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gqlixrget9j313l06y46v.jpg" alt="image-20210517165321771"></p>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gqliy9z47ej30q007ln0r.jpg" alt="image-20210517165351760"></p>
+<h2 id="sqlmap请求参数设置-三"><a href="#sqlmap请求参数设置-三" class="headerlink" title="sqlmap请求参数设置(三)"></a>sqlmap请求参数设置(三)</h2><h3 id="1-sqlmap设置http协议认证"><a href="#1-sqlmap设置http协议认证" class="headerlink" title="1. sqlmap设置http协议认证"></a>1. sqlmap设置http协议认证</h3><p>Sqlmap中设置http协议认证的参数:–auth-type和–auth-cred </p>
+<p>其中–auth-type支持BASIC，DIgest，NTLM</p>
+<p>–auth-cred支持的语法: username:password</p>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gqlj78zc2bj30xs02ywfg.jpg" alt="image-20210517170229427"></p>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gqlj7q5vilj30lb085jss.jpg" alt="image-20210517170257317"></p>
+<h3 id="2-Sqlmap设置http代理"><a href="#2-Sqlmap设置http代理" class="headerlink" title="2. Sqlmap设置http代理"></a>2. Sqlmap设置http代理</h3><p>SQLmap设置代理参数–porxy，–proxy-cred，–proxy-file，–ignore-proxy</p>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token comment">--proxy用来设置HTTP代理服务器的位置 格式: --proxy http(s)://ip[:端口]</span>
+
+<span class="token comment">--proxy-cred用来设置HTP代理服务器的认证信息 格式: --proxy-cred uername:password</span>
+
+<span class="token comment">--proxy-file用来设置多条代理在文件中</span>
+
+<span class="token comment">--ignore-proxy当您希望通过忽略系统范围内的HTTPS代理服务器的设置来针对本地网络的目标部分运行sqlmap时，应该使用这种方法</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gqljmq0vi4j30ss03iwgc.jpg" alt="image-20210517171718335"></p>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gqljp3yna7j30v001lgn1.jpg" alt="image-20210517171938950"></p>
+<h3 id="3-Sqlmap设置TOR隐藏网络"><a href="#3-Sqlmap设置TOR隐藏网络" class="headerlink" title="3. Sqlmap设置TOR隐藏网络"></a>3. Sqlmap设置TOR隐藏网络</h3><p>SQLmap设置Tor网络的参数: –tor，–tor-port，–tor-type –check-for</p>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gqljt9mueqj30zz09z12b.jpg" alt="image-20210517172338307"></p>
+<p>安装tor：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">apt</span> <span class="token function">install</span> tor
+
+<span class="token function">service</span> tor start
+<span class="token function">service</span> tor status<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gqljwps2p8j313z0ajgw4.jpg" alt="image-20210517172656862"></p>
+<p>如果有vps，那么会设置成功！！！</p>
+<h3 id="4-sqlmap设置延迟"><a href="#4-sqlmap设置延迟" class="headerlink" title="4. sqlmap设置延迟"></a>4. sqlmap设置延迟</h3><pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token operator">*</span> sqlmap探测过程中回发送大量的Payload到目标，如果默认情况下过快的发包速度导致目标预警。为了避免这样的情况，可以探测设置sqlmap发包延迟。
+
+
+<span class="token comment">--delay 0.5   设置延迟0.5秒</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gqlk2hyzt0j310y0a6qd7.jpg" alt="image-20210517173229264"></p>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gqlk39s92bj30sh0a0thl.jpg" alt="image-20210517173314645"></p>
+<h2 id="Sqlmap设置参数-四"><a href="#Sqlmap设置参数-四" class="headerlink" title="Sqlmap设置参数(四)"></a>Sqlmap设置参数(四)</h2><h3 id="1-Sqlmap设置超时"><a href="#1-Sqlmap设置超时" class="headerlink" title="1. Sqlmap设置超时"></a>1. Sqlmap设置超时</h3><p>在考虑超时HTTPS请求之前，可以指定等待的秒数。有效值是一个浮点数，默认设置为30秒</p>
+<p>–timeout 10.5 </p>
+<h4 id="2-sqlmap设置重试次数"><a href="#2-sqlmap设置重试次数" class="headerlink" title="2.sqlmap设置重试次数"></a>2.sqlmap设置重试次数</h4><p>–retries count 设置对应的重试次数，默认情况下重试3次</p>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gqlkege69mj30wy0cxqfl.jpg" alt="image-20210517174355928"></p>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gqlkj0pir0j310r04lgt8.jpg" alt="image-20210517174820879"></p>
+<h3 id="sqlmap设置随机化参数"><a href="#sqlmap设置随机化参数" class="headerlink" title="sqlmap设置随机化参数"></a>sqlmap设置随机化参数</h3><p>sqlmap可以指定要在每次请求期间随机更改其值的参数名称。长度和类型根据提供的原始值保持一致</p>
+<p>–randomize 参数名称</p>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gqlkmubgj8j310w0fl44i.jpg" alt="image-20210517175204017"></p>
+<p>结果</p>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gqlknaul57j30tf0au13l.jpg" alt="image-20210517175229969"></p>
+<h3 id="Sqlmap设置日志过滤目标"><a href="#Sqlmap设置日志过滤目标" class="headerlink" title="Sqlmap设置日志过滤目标"></a>Sqlmap设置日志过滤目标</h3><p>使用选项-l使用从提供的日志解析的所有主机不同，可以指定邮箱的python正则表达式，用于过滤所需的日志 </p>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gqlkr8qv5ij30tz01f74z.jpg" alt="image-20210517175617954"></p>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token comment">--skip-urlencode    不进行url加密 </span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gqlku5cnfaj30v60jx79o.jpg" alt="image-20210517175905356"></p>
+<p>浏览网页后，所有的日志记录都会保存在文件中</p>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gqlkvwfr32j30jg0elgrd.jpg" alt="image-20210517180046671"></p>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">sqlmap <span class="token operator">-</span>r proxy<span class="token punctuation">.</span>txt  <span class="token comment">--scope="192.168.100.100"  --banner</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h2 id="SQLmap设置请求参数-五"><a href="#SQLmap设置请求参数-五" class="headerlink" title="SQLmap设置请求参数(五)"></a>SQLmap设置请求参数(五)</h2><h3 id="1-SQlmap何止忽略401"><a href="#1-SQlmap何止忽略401" class="headerlink" title="1.  SQlmap何止忽略401"></a>1.  SQlmap何止忽略401</h3><p>–ignore-401 设置忽略未验证错误</p>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gqll74th87j310w0atjxa.jpg" alt="image-20210517181134057"></p>
+<h3 id="2-Sqlmap设置HTTP协议的私钥"><a href="#2-Sqlmap设置HTTP协议的私钥" class="headerlink" title="2. Sqlmap设置HTTP协议的私钥"></a>2. Sqlmap设置HTTP协议的私钥</h3><p>当web服务器需要适当的客户端证书和用于验证的私钥时，应该使用此项。提供的值应该是一个PEM格式的key_file，其中包含证书和私钥</p>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token comment">--auth-file 文件名</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h3 id="3-sqlmap设置安全模式"><a href="#3-sqlmap设置安全模式" class="headerlink" title="3.sqlmap设置安全模式"></a>3.sqlmap设置安全模式</h3><p>避免多次请求后销毁会话</p>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gqlldlufhrj313704cdih.jpg" alt="image-20210517181747674"></p>
+<p>–safe-url，–safe-post，–safe-rep，–safe-freq</p>
+<p>通过这种方式，sqlmap将访问每个预定咦变量的请求而不对某个安全URL 执行任何类型的注入</p>
+<h3 id="SQlmap设置url编码"><a href="#SQlmap设置url编码" class="headerlink" title="SQlmap设置url编码"></a>SQlmap设置url编码</h3><p>根据参数的设置(例如get)，默认情况下他的值可以是url编码。在某些情况下，后端的web服务不不遵循RFC标准需要以原始的非编码形式发送值。在这种情况下使用<code>--skip-urlencode</code></p>
+<p>–skip-urlencode 不进行url加密</p>
 
                 
             </div>
