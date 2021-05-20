@@ -6,7 +6,7 @@
   <link href="http://echo-machile.github.io/atom.xml" rel="self"/>
   
   <link href="http://echo-machile.github.io/"/>
-  <updated>2021-05-17T10:30:21.643Z</updated>
+  <updated>2021-05-20T08:50:56.873Z</updated>
   <id>http://echo-machile.github.io/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>mac修改默认的python版本</title>
+    <link href="http://echo-machile.github.io/2021/05/20/77.html"/>
+    <id>http://echo-machile.github.io/2021/05/20/77.html</id>
+    <published>2021-05-20T08:50:00.000Z</published>
+    <updated>2021-05-20T08:50:56.873Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;MAC修改默认的python版本&quot;&gt;&lt;a href=&quot;#MAC修改默认的python版本&quot; class=&quot;headerlink&quot; title=&quot;MAC修改默认的python版本&quot;&gt;&lt;/a&gt;MAC修改默认的python版本&lt;/h1&gt;&lt;h2</summary>
+        
+      
+    
+    
+    
+    
+    <category term="Mac" scheme="http://echo-machile.github.io/tags/Mac/"/>
+    
+  </entry>
   
   <entry>
     <title>sqlmap工具使用</title>

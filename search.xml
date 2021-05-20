@@ -4,6 +4,25 @@
   
     
     <entry>
+      <title>mac修改默认的python版本</title>
+      <link href="2021/05/20/77.html"/>
+      <url>2021/05/20/77.html</url>
+      
+        <content type="html"><![CDATA[<h1 id="MAC修改默认的python版本"><a href="#MAC修改默认的python版本" class="headerlink" title="MAC修改默认的python版本"></a>MAC修改默认的python版本</h1><h2 id="1-安装python3"><a href="#1-安装python3" class="headerlink" title="1. 安装python3"></a>1. 安装python3</h2><h2 id="2-查看python3的安装途径"><a href="#2-查看python3的安装途径" class="headerlink" title="2.查看python3的安装途径"></a>2.查看python3的安装途径</h2><h3 id="1-打开终端"><a href="#1-打开终端" class="headerlink" title="1. 打开终端"></a>1. 打开终端</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">which</span> python3 //查看路径<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gqozcszf1jj30ae00zjrd.jpg" alt="image-20210520163801615"></p><h3 id="2-打开配置文件"><a href="#2-打开配置文件" class="headerlink" title="2. 打开配置文件"></a>2. 打开配置文件</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">vim</span> ~/.bash_profile<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><h3 id="3-添加环境变量"><a href="#3-添加环境变量" class="headerlink" title="3.添加环境变量"></a>3.添加环境变量</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">export</span> <span class="token assign-left variable"><span class="token environment constant">PATH</span></span><span class="token operator">=</span><span class="token variable">$&#123;<span class="token environment constant">PATH</span>&#125;</span>:/usr/local/bin/python3<span class="token builtin class-name">alias</span> <span class="token assign-left variable">python</span><span class="token operator">=</span><span class="token string">"/usr/local/bin/python3"</span>    //修改名字<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre><p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gqozk9mjcgj30hd082wfr.jpg" alt="image-20210520164514875"></p><h4 id="4-关闭保存文件"><a href="#4-关闭保存文件" class="headerlink" title="4. 关闭保存文件"></a>4. 关闭保存文件</h4><h3 id="5-终端执行命令"><a href="#5-终端执行命令" class="headerlink" title="5. 终端执行命令"></a>5. 终端执行命令</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">source</span> ~/.bash_profile<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><h3 id="6-检查python版本"><a href="#6-检查python版本" class="headerlink" title="6. 检查python版本"></a>6. 检查python版本</h3><p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gqoznhj3zzj30fr01y3yq.jpg" alt="image-20210520164822016"></p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> Mac </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>sqlmap工具使用</title>
       <link href="2021/05/16/23780.html"/>
       <url>2021/05/16/23780.html</url>
