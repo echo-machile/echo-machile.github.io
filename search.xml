@@ -4,6 +4,38 @@
   
     
     <entry>
+      <title>目录扫描工具dirsearch的使用</title>
+      <link href="2021/05/20/777.html"/>
+      <url>2021/05/20/777.html</url>
+      
+        <content type="html"><![CDATA[<h1 id="dirsearch"><a href="#dirsearch" class="headerlink" title="dirsearch"></a>dirsearch</h1><h2 id="1-下载dirsearch"><a href="#1-下载dirsearch" class="headerlink" title="1. 下载dirsearch"></a>1. 下载dirsearch</h2><p><a href="https://github.com/maurosoria/dirsearch">github下载地址</a></p><p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gqp00rm12cj30xf094aby.jpg" alt="image-20210520170107809"></p><h2 id="2-dirsearch的使用"><a href="#2-dirsearch的使用" class="headerlink" title="2. dirsearch的使用"></a>2. dirsearch的使用</h2><p>-u        指定网址</p><p>-e        指定网址语言</p><p>-w        指定字典</p><p>-r        递归目录</p><p>-random-agents        使用随机UA</p><p>用法:</p><p>终端进入下载的文件目录，输入命令</p><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">python3 dirsearch.py -u 网址 -e php 或python3 .<span class="token punctuation">\</span>dirsearch.py -u 网址 -e php<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre><p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gqp07jaf0jj30mj05g750.jpg" alt="image-20210520170738104"></p><p>寻找200的状态码。。。</p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> web </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title></title>
+      <link href="2021/05/20/0.html"/>
+      <url>2021/05/20/0.html</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>mac修改默认的python版本</title>
       <link href="2021/05/20/77.html"/>
       <url>2021/05/20/77.html</url>
