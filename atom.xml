@@ -6,7 +6,7 @@
   <link href="http://echo-machile.github.io/atom.xml" rel="self"/>
   
   <link href="http://echo-machile.github.io/"/>
-  <updated>2021-05-21T10:12:31.486Z</updated>
+  <updated>2021-05-22T12:30:46.754Z</updated>
   <id>http://echo-machile.github.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>git笔记</title>
+    <link href="http://echo-machile.github.io/2021/05/22/433.html"/>
+    <id>http://echo-machile.github.io/2021/05/22/433.html</id>
+    <published>2021-05-22T00:30:00.000Z</published>
+    <updated>2021-05-22T12:30:46.754Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;GIT&quot;&gt;&lt;a href=&quot;#GIT&quot; class=&quot;headerlink&quot; title=&quot;GIT&quot;&gt;&lt;/a&gt;GIT&lt;/h1&gt;&lt;p&gt;版本控制—————&amp;gt;版本迭代&lt;/p&gt;
+&lt;p&gt;版本控制工具;&lt;/p&gt;
+&lt;h2 id=&quot;1-版本控制的分类&quot;&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    
+    <category term="git" scheme="http://echo-machile.github.io/tags/git/"/>
+    
+  </entry>
   
   <entry>
     <title>shell笔记</title>
