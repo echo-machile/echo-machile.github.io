@@ -470,7 +470,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    2.9k
+                    3.4k
                 </div>
                 
 
@@ -965,6 +965,34 @@ ghtwf01<span aria-hidden="true" class="line-numbers-rows"><span></span><span></s
 <p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gqw1gyrdn1j30hz01xgls.jpg" alt="image-20210526191013367"></p>
 <p><strong>再打开test2.php</strong></p>
 <p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gqw1iremddj30e904zt95.jpg" alt="image-20210526191156820"></p>
+<h2 id="Phar拓展反序列化攻击面"><a href="#Phar拓展反序列化攻击面" class="headerlink" title="Phar拓展反序列化攻击面"></a>Phar拓展反序列化攻击面</h2><h3 id="1-phar文件简介"><a href="#1-phar文件简介" class="headerlink" title="1. phar文件简介"></a>1. phar文件简介</h3><h4 id="概念"><a href="#概念" class="headerlink" title="概念:"></a>概念:</h4><p>一个<code>php</code>应用程序往往是由多个文件构成的，如果能把他们集中为一个文件来分发和运行是很方便的，这样的列子有很多，比如在<code>window</code>操作系统上面的安装程序、一个<code>jquery</code>库等等，为了做到这点<code>php</code>采用了<code>phar</code>文档文件格式，这个概念源自<code>java</code>的<code>jar</code>，但是在设计时主要针对 PHP 的 Web 环境，与 <code>JAR</code> 归档不同的是<code>Phar</code>归档可由 <code>PHP</code> 本身处理，因此不需要使用额外的工具来创建或使用，使用<code>php</code>脚本就能创建或提取它。<code>phar</code>是一个合成词，由<code>PHP</code>和 <code>Archive</code>构成，可以看出它是<code>php</code>归档文件的意思(简单来说<code>phar</code>就是<code>php</code>压缩文档，不经过解压就能被 <code>php</code> 访问并执行)</p>
+<h3 id="2-phar的组成结构"><a href="#2-phar的组成结构" class="headerlink" title="2. phar的组成结构:"></a>2. phar的组成结构:</h3><pre class="line-numbers language-php" data-language="php"><code class="language-php">stub: phar文件的标识，格式为xxx<span class="token php language-php"><span class="token delimiter important">&lt;?php</span> xxx<span class="token punctuation">;</span><span class="token keyword">__HALT_COMPILER</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token delimiter important">?></span></span>
+mainfest: 也就是meta-data,压缩文件的属性等信息，以序列化储存
+contents: 压缩文件的内容
+signature: 签名，放在文件的末尾<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gqwzecqr3aj30lj03fab2.jpg" alt="image-20210527144404375"></p>
+<h3 id="3-前提条件"><a href="#3-前提条件" class="headerlink" title="3. 前提条件:"></a>3. 前提条件:</h3><pre class="line-numbers language-php" data-language="php"><code class="language-php">php<span class="token operator">.</span>ini中设置为phar<span class="token operator">.</span>readonly<span class="token operator">=</span>Off
+php version<span class="token operator">>=</span><span class="token number">5.3</span><span class="token number">.0</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<h2 id="phar反序列化漏洞"><a href="#phar反序列化漏洞" class="headerlink" title="phar反序列化漏洞"></a>phar反序列化漏洞</h2><h3 id="1-漏洞成因"><a href="#1-漏洞成因" class="headerlink" title="1. 漏洞成因:"></a>1. 漏洞成因:</h3><p><code>phar</code>存储的meta-data信息以序列化方式存储，当文件操作函数通过<code>phar://</code>伪协议解析phar文件时就会将反序列化</p>
+<h3 id="2-demo测试"><a href="#2-demo测试" class="headerlink" title="2. demo测试"></a>2. demo测试</h3><p>根据文件结构自己构建一个phar的文件，php内置了phar类处理相关操作</p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+    <span class="token keyword">class</span> <span class="token class-name">TestObject</span> <span class="token punctuation">&#123;</span>
+    <span class="token punctuation">&#125;</span>
+
+    @<span class="token function">unlink</span><span class="token punctuation">(</span><span class="token string double-quoted-string">"phar.phar"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token variable">$phar</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Phar</span><span class="token punctuation">(</span><span class="token string double-quoted-string">"phar.phar"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//后缀名必须为phar</span>
+    <span class="token variable">$phar</span><span class="token operator">-></span><span class="token function">startBuffering</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token variable">$phar</span><span class="token operator">-></span><span class="token function">setStub</span><span class="token punctuation">(</span><span class="token string double-quoted-string">"&lt;?php __HALT_COMPILER(); ?>"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//设置stub</span>
+    <span class="token variable">$o</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">TestObject</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token variable">$phar</span><span class="token operator">-></span><span class="token function">setMetadata</span><span class="token punctuation">(</span><span class="token variable">$o</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//将自定义的meta-data存入manifest</span>
+    <span class="token variable">$phar</span><span class="token operator">-></span><span class="token function">addFromString</span><span class="token punctuation">(</span><span class="token string double-quoted-string">"test.txt"</span><span class="token punctuation">,</span> <span class="token string double-quoted-string">"test"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//添加要压缩的文件</span>
+    <span class="token comment">//签名自动计算</span>
+    <span class="token variable">$phar</span><span class="token operator">-></span><span class="token function">stopBuffering</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token delimiter important">?></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><a target="_blank" rel="noopener" href="https://xz.aliyun.com/t/6753#toc-13">原文链接</a></p>
 
                 
             </div>
