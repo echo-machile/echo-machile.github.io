@@ -6,7 +6,7 @@
   <link href="http://echo-machile.github.io/atom.xml" rel="self"/>
   
   <link href="http://echo-machile.github.io/"/>
-  <updated>2021-05-27T11:11:20.527Z</updated>
+  <updated>2021-05-27T11:50:05.265Z</updated>
   <id>http://echo-machile.github.io/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>数据库学习笔记</title>
+    <link href="http://echo-machile.github.io/2021/05/27/499.html"/>
+    <id>http://echo-machile.github.io/2021/05/27/499.html</id>
+    <published>2021-05-27T11:49:00.000Z</published>
+    <updated>2021-05-27T11:50:05.265Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;数据库学习&quot;&gt;&lt;a href=&quot;#数据库学习&quot; class=&quot;headerlink&quot; title=&quot;数据库学习&quot;&gt;&lt;/a&gt;数据库学习&lt;/h1&gt;&lt;h2 id=&quot;数据类型：&quot;&gt;&lt;a href=&quot;#数据类型：&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    
+    <category term="mysql" scheme="http://echo-machile.github.io/tags/mysql/"/>
+    
+  </entry>
   
   <entry>
     <title>SQL无列名注入</title>
