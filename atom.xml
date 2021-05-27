@@ -6,7 +6,7 @@
   <link href="http://echo-machile.github.io/atom.xml" rel="self"/>
   
   <link href="http://echo-machile.github.io/"/>
-  <updated>2021-05-27T07:14:45.368Z</updated>
+  <updated>2021-05-27T11:11:20.527Z</updated>
   <id>http://echo-machile.github.io/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>SQL无列名注入</title>
+    <link href="http://echo-machile.github.io/2021/05/27/865.html"/>
+    <id>http://echo-machile.github.io/2021/05/27/865.html</id>
+    <published>2021-05-27T11:10:00.000Z</published>
+    <updated>2021-05-27T11:11:20.527Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;MYSQL无列名注入&quot;&gt;&lt;a href=&quot;#MYSQL无列名注入&quot; class=&quot;headerlink&quot; title=&quot;MYSQL无列名注入&quot;&gt;&lt;/a&gt;MYSQL无列名注入&lt;/h1&gt;&lt;h2 id=&quot;1-什么是无列名注入&quot;&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    
+    <category term="SQL注入" scheme="http://echo-machile.github.io/tags/SQL%E6%B3%A8%E5%85%A5/"/>
+    
+  </entry>
   
   <entry>
     <title>PHP反序列化</title>
@@ -115,7 +138,7 @@
     <link href="http://echo-machile.github.io/2021/05/20/7777.html"/>
     <id>http://echo-machile.github.io/2021/05/20/7777.html</id>
     <published>2021-05-20T10:40:00.000Z</published>
-    <updated>2021-05-21T10:15:01.674Z</updated>
+    <updated>2021-05-27T11:11:51.899Z</updated>
     
     
       
@@ -129,7 +152,7 @@
     
     
     
-    <category term="web" scheme="http://echo-machile.github.io/tags/web/"/>
+    <category term="BUUCTF" scheme="http://echo-machile.github.io/tags/BUUCTF/"/>
     
   </entry>
   
@@ -203,29 +226,6 @@
   </entry>
   
   <entry>
-    <title>反序列化漏洞</title>
-    <link href="http://echo-machile.github.io/2021/05/16/78.html"/>
-    <id>http://echo-machile.github.io/2021/05/16/78.html</id>
-    <published>2021-05-15T21:50:00.000Z</published>
-    <updated>2021-05-16T09:51:11.821Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;反序列化漏洞&quot;&gt;&lt;a href=&quot;#反序列化漏洞&quot; class=&quot;headerlink&quot; title=&quot;反序列化漏洞&quot;&gt;&lt;/a&gt;反序列化漏洞&lt;/h1&gt;&lt;h2 id=&quot;结构图&quot;&gt;&lt;a href=&quot;#结构图&quot; class=&quot;headerlink&quot;</summary>
-        
-      
-    
-    
-    
-    
-    <category term="web" scheme="http://echo-machile.github.io/tags/web/"/>
-    
-  </entry>
-  
-  <entry>
     <title>xml学习</title>
     <link href="http://echo-machile.github.io/2021/05/09/23955.html"/>
     <id>http://echo-machile.github.io/2021/05/09/23955.html</id>
@@ -253,7 +253,7 @@
     <link href="http://echo-machile.github.io/2021/05/07/23942.html"/>
     <id>http://echo-machile.github.io/2021/05/07/23942.html</id>
     <published>2021-05-07T03:36:01.000Z</published>
-    <updated>2021-05-23T00:46:24.989Z</updated>
+    <updated>2021-05-27T11:11:28.971Z</updated>
     
     
       
@@ -267,7 +267,7 @@
     
     
     
-    <category term="web" scheme="http://echo-machile.github.io/tags/web/"/>
+    <category term="BUUCTF" scheme="http://echo-machile.github.io/tags/BUUCTF/"/>
     
   </entry>
   
@@ -371,7 +371,7 @@
     <link href="http://echo-machile.github.io/2021/04/30/1.html"/>
     <id>http://echo-machile.github.io/2021/04/30/1.html</id>
     <published>2021-04-30T02:02:00.000Z</published>
-    <updated>2021-05-04T01:38:16.408Z</updated>
+    <updated>2021-05-27T11:14:10.426Z</updated>
     
     
       
@@ -385,7 +385,7 @@
     
     
     
-    <category term="web" scheme="http://echo-machile.github.io/tags/web/"/>
+    <category term="ssti注入" scheme="http://echo-machile.github.io/tags/ssti%E6%B3%A8%E5%85%A5/"/>
     
   </entry>
   
