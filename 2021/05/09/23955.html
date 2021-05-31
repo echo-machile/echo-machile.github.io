@@ -470,7 +470,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.2k
+                    1.6k
                 </div>
                 
 
@@ -586,8 +586,8 @@
 <h2 id="XML验证-DTD"><a href="#XML验证-DTD" class="headerlink" title="XML验证(DTD)"></a>XML验证(DTD)</h2><h3 id="1-DTD的作用是定义xml文档结构"><a href="#1-DTD的作用是定义xml文档结构" class="headerlink" title="1. DTD的作用是定义xml文档结构"></a>1. DTD的作用是定义xml文档结构</h3><ul>
 <li>在xml文件中应该声明对外部dtd文件的引用</li>
 </ul>
-<pre class="line-numbers language-xml" data-language="xml"><code class="language-xml"><span class="token prolog">&lt;?xml version="1.0" encoding="ISO-8859-1"?></span>
-<span class="token doctype"><span class="token punctuation">&lt;!</span><span class="token doctype-tag">DOCTYPE</span> <span class="token name">note</span> <span class="token name">SYSTEM</span> <span class="token string">"Note.dtd"</span><span class="token punctuation">></span></span>
+<pre class="line-numbers language-xml" data-language="xml"><code class="language-xml"><span class="token prolog">&lt;?xml version="1.0" encoding="ISO-8859-1"?></span> 声明xml文档
+<span class="token doctype"><span class="token punctuation">&lt;!</span><span class="token doctype-tag">DOCTYPE</span> <span class="token name">note</span> <span class="token name">SYSTEM</span> <span class="token string">"Note.dtd"</span><span class="token punctuation">></span></span> //SYSTEM 表明后面可以包含本地文件，而这时包含的就是Notee.dtd文档,这也就是外部实体引入
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>note</span><span class="token punctuation">></span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>to</span><span class="token punctuation">></span></span>Tove<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>to</span><span class="token punctuation">></span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>from</span><span class="token punctuation">></span></span>Jani<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>from</span><span class="token punctuation">></span></span>
@@ -595,15 +595,47 @@
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>body</span><span class="token punctuation">></span></span>Don't forget me this weekend!<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">></span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>note</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h3 id="2-DTD大体结构"><a href="#2-DTD大体结构" class="headerlink" title="2. DTD大体结构"></a>2. DTD大体结构</h3><pre class="line-numbers language-dtd" data-language="dtd"><code class="language-dtd">&lt;!DOCTYPE note
+<h3 id="2-DTD大体结构"><a href="#2-DTD大体结构" class="headerlink" title="2. DTD大体结构"></a>2. DTD大体结构</h3><pre class="line-numbers language-dtd" data-language="dtd"><code class="language-dtd">&lt;!DOCTYPE note&#x2F;&#x2F;表明note是根元素
 [
-&lt;!ELEMENT note (to,from,heading,body)&gt;
-&lt;!ELEMENT to (#PCDATA)&gt;
+&lt;!ELEMENT note (to,from,heading,body)&gt; &#x2F;&#x2F;代表note根元素包含四个元素
+&lt;!ELEMENT to (#PCDATA)&gt; &#x2F;&#x2F;to元素 包含任意数据，#PCDTATA就相当于string的数据类型
 &lt;!ELEMENT from (#PCDATA)&gt;
 &lt;!ELEMENT heading (#PCDATA)&gt;
 &lt;!ELEMENT body (#PCDATA)&gt;
 ]&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
+<h3 id="3-DTD基本语法"><a href="#3-DTD基本语法" class="headerlink" title="3. DTD基本语法:"></a>3. DTD基本语法:</h3><pre class="line-numbers language-DTD" data-language="DTD"><code class="language-DTD">&lt;!ELEMENT NAME CONTENT&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<ul>
+<li>ELEMENT是关键字</li>
+<li>NAME表示元素的名称</li>
+<li>CONTENT是元素的类型，必须大写，CONTENT的三种写法:</li>
+</ul>
+<pre class="line-numbers language-dtd" data-language="dtd"><code class="language-dtd">(1) EMPTY-------表示该元素不能包含子元素和文本，但可以有属性
+(2) ANY---------表示该元素可以包含任何在DTD中定义的元素内容
+(3) #PCDATA-----可以包含任何字符数据，但是不能包含任何子元素<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="4-DTD元素的组合类型"><a href="#4-DTD元素的组合类型" class="headerlink" title="4. DTD元素的组合类型"></a>4. DTD元素的组合类型</h3><p>DTD这样规定:</p>
+<pre class="line-numbers language-DTD" data-language="DTD"><code class="language-DTD">&lt;!ELEMENT 家庭(人+,家电*)&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>这个DTD规定家庭元素可以有1到多个“人”这个子元素，也可以有0到多个“家电”这个子元素，其中的+和*的含义与正则表达式的含义一致</p>
+<p>XML这样写:</p>
+<pre class="line-numbers language-xml" data-language="xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>家庭</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>人</span> <span class="token attr-name">名字</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token punctuation">"</span></span><span class="token attr-name">性别</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token punctuation">"</span></span><span class="token punctuation">/></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>人</span> <span class="token attr-name">名字</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token punctuation">"</span></span><span class="token attr-name">性别</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token punctuation">"</span></span><span class="token attr-name">年龄</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token punctuation">"</span></span><span class="token punctuation">/></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>家电</span> <span class="token attr-name">名称</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token punctuation">"</span></span><span class="token punctuation">/></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>家庭</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+<h3 id="DTD总结"><a href="#DTD总结" class="headerlink" title="DTD总结:"></a>DTD总结:</h3><p>(1). 当引用的DTD文件是本地文件时，用SYSTEM标识，并写上DTD文件路径，如下:</p>
+<pre class="line-numbers language-dtd" data-language="dtd"><code class="language-dtd">
+&lt;!DOCTYPE 根元素 SYSTEM &quot;DTD文件路径&quot;&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<p>(2). 如果引用的DTD文件，是一个公共文件时，采用PUBLIC标识，如下方式:</p>
+<pre class="line-numbers language-DTD" data-language="DTD"><code class="language-DTD">&lt;!DOCTYPE 根元素 PUBLIC &quot;DTD名称&quot;&quot;DTD文件的url&quot;&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><a target="_blank" rel="noopener" href="https://www.tutorialspoint.com/xml/xml_dtds.htm">超详细链接</a></p>
 <h2 id="XML-javascript"><a href="#XML-javascript" class="headerlink" title="XML javascript"></a>XML javascript</h2><h3 id="1-XMLHttpRequest对象"><a href="#1-XMLHttpRequest对象" class="headerlink" title="1. XMLHttpRequest对象"></a>1. XMLHttpRequest对象</h3><p><strong>xmlhttprequest对象用于在后台与服务器之间交换数据</strong></p>
 <h4 id="作用"><a href="#作用" class="headerlink" title="作用:"></a>作用:</h4><ul>
 <li>在不重新加载页面的情况下更新网页</li>

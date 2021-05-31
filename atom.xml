@@ -6,7 +6,7 @@
   <link href="http://echo-machile.github.io/atom.xml" rel="self"/>
   
   <link href="http://echo-machile.github.io/"/>
-  <updated>2021-05-29T04:04:44.348Z</updated>
+  <updated>2021-05-31T14:44:26.649Z</updated>
   <id>http://echo-machile.github.io/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>XXE笔记</title>
+    <link href="http://echo-machile.github.io/2021/05/31/444.html"/>
+    <id>http://echo-machile.github.io/2021/05/31/444.html</id>
+    <published>2021-05-31T14:43:00.000Z</published>
+    <updated>2021-05-31T14:44:26.649Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;XXE&quot;&gt;&lt;a href=&quot;#XXE&quot; class=&quot;headerlink&quot; title=&quot;XXE&quot;&gt;&lt;/a&gt;XXE&lt;/h1&gt;&lt;h2 id=&quot;1-XML注入&quot;&gt;&lt;a href=&quot;#1-XML注入&quot; class=&quot;headerlink&quot; title=&quot;1.</summary>
+        
+      
+    
+    
+    
+    
+    <category term="web" scheme="http://echo-machile.github.io/tags/web/"/>
+    
+  </entry>
   
   <entry>
     <title>n1book-web入门</title>
@@ -113,7 +136,7 @@
     <link href="http://echo-machile.github.io/2021/05/24/666.html"/>
     <id>http://echo-machile.github.io/2021/05/24/666.html</id>
     <published>2021-05-24T12:36:00.000Z</published>
-    <updated>2021-05-24T12:36:56.040Z</updated>
+    <updated>2021-05-31T07:28:50.119Z</updated>
     
     
       
@@ -276,7 +299,7 @@
     <link href="http://echo-machile.github.io/2021/05/09/23955.html"/>
     <id>http://echo-machile.github.io/2021/05/09/23955.html</id>
     <published>2021-05-09T00:41:01.000Z</published>
-    <updated>2021-05-16T12:25:41.813Z</updated>
+    <updated>2021-05-29T09:26:26.376Z</updated>
     
     
       
@@ -299,7 +322,7 @@
     <link href="http://echo-machile.github.io/2021/05/07/23942.html"/>
     <id>http://echo-machile.github.io/2021/05/07/23942.html</id>
     <published>2021-05-07T03:36:01.000Z</published>
-    <updated>2021-05-27T11:11:28.971Z</updated>
+    <updated>2021-05-31T14:40:46.929Z</updated>
     
     
       
