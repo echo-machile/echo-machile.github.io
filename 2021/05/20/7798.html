@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="BUUCTF-ACTF新生赛做题笔记, Chenluo">
+    <meta name="keywords" content="BUUCTF-HCTF做题笔记, Chenluo">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>BUUCTF-ACTF新生赛做题笔记 | Chenluo</title>
+    <title>BUUCTF-HCTF做题笔记 | Chenluo</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -322,12 +322,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/26.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/9.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">BUUCTF-ACTF新生赛做题笔记</h1>
+                    <h1 class="description center-align post-title">BUUCTF-HCTF做题笔记</h1>
                 </div>
             </div>
         </div>
@@ -470,7 +470,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    330
+                    571
                 </div>
                 
 
@@ -490,45 +490,63 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="ACTF2020-新生赛-Include"><a href="#ACTF2020-新生赛-Include" class="headerlink" title="[ACTF2020 新生赛]Include"></a>[ACTF2020 新生赛]Include</h2><p><strong>点击tips，发现url是文件包含，而且被包含的文件是flag.php</strong></p>
-<h3 id="1-利用php伪协议读取flag-php的源代码"><a href="#1-利用php伪协议读取flag-php的源代码" class="headerlink" title="1. 利用php伪协议读取flag.php的源代码"></a>1. 利用php伪协议读取flag.php的源代码</h3><pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token operator">?</span>file<span class="token operator">=</span><span class="token argument-name">php</span><span class="token punctuation">:</span><span class="token comment">//filter/convert.base64-encode/resource=flag.php</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+                <h2 id="HCTF-2018-WarmUp"><a href="#HCTF-2018-WarmUp" class="headerlink" title="[HCTF 2018]WarmUp"></a>[HCTF 2018]WarmUp</h2><h3 id="1-进入界面是一个图像，首先看一下源代码"><a href="#1-进入界面是一个图像，首先看一下源代码" class="headerlink" title="1. 进入界面是一个图像，首先看一下源代码:"></a>1. 进入界面是一个图像，首先看一下源代码:</h3><p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gr2sd4fn8rj60mg05wgmh02.jpg" alt="image-20210601151405206"></p>
+<p>在这知道，我们传入的参数给了<code>file</code>那么接下来看一下<code>checkFile</code>这个函数</p>
+<h3 id="2-查看checkFile函数"><a href="#2-查看checkFile函数" class="headerlink" title="2. 查看checkFile函数:"></a>2. 查看checkFile函数:</h3><p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gr2sflzzn3j30of052aat.jpg" alt="image-20210601151631374"></p>
+<ul>
+<li>首先 给出了白名单，并且判断形式参数(<code>file</code>)是不是字符串;</li>
+</ul>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gr2sgsv1pkj30e802haa6.jpg" alt="image-20210601151740130"></p>
+<ul>
+<li>判断是不是形式参数(<code>file</code>)的内容在不在白名单数组里</li>
+</ul>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gr2skcn4b6j30ba04mdg6.jpg" alt="image-20210601152104780"></p>
+<ul>
+<li>这次判断形式参数从一开始到第一个<code>?</code>出现的位置里所包含的字符串,判断这个字符串在不在白名单列表，</li>
+</ul>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gr2ssgm34mj30el072js2.jpg" alt="image-20210601152849046"></p>
+<ul>
+<li>这个和上一个类似，不过这个是先进行了url解码，可能是防止<code>url</code>编码绕过</li>
+</ul>
+<h3 id="3-看了这么多不知到flag到底在哪，刚好还有个hint-php没看"><a href="#3-看了这么多不知到flag到底在哪，刚好还有个hint-php没看" class="headerlink" title="3. 看了这么多不知到flag到底在哪，刚好还有个hint.php没看"></a>3. 看了这么多不知到flag到底在哪，刚好还有个<code>hint.php</code>没看</h3><p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gr2svmfu6rj30kk0400td.jpg" alt="image-20210601153154020"></p>
+<p>所以估计是让我们访问<code> ffffllllaaaagggg</code></p>
+<p>那么，没有其他特殊的过滤，直接访问即可</p>
+<pre class="line-numbers language-url" data-language="url"><code class="language-url">?file&#x3D;source.php?file&#x3D;hint.php?..&#x2F;..&#x2F;..&#x2F;..&#x2F;..&#x2F;ffffllllaaaagggg<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gqp0puucquj313904bab6.jpg" alt="image-20210520172515014"></p>
-<p>将字符串进行base64解码</p>
-<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gqp0rwvutmj30z407o753.jpg" alt="image-20210520172713497"></p>
-<p>得到flag</p>
-<h2 id="ACTF2020-新生赛-Exec"><a href="#ACTF2020-新生赛-Exec" class="headerlink" title="[ACTF2020 新生赛]Exec"></a>[ACTF2020 新生赛]Exec</h2><h3 id="1-简单的命令注入"><a href="#1-简单的命令注入" class="headerlink" title="1. 简单的命令注入"></a>1. 简单的命令注入</h3><pre class="line-numbers language-ls" data-language="ls"><code class="language-ls">1.1.1.1&amp;ls<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h2 id="HCTF-2018-admin"><a href="#HCTF-2018-admin" class="headerlink" title="[HCTF 2018]admin"></a>[HCTF 2018]admin</h2><h3 id="1-先注册登录进去，之后啥也没有，看下源代码"><a href="#1-先注册登录进去，之后啥也没有，看下源代码" class="headerlink" title="1. 先注册登录进去，之后啥也没有，看下源代码"></a>1. 先注册登录进去，之后啥也没有，看下源代码</h3><p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gr2tnlhmggj30jr0c0dhi.jpg" alt="image-20210601155847302"></p>
+<p>这里要求我们是<code>admin</code>登陆，要么是拿到<code>admin</code>密码，要么是利用<code>admin</code>登陆<code>cookie</code>完成登陆</p>
+<h3 id="2-继续查看其他地方的源代码"><a href="#2-继续查看其他地方的源代码" class="headerlink" title="2. 继续查看其他地方的源代码"></a>2. 继续查看其他地方的源代码</h3><p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gr2tq27m7aj30hl053dgx.jpg" alt="image-20210601160109761"></p>
+<ul>
+<li>在更换密码界面找到了这个，那么先访问一下，下载源码,看到<code>flask</code>，可能存在模板注入(发现不是)</li>
+</ul>
+<h3 id="查看下载文件，找出有用信息"><a href="#查看下载文件，找出有用信息" class="headerlink" title="查看下载文件，找出有用信息"></a>查看下载文件，找出有用信息</h3><ul>
+<li><code>routes.py</code>在这里查看各个界面对信息的处理方法</li>
+</ul>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gr2u1qh6scj30pj0c2wgc.jpg" alt="image-20210601161222648"></p>
+<p>在这里发现，每次登陆都会把用户名写进<code>session</code></p>
+<p>猜想，可以利用<code>admin</code>的<code>session</code>来登陆<code>admin</code>,并且不同用户的<code>session</code>可能只有用户名不一样</p>
+<h3 id="查看本地session"><a href="#查看本地session" class="headerlink" title="查看本地session"></a>查看本地session</h3><pre class="line-numbers language-session" data-language="session"><code class="language-session">.eJw9kEGLwjAQhf_KkrOHdrq9CB5cUoOFSemSWDIXcWvdJm1ctiraiP99iwseHsPjweN7c2fbw9CcWjY_D5dmxrZ2z-Z39vbF5sw4HSOYYJS5Sa_fpdrbosJgAlkSuZd-4xF0igHjQugIQ9-hmhysk6IyAZ0Oxn1acpgYwFR6clStAUE6A3qUwtzQdTHxZTR5MEq6QmXT_bDyKZ1SterIZanxmKAqbxjalhS10ue95CWgq6EQ5YI9Zqw-DYft-adrjq8JxPOeRDmSq0fi2YRaAwq8Sr6ZECYo3kUIK4tVCZLvexTZSMvFs8763XfzakKe_-rrf3Lc-SlgMSRsxi6nZnh-jcURe_wBqEFqGg.YLXpDg.XQzyIRpa2VGfzAoYhWaH_Cvgnrs<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<p><strong>看到有index.php</strong></p>
-<h3 id="2-尝试读取上级目录"><a href="#2-尝试读取上级目录" class="headerlink" title="2.尝试读取上级目录"></a>2.尝试读取上级目录</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token number">1.1</span>.1.1<span class="token operator">&amp;</span><span class="token function">ls</span> <span class="token punctuation">..</span>/<span class="token punctuation">..</span>/<span class="token punctuation">..</span>/<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<ul>
+<li>显示是密文，那么我们需要解密，解密需要的密钥，可以在<code>config.py</code>中找到</li>
+</ul>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gr2u8ysc7uj30iz04ogm5.jpg" alt="image-20210601161920023"></p>
+<p>这里利用<code>flask-session-cookie-manager</code>这个工具解密</p>
+<p>用法:</p>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gr2ub0bbrdj30fq04ft95.jpg" alt="image-20210601162117904"></p>
+<p>进行解密:</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">flask<span class="token operator">-</span>session<span class="token operator">-</span>cookie<span class="token operator">-</span>manager <span class="token operator">%</span> python3 flask_session_cookie_manager3<span class="token punctuation">.</span>py decode <span class="token operator">-</span>s <span class="token string">'ckj123'</span> <span class="token operator">-</span>c <span class="token punctuation">.</span>eJw9kEGLwjAQhf_KkrOHdrq9CB5cUoOFSemSWDIXcWvdJm1ctiraiP99iwseHsPjweN7c2fbw9CcWjY_D5dmxrZ2z<span class="token operator">-</span>Z39vbF5sw4HSOYYJS5Sa_fpdrbosJgAlkSuZd<span class="token operator">-</span>4xF0igHjQugIQ9<span class="token operator">-</span>hmhysk6IyAZ0Oxn1acpgYwFR6clStAUE6A3qUwtzQdTHxZTR5MEq6QmXT_bDyKZ1SterIZanxmKAqbxjalhS10ue95CWgq6EQ5YI9Zqw<span class="token operator">-</span>DYft<span class="token operator">-</span>adrjq8JxPOeRDmSq0fi2YRaAwq8Sr6ZECYo3kUIK4tVCZLvexTZSMvFs8763XfzakKe_<span class="token operator">-</span>rrf3Lc<span class="token operator">-</span>SlgMSRsxi6nZnh<span class="token operator">-</span>jcURe_wBqEFqGg<span class="token punctuation">.</span>YLXpDg<span class="token punctuation">.</span>XQzyIRpa2VGfzAoYhWaH_Cvgnrs<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gqp1h6ux5aj30pm0fkdgi.jpg" alt="image-20210520175128265"></p>
-<h3 id="读取flag"><a href="#读取flag" class="headerlink" title="读取flag"></a>读取flag</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token number">1.1</span>.1.1<span class="token operator">&amp;</span><span class="token function">cat</span> <span class="token punctuation">..</span>/<span class="token punctuation">..</span>/<span class="token punctuation">..</span>/flag<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gr2ud1cd9fj30ya02ddgs.jpg" alt="image-20210601162313392"></p>
+<ul>
+<li>修改session进行加密:</li>
+</ul>
+<pre class="line-numbers language-session" data-language="session"><code class="language-session">python3 flask_session_cookie_manager3.py encode -s &quot;ckj123&quot; -t &quot;&#123;&#39;_fresh&#39;: True, &#39;_id&#39;: b&#39;b553f3a616e857b9c3c6bdbf6ef3e93358e439d1333b79f3253b4bf37cc96fceb63ccce24f1295d04ce6a3c916a0b50b559eadf19bc714138ae6a6be4462768d&#39;, &#39;csrf_token&#39;: b&#39;d2edd2f72d193760c045ccf60943ab1d647e0a2d&#39;, &#39;image&#39;: b&#39;02jS&#39;, &#39;name&#39;: &#39;admin&#39;, &#39;user_id&#39;: &#39;10&#39; &#125;&quot;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gqp1iaxf28j30k2025glq.jpg" alt="image-20210520175235432"></p>
-<h2 id="ACTF2020-新生赛-BackupFile"><a href="#ACTF2020-新生赛-BackupFile" class="headerlink" title="[ACTF2020 新生赛]BackupFile"></a>[ACTF2020 新生赛]BackupFile</h2><h3 id="1-根据提示利用工具扫描网站目录"><a href="#1-根据提示利用工具扫描网站目录" class="headerlink" title="1. 根据提示利用工具扫描网站目录"></a>1. 根据提示利用工具扫描网站目录</h3><p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gqp1kldxnsj30ll038jrp.jpg" alt="image-20210520175446877"></p>
-<h3 id="2-利用dirsearch工具扫描"><a href="#2-利用dirsearch工具扫描" class="headerlink" title="2. 利用dirsearch工具扫描"></a>2. 利用dirsearch工具扫描</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">python3 dirseacher.py -u http://22bb3276-c2f5-4e36-a1c8-34514bed88d6.node3.buuoj.cn/ -e php<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-
-
-<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gqp1momzj0j30mf060t9k.jpg" alt="image-20210520175647940"></p>
-<p>扫描出<img src="https://tva1.sinaimg.cn/large/008i3skNly1gqp24rd9sgj30mn0bvdib.jpg" alt="image-20210520181410704"></p>
-<h3 id="下载备份文件并打开"><a href="#下载备份文件并打开" class="headerlink" title="下载备份文件并打开"></a>下载备份文件并打开</h3><pre class="line-numbers language-url" data-language="url"><code class="language-url">http:&#x2F;&#x2F;22bb3276-c2f5-4e36-a1c8-34514bed88d6.node3.buuoj.cn&#x2F;index.php.bak<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gqp266w4ttj30iy0bm0ti.jpg" alt="image-20210520181533116"></p>
-<p>由于使用的是==，弱，不强制类型相等</p>
-<p>那么直接使<code>key=123</code></p>
-<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gqp28v94fvj30sh03hgm8.jpg" alt="image-20210520181807205"></p>
-<h2 id="ACTF2020-新生赛-Upload"><a href="#ACTF2020-新生赛-Upload" class="headerlink" title="[ACTF2020 新生赛]Upload"></a>[ACTF2020 新生赛]Upload</h2><h3 id="1-随便上传一个后缀是php的文件"><a href="#1-随便上传一个后缀是php的文件" class="headerlink" title="1.随便上传一个后缀是php的文件"></a>1.随便上传一个后缀是php的文件</h3><p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gqp2fi50acj30np07a0tr.jpg" alt="image-20210520182429819"></p>
-<h3 id="2-开启bp，发现上面是前端检验"><a href="#2-开启bp，发现上面是前端检验" class="headerlink" title="2. 开启bp，发现上面是前端检验"></a>2. 开启bp，发现上面是前端检验</h3><h4 id="2-1-那么，我们需要将上传的php文件的后缀名改成jgp，之后利用bp改回来"><a href="#2-1-那么，我们需要将上传的php文件的后缀名改成jgp，之后利用bp改回来" class="headerlink" title="2.1 那么，我们需要将上传的php文件的后缀名改成jgp，之后利用bp改回来"></a>2.1 那么，我们需要将上传的php文件的后缀名改成jgp，之后利用bp改回来</h4><p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gqp2mt8onoj30ar03it98.jpg" alt="image-20210520183131244"></p>
-<p>发现改回来之后，仍然不对</p>
-<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gqp2onuqcdj30u90f2din.jpg" alt="image-20210520183317939"></p>
-<p>\</p>
-<p>可能是php被列入了黑名单，尝试其他文件名</p>
-<h4 id="2-2-phtml后缀名刚好可以"><a href="#2-2-phtml后缀名刚好可以" class="headerlink" title="2.2 phtml后缀名刚好可以"></a>2.2 phtml后缀名刚好可以</h4><p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gqp2phlruij30ks0cftai.jpg" alt="image-20210520183405559"></p>
-<h4 id="2-3-访问这个路径"><a href="#2-3-访问这个路径" class="headerlink" title="2.3 访问这个路径"></a>2.3 访问这个路径</h4><p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gqp2qrmgqsj30zs0adgmf.jpg" alt="image-20210520183519273"></p>
-<h4 id="2-4-利用蚂蚁尝试连接，连接成功"><a href="#2-4-利用蚂蚁尝试连接，连接成功" class="headerlink" title="2.4 利用蚂蚁尝试连接，连接成功"></a>2.4 利用蚂蚁尝试连接，连接成功</h4><p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gqp2s0kfm4j30sl09sgmo.jpg" alt="image-20210520183631822"></p>
-<h4 id="2-5-直接在终端打开flag文件"><a href="#2-5-直接在终端打开flag文件" class="headerlink" title="2.5 直接在终端打开flag文件"></a>2.5 直接在终端打开flag文件</h4><p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gqp2tpxm05j309g038dg2.jpg" alt="image-20210520183809646"></p>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gr2usnrpj9j60yb02n3zk02.jpg" alt="image-20210601163815771"></p>
+<p>把它作为session，登陆<code>admin</code>,密码随便。。。</p>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gr2uuffd8hj30fp09kwgd.jpg" alt="image-20210601163957560"></p>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gr2utpigeqj30nm0763yy.jpg" alt="image-20210601163915968"></p>
 
                 
             </div>
@@ -555,7 +573,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://echo-machile.github.io/2021/05/20/7777.html">http://echo-machile.github.io/2021/05/20/7777.html</a>
+                    <a href="http://echo-machile.github.io/2021/05/20/7798.html">http://echo-machile.github.io/2021/05/20/7798.html</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -1052,13 +1070,13 @@ document.body.addEventListener('click', function(e) {
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2021/05/21/88.html">
+                <a href="/2021/05/20/7777.html">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="shell笔记">
+                        <img src="/medias/featureimages/26.jpg" class="responsive-img" alt="BUUCTF-ACTF新生赛做题笔记">
                         
-                        <span class="card-title">shell笔记</span>
+                        <span class="card-title">BUUCTF-ACTF新生赛做题笔记</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1069,7 +1087,7 @@ document.body.addEventListener('click', function(e) {
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-05-21
+                            <i class="far fa-clock fa-fw icon-date"></i>2021-05-20
                         </span>
                         <span class="publish-author">
                             
@@ -1082,8 +1100,8 @@ document.body.addEventListener('click', function(e) {
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/linux-shell/">
-                        <span class="chip bg-color">linux shell</span>
+                    <a href="/tags/BUUCTF/">
+                        <span class="chip bg-color">BUUCTF</span>
                     </a>
                     
                 </div>
@@ -1097,13 +1115,13 @@ document.body.addEventListener('click', function(e) {
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2021/05/20/7798.html">
+                <a href="/2021/05/20/777.html">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/9.jpg" class="responsive-img" alt="BUUCTF-HCTF做题笔记">
+                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="目录扫描工具dirsearch的使用">
                         
-                        <span class="card-title">BUUCTF-HCTF做题笔记</span>
+                        <span class="card-title">目录扫描工具dirsearch的使用</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1127,8 +1145,8 @@ document.body.addEventListener('click', function(e) {
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/BUUCTF/">
-                        <span class="chip bg-color">BUUCTF</span>
+                    <a href="/tags/web/">
+                        <span class="chip bg-color">web</span>
                     </a>
                     
                 </div>

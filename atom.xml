@@ -6,7 +6,7 @@
   <link href="http://echo-machile.github.io/atom.xml" rel="self"/>
   
   <link href="http://echo-machile.github.io/"/>
-  <updated>2021-05-31T14:44:26.649Z</updated>
+  <updated>2021-06-01T14:50:29.014Z</updated>
   <id>http://echo-machile.github.io/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>BUUCTF-极客大挑战做题笔记</title>
+    <link href="http://echo-machile.github.io/2021/06/01/4995.html"/>
+    <id>http://echo-machile.github.io/2021/06/01/4995.html</id>
+    <published>2021-06-01T14:50:00.000Z</published>
+    <updated>2021-06-01T14:50:29.014Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;极客大挑战-2019-EasySQL&quot;&gt;&lt;a href=&quot;#极客大挑战-2019-EasySQL&quot; class=&quot;headerlink&quot; title=&quot;[极客大挑战 2019]EasySQL&quot;&gt;&lt;/a&gt;[极客大挑战 2019]EasySQL&lt;/h2&gt;&lt;h3</summary>
+        
+      
+    
+    
+    
+    
+    <category term="BUUCTF" scheme="http://echo-machile.github.io/tags/BUUCTF/"/>
+    
+  </entry>
   
   <entry>
     <title>XXE笔记</title>
@@ -215,6 +238,29 @@
         
         
     <summary type="html">&lt;h2 id=&quot;ACTF2020-新生赛-Include&quot;&gt;&lt;a href=&quot;#ACTF2020-新生赛-Include&quot; class=&quot;headerlink&quot; title=&quot;[ACTF2020 新生赛]Include&quot;&gt;&lt;/a&gt;[ACTF2020</summary>
+        
+      
+    
+    
+    
+    
+    <category term="BUUCTF" scheme="http://echo-machile.github.io/tags/BUUCTF/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>BUUCTF-HCTF做题笔记</title>
+    <link href="http://echo-machile.github.io/2021/05/20/7798.html"/>
+    <id>http://echo-machile.github.io/2021/05/20/7798.html</id>
+    <published>2021-05-20T10:40:00.000Z</published>
+    <updated>2021-06-01T08:41:21.063Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;HCTF-2018-WarmUp&quot;&gt;&lt;a href=&quot;#HCTF-2018-WarmUp&quot; class=&quot;headerlink&quot; title=&quot;[HCTF 2018]WarmUp&quot;&gt;&lt;/a&gt;[HCTF 2018]WarmUp&lt;/h2&gt;&lt;h3</summary>
         
       
     
@@ -432,53 +478,6 @@
     
     
     <category term="blog" scheme="http://echo-machile.github.io/tags/blog/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>ssti注入漏洞解析</title>
-    <link href="http://echo-machile.github.io/2021/04/30/1.html"/>
-    <id>http://echo-machile.github.io/2021/04/30/1.html</id>
-    <published>2021-04-30T02:02:00.000Z</published>
-    <updated>2021-05-27T11:14:10.426Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;SSTI-服务端模版注入漏洞&quot;&gt;&lt;a href=&quot;#SSTI-服务端模版注入漏洞&quot; class=&quot;headerlink&quot;</summary>
-        
-      
-    
-    
-    
-    
-    <category term="ssti注入" scheme="http://echo-machile.github.io/tags/ssti%E6%B3%A8%E5%85%A5/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>sql注入漏洞解析</title>
-    <link href="http://echo-machile.github.io/2021/04/18/5.html"/>
-    <id>http://echo-machile.github.io/2021/04/18/5.html</id>
-    <published>2021-04-18T04:32:50.763Z</published>
-    <updated>2021-05-16T03:50:04.262Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;SQL-lab&quot;&gt;&lt;a href=&quot;#SQL-lab&quot; class=&quot;headerlink&quot; title=&quot;SQL-lab&quot;&gt;&lt;/a&gt;SQL-lab&lt;/h1&gt;&lt;p&gt;sql注入全部解析&lt;/p&gt;
-&lt;h2 id=&quot;1-单引号字符型注入&quot;&gt;&lt;a</summary>
-        
-      
-    
-    
-    
-    
-    <category term="web" scheme="http://echo-machile.github.io/tags/web/"/>
     
   </entry>
   
