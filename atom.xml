@@ -6,7 +6,7 @@
   <link href="http://echo-machile.github.io/atom.xml" rel="self"/>
   
   <link href="http://echo-machile.github.io/"/>
-  <updated>2021-06-02T04:22:30.339Z</updated>
+  <updated>2021-06-04T04:31:01.010Z</updated>
   <id>http://echo-machile.github.io/</id>
   
   <author>
@@ -15,6 +15,52 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>信息泄露</title>
+    <link href="http://echo-machile.github.io/2021/06/04/2332.html"/>
+    <id>http://echo-machile.github.io/2021/06/04/2332.html</id>
+    <published>2021-06-04T04:36:01.000Z</published>
+    <updated>2021-06-04T04:31:01.010Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;信息泄漏&quot;&gt;&lt;a href=&quot;#信息泄漏&quot; class=&quot;headerlink&quot; title=&quot;信息泄漏&quot;&gt;&lt;/a&gt;信息泄漏&lt;/h1&gt;&lt;h2 id=&quot;SVN-info&quot;&gt;&lt;a href=&quot;#SVN-info&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    
+    <category term="BUUCTF" scheme="http://echo-machile.github.io/tags/BUUCTF/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>ctfshow-信息收集</title>
+    <link href="http://echo-machile.github.io/2021/06/04/7744.html"/>
+    <id>http://echo-machile.github.io/2021/06/04/7744.html</id>
+    <published>2021-06-04T04:10:00.000Z</published>
+    <updated>2021-06-04T04:29:32.123Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;web1&quot;&gt;&lt;a href=&quot;#web1&quot; class=&quot;headerlink&quot; title=&quot;web1&quot;&gt;&lt;/a&gt;web1&lt;/h2&gt;&lt;h3 id=&quot;1-查看页面源代码&quot;&gt;&lt;a href=&quot;#1-查看页面源代码&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    
+    <category term="CTFSHOW" scheme="http://echo-machile.github.io/tags/CTFSHOW/"/>
+    
+  </entry>
   
   <entry>
     <title>BUUCTF-SUCTF做题笔记</title>
@@ -63,6 +109,29 @@
   </entry>
   
   <entry>
+    <title>BUUCTF-MRCTF做题笔记</title>
+    <link href="http://echo-machile.github.io/2021/06/02/767.html"/>
+    <id>http://echo-machile.github.io/2021/06/02/767.html</id>
+    <published>2021-06-02T13:10:00.000Z</published>
+    <updated>2021-06-02T13:31:29.826Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;MRCTF2020-你传你🐎呢&quot;&gt;&lt;a href=&quot;#MRCTF2020-你传你🐎呢&quot; class=&quot;headerlink&quot; title=&quot;[MRCTF2020]你传你🐎呢&quot;&gt;&lt;/a&gt;[MRCTF2020]你传你🐎呢&lt;/h2&gt;&lt;h3</summary>
+        
+      
+    
+    
+    
+    
+    <category term="BUUCTF" scheme="http://echo-machile.github.io/tags/BUUCTF/"/>
+    
+  </entry>
+  
+  <entry>
     <title>BUUCTF-ZJCTF做题笔记</title>
     <link href="http://echo-machile.github.io/2021/06/02/7890.html"/>
     <id>http://echo-machile.github.io/2021/06/02/7890.html</id>
@@ -98,29 +167,6 @@
         
         
     <summary type="html">&lt;h2 id=&quot;网鼎杯-2018-Fakebook&quot;&gt;&lt;a href=&quot;#网鼎杯-2018-Fakebook&quot; class=&quot;headerlink&quot; title=&quot;[网鼎杯 2018]Fakebook&quot;&gt;&lt;/a&gt;[网鼎杯</summary>
-        
-      
-    
-    
-    
-    
-    <category term="BUUCTF" scheme="http://echo-machile.github.io/tags/BUUCTF/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>BUUCTF-MRCTF做题笔记</title>
-    <link href="http://echo-machile.github.io/2021/06/02/767.html"/>
-    <id>http://echo-machile.github.io/2021/06/02/767.html</id>
-    <published>2021-06-02T13:10:00.000Z</published>
-    <updated>2021-06-02T13:31:29.826Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;MRCTF2020-你传你🐎呢&quot;&gt;&lt;a href=&quot;#MRCTF2020-你传你🐎呢&quot; class=&quot;headerlink&quot; title=&quot;[MRCTF2020]你传你🐎呢&quot;&gt;&lt;/a&gt;[MRCTF2020]你传你🐎呢&lt;/h2&gt;&lt;h3</summary>
         
       
     
@@ -429,52 +475,6 @@
     
     
     <category term="Mac" scheme="http://echo-machile.github.io/tags/Mac/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>sqlmap工具使用</title>
-    <link href="http://echo-machile.github.io/2021/05/16/23780.html"/>
-    <id>http://echo-machile.github.io/2021/05/16/23780.html</id>
-    <published>2021-05-16T03:36:01.000Z</published>
-    <updated>2021-05-23T00:49:36.828Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;SQL-map&quot;&gt;&lt;a href=&quot;#SQL-map&quot; class=&quot;headerlink&quot; title=&quot;SQL-map&quot;&gt;&lt;/a&gt;SQL-map&lt;/h1&gt;&lt;h2 id=&quot;1-介绍&quot;&gt;&lt;a href=&quot;#1-介绍&quot; class=&quot;headerlink&quot;</summary>
-        
-      
-    
-    
-    
-    
-    <category term="web" scheme="http://echo-machile.github.io/tags/web/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>xml学习</title>
-    <link href="http://echo-machile.github.io/2021/05/09/23955.html"/>
-    <id>http://echo-machile.github.io/2021/05/09/23955.html</id>
-    <published>2021-05-09T00:41:01.000Z</published>
-    <updated>2021-05-29T09:26:26.376Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;XML解析&quot;&gt;&lt;a href=&quot;#XML解析&quot; class=&quot;headerlink&quot; title=&quot;XML解析&quot;&gt;&lt;/a&gt;XML解析&lt;/h1&gt;&lt;h2 id=&quot;1-应该掌握的知识&quot;&gt;&lt;a href=&quot;#1-应该掌握的知识&quot; class=&quot;headerlink&quot;</summary>
-        
-      
-    
-    
-    
-    
-    <category term="web" scheme="http://echo-machile.github.io/tags/web/"/>
     
   </entry>
   

