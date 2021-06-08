@@ -6,7 +6,7 @@
   <link href="http://echo-machile.github.io/atom.xml" rel="self"/>
   
   <link href="http://echo-machile.github.io/"/>
-  <updated>2021-06-05T09:12:03.690Z</updated>
+  <updated>2021-06-08T11:47:39.200Z</updated>
   <id>http://echo-machile.github.io/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>ctfshow-命令执行</title>
+    <link href="http://echo-machile.github.io/2021/06/08/7551.html"/>
+    <id>http://echo-machile.github.io/2021/06/08/7551.html</id>
+    <published>2021-06-08T11:47:00.000Z</published>
+    <updated>2021-06-08T11:47:39.200Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;web29&quot;&gt;&lt;a href=&quot;#web29&quot; class=&quot;headerlink&quot; title=&quot;web29&quot;&gt;&lt;/a&gt;web29&lt;/h2&gt;&lt;h3 id=&quot;1-利用系统命令执行函数&quot;&gt;&lt;a href=&quot;#1-利用系统命令执行函数&quot;</summary>
+        
+      
+    
+    
+    
+    
+    <category term="CTFSHOW" scheme="http://echo-machile.github.io/tags/CTFSHOW/"/>
+    
+  </entry>
   
   <entry>
     <title>ctfshow-暴力破解</title>
@@ -448,29 +471,6 @@
         
         
     <summary type="html">&lt;h2 id=&quot;ACTF2020-新生赛-Include&quot;&gt;&lt;a href=&quot;#ACTF2020-新生赛-Include&quot; class=&quot;headerlink&quot; title=&quot;[ACTF2020 新生赛]Include&quot;&gt;&lt;/a&gt;[ACTF2020</summary>
-        
-      
-    
-    
-    
-    
-    <category term="BUUCTF" scheme="http://echo-machile.github.io/tags/BUUCTF/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>BUUCTF-HCTF做题笔记</title>
-    <link href="http://echo-machile.github.io/2021/05/20/7798.html"/>
-    <id>http://echo-machile.github.io/2021/05/20/7798.html</id>
-    <published>2021-05-20T10:40:00.000Z</published>
-    <updated>2021-06-01T08:41:21.063Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;HCTF-2018-WarmUp&quot;&gt;&lt;a href=&quot;#HCTF-2018-WarmUp&quot; class=&quot;headerlink&quot; title=&quot;[HCTF 2018]WarmUp&quot;&gt;&lt;/a&gt;[HCTF 2018]WarmUp&lt;/h2&gt;&lt;h3</summary>
         
       
     
