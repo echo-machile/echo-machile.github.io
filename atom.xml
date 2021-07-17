@@ -6,7 +6,7 @@
   <link href="http://echo-machile.github.io/atom.xml" rel="self"/>
   
   <link href="http://echo-machile.github.io/"/>
-  <updated>2021-07-10T03:27:22.822Z</updated>
+  <updated>2021-07-17T12:30:17.335Z</updated>
   <id>http://echo-machile.github.io/</id>
   
   <author>
@@ -17,23 +17,73 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>ctfshow-php特性</title>
+    <link href="http://echo-machile.github.io/2021/07/17/7009.html"/>
+    <id>http://echo-machile.github.io/2021/07/17/7009.html</id>
+    <published>2021-07-17T12:30:00.000Z</published>
+    <updated>2021-07-17T12:30:17.335Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;web89&quot;&gt;&lt;a href=&quot;#web89&quot; class=&quot;headerlink&quot; title=&quot;web89&quot;&gt;&lt;/a&gt;web89&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;intval():&lt;/code&gt;返回值&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre</summary>
+        
+      
+    
+    
+    
+    
+    <category term="CTFSHOW" scheme="http://echo-machile.github.io/tags/CTFSHOW/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>ctfshow-文件包含</title>
+    <link href="http://echo-machile.github.io/2021/07/11/79009.html"/>
+    <id>http://echo-machile.github.io/2021/07/11/79009.html</id>
+    <published>2021-07-11T00:43:00.000Z</published>
+    <updated>2021-07-12T12:39:35.857Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;web78&quot;&gt;&lt;a href=&quot;#web78&quot; class=&quot;headerlink&quot; title=&quot;web78&quot;&gt;&lt;/a&gt;web78&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;php伪协议读取&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre class=&quot;line-numbers</summary>
+        
+      
+    
+    
+    
+    
+    <category term="CTFSHOW" scheme="http://echo-machile.github.io/tags/CTFSHOW/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Java笔记</title>
     <link href="http://echo-machile.github.io/2021/07/10/4322.html"/>
     <id>http://echo-machile.github.io/2021/07/10/4322.html</id>
     <published>2021-07-10T03:30:00.000Z</published>
-    <updated>2021-07-10T03:27:22.822Z</updated>
+    <updated>2021-07-11T00:33:19.354Z</updated>
     
     
       
       
         
         
-    <summary type="html">&lt;ul&gt;
+    <summary type="html">&lt;h2 id=&quot;变量&quot;&gt;&lt;a href=&quot;#变量&quot; class=&quot;headerlink&quot; title=&quot;变量&quot;&gt;&lt;/a&gt;变量&lt;/h2&gt;&lt;ul&gt;
 &lt;li&gt;定义常量&lt;/li&gt;
 &lt;/ul&gt;
-&lt;pre class=&quot;line-numbers language-none&quot;&gt;&lt;code class=&quot;language-none&quot;&gt;final double PI&amp;#x3D;value
-
-final int</summary>
+&lt;pre class=&quot;line-numbers language-java&quot;</summary>
         
       
     
@@ -49,17 +99,14 @@ final int</summary>
     <link href="http://echo-machile.github.io/2021/07/10/72345.html"/>
     <id>http://echo-machile.github.io/2021/07/10/72345.html</id>
     <published>2021-07-10T03:26:00.000Z</published>
-    <updated>2021-07-10T03:26:37.096Z</updated>
+    <updated>2021-07-17T01:35:51.131Z</updated>
     
     
       
       
         
         
-    <summary type="html">&lt;h2 id=&quot;web171&quot;&gt;&lt;a href=&quot;#web171&quot; class=&quot;headerlink&quot; title=&quot;web171&quot;&gt;&lt;/a&gt;web171&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;根据提示的查询语句&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;img</summary>
+    <summary type="html">&lt;h2 id=&quot;web171&quot;&gt;&lt;a href=&quot;#web171&quot; class=&quot;headerlink&quot; title=&quot;web171&quot;&gt;&lt;/a&gt;web171&lt;/h2&gt;&lt;pre class=&quot;line-numbers language-sql&quot;</summary>
         
       
     
@@ -438,52 +485,6 @@ final int</summary>
     
     
     <category term="SQL注入" scheme="http://echo-machile.github.io/tags/SQL%E6%B3%A8%E5%85%A5/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>PHP反序列化</title>
-    <link href="http://echo-machile.github.io/2021/05/25/364.html"/>
-    <id>http://echo-machile.github.io/2021/05/25/364.html</id>
-    <published>2021-05-25T14:47:00.000Z</published>
-    <updated>2021-05-27T07:14:45.368Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;序列化&quot;&gt;&lt;a href=&quot;#序列化&quot; class=&quot;headerlink&quot; title=&quot;序列化&quot;&gt;&lt;/a&gt;序列化&lt;/h1&gt;&lt;h2 id=&quot;序列化-1&quot;&gt;&lt;a href=&quot;#序列化-1&quot; class=&quot;headerlink&quot;</summary>
-        
-      
-    
-    
-    
-    
-    <category term="WEB" scheme="http://echo-machile.github.io/tags/WEB/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>PHP伪协议</title>
-    <link href="http://echo-machile.github.io/2021/05/24/666.html"/>
-    <id>http://echo-machile.github.io/2021/05/24/666.html</id>
-    <published>2021-05-24T12:36:00.000Z</published>
-    <updated>2021-05-31T07:28:50.119Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;PHP&quot;&gt;&lt;a href=&quot;#PHP&quot; class=&quot;headerlink&quot; title=&quot;PHP://&quot;&gt;&lt;/a&gt;PHP://&lt;/h1&gt;&lt;p&gt;php官方网站:&lt;a</summary>
-        
-      
-    
-    
-    
-    
-    <category term="WEB" scheme="http://echo-machile.github.io/tags/WEB/"/>
     
   </entry>
   
