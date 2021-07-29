@@ -691,7 +691,7 @@ sqlmap<span class="token operator">/</span><span class="token number">1.0</span>
 <p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gqlkvwfr32j30jg0elgrd.jpg" alt="image-20210517180046671"></p>
 <pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">sqlmap <span class="token operator">-</span>r proxy<span class="token punctuation">.</span>txt  <span class="token comment">--scope="192.168.100.100"  --banner</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<h2 id="7-SQLmap设置请求参数-五"><a href="#7-SQLmap设置请求参数-五" class="headerlink" title="7.SQLmap设置请求参数(五)"></a>7.SQLmap设置请求参数(五)</h2><h3 id="7-1-Sqlmap何止忽略401"><a href="#7-1-Sqlmap何止忽略401" class="headerlink" title="7.1  Sqlmap何止忽略401"></a>7.1  Sqlmap何止忽略401</h3><p>–ignore-401 设置忽略未验证错误</p>
+<h2 id="7-SQLmap设置请求参数-五"><a href="#7-SQLmap设置请求参数-五" class="headerlink" title="7.SQLmap设置请求参数(五)"></a>7.SQLmap设置请求参数(五)</h2><h3 id="7-1-Sqlmap设置忽略401"><a href="#7-1-Sqlmap设置忽略401" class="headerlink" title="7.1  Sqlmap设置忽略401"></a>7.1  Sqlmap设置忽略401</h3><p>–ignore-401 设置忽略未验证错误</p>
 <p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gqll74th87j310w0atjxa.jpg" alt="image-20210517181134057"></p>
 <h3 id="7-2-Sqlmap设置HTTP协议的私钥"><a href="#7-2-Sqlmap设置HTTP协议的私钥" class="headerlink" title="7.2 Sqlmap设置HTTP协议的私钥"></a>7.2 Sqlmap设置HTTP协议的私钥</h3><p>当web服务器需要适当的客户端证书和用于验证的私钥时，应该使用此项。提供的值应该是一个PEM格式的key_file，其中包含证书和私钥</p>
 <pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token comment">--auth-file 文件名</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
@@ -699,7 +699,7 @@ sqlmap<span class="token operator">/</span><span class="token number">1.0</span>
 <h3 id="7-3-Sqlmap设置安全模式"><a href="#7-3-Sqlmap设置安全模式" class="headerlink" title="7.3 Sqlmap设置安全模式"></a>7.3 Sqlmap设置安全模式</h3><p>避免多次请求后销毁会话</p>
 <p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gqlldlufhrj313704cdih.jpg" alt="image-20210517181747674"></p>
 <p>–safe-url，–safe-post，–safe-rep，–safe-freq</p>
-<p>通过这种方式，sqlmap将访问每个预定咦变量的请求而不对某个安全URL 执行任何类型的注入</p>
+<p>通过这种方式，sqlmap将访问每个预定义变量的请求而不对某个安全URL 执行任何类型的注入</p>
 <h3 id="7-4-Sqlmap设置url编码"><a href="#7-4-Sqlmap设置url编码" class="headerlink" title="7.4 Sqlmap设置url编码"></a>7.4 Sqlmap设置url编码</h3><p>根据参数的设置(例如get)，默认情况下他的值可以是url编码。在某些情况下，后端的web服务不不遵循RFC标准需要以原始的非编码形式发送值。在这种情况下使用<code>--skip-urlencode</code></p>
 <p>–skip-urlencode 不进行url加密</p>
 <h2 id="8-Sqlmap性能优化"><a href="#8-Sqlmap性能优化" class="headerlink" title="8. Sqlmap性能优化"></a>8. Sqlmap性能优化</h2><h3 id="8-1-Sqlmap设置持久http连接"><a href="#8-1-Sqlmap设置持久http连接" class="headerlink" title="8.1 Sqlmap设置持久http连接"></a>8.1 Sqlmap设置持久http连接</h3><pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token comment">--keep-alive</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
@@ -720,7 +720,7 @@ sqlmap<span class="token operator">/</span><span class="token number">1.0</span>
 
 <p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gqs1ez9146j30td024myp.jpg" alt="image-20210523080605572"></p>
 <p>注意：这个参数与多线程参数不兼容</p>
-<h2 id="9-SQLmap指定位置注入"><a href="#9-SQLmap指定位置注入" class="headerlink" title="9.SQLmap指定位置注入"></a>9.SQLmap指定位置注入</h2><h3 id="9-1-SQLmap注入介绍"><a href="#9-1-SQLmap注入介绍" class="headerlink" title="9.1 SQLmap注入介绍"></a>9.1 SQLmap注入介绍</h3><p>SQL注入可以发撒哼在HTTP报文中的任意位置</p>
+<h2 id="9-SQLmap指定位置注入"><a href="#9-SQLmap指定位置注入" class="headerlink" title="9.SQLmap指定位置注入"></a>9.SQLmap指定位置注入</h2><h3 id="9-1-SQLmap注入介绍"><a href="#9-1-SQLmap注入介绍" class="headerlink" title="9.1 SQLmap注入介绍"></a>9.1 SQLmap注入介绍</h3><p>SQL注入可以在HTTP报文中的任意位置</p>
 <h3 id="9-2-SQLmap设置指定注入参数"><a href="#9-2-SQLmap设置指定注入参数" class="headerlink" title="9.2 SQLmap设置指定注入参数"></a>9.2 SQLmap设置指定注入参数</h3><h4 id="Sqlmap设置参数"><a href="#Sqlmap设置参数" class="headerlink" title="Sqlmap设置参数:"></a>Sqlmap设置参数:</h4><pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token operator">-</span>p<span class="token punctuation">,</span><span class="token comment">--skip,--param-exclude,--skip-static</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p>-p:</p>

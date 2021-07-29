@@ -470,7 +470,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    5.6k
+                    5.5k
                 </div>
                 
 
@@ -496,7 +496,7 @@
 <p>常见的注入有：SQL 注入，XSS 注入，XPATH 注入，XML 注入，代码注入，命令注入等等。sql注入已经出世很多年了，对于sql注入的概念和原理很多人应该是相当清楚了，SSTI也是注入类的漏洞，其成因其实是可以类比于sql注入的。</p>
 <p>sql注入是从用户获得一个输入，然后又后端脚本语言进行数据库查询，所以可以利用输入来拼接我们想要的sql语句，当然现在的sql注入防范做得已经很好了，然而随之而来的是更多的漏洞。</p>
 <p>SSTI也是获取了一个输入，然后再后端的渲染处理上进行了语句的拼接，然后执行。当然还是和sql注入有所不同的，SSTI利用的是现在的网站模板引擎(下面会提到)，主要针对python、php、java的一些网站处理框架，比如Python的jinja2 mako tornado django，php的smarty twig，java的jade velocity。当这些框架对运用渲染函数生成html的时候会出现SSTI的问题。</p>
-<p>现在网上提起的比较多的是Python的网站。<br>————————————————<br>版权声明：本文为CSDN博主「大千SS」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。<br>原文链接：<a target="_blank" rel="noopener" href="https://blog.csdn.net/zz_Caleb/article/details/96480967">https://blog.csdn.net/zz_Caleb/article/details/96480967</a></p>
+<p>现在网上提起的比较多的是Python的网站。<br>原文链接：<a target="_blank" rel="noopener" href="https://blog.csdn.net/zz_Caleb/article/details/96480967">https://blog.csdn.net/zz_Caleb/article/details/96480967</a></p>
 <pre class="line-numbers language-none"><code class="language-none"><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 
@@ -591,7 +591,7 @@ if __name__ &#x3D;&#x3D; &#39;__main__&#39;:
 <p>dir()函数用于向我们展示一个对象的属性有哪些，在没有提供对象的时候，将会提供当前环境所导入的所有模块，我们可以看到初始模块有哪些</p>
 <p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gq0s4ssoimj30er01paa6.jpg" alt="image-20210428185626920"></p>
 <p>这里面，我们可以看到<code>__builtins__</code>是做为默认初始模块出现的，那么用dir()命令看看<code>__builtins__</code>的成分。</p>
-<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gq0s537w12j30fu0abgp9.jpg" alt="image-20210428192429857"></p>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gsv8ca57zaj30oa074771.jpg" alt="image-20210727090302236"></p>
 <p>在这个里面，我们会看到很多熟悉的关键字。比如：<code>__import__</code>、<code>str</code>、<code>len</code>等。看到这里大家会不会突然想明白为什么python解释器里能够直接使用某些函数了？比如直接使用len()函数</p>
 <p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gq0s57n807j308r01cgln.jpg" alt="image-20210428193100977"></p>
 <p><strong>类继承</strong></p>
@@ -746,7 +746,7 @@ app<span class="token operator">=</span>Flask<span class="token punctuation">(</
 <h2 id="ctf中的一些绕过tips"><a href="#ctf中的一些绕过tips" class="headerlink" title="ctf中的一些绕过tips"></a>ctf中的一些绕过tips</h2><p>没什么系统思路。就是不断挖掘类研究官方文档以及各种能够利用的姿势。这里从最简单的绕过说起。</p>
 <p>1.过滤[]等括号</p>
 <ul>
-<li><p>使用gititem绕过。如原poc { {“”.<strong>class</strong>.<strong>bases</strong>[0]} }</p>
+<li><p>使用getitem绕过。如原poc { {“”.<strong>class</strong>.<strong>bases</strong>[0]} }</p>
 <p>绕过后{ { “”.<strong>class</strong>.<strong>bases</strong>.<strong>getitem</strong>(0) } }</p>
 </li>
 <li><p>pop() 函数用于移除列表中的一个元素（默认最后一个元素），并且返回该元素的值。</p>

