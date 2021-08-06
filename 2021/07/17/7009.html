@@ -599,7 +599,7 @@ PD89YGNhdCAqYDs
 </ul>
 <p>数组绕过：</p>
 <p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gsfkx8i8ndj31400lztgi.jpg" alt="image-20210713200920502"></p>
-<h2 id="web105"><a href="#web105" class="headerlink" title="web105"></a>web105</h2><p>两个$是覆盖复制</p>
+<h2 id="web105"><a href="#web105" class="headerlink" title="web105"></a>web105</h2><p>两个$是覆盖赋值</p>
 <p>解决办法:</p>
 <p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gsfodi2p9fj309g023jrj.jpg" alt="image-20210713220846462"></p>
 <p>不可能知道flag是啥，就直接通过传参的方式令<code>error=flag</code>，这样结束的时候输出flag</p>
@@ -635,11 +635,11 @@ ffifdyop   <span class="token function">md5</span><span class="token punctuation
 
 <p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gsfp1dfu4rj30ou0cvgn7.jpg" alt="image-20210713223142249"></p>
 <h2 id="Web108"><a href="#Web108" class="headerlink" title="Web108"></a>Web108</h2><ul>
-<li>ereg函数存在%00截断，可以绕过正则</li>
+<li><strong>ereg</strong>函数存在%00截断，可以绕过正则</li>
 </ul>
 <p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gsfqnmy6mxj608a020glm02.jpg" alt="image-20210713232742573"></p>
 <ul>
-<li>strrev函数:将给定的字符串反转，</li>
+<li><strong>strrev</strong>函数:将给定的字符串反转，</li>
 </ul>
 <p><strong>需要将给定的0x36d转换成十进制，再反转</strong></p>
 <p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gsfqwf6ew1j60e801wglp02.jpg" alt="image-20210713233609225"></p>
@@ -751,7 +751,7 @@ ffifdyop   <span class="token function">md5</span><span class="token punctuation
 <pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
   <span class="token variable">$size</span> <span class="token operator">=</span> <span class="token string double-quoted-string">"large"</span><span class="token punctuation">;</span>
   <span class="token variable">$var_array</span> <span class="token operator">=</span> <span class="token keyword">array</span><span class="token punctuation">(</span><span class="token string double-quoted-string">"color"</span> <span class="token operator">=></span> <span class="token string double-quoted-string">"blue"</span><span class="token punctuation">,</span>
-                    <span class="token string double-quoted-string">"size"</span> <span class="token operator">=></span> <span class="token string double-quoted-string">"medium"</span><span class="token punctuation">,</span>
+                    <span class="token string double-quoted-string">"size"</span> <span class="token operator">=></span> <span class="token string double-quoted-string">"medium"</span><span class="token punctuation">,</span>              
                     <span class="token string double-quoted-string">"shape"</span> <span class="token operator">=></span> <span class="token string double-quoted-string">"sphere"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token function">extract</span><span class="token punctuation">(</span><span class="token variable">$var_array</span><span class="token punctuation">,</span><span class="token constant">EXT_PREFIX_SAME</span><span class="token punctuation">,</span><span class="token string double-quoted-string">"wddx"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 

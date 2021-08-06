@@ -470,7 +470,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    3.3k
+                    3.4k
                 </div>
                 
 
@@ -693,10 +693,7 @@
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>submit<span class="token punctuation">"</span></span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>submit<span class="token punctuation">"</span></span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>提交<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>form</span><span class="token punctuation">></span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">></span></span>
-
-
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <h4 id="2-2-抓包，输入命令"><a href="#2-2-抓包，输入命令" class="headerlink" title="2.2 抓包，输入命令"></a>2.2 抓包，输入命令</h4><p><img src="https://tva1.sinaimg.cn/large/008i3skNly1grim5g3movj30ss0d6wha.jpg" alt="image-20210615074808348"></p>
 <ul>
@@ -778,7 +775,7 @@ GET传参数：
 </ul>
 <p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gs79gohuhwj30k00bnwig.jpg" alt="image-20210706152816900"></p>
 <ul>
-<li><p><code>print_r(standir(&#39;.&#39;));</code></p>
+<li><p><code>print_r(scandir(&#39;.&#39;));</code></p>
 </li>
 <li><p><code>curl</code></p>
 </li>
@@ -1055,7 +1052,7 @@ GET传参数：
 <span class="token delimiter important">?></span></span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<p>跑完这个通用的绕过<code>open_basedir</code>脚本得到flag</p>
+<p>将脚本的所有内容传给参数，并进行url编码</p>
 <h2 id="Web73-74"><a href="#Web73-74" class="headerlink" title="Web73,74"></a>Web73,74</h2><h3 id="解题思路"><a href="#解题思路" class="headerlink" title="解题思路:"></a>解题思路:</h3><ol>
 <li>找到目录文件</li>
 <li>打开<code>flag</code>文件(无open_basedir禁止)</li>
@@ -1204,7 +1201,7 @@ $&#123;PWD::$&#123;#?&#125;&#125;???$&#123;PWD::$&#123;#?&#125;&#125;?????$&#123
 <h2 id="web124"><a href="#web124" class="headerlink" title="web124"></a>web124</h2><p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gsboc48gf7j30lm0dtjt5.jpg" alt="image-20210710110510931"></p>
 <p><code>base_convert(1231231131,10,36)</code>:</p>
 <p>​        将第一个参数由10进制转换成36进制</p>
-<p><strong>又上面函数构造成一个新的函数hex2bin</strong></p>
+<p><strong>由上面函数构造成一个新的函数hex2bin</strong></p>
 <p><code>hex2bin</code>:</p>
 <p>​     16进制转换成二进制字符串</p>
 <p><code>dechex(num)</code></p>
