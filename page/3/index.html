@@ -381,23 +381,229 @@
             
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2021/06/02/7890.html">
+                    <a href="/2021/06/04/2332.html">
                         <div class="card-image">
                             
                             
-                            <img src="/medias/featureimages/4.jpg" class="responsive-img" alt="BUUCTF-ZJCTF做题笔记">
+                            <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="信息泄露">
                             
-                            <span class="card-title">BUUCTF-ZJCTF做题笔记</span>
+                            <span class="card-title">信息泄露</span>
                         </div>
                     </a>
 
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                [ZJCTF 2019]NiZhuanSiWei
-直接构造payload:
+                                信息泄漏SVN info1. 漏洞描述:
+使用svn管理本地文件代码的过程，会自动生成一个.svn的文件夹—包含这网站的重要信息
 
-view-source:http:&#x2F;&#x2F;5e61447f-2d28-46b3-b6b8-8939e1fbded5.node3.buuoj.cn&
+如果网站管理员在发布网站的时候，没有使用到处功能，而是直接复制微网站后台的文件夹，就会导致.svn文件暴露在
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-06-04
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-user fa-fw"></i>
+                                尘落
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/BUUCTF/">
+                            <span class="chip bg-color">BUUCTF</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/2021/06/04/7744.html">
+                        <div class="card-image">
+                            
+                            
+                            <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="ctfshow-信息收集">
+                            
+                            <span class="card-title">ctfshow-信息收集</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                web11. 查看页面源代码
+ctfshow&#123;5560f79b-1b94-4526-a586-3910c0e50c69&#125;
+
+web2/31. 设置代理抓包
+ctfshow&#123;a25d573b-5e52-49b7-
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-06-04
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-user fa-fw"></i>
+                                尘落
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/CTFSHOW/">
+                            <span class="chip bg-color">CTFSHOW</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/2021/06/03/7766.html">
+                        <div class="card-image">
+                            
+                            
+                            <img src="/medias/featureimages/26.jpg" class="responsive-img" alt="BUUCTF-SUCTF做题笔记">
+                            
+                            <span class="card-title">BUUCTF-SUCTF做题笔记</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                [SUCTF 2019]EasySQL1 堆叠注入，可以查到库和表1;show databases;
+
+1;show tables;
+
+
+
+发现有Flag表，但是不能查看
+
+payload:
+*,1
+
+想不出来。。。
+
+[SUCTF 201
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-06-03
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-user fa-fw"></i>
+                                尘落
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/BUUCTF/">
+                            <span class="chip bg-color">BUUCTF</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/2021/06/02/775.html">
+                        <div class="card-image">
+                            
+                            
+                            <img src="/medias/featureimages/25.jpg" class="responsive-img" alt="BUUCTF-GXYCTF做题笔记">
+                            
+                            <span class="card-title">BUUCTF-GXYCTF做题笔记</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                [GXYCTF2019]Ping Ping Ping1 执行命令ping 1.1.1.1;ls;
+
+2. 打开文件
+过滤了空格,以及一些其他方式
+
+在网上搜一下替换空格的字符：https://blog.csdn.net/weixin_439
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-06-02
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-user fa-fw"></i>
+                                尘落
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/BUUCTF/">
+                            <span class="chip bg-color">BUUCTF</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/2021/06/02/767.html">
+                        <div class="card-image">
+                            
+                            
+                            <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="BUUCTF-MRCTF做题笔记">
+                            
+                            <span class="card-title">BUUCTF-MRCTF做题笔记</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                [MRCTF2020]你传你🐎呢1.htaccess绕过
+
+2. 上传图片马
+3. 访问a.jpg
+
+用蚁剑链接，取flag
+
+
+[MRCTF2020]Ez_bypass
+简单的md5绕过和弱类型比较绕过
+
+
+
                             
                         </div>
                         <div class="publish-info">
@@ -447,6 +653,52 @@ view-source:http:&#x2F;&#x2F;5e61447f-2d28-46b3-b6b8-8939e1fbded5.node3.buuoj.cn
 
 data协议.点击查看，放的是博客地址对应的内容
 但是找不到任何其他有用的信息，尝试找一下，网站的其他站点，比如r
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-06-02
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-user fa-fw"></i>
+                                尘落
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/BUUCTF/">
+                            <span class="chip bg-color">BUUCTF</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/2021/06/02/7890.html">
+                        <div class="card-image">
+                            
+                            
+                            <img src="/medias/featureimages/4.jpg" class="responsive-img" alt="BUUCTF-ZJCTF做题笔记">
+                            
+                            <span class="card-title">BUUCTF-ZJCTF做题笔记</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                [ZJCTF 2019]NiZhuanSiWei
+直接构造payload:
+
+view-source:http:&#x2F;&#x2F;5e61447f-2d28-46b3-b6b8-8939e1fbded5.node3.buuoj.cn&
                             
                         </div>
                         <div class="publish-info">
@@ -596,9 +848,7 @@ XXE注入
 2. 看一下给出的文件flag1:n1book&#123;info_1
 
 
-
-
-3. 利用dirsearch工具扫一下后台备份文件使用di
+3. 利用dirsearch工具扫一下后台备份文件使用dirs
                             
                         </div>
                         <div class="publish-info">
@@ -721,238 +971,6 @@ varchar(m) 变长字符串【常用】，非固定长度的是使用变长字符
                 </div>
             </div>
             
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2021/05/25/364.html">
-                        <div class="card-image">
-                            
-                            <img src="https://tva1.sinaimg.cn/large/008i3skNly1gqv26g808qj31400p0tcs.jpg" class="responsive-img" alt="PHP反序列化">
-                            
-                            <span class="card-title">PHP反序列化</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                序列化序列化1.定义:利用serialize()将一个对象转换为字符串
-1.1先看一下直接输出对象&lt;?php
-class test&#123;
-    public $name="ghtwf01";
-    public $age="
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-05-25
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-user fa-fw"></i>
-                                尘落
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/WEB/">
-                            <span class="chip bg-color">WEB</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-            
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2021/05/24/666.html">
-                        <div class="card-image">
-                            
-                            
-                            <img src="/medias/featureimages/1.jpg" class="responsive-img" alt="PHP伪协议">
-                            
-                            <span class="card-title">PHP伪协议</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                PHP://php官方网站:https://www.php.net/manual/zh/wrappers.php.php
-PHP://访问各个输入输出流(I/O streams)
-说明:
-1. php://stdin, php://stdo
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-05-24
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-user fa-fw"></i>
-                                尘落
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/WEB/">
-                            <span class="chip bg-color">WEB</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-            
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2021/05/22/433.html">
-                        <div class="card-image">
-                            
-                            
-                            <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="git笔记">
-                            
-                            <span class="card-title">git笔记</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                GIT版本控制—————&gt;版本迭代
-版本控制工具;
-1. 版本控制的分类1. 本地版本控制本地保存
-
-
-
-2. 集中版本控制（SVN）将要保存的文件集中提交到公司的服务器，所有的版本保存到服务器上（因此需要备份）
-
-
-3. 分布式版本
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-05-22
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-user fa-fw"></i>
-                                尘落
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/git/">
-                            <span class="chip bg-color">git</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-            
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2021/05/21/88.html">
-                        <div class="card-image">
-                            
-                            
-                            <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="shell笔记">
-                            
-                            <span class="card-title">shell笔记</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                Shell1. shell脚本的特性bash shell的特性1. 命令和文件路径补全				table
-2. 命令历史记忆功能					 history 上下键,!number,!string(找到最早以string开头的命令)，!$(代
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-05-21
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-user fa-fw"></i>
-                                尘落
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/linux-shell/">
-                            <span class="chip bg-color">linux shell</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-            
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2021/05/20/7777.html">
-                        <div class="card-image">
-                            
-                            
-                            <img src="/medias/featureimages/26.jpg" class="responsive-img" alt="BUUCTF-ACTF新生赛做题笔记">
-                            
-                            <span class="card-title">BUUCTF-ACTF新生赛做题笔记</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                [ACTF2020 新生赛]Include点击tips，发现url是文件包含，而且被包含的文件是flag.php
-1. 利用php伪协议读取flag.php的源代码?file=php://filter/convert.base64-enco
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-05-20
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-user fa-fw"></i>
-                                尘落
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/BUUCTF/">
-                            <span class="chip bg-color">BUUCTF</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-            
         </div>
     </article>
 
@@ -970,7 +988,7 @@ PHP://访问各个输入输出流(I/O streams)
             
         </div>
         <div class="page-info col m4 l4 hide-on-small-only">
-            <div class="center-align b-text-gray">3 / 4</div>
+            <div class="center-align b-text-gray">3 / 5</div>
         </div>
         <div class="col s6 m4 l4">
             

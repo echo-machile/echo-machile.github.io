@@ -6,7 +6,7 @@
   <link href="http://echo-machile.github.io/atom.xml" rel="self"/>
   
   <link href="http://echo-machile.github.io/"/>
-  <updated>2021-08-06T09:48:51.426Z</updated>
+  <updated>2021-08-13T03:08:07.067Z</updated>
   <id>http://echo-machile.github.io/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>ctfshow-pwn</title>
+    <link href="http://echo-machile.github.io/2021/08/13/5.html"/>
+    <id>http://echo-machile.github.io/2021/08/13/5.html</id>
+    <published>2021-08-13T03:26:00.000Z</published>
+    <updated>2021-08-13T03:08:07.067Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;pwn02&quot;&gt;&lt;a href=&quot;#pwn02&quot; class=&quot;headerlink&quot; title=&quot;pwn02&quot;&gt;&lt;/a&gt;pwn02&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;下载并检查文件，file命令查看文件&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;img</summary>
+        
+      
+    
+    
+    
+    
+    <category term="CTFSHOW" scheme="http://echo-machile.github.io/tags/CTFSHOW/"/>
+    
+  </entry>
   
   <entry>
     <title>721</title>
@@ -44,7 +70,7 @@
     <link href="http://echo-machile.github.io/2021/08/06/9898.html"/>
     <id>http://echo-machile.github.io/2021/08/06/9898.html</id>
     <published>2021-08-06T09:47:00.000Z</published>
-    <updated>2021-08-06T09:42:31.013Z</updated>
+    <updated>2021-08-11T04:16:00.212Z</updated>
     
     
       
@@ -262,7 +288,7 @@
     <link href="http://echo-machile.github.io/2021/07/17/7009.html"/>
     <id>http://echo-machile.github.io/2021/07/17/7009.html</id>
     <published>2021-07-17T12:30:00.000Z</published>
-    <updated>2021-08-01T12:52:01.439Z</updated>
+    <updated>2021-08-08T05:05:37.611Z</updated>
     
     
       
@@ -288,7 +314,7 @@
     <link href="http://echo-machile.github.io/2021/07/11/79009.html"/>
     <id>http://echo-machile.github.io/2021/07/11/79009.html</id>
     <published>2021-07-11T00:43:00.000Z</published>
-    <updated>2021-07-25T04:29:23.714Z</updated>
+    <updated>2021-08-10T03:32:17.601Z</updated>
     
     
       
@@ -296,7 +322,7 @@
         
         
     <summary type="html">&lt;h2 id=&quot;web78&quot;&gt;&lt;a href=&quot;#web78&quot; class=&quot;headerlink&quot; title=&quot;web78&quot;&gt;&lt;/a&gt;web78&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;php伪协议读取&lt;/li&gt;
+&lt;li&gt;题目环境:&lt;/li&gt;
 &lt;/ul&gt;
 &lt;pre class=&quot;line-numbers</summary>
         
@@ -332,6 +358,103 @@
     
     
     <category term="git" scheme="http://echo-machile.github.io/tags/git/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>721-ctf4</title>
+    <link href="http://echo-machile.github.io/2021/07/10/75.html"/>
+    <id>http://echo-machile.github.io/2021/07/10/75.html</id>
+    <published>2021-07-10T03:26:00.000Z</published>
+    <updated>2021-08-13T03:07:29.864Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;web01&quot;&gt;&lt;a href=&quot;#web01&quot; class=&quot;headerlink&quot; title=&quot;web01&quot;&gt;&lt;/a&gt;web01&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;题目环境:&lt;/p&gt;
+&lt;pre class=&quot;line-numbers language-php&quot;</summary>
+        
+      
+    
+    
+    
+    
+    <category term="721" scheme="http://echo-machile.github.io/tags/721/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>CISCN</title>
+    <link href="http://echo-machile.github.io/2021/07/10/345.html"/>
+    <id>http://echo-machile.github.io/2021/07/10/345.html</id>
+    <published>2021-07-10T03:26:00.000Z</published>
+    <updated>2021-08-13T03:04:57.086Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;LOVEMATH&quot;&gt;&lt;a href=&quot;#LOVEMATH&quot; class=&quot;headerlink&quot; title=&quot;LOVEMATH&quot;&gt;&lt;/a&gt;LOVEMATH&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;题目环境:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre</summary>
+        
+      
+    
+    
+    
+    
+    <category term="CISCN" scheme="http://echo-machile.github.io/tags/CISCN/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>buuctf-BJDCTF</title>
+    <link href="http://echo-machile.github.io/2021/07/10/766.html"/>
+    <id>http://echo-machile.github.io/2021/07/10/766.html</id>
+    <published>2021-07-10T03:26:00.000Z</published>
+    <updated>2021-08-13T03:05:29.225Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;BJDCTF2020-Mark-loves-cat&quot;&gt;&lt;a href=&quot;#BJDCTF2020-Mark-loves-cat&quot; class=&quot;headerlink&quot; title=&quot;[BJDCTF2020]Mark loves</summary>
+        
+      
+    
+    
+    
+    
+    <category term="BUUCTF" scheme="http://echo-machile.github.io/tags/BUUCTF/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>buuuctf-Gwctf</title>
+    <link href="http://echo-machile.github.io/2021/07/10/723.html"/>
+    <id>http://echo-machile.github.io/2021/07/10/723.html</id>
+    <published>2021-07-10T03:26:00.000Z</published>
+    <updated>2021-08-13T03:05:00.694Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;我有一个数据库&quot;&gt;&lt;a href=&quot;#我有一个数据库&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    
+    <category term="BUUCTF" scheme="http://echo-machile.github.io/tags/BUUCTF/"/>
     
   </entry>
   
@@ -378,124 +501,6 @@
     
     
     <category term="CTFSHOW" scheme="http://echo-machile.github.io/tags/CTFSHOW/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>n1book-web入门</title>
-    <link href="http://echo-machile.github.io/2021/06/12/867.html"/>
-    <id>http://echo-machile.github.io/2021/06/12/867.html</id>
-    <published>2021-06-12T09:16:00.000Z</published>
-    <updated>2021-06-12T09:17:39.234Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;NUCTF&quot;&gt;&lt;a href=&quot;#NUCTF&quot; class=&quot;headerlink&quot; title=&quot;NUCTF&quot;&gt;&lt;/a&gt;NUCTF&lt;/h1&gt;&lt;h2 id=&quot;web&quot;&gt;&lt;a href=&quot;#web&quot; class=&quot;headerlink&quot;</summary>
-        
-      
-    
-    
-    
-    
-    <category term="ctf-web" scheme="http://echo-machile.github.io/tags/ctf-web/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>ctfshow-命令执行</title>
-    <link href="http://echo-machile.github.io/2021/06/08/7551.html"/>
-    <id>http://echo-machile.github.io/2021/06/08/7551.html</id>
-    <published>2021-06-08T11:47:00.000Z</published>
-    <updated>2021-08-04T01:09:08.675Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;web29&quot;&gt;&lt;a href=&quot;#web29&quot; class=&quot;headerlink&quot; title=&quot;web29&quot;&gt;&lt;/a&gt;web29&lt;/h2&gt;&lt;h3 id=&quot;1-利用系统命令执行函数&quot;&gt;&lt;a href=&quot;#1-利用系统命令执行函数&quot;</summary>
-        
-      
-    
-    
-    
-    
-    <category term="CTFSHOW" scheme="http://echo-machile.github.io/tags/CTFSHOW/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>ctfshow-暴力破解</title>
-    <link href="http://echo-machile.github.io/2021/06/05/7866.html"/>
-    <id>http://echo-machile.github.io/2021/06/05/7866.html</id>
-    <published>2021-06-05T02:47:00.000Z</published>
-    <updated>2021-06-05T09:12:03.690Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;web21&quot;&gt;&lt;a href=&quot;#web21&quot; class=&quot;headerlink&quot; title=&quot;web21&quot;&gt;&lt;/a&gt;web21&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;利用bp抓包，再根据提供的密码字典爆破&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&quot;1-bp爆破过程&quot;&gt;&lt;a</summary>
-        
-      
-    
-    
-    
-    
-    <category term="CTFSHOW" scheme="http://echo-machile.github.io/tags/CTFSHOW/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>BUUCTF-CISCN做题笔记</title>
-    <link href="http://echo-machile.github.io/2021/06/05/2302.html"/>
-    <id>http://echo-machile.github.io/2021/06/05/2302.html</id>
-    <published>2021-06-05T02:41:01.000Z</published>
-    <updated>2021-06-05T02:46:31.097Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;CISCN2019-华北赛区-Day2-Web1-Hack-World&quot;&gt;&lt;a href=&quot;#CISCN2019-华北赛区-Day2-Web1-Hack-World&quot; class=&quot;headerlink&quot; title=&quot;[CISCN2019 华北赛区 Day2</summary>
-        
-      
-    
-    
-    
-    
-    <category term="BUUCTF" scheme="http://echo-machile.github.io/tags/BUUCTF/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>信息泄露</title>
-    <link href="http://echo-machile.github.io/2021/06/04/2332.html"/>
-    <id>http://echo-machile.github.io/2021/06/04/2332.html</id>
-    <published>2021-06-04T04:36:01.000Z</published>
-    <updated>2021-08-02T03:36:15.370Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;信息泄漏&quot;&gt;&lt;a href=&quot;#信息泄漏&quot; class=&quot;headerlink&quot; title=&quot;信息泄漏&quot;&gt;&lt;/a&gt;信息泄漏&lt;/h1&gt;&lt;h2 id=&quot;SVN-info&quot;&gt;&lt;a href=&quot;#SVN-info&quot; class=&quot;headerlink&quot;</summary>
-        
-      
-    
-    
-    
-    
-    <category term="BUUCTF" scheme="http://echo-machile.github.io/tags/BUUCTF/"/>
     
   </entry>
   
